@@ -1,8 +1,5 @@
 import os
 import sys
-from dotenv import load_dotenv
-
-
 
 def file_validation(url, jhove_path):
 	os.chdir(jhove_path)
@@ -24,13 +21,7 @@ def file_validation(url, jhove_path):
 	# Prints a response
 	if "Status: Well-Formed and valid" not in output:
 		print("File validation failed")
-		print(output)
 	else:
 		print("File validation successful\n")
-		print(output)
 
-url1 = "path/to/url" 
-
-load_dotenv()
-jhove_path = os.getenv('JHOVE_PATH')
-file_validation(url1, jhove_path)
+	return output
