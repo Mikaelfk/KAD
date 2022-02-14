@@ -9,16 +9,16 @@ def file_validation(url, jhove_path):
 
 	# Check if operating system is posix or windows
 	if os.name == "posix":
-		jhovevariable = "./jhove"
+		jhove_command = "./jhove"
 	else:
-		jhovevariable = "jhove.bat"
+		jhove_command = "jhove.bat"
 		url = url.replace("/", "\\")
 
 	# Runs the file validation and saves the output to a variable
 	if url.lower().endswith('.jpg'):
-		stream = os.popen(jhovevariable + " -m JPEG-hul -kr " + "\"" + url + "\"")
+		stream = os.popen(jhove_command + " -m JPEG-hul -kr " + "\"" + url + "\"")
 	elif url.lower().endswith('.tiff'):
-		stream = os.popen(jhovevariable + " -m TIFF-hul -kr " + "\"" + url + "\"")
+		stream = os.popen(jhove_command + " -m TIFF-hul -kr " + "\"" + url + "\"")
 	output = stream.read()
 
 	# Prints a response
