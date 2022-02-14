@@ -4,21 +4,21 @@ from dotenv import load_dotenv
 
 
 
-def file_validation(url, jhovePath):
-	os.chdir(jhovePath)
+def file_validation(url, jhove_path):
+	os.chdir(jhove_path)
 
 	# Check if operating system is posix or windows
 	if os.name == "posix":
-		jhoveOSvariable = "./jhove"
+		jhovevariable = "./jhove"
 	else:
-		jhoveOSvariable = "jhove.bat"
+		jhovevariable = "jhove.bat"
 		url = url.replace("/", "\\")
 
 	# Runs the file validation and saves the output to a variable
 	if url.lower().endswith('.jpg'):
-		stream = os.popen(jhoveOSvariable + " -m JPEG-hul -kr " + "\"" + url + "\"")
+		stream = os.popen(jhovevariable + " -m JPEG-hul -kr " + "\"" + url + "\"")
 	elif url.lower().endswith('.tiff'):
-		stream = os.popen(jhoveOSvariable + " -m TIFF-hul -kr " + "\"" + url + "\"")
+		stream = os.popen(jhovevariable + " -m TIFF-hul -kr " + "\"" + url + "\"")
 	output = stream.read()
 
 	# Prints a response
@@ -29,9 +29,8 @@ def file_validation(url, jhovePath):
 		print("File validation successful\n")
 		print(output)
 
-url1 = "C:/Users/Ukhur/Documents/Skole/6.Semester/Bachelor/Test bilder/DSC06766.jpg"
-#url2 = "C:\Users\Ukhur\Documents\Skole\6. Semester\Bachelor\Test bilder\GoldenThread\Golden_Thread_Test_2021_04_07 1.jpg"
+url1 = "path/to/url" 
 
 load_dotenv()
-jhovePath = os.getenv('JHOVE_PATH')
-file_validation(url1, jhovePath)
+jhove_path = os.getenv('JHOVE_PATH')
+file_validation(url1, jhove_path)
