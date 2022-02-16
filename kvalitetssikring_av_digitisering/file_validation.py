@@ -1,7 +1,7 @@
 import os
 import sys
 
-def file_validation(url, jhove_path):
+def jhove_validation(url, jhove_path):
 	os.chdir(jhove_path)
 
 	# Check if operating system is posix or windows
@@ -16,6 +16,9 @@ def file_validation(url, jhove_path):
 		stream = os.popen(jhove_command + " -m JPEG-hul -kr " + "\"" + url + "\"")
 	elif url.lower().endswith('.tiff'):
 		stream = os.popen(jhove_command + " -m TIFF-hul -kr " + "\"" + url + "\"")
+	else:
+		print("Filetype not valid")
+		return
 	output = stream.read()
 
 	# Prints a response
