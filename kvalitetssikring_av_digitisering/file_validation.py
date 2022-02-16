@@ -17,14 +17,15 @@ def jhove_validation(url, jhove_path):
 	elif url.lower().endswith('.tiff'):
 		stream = os.popen(jhove_command + " -m TIFF-hul -kr " + "\"" + url + "\"")
 	else:
-		print("Filetype not valid")
-		return
+		return "Filetype not valid", None
 	output = stream.read()
 
-	# Prints a response
+	# Checks if the validation was successful 
 	if "Status: Well-Formed and valid" not in output:
-		print("File validation failed")
+		message = "File validation failed"
+		status = False
 	else:
-		print("File validation successful\n")
+		message = "File validation successful"
+		status = True
 
-	return output
+	return output, status, message
