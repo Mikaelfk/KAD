@@ -8,12 +8,6 @@ cache:
     - .cache/pip
     - venv/
 
-before_script:
-  - python3.10 -V               # Print out python version for debugging
-  - pip3 install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
-
 stages:
   - Test
   - Linting
@@ -21,6 +15,9 @@ stages:
 pytest:
   stage: Test
   script:
+  - pip3 install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
   - pip3 install pytest python-dotenv
   - echo "JHOVE_PATH=/usr/bin" > .env
   - pytest tests
