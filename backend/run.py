@@ -1,5 +1,5 @@
 import os
-from kvalitetssikring_av_digitisering import start
+from kvalitetssikring_av_digitisering.main import start
 
 
 def main():
