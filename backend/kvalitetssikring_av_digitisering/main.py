@@ -17,19 +17,18 @@ def start():
     def validate():
         # check if there is a file
         if "file" not in request.files:
-            print("a")
-            return Response(status=400)
+            return Response('{error: "no file provided"}', status=400)
 
         file = request.files["file"]
 
         # check if the file has a name
         if file.filename == "":
-            return Response(status=400)
+            return Response('{error: "invalid file name"}', status=400)
 
         # check if file has valid extension
         file_ext = os.path.splitext(file.filename)[1]
         if file_ext not in {".jpeg", ".jpg", ".tiff", ".tif"}:
-            return Response(status=400)
+            return Response('{error: "invalid file type"}', status=400)
 
         # lets go upload time!
         if file:
