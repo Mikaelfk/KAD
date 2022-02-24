@@ -19,8 +19,8 @@ pytest:
   - pip3 install virtualenv
   - virtualenv venv
   - source venv/bin/activate
-  - pip3 install pytest python-dotenv
-  - echo "JHOVE_PATH=/usr/bin" > .env
+  - pip3 install pytest 
+  - printf "[JHOVE]\nJhoveInstallPath=/usr/bin" > config
   - pytest tests
 
 sonarqube-check:
