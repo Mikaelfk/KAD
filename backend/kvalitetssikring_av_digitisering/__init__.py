@@ -1,1 +1,1 @@
-from .file_validation import jhove_validation
+from .main import start
