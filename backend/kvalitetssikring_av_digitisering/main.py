@@ -28,7 +28,7 @@ def start():
 
         # check if file has valid extension
         file_ext = os.path.splitext(file.filename)[1]
-        if file_ext not in {".jpeg", ".jpg", ".tiff"}:
+        if file_ext not in {".jpeg", ".jpg", ".tiff", ".tif"}:
             return Response(status=400)
 
         # lets go upload time!
