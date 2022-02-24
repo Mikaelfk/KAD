@@ -1,6 +1,2 @@
 # Visual Studio Code files
 .vscode/
-
-# NodeJS
-frontend/node_modules/
-frontend/package.json
