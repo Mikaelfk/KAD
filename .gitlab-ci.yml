@@ -3,16 +3,17 @@ image: "mikaelfk/bachelor_ci:1.0"
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
-cache:
-  paths:
-    - .cache/pip
-    - venv/
+
 
 stages:
   - Test
   - Linting
 
 pytest:
+  cache:
+    paths:
+    - .cache/pip
+    - venv/
   stage: Test
   script:
   - cd backend/
