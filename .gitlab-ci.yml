@@ -27,7 +27,7 @@ reacttest:
   image:
     name: node:17.6.0
   cache:
-  directories:
+    paths:
     - node_modules
   stage: Test
   script:
