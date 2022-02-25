@@ -1,4 +1,3 @@
-import os
 from kvalitetssikring_av_digitisering.main import start
 
 
