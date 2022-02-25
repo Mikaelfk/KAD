@@ -1,7 +1,6 @@
 import {
     BrowserRouter, Route, Routes
 } from 'react-router-dom';
-import './App.css';
 import MainPage from './components/MainPage';
 import UploadDevice from './components/UploadDevice';
 
