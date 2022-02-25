@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const MainPage = () => {
     return (
         <div className='container'>
-            <h1>Hei</h1>
+            <Typography variant='h2'>Kvalitetssikring</Typography>
             <div className='image-target-menu'>
                 <Card component={Link} to='/upload/object' style={{ textDecoration: 'none' }}>
                     <CardContent className='image-target-menu-option'>
