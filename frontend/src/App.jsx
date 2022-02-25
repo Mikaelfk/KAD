@@ -10,7 +10,8 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<MainPage />} />
-                <Route path="/upload_device" element={<UploadDevice />} />
+                <Route path="/upload/device" element={<UploadDevice />} />
+                <Route path="/upload/object" element={<UploadDevice />} />
             </Routes>
         </BrowserRouter>
     );
