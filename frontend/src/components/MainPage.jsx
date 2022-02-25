@@ -19,7 +19,6 @@ const MainPage = () => {
                             sx={{ width: 300, padding: '15px' }}
                             image="/images/object_level_target.PNG"
                             alt="Live from space album cover"
-                            flexItem
                         />
                     </CardContent>
                 </Card>
@@ -33,7 +32,6 @@ const MainPage = () => {
                             sx={{ width: 200, padding: '15px' }}
                             image="/images/device_level_target.jpg"
                             alt="Live from space album cover"
-                            flexItem
                         />
                     </CardContent>
                 </Card>
