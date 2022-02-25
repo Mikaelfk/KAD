@@ -1,3 +1,10 @@
+"""Module for validate endpoint
+
+This module is for use with Flask, and should therefore not be directly called.
+It defines the code for an endpoint that takes an image, checks it with JHove and returns
+validity result.
+"""
+
 import os
 
 from flask import Blueprint, Response, request
@@ -11,6 +18,12 @@ validate_endpoint = Blueprint("validate_endpoint", __name__)
 
 @validate_endpoint.route("/api/validate", methods=["POST"])
 def validate():
+    """Method for saving and validating incoming image
+
+    Returns:
+        A HTTP Respons with corresponding status code and data
+    """
+
     # check if there is a file
     if "file" not in request.files:
         return Response('{error: "no file provided"}', status=400)
