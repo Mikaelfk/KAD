@@ -1,5 +1,6 @@
 """Module used for loading and using config values.
 
+Uses a config.ini file in working directory.
 """
 
 import configparser
@@ -25,5 +26,5 @@ class Config:
 
         if Config.__conf is None:
             Config.__conf = configparser.ConfigParser()
-            Config.__conf.read("config")
+            Config.__conf.read("config.ini")
         return Config.__conf
