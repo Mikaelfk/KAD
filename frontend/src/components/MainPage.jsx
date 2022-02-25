@@ -10,7 +10,7 @@ const MainPage = () => {
         <div className='container'>
             <h1>Hei</h1>
             <div className='image-target-menu'>
-                <Card component={Link} to='/upload/object'>
+                <Card component={Link} to='/upload/object' style={{ textDecoration: 'none' }}>
                     <CardContent className='image-target-menu-option'>
                         <Typography variant="h4">Object Level Target</Typography>
                         <Divider variant="middle" sx={{ borderBottomWidth: 2, padding: '5px' }} flexItem />
@@ -23,7 +23,7 @@ const MainPage = () => {
                         />
                     </CardContent>
                 </Card>
-                <Card component={Link} to='/upload/device'>
+                <Card component={Link} to='/upload/device' style={{ textDecoration: 'none' }}>
                     <CardContent className='image-target-menu-option'>
                         <Typography variant="h4">Device Level Target</Typography>
                         <Divider variant="middle" sx={{ borderBottomWidth: 2, padding: '5px' }} flexItem />
