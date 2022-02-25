@@ -3,8 +3,6 @@ image: "mikaelfk/bachelor_ci:1.0"
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
-
-
 stages:
   - Test
   - Linting
@@ -29,7 +27,7 @@ reacttest:
     name: node:17.6.0
   cache:
     paths:
-    - node_modules
+    - frontend/node_modules
   stage: Test
   script:
   - cd frontend/
