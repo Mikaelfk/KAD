@@ -23,6 +23,18 @@ pytest:
   - printf "[JHOVE]\nJhoveInstallPath=/usr/bin" > config
   - pytest tests
 
+reacttest:
+  image:
+    name: node:17.6.0
+  cache:
+  directories:
+    - node_modules
+  stage: Test
+  script:
+  - npm install
+  - npm test
+
+
 sonarqube-check:
   image: 
     name: sonarsource/sonar-scanner-cli:latest
