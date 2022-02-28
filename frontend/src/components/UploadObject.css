@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.action-menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 50px;
+    margin: 15px;
+}

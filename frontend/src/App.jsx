@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom';
 import MainPage from './components/MainPage';
 import UploadDevice from './components/UploadDevice';
+import UploadObject from './components/UploadObject';
 
 const App = () => {
     return (
@@ -10,7 +11,7 @@ const App = () => {
             <Routes>
                 <Route exact path="/" element={<MainPage />} />
                 <Route path="/upload/device" element={<UploadDevice />} />
-                <Route path="/upload/object" element={<UploadDevice />} />
+                <Route path="/upload/object" element={<UploadObject />} />
             </Routes>
         </BrowserRouter>
     );
