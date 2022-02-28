@@ -18,9 +18,9 @@ export const UploadButton = (props) => {
 }
 
 export const SubmitButton = () => {
-  return (<Button size="medium">Submit</Button>);
+  return (<Button size="medium" variant="contained">Submit</Button>);
 }
 
-export const CancelButton = () => {
-  return (<Button size="medium">Cancel</Button>);
+export const CancelButton = (props) => {
+  return (<Button size="medium" component={props.component} to={props.to}>Cancel</Button>);
 }

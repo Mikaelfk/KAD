@@ -1,13 +1,24 @@
-.container {
+.upload-container {
     display: flex;
-    justify-content: space-evenly;
-    padding: 15px;
+    justify-content: center;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    height: 90vh;
+}
+
+.upload-options {
+    margin: auto;
 }
 
 .action-menu {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    padding-right: 50px;
-    margin: 15px;
+    padding: 5vh;
+    gap: 1%;
 }
