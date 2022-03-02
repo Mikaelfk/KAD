@@ -1,5 +1,7 @@
-node() {
-    gitlabBuilds(builds: ["Frontend: Clean", "Frontend: Build", "Frontend: Deploy"]) {
+pipeline {
+    agent any
+    
+    stages {   
         stage('Clean') {
             updateGitlabCommitStatus(name: 'Frontend: Clean', state: 'running')
             
@@ -30,4 +32,5 @@ node() {
             updateGitlabCommitStatus(name: 'Frontend: Deploy', state: 'success')
         }
     }
+    
 }
