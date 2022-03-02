@@ -9,8 +9,8 @@ const UploadDevice = () => {
         <div className='container'>
             <Typography variant='h2'>Device Level Target</Typography>
             <div className='upload-options'>
-                <UploadButton buttonText="Velg bilder" />
-                <UploadButton buttonText="Velg bilder" />
+                <UploadButton buttonText="Velg start target"  buttonType='button-orange' />
+                <UploadButton buttonText="Velg slutt target"  buttonType='button-orange' />
                 <UploadButton buttonText="Velg bilder" />
             </div>
             <div className='action-menu'>

@@ -1,0 +1,26 @@
+.button {
+    color: black;
+    background-color: #DAEFEF;
+}
+
+.button:hover {
+    background-color: #B9C5DF;
+}
+
+
+.button-upload {
+    padding: 1.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    width: 15em;
+}
+
+.button-orange {
+    color: black;
+    background-color: #FCE2B2;
+
+}
+
+.button-orange:hover {
+    background-color: #E5C386;
+}
