@@ -10,7 +10,7 @@ export const UploadButton = (props) => {
   return (
       <label htmlFor="contained-button-file">
         <Input accept="image/*" id="contained-button-file" multiple type="file" />
-        <Button variant="contained" component="span">
+        <Button variant="contained" component="span" className='button-upload'>
           {props.buttonText}
         </Button>
       </label>

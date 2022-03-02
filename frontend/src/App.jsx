@@ -1,9 +1,9 @@
 import {
     BrowserRouter, Route, Routes
 } from 'react-router-dom';
-import MainPage from './components/MainPage';
-import UploadDevice from './components/UploadDevice';
-import UploadObject from './components/UploadObject';
+import MainPage from './pages/main-page/MainPage';
+import UploadDevice from './pages/upload-device/UploadDevice';
+import UploadObject from './pages/upload-object/UploadObject';
 
 const App = () => {
     return (
