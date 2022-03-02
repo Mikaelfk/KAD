@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: auto;
     justify-content: center;
     align-items: center;
     padding: 15px;
@@ -10,8 +10,9 @@
 .image-target-menu {
     padding: 25px;
     display: flex;
-    justify-content: space-between;
-    width: 42%;
+    justify-content: center;
+    width: auto;
+    gap: 40px;
 }
 
 .image-target-menu-option {
@@ -26,4 +27,15 @@
 
 .image-target-menu-option:hover {
     background-color: #B9C5DF;
+}
+
+@media only screen and (max-width: 1400px) {
+    .image-target-menu {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+        gap: 40px;
+    }
 }
