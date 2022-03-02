@@ -13,7 +13,7 @@ node() {
         stage('Build') {
             updateGitlabCommitStatus(name: 'Frontend: Build', state: 'running')
 
-            dir('frontend/') {
+            ws('frontend/') {
                 sh 'npm install && npm run build'
             }
 
@@ -23,7 +23,7 @@ node() {
         stage('Deploy') {
             updateGitlabCommitStatus(name: 'Frontend: Deploy', state: 'running')
 
-            dir('frontend/') {
+            ws('frontend/') {
                 sh 'sudo mv build/* /var/www/app/'
             }
 
