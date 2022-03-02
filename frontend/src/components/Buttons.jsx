@@ -1,24 +1,31 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, StyledEngineProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import './Buttons.css';
 
 const Input = styled('input')({
   display: 'none',
 });
 
+
 export const UploadButton = (props) => {
   return (
+    <StyledEngineProvider injectFirst>
       <label htmlFor="contained-button-file">
         <Input accept="image/*" id="contained-button-file" multiple type="file" />
-        <Button variant="contained" component="span">
+        <Button component='span' className={props.buttonType + ' button-upload'} variant="contained" size='large'>
           {props.buttonText}
         </Button>
       </label>
+    </StyledEngineProvider>
   );
+}
+UploadButton.defaultProps = {
+  buttonType: "button"
 }
 
 export const SubmitButton = () => {
-  return (<Button size="medium" variant="contained">Submit</Button>);
+  return (<Button className='button' size="medium" variant="contained">Submit</Button>);
 }
 
 export const CancelButton = (props) => {

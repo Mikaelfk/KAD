@@ -1,0 +1,14 @@
+.upload-options {
+    display: flex;
+    gap: 1.5em;
+    height: 50vh;
+    align-items: center;
+}
+
+.action-menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 5vh;
+    gap: 1%;
+}
