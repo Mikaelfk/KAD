@@ -24,14 +24,11 @@ const App = () => {
     }
 
     const handleStartTargetUpload = (event) => {
-        console.log(event.target.files[0])
         setStartTarget(event.target.files[0])
-        console.log("Start Target uploaded: ", startTarget)
     }
 
     const handleEndTargetUpload = (event) => {
         setEndTarget(event.target.files[0])
-        console.log("End Target uploaded: ", endTarget)
     }
 
     const handleObjectSubmit = () => {

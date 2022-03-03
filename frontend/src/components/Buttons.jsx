@@ -31,7 +31,7 @@ UploadButton.defaultProps = {
 export const SubmitButton = (props) => {
     return (
         <div>
-            <Button className='button' size="medium" variant="contained" onClick={props.onSubmit()}>Submit</Button>
+            <Button className='button' size="medium" variant="contained" onClick={props.onSubmit}>Submit</Button>
         </div>
     );
 }
