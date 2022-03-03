@@ -21,6 +21,10 @@ pipeline {
         stage('Build') {
             steps {
                 updateGitlabCommitStatus(name: 'Frontend: Build', state: 'running')
+                dir('frontend/src') {
+                    sh 'cp config.json.template config.json'
+                }
+
                 dir('frontend/') {
                     sh 'npm install && npm run build'
                 }
