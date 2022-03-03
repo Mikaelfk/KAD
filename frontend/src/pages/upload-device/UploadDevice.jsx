@@ -4,6 +4,8 @@ import { UploadButton, SubmitButton, CancelButton } from '../../components/Butto
 import { Link } from 'react-router-dom';
 import '../Upload.css'
 
+
+// TODO: Pass down onSubmit, onClick and files props to buttons
 const UploadDevice = () => {
     return (
         <div className='container'>
