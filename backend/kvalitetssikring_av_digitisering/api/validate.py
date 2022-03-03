@@ -57,4 +57,6 @@ def validate():
     )
 
     # return result
-    return Response("{isValid:" + str(validation_output[1]) + "}", status=200)
+    resp = Response("{isValid:" + str(validation_output[1]) + "}", status=200)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp 
