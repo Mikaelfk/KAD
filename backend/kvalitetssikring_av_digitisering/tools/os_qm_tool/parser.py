@@ -3,9 +3,14 @@ from unicodedata import name
 from dataclasses import dataclass, fields
 from warnings import catch_warnings
 
+
 @dataclass
 class Check:
     result: bool
+
+    def reset(self):
+        self.result = None
+
 
 @dataclass
 class Results:
@@ -20,20 +25,20 @@ class Results:
     def print():
         for field in fields(Results):
             # getattr will throw attributeError exception if named attribute is not found and default is not defined
-            try: 
+            try:
                 print(field.name, getattr(Results, field.name))
-            except: 
+            except:
                 print(field.name, "unknown")
 
 
 def result_parser(url):
     data = Results
+    section = Check(None)
 
     # Variables
     section_divider = "***********************************************************************"
-    section = False
+    in_section = False
     section_name = ''
-    section_content = []
 
     # Read file
     with open(url) as f:
@@ -43,42 +48,37 @@ def result_parser(url):
     for line in lines:
         # find new section
         if line.__contains__(section_divider):
-            # handle section content
+            # Update data with results
             match section_name.lower():
-                case "delta e": data.delta_e = check_section(section_content)
-                case "noise": data.noise = check_section(section_content)
-                case "oecf": data.oecf = check_section(section_content)
-                case "mtf": data.mtf = check_section(section_content)
-                case "homogeneity": data.homogeneity = check_section(section_content)
-                case "geometry": data.geometry = check_section(section_content)
+                case "delta e": data.delta_e = section
+                case "noise": data.noise = section
+                case "oecf": data.oecf = section
+                case "mtf": data.mtf = section
+                case "homogeneity": data.homogeneity = section
+                case "geometry": data.geometry = section
+
             # New section
-            section = True
+            in_section = True
             section_name = ''
-            section_content.clear()
             continue
 
         # set section name
         if section_name == '':
             section_name = line.replace(' check', '').strip()
 
-        # get section content
-        if section and line.strip():
-            section_content.append(line)
+        # handle section content
+        if in_section and line.strip():
+            line = line.lower().strip()
+
+            # Get Result
+            if line.startswith("result"):
+                arr = line.split()
+                if arr[1] == 'passed':
+                    section.result = True
+
+    # Print data
     data.print()
 
 
-
-def check_section(lines):
-    result = False
-    for line in lines:
-        line = line.lower().strip()
-        if line.startswith("result"):
-            arr = line.split()
-            if arr[1] == 'passed': result = True;
-    
-    return Check(result)
-
-
 # Temp to test out parser
-result_parser(
-    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\GTDevice\GTDevice_protokoll_summary.txt")
+result_parser(r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\GTDevice\GTDevice_protokoll_summary.txt")
