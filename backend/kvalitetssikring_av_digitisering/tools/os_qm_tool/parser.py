@@ -1,4 +1,5 @@
 import os
+from sys import flags
 from unicodedata import name
 from dataclasses import dataclass, fields
 from warnings import catch_warnings
@@ -8,31 +9,18 @@ from warnings import catch_warnings
 class Check:
     result: bool
 
-    def reset(self):
-        self.result = None
-
-
 @dataclass
 class Results:
-    delta_e: dataclass = Check(None)
-    noise: dataclass = Check(None)
-    oecf: dataclass = Check(None)
-    mtf: dataclass = Check(None)
-    homogeneity: dataclass = Check(None)
-    geometry: dataclass = Check(None)
-
-    @staticmethod
-    def print():
-        for field in fields(Results):
-            # getattr will throw attributeError exception if named attribute is not found and default is not defined
-            try:
-                print(field.name, getattr(Results, field.name))
-            except:
-                print(field.name, "unknown")
+    delta_e: dataclass
+    noise: dataclass
+    oecf: dataclass
+    mtf: dataclass
+    homogeneity: dataclass
+    geometry: dataclass
 
 
 def result_parser(url):
-    data = Results
+    data = Results(Check(None),Check(None),Check(None),Check(None),Check(None),Check(None))
     section = Check(None)
 
     # Variables
@@ -60,6 +48,7 @@ def result_parser(url):
             # New section
             in_section = True
             section_name = ''
+            section = Check(None)
             continue
 
         # set section name
@@ -75,9 +64,11 @@ def result_parser(url):
                 arr = line.split()
                 if arr[1] == 'passed':
                     section.result = True
+                else:
+                    section.result = False
 
     # Print data
-    data.print()
+    print(data)
 
 
 # Temp to test out parser
