@@ -15,7 +15,7 @@ const UploadDevice = (props) => {
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
-                <SubmitButton onSubmit={props.onSubmit} />
+                <SubmitButton component={Link} resultId={props.resultId} onSubmit={props.onSubmit} />
             </div>
         </div>
     );

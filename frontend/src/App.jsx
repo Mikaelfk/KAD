@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {
-    BrowserRouter, Route, Routes
+    BrowserRouter, Route, Routes, useNavigate
 } from 'react-router-dom';
 import MainPage from './pages/main-page/MainPage';
 import UploadDevice from './pages/upload-device/UploadDevice';
 import UploadObject from './pages/upload-object/UploadObject';
+import ResultPage from './pages/result-page/ResultPage';
 import configData from './config.json'
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
     const [files, setFiles] = useState([]);
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
+    const [resultId, setResultId] = useState(1);
 
     const handleUpload = (event) => {
         const inputFiles = event.target.files
@@ -50,12 +52,17 @@ const App = () => {
             });
     }
 
+
     const handleDeviceSubmit = (event) => {
         console.log(startTarget)
         console.log(endTarget)
         console.log(files)
+        let newResultId = resultId + 1
+        setResultId(newResultId)
+
         // TODO: Make this when we have made the image quality assessment endpoint
     }
+
     return (
         <BrowserRouter>
             <Routes>
@@ -65,11 +72,14 @@ const App = () => {
                         onUpload={handleUpload}
                         onStartTargetUpload={handleStartTargetUpload}
                         onEndTargetUpload={handleEndTargetUpload}
-                        onSubmit={handleDeviceSubmit} />} />
+                        onSubmit={handleDeviceSubmit}
+                        resultId={resultId} />} />
                 <Route path="/upload/object" element=
                     {<UploadObject
                         onUpload={handleUpload}
-                        onSubmit={handleObjectSubmit} />} />
+                        onSubmit={handleObjectSubmit}
+                        resultId={resultId} />} />
+                <Route path="/results/:resultId" element={<ResultPage />} />
             </Routes>
         </BrowserRouter>
     );
