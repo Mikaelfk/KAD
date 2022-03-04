@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    BrowserRouter, Route, Routes, useNavigate
+    BrowserRouter, Route, Routes
 } from 'react-router-dom';
 import MainPage from './pages/main-page/MainPage';
 import UploadDevice from './pages/upload-device/UploadDevice';
