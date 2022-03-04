@@ -19,10 +19,11 @@ class Results:
     @staticmethod
     def print():
         for field in fields(Results):
+            # getattr will throw attributeError exception if named attribute is not found and default is not defined
             try: 
                 print(field.name, getattr(Results, field.name))
             except: 
-                continue
+                print(field.name, "unknown")
 
 
 def result_parser(url):
