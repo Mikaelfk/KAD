@@ -1,0 +1,54 @@
+import glob
+import json
+import os
+import uuid
+
+from .config import Config
+
+
+def create_session():
+    # gen id for session
+    id = str(uuid.uuid4())
+
+    # create session dir
+    rootFolder = Config.config().get(section="API", option="StorageFolder")
+    dir = os.path.join(rootFolder, id)
+    os.mkdir(dir)
+
+    # create folder structure
+    os.mkdir(os.path.join(dir, "results"))
+    os.mkdir(os.path.join(dir, "images"))
+    os.mkdir(os.path.join(dir, "outputs"))
+
+    return id
+
+
+def create_analysis_folders(id):
+    sessionImageFolder = os.path.join(
+        Config.config().get(section="API", option="StorageFolder"), id, "images"
+    )
+
+    imageFiles = [
+        f
+        for f in os.listdir(sessionImageFolder)
+        if os.path.isfile(os.path.join(sessionImageFolder, f))
+    ]
+
+    for fileName in imageFiles:
+        os.mkdir(sessionImageFolder, fileName + "-analysis")
+
+
+def update_session_status(id, status):
+    sessionFolder = os.path.join(
+        Config.config().get(section="API", option="StorageFolder"), id
+    )
+
+    with open(os.path.join(sessionFolder, "state.json"), "w+") as json_file:
+        if os.stat(os.path.join(sessionFolder, "state.json")).st_size == 0:
+            data = {}
+        else:
+            data = json.loads(json_file)
+
+        data["status"] = status
+
+        json_file.write(json.dumps(data))
