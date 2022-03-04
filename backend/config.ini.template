@@ -1,6 +1,7 @@
-[JHOVE]
-JhoveInstallPath = 
-
 [API]
 Port = 
 UploadFolder = 
+StorageFolder = 
+
+[JHOVE]
+JhoveInstallPath = 
