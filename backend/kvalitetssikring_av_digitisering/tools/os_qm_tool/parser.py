@@ -1,9 +1,4 @@
-import os
-from sys import flags
-from tabnanny import check
-from unicodedata import name
-from dataclasses import dataclass, fields, field
-from warnings import catch_warnings
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -24,7 +19,7 @@ class Results:
     geometry: dataclass = Check()
 
 
-def result_parser(url):
+def result_summary_parser(url):
     # Variables
     section_divider = "***********************************************************************"
     in_section = False
@@ -42,7 +37,7 @@ def result_parser(url):
         if line.__contains__(section_divider):
             # Update data with section/results
             if section_name in data.__match_args__:
-                data.__setattr__(section_name, section) 
+                data.__setattr__(section_name, section)
 
             # New section
             in_section = True
@@ -52,19 +47,20 @@ def result_parser(url):
 
         # set section name
         if section_name == '':
-            section_name = line.replace(' check', '').strip().lower().replace(' ', '_')
+            section_name = line.replace(
+                ' check', '').strip().lower().replace(' ', '_')
 
         # handle section content
         if in_section and line.strip():
             line = line.lower().strip()
-            section_handler(section, section_name, line)           
-
+            section_handler(section, section_name, line)
 
     # Print data
     print(data)
 
+
 def section_handler(section: Check, section_name, line):
-    ## General filters
+    # General filters
     # Get Result
     if line.startswith("result"):
         arr = line.split()
@@ -72,15 +68,15 @@ def section_handler(section: Check, section_name, line):
             section.result = True
         else:
             section.result = False
-    
-    # Limits
+
+    # Limits (MTF + Geometry)
     if line.startswith("limits"):
         arr = line.split()
         if len(arr) > 1:
-            key = ' '.join(arr[i] for i in [1,3])[:-1]
-            value = arr[4]
+            key = ' '.join(arr[i] for i in [1, 3])[:-1]
+            value = ' '.join(arr[4:6])
             section.limits.update({key: value})
-    
+
     # Spesific section filters
     match section_name:
         case "delta_e": check_delta_e(section, line)
@@ -90,35 +86,49 @@ def section_handler(section: Check, section_name, line):
         case "homogeneity": check_homogeneity(section, line)
         case "geometry": check_geometry(section, line)
 
+
 def check_delta_e(section: Check, line):
     # Get limits (delta E)
-    # Limits
-        # Max Delta E: 25.00
-        # Mean Delta E: 12.00
     if line.startswith("max delta e"):
         arr = line.split()
         section.limits.update({'max': arr[3]})
     if line.startswith("mean delta e"):
         arr = line.split()
         section.limits.update({'mean': arr[3]})
+
+    # Measured Values.
+    if line.startswith("delta e -"):
+        arr = line.split()
+        section.values.update({arr[3].replace('.', ''): arr[8]})
     return section
+
 
 def check_noise(section: Check, line):
+    # Measured Values:
+    if line.startswith("l*"):
+        arr = line.split()
+        section.values.update({' '.join(arr[0:2]): arr[4]})
     return section
 
+
 def check_oecf(section: Check, line):
+    # Measured Values
+    values = ['upper', 'right', 'lower', 'left']
     return section
+
 
 def check_mtf(section: Check, line):
     return section
 
+
 def check_homogeneity(section: Check, line):
     return section
+
 
 def check_geometry(section: Check, line):
     return section
 
 
 # Temp to test out parser
-result_parser(
-    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\GTDevice\GTDevice_protokoll_summary.txt")
+result_summary_parser(
+    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\UTT\UTT_protokoll_summary.txt")
