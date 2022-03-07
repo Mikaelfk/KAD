@@ -56,3 +56,16 @@ def update_session_status(id, status):
         data["status"] = status
 
         json_file.write(json.dumps(data))
+
+
+def check_session_exists(id):
+    session_folder = os.path.join(
+        Config.config().get(section="API", option="StorageFolder"), id
+    )
+
+    state_file = os.path.join(session_folder, "state.json")
+
+    if not os.path.isdir(session_folder) or not os.path.exists(state_file):
+        return False
+    else:
+        return True
