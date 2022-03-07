@@ -1,5 +1,6 @@
 import os
 from sys import flags
+from tabnanny import check
 from unicodedata import name
 from dataclasses import dataclass, fields, field
 from warnings import catch_warnings
@@ -56,13 +57,13 @@ def result_parser(url):
         # handle section content
         if in_section and line.strip():
             line = line.lower().strip()
-            section = section_handler(section, section_name, line)           
+            section_handler(section, section_name, line)           
 
 
     # Print data
     print(data)
 
-def section_handler(section, section_name, line):
+def section_handler(section: Check, section_name, line):
     ## General filters
     # Get Result
     if line.startswith("result"):
@@ -80,24 +81,43 @@ def section_handler(section, section_name, line):
             value = arr[4]
             section.limits.update({key: value})
     
+    # Spesific section filters
+    match section_name:
+        case "delta_e": check_delta_e(section, line)
+        case "noise": check_noise(section, line)
+        case "oecf": check_oecf(section, line)
+        case "mtf": check_mtf(section, line)
+        case "homogeneity": check_homogeneity(section, line)
+        case "geometry": check_geometry(section, line)
 
-    # Delta E filter
-    if section_name == 'delta_e':
-        section.limits = check_delta_e(line, section.limits)
-    return section
-
-def check_delta_e(line, data):
+def check_delta_e(section: Check, line):
     # Get limits (delta E)
     # Limits
-    # Max Delta E: 25.00
-    # Mean Delta E: 12.00
+        # Max Delta E: 25.00
+        # Mean Delta E: 12.00
     if line.startswith("max delta e"):
         arr = line.split()
-        data.update({'max': arr[3]})
+        section.limits.update({'max': arr[3]})
     if line.startswith("mean delta e"):
         arr = line.split()
-        data.update({'mean': arr[3]})
-    return data
+        section.limits.update({'mean': arr[3]})
+    return section
+
+def check_noise(section: Check, line):
+    return section
+
+def check_oecf(section: Check, line):
+    return section
+
+def check_mtf(section: Check, line):
+    return section
+
+def check_homogeneity(section: Check, line):
+    return section
+
+def check_geometry(section: Check, line):
+    return section
+
 
 # Temp to test out parser
 result_parser(
