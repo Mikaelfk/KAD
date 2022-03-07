@@ -7,13 +7,14 @@ import UploadDevice from './pages/upload-device/UploadDevice';
 import UploadObject from './pages/upload-object/UploadObject';
 import ResultsPage from './pages/results-page/ResultsPage';
 import ResultPage from './pages/result-page/ResultPage'
-import configData from './config.json'
 
 const App = () => {
 
     const [files, setFiles] = useState([]);
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
+
+    let navigate = useNavigate()
 
     const handleUpload = (event) => {
         const inputFiles = event.target.files
@@ -38,14 +39,17 @@ const App = () => {
         const fileField = document.querySelector('input[type="file"]');
 
         formData.append('file', fileField.files[0]);
+        let resultId = 100
         // Makes a POST request to the endpoint,
-        // TODO: Change endpoint to image quality assessment instead of file validation endpoint.
-        fetch(configData.API_URL + '/api/validate', {
+        // TODO: Change endpoint to image quality assessment
+        fetch('/endpoint/path', {
             method: 'POST',
             body: formData
         })
             .then(result => {
                 console.log('Success:', result.text());
+                let path = `/results/${resultId}`
+                navigate(path)
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -53,16 +57,20 @@ const App = () => {
     }
 
 
-    let navigate = useNavigate()
-    const handleDeviceSubmit = (event) => {
+    const handleDeviceSubmit = () => {
         console.log(startTarget)
         console.log(endTarget)
         console.log(files)
         let resultId = 100
-        // TODO: Do request to API here and set a resultId
-
-        let path = `/results/${resultId}`
-        navigate(path)
+        // TODO: Set correct path here
+        fetch('/endpoint/path')
+            .then(data => {
+                console.log(data)
+                // TODO: set resultId to what the request response gives.
+                let path = `/results/${resultId}`
+                navigate(path)
+            })
+            .catch(err => console.log(err))
     }
 
     return (

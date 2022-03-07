@@ -10,6 +10,7 @@ const ResultPage = () => {
     useEffect(() => {
         // Do a request to get information about a single image based on the id.
         console.log(params.imageId)
+        // TODO: Set correct endpoint path
         fetch("/path/to/api")
             .then(resp => resp.json())
             .then(data => setImageResult(data))
