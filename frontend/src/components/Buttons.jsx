@@ -35,8 +35,6 @@ export const SubmitButton = (props) => {
                 className='button'
                 size="medium"
                 variant="contained"
-                //component={props.component}
-                /*to={`/results/${props.resultId}`}*/
                 onClick={props.onSubmit}>
                 Submit
             </Button>

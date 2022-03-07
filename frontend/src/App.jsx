@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import {
-    BrowserRouter, Route, Routes
+    Route, Routes, useNavigate
 } from 'react-router-dom';
 import MainPage from './pages/main-page/MainPage';
 import UploadDevice from './pages/upload-device/UploadDevice';
 import UploadObject from './pages/upload-object/UploadObject';
-import ResultPage from './pages/result-page/ResultPage';
+import ResultsPage from './pages/results-page/ResultsPage';
+import ResultPage from './pages/result-page/ResultPage'
 import configData from './config.json'
 
 const App = () => {
@@ -13,7 +14,6 @@ const App = () => {
     const [files, setFiles] = useState([]);
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
-    const [resultId, setResultId] = useState(1);
 
     const handleUpload = (event) => {
         const inputFiles = event.target.files
@@ -53,35 +53,34 @@ const App = () => {
     }
 
 
+    let navigate = useNavigate()
     const handleDeviceSubmit = (event) => {
         console.log(startTarget)
         console.log(endTarget)
         console.log(files)
-        let newResultId = resultId + 1
-        setResultId(newResultId)
+        let resultId = 100
+        // TODO: Do request to API here and set a resultId
 
-        // TODO: Make this when we have made the image quality assessment endpoint
+        let path = `/results/${resultId}`
+        navigate(path)
     }
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route exact path="/" element={<MainPage />} />
-                <Route path="/upload/device" element=
-                    {<UploadDevice
-                        onUpload={handleUpload}
-                        onStartTargetUpload={handleStartTargetUpload}
-                        onEndTargetUpload={handleEndTargetUpload}
-                        onSubmit={handleDeviceSubmit}
-                        resultId={resultId} />} />
-                <Route path="/upload/object" element=
-                    {<UploadObject
-                        onUpload={handleUpload}
-                        onSubmit={handleObjectSubmit}
-                        resultId={resultId} />} />
-                <Route path="/results/:resultId" element={<ResultPage />} />
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route exact path="/" element={<MainPage />} />
+            <Route path="/upload/device" element=
+                {<UploadDevice
+                    onUpload={handleUpload}
+                    onStartTargetUpload={handleStartTargetUpload}
+                    onEndTargetUpload={handleEndTargetUpload}
+                    onSubmit={handleDeviceSubmit} />} />
+            <Route path="/upload/object" element=
+                {<UploadObject
+                    onUpload={handleUpload}
+                    onSubmit={handleObjectSubmit} />} />
+            <Route path="/results/:resultId" element={<ResultsPage />} />
+            <Route path="/result/:imageId" element={<ResultPage />} />
+        </Routes>
     );
 }
 
