@@ -39,14 +39,9 @@ def result_parser(url):
     for line in lines:
         # find new section
         if line.__contains__(section_divider):
-            # Update data with results
-            match section_name.lower():
-                case "delta e": data.delta_e = section
-                case "noise": data.noise = section
-                case "oecf": data.oecf = section
-                case "mtf": data.mtf = section
-                case "homogeneity": data.homogeneity = section
-                case "geometry": data.geometry = section
+            # Update data with section/results
+            if section_name in data.__match_args__:
+                data.__setattr__(section_name, section) 
 
             # New section
             in_section = True
@@ -56,39 +51,40 @@ def result_parser(url):
 
         # set section name
         if section_name == '':
-            section_name = line.replace(' check', '').strip()
+            section_name = line.replace(' check', '').strip().lower().replace(' ', '_')
 
         # handle section content
         if in_section and line.strip():
             line = line.lower().strip()
-
-            ## General filters
-            # Get Result
-            if line.startswith("result"):
-                arr = line.split()
-                if arr[1] == 'passed':
-                    section.result = True
-                else:
-                    section.result = False
-            
-            # Limits
-            if line.startswith("limits"):
-                arr = line.split()
-                if len(arr) > 1:
-                    key = ' '.join(arr[i] for i in [1,3])[:-1]
-                    value = arr[4]
-                    section.limits.update({key: value})
-            
-
-            # Delta E filter
-            if section_name == 'Delta E':
-                section.limits = check_delta_e(line, section.limits)
-            
+            section = section_handler(section, section_name, line)           
 
 
     # Print data
     print(data)
 
+def section_handler(section, section_name, line):
+    ## General filters
+    # Get Result
+    if line.startswith("result"):
+        arr = line.split()
+        if arr[1] == 'passed':
+            section.result = True
+        else:
+            section.result = False
+    
+    # Limits
+    if line.startswith("limits"):
+        arr = line.split()
+        if len(arr) > 1:
+            key = ' '.join(arr[i] for i in [1,3])[:-1]
+            value = arr[4]
+            section.limits.update({key: value})
+    
+
+    # Delta E filter
+    if section_name == 'delta_e':
+        section.limits = check_delta_e(line, section.limits)
+    return section
 
 def check_delta_e(line, data):
     # Get limits (delta E)
@@ -97,10 +93,10 @@ def check_delta_e(line, data):
     # Mean Delta E: 12.00
     if line.startswith("max delta e"):
         arr = line.split()
-        data.update({'Max': arr[3]})
+        data.update({'max': arr[3]})
     if line.startswith("mean delta e"):
         arr = line.split()
-        data.update({'Mean': arr[3]})
+        data.update({'mean': arr[3]})
     return data
 
 # Temp to test out parser
