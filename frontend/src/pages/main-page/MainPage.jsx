@@ -18,7 +18,7 @@ const MainPage = () => {
                             component="img"
                             sx={{ width: 300, padding: '15px' }}
                             image="/images/object_level_target.PNG"
-                            alt="Live from space album cover"
+                            alt="Object level target image"
                         />
                     </CardContent>
                 </Card>
@@ -31,7 +31,7 @@ const MainPage = () => {
                             component="img"
                             sx={{ width: 200, padding: '15px' }}
                             image="/images/device_level_target.jpg"
-                            alt="Live from space album cover"
+                            alt="Device level target image"
                         />
                     </CardContent>
                 </Card>
