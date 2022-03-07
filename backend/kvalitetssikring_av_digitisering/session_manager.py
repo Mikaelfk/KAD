@@ -3,6 +3,8 @@ import json
 import os
 import uuid
 
+from kvalitetssikring_av_digitisering.api import session
+
 from .config import Config
 
 
@@ -19,6 +21,8 @@ def create_session():
     os.mkdir(os.path.join(dir, "results"))
     os.mkdir(os.path.join(dir, "images"))
     os.mkdir(os.path.join(dir, "outputs"))
+
+    update_session_status(id, "created")
 
     return id
 
