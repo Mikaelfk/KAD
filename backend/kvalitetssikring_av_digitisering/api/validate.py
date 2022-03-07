@@ -7,7 +7,8 @@ validity result.
 
 import os
 
-from flask import Blueprint, Response, request
+from flask import Blueprint, request
+from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 
 from ..config import Config
@@ -57,6 +58,6 @@ def validate():
     )
 
     # return result
-    resp = Response("{isValid:" + str(validation_output[1]) + "}", status=200)
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    return resp 
+    resp = Response('{"isValid":' + str(validation_output[1]) + "}", status=200)
+    resp.headers["Access-Control-Allow-Origin"] = "*"
+    return resp
