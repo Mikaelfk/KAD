@@ -42,6 +42,7 @@ const App = () => {
         let resultId = 100
         // Makes a POST request to the endpoint,
         // TODO: Change endpoint to image quality assessment
+
         fetch('/endpoint/path', {
             method: 'POST',
             body: formData
@@ -54,6 +55,7 @@ const App = () => {
             .catch(error => {
                 console.error('Error:', error);
             });
+
     }
 
 

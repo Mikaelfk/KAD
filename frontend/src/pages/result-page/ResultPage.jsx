@@ -16,6 +16,8 @@ const ResultPage = () => {
             .then(data => setImageResult(data))
             .catch(err => console.log(err))
     }, [params.imageId])
+
+    // TODO: make home button on this page
     return (
         <div className="container" >
             <Typography variant="h2">

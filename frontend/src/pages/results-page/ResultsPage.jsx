@@ -8,6 +8,7 @@ const ResultsPage = () => {
     // Makes an example result for testing
     const [results, setResults] = useState([{ id: "1", imageName: "image.jpg", isoScore: "A" }, { id: "2", imageName: "image2.jpg", isoScore: "B" }])
 
+    
     let params = useParams();
     useEffect(() => {
         // params.resultId will be used to make the request
@@ -19,6 +20,7 @@ const ResultsPage = () => {
             .catch(err => console.log(err))
     }, [params.resultId])
 
+    // TODO: make home button on this page
     return (
         <div className="container">
             <Typography variant='h2'>Resultater</Typography>
@@ -37,7 +39,5 @@ const ResultsPage = () => {
         </div>
     )
 }
-
-
 
 export default ResultsPage;
