@@ -17,4 +17,4 @@ def start():
 
     app.register_blueprint(validate_endpoint)
 
-    app.run()
+    app.run(host="0.0.0.0")
