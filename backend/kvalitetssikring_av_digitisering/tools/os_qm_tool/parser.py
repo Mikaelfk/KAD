@@ -21,17 +21,18 @@ class Results:
 
 def result_summary_parser(url):
     # Variables
+    data = Results()
+    section = Check()
     section_divider = "***********************************************************************"
     in_section = False
     section_name = ''
+    prev_line = str
 
     # Read file
     with open(url) as f:
         lines = f.readlines()
 
     # Parse every line
-    data = Results()
-    section = Check()
     for line in lines:
         # find new section
         if line.__contains__(section_divider):
@@ -53,13 +54,16 @@ def result_summary_parser(url):
         # handle section content
         if in_section and line.strip():
             line = line.lower().strip()
-            section_handler(section, section_name, line)
+            section_handler(section, section_name, line, prev_line)
+
+            # Store line
+            prev_line = line
 
     # Print data
     print(data)
 
 
-def section_handler(section: Check, section_name, line):
+def section_handler(section: Check, section_name, line, prev_line):
     # General filters
     # Get Result
     if line.startswith("result"):
@@ -81,7 +85,7 @@ def section_handler(section: Check, section_name, line):
     match section_name:
         case "delta_e": check_delta_e(section, line)
         case "noise": check_noise(section, line)
-        case "oecf": check_oecf(section, line)
+        case "oecf": check_oecf(section, line, prev_line)
         case "mtf": check_mtf(section, line)
         case "homogeneity": check_homogeneity(section, line)
         case "geometry": check_geometry(section, line)
@@ -111,24 +115,58 @@ def check_noise(section: Check, line):
     return section
 
 
-def check_oecf(section: Check, line):
+def check_oecf(section: Check, line, prev_line):
     # Measured Values
-    values = ['upper', 'right', 'lower', 'left']
+    if line.startswith("l:"):
+        # Get location (UpperHorizontal etc..)
+        location = prev_line.split()[0]
+        arr = line.split()
+        section.values.update({location: arr[1]})
     return section
 
 
 def check_mtf(section: Check, line):
+    # Measured Values
+    if line.startswith("mean"):
+        arr = line.split()
+        section.values.update({arr[0][:-1]: ' '.join(arr[1:3])})
     return section
 
 
 def check_homogeneity(section: Check, line):
+    # Measured Values
+    if line.startswith("minimum mean:") or line.startswith("maximum mean:"):
+        arr = line.split()
+        section.values.update({' '.join(arr[0:2])[:-1]: arr[2]})
+    if line.startswith("inhomogeneity:"):
+        arr = line.split()
+        section.values.update({arr[0][:-1]: arr[1]})
     return section
 
 
 def check_geometry(section: Check, line):
+    # Measured Values
+    if line.startswith("measured values"):
+        arr = line.split()
+        set_geometry_value(section, arr, 'horizontal:')
+        set_geometry_value(section, arr, 'vertical:')
+        set_geometry_value(section, arr, 'deviation')
+
+    return section
+
+def set_geometry_value(section, arr, name): 
+    try:
+        i = arr.index(name)
+        if name == 'deviation':
+            section.values.update({' '.join(arr[i:i+2]): arr[i+2]})
+        else:
+            # Update
+            section.values.update({arr[i][:-1]: arr[i+1]})
+    except ValueError:
+        print("Did not find " + name + " value")
     return section
 
 
 # Temp to test out parser
 result_summary_parser(
-    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\UTT\UTT_protokoll_summary.txt")
+    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\GTDevice\GTDevice_protokoll_summary.txt")
