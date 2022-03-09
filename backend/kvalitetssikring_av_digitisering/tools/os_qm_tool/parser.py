@@ -156,7 +156,7 @@ def set_geometry_value(section, arr, name):
     try:
         i = arr.index(name)
         if name == 'deviation':
-            section.values.update({' '.join(arr[i:i+2]): arr[i+2]})
+            section.values.update({' '.join(arr[i:i+2]): ' '.join(arr[i+2:i+4])})
         else:
             # Update
             section.values.update({arr[i][:-1]: arr[i+1]})
