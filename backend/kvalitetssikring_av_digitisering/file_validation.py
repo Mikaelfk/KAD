@@ -1,6 +1,6 @@
 """Module for validating image files with JHOVE.
 
-Requires a valid JHOVE installation to work. 
+Requires a valid JHOVE installation to work.
 """
 
 import os
