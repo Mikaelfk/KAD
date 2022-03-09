@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from tkinter.messagebox import NO
 from types import NoneType
 
 
