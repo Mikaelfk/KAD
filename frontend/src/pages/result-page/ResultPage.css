@@ -1,6 +1,6 @@
 .backButtonContainer {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     width: 60%;
     margin: auto;
 }
