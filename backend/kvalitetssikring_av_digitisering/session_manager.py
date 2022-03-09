@@ -115,4 +115,4 @@ def check_session_exists(session_id):
 
     state_file = os.path.join(session_folder, "state.json")
 
-    return not os.path.isdir(session_folder) or not os.path.exists(state_file)
+    return os.path.isdir(session_folder) or os.path.exists(state_file)
