@@ -1,0 +1,6 @@
+.backButtonContainer {
+    display: flex;
+    justify-content: start;
+    width: 60%;
+    margin: auto;
+}
