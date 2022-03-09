@@ -1,9 +1,6 @@
-import glob
 import json
 import os
 import uuid
-
-from kvalitetssikring_av_digitisering.api import session
 
 from .config import Config
 
@@ -32,6 +29,10 @@ def create_analysis_folders(id):
         Config.config().get(section="API", option="StorageFolder"), id, "images"
     )
 
+    sessionOutputFolder = os.path.join(
+        Config.config().get(section="API", option="StorageFolder"), id, "outputs"
+    )
+
     imageFiles = [
         f
         for f in os.listdir(sessionImageFolder)
@@ -39,7 +40,17 @@ def create_analysis_folders(id):
     ]
 
     for fileName in imageFiles:
-        os.mkdir(sessionImageFolder, fileName + "-analysis")
+        analysisDir = os.path.join(sessionOutputFolder, fileName + "-analysis")
+
+        if not os.path.isdir(analysisDir):
+            os.mkdir(analysisDir)
+
+            imageSrc = os.path.join(sessionImageFolder, fileName)
+            imageDest = os.path.join(
+                sessionOutputFolder, fileName + "-analysis", fileName
+            )
+
+            os.link(imageSrc, imageDest)
 
 
 def update_session_status(id, status):
