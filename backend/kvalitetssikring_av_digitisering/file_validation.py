@@ -1,6 +1,6 @@
 """Module for validating image files with JHOVE.
 
-Requires a valid JHOVE installation to work. 
+Requires a valid JHOVE installation to work.
 """
 
 import os
@@ -28,9 +28,9 @@ def jhove_validation(url, jhove_path):
         url = url.replace("/", "\\")
 
     # Runs the file validation and saves the output to a variable
-    if url.lower().endswith(".jpg"):
+    if url.lower().endswith(".jpg") or url.lower().endswith(".jpeg"):
         stream = os.popen(jhove_command + " -m JPEG-hul -kr " + '"' + url + '"')
-    elif url.lower().endswith(".tiff"):
+    elif url.lower().endswith(".tiff") or url.lower().endswith(".tif"):
         stream = os.popen(jhove_command + " -m TIFF-hul -kr " + '"' + url + '"')
     else:
         return "Filetype not valid", None

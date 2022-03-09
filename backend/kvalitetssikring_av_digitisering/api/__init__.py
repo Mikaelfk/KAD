@@ -3,3 +3,4 @@
 """
 
 from .validate import validate_endpoint
+from .session import session_endpoint

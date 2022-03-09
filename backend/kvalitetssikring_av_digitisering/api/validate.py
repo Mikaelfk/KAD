@@ -5,9 +5,11 @@ It defines the code for an endpoint that takes an image, checks it with JHove an
 validity result.
 """
 
+import json
 import os
 
-from flask import Blueprint, Response, request
+from flask import Blueprint, request
+from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 
 from ..config import Config
@@ -26,18 +28,18 @@ def validate():
 
     # check if there is a file
     if "file" not in request.files:
-        return Response('{error: "no file provided"}', status=400)
+        return Response(json.dumps({"error": "no file provided"}), status=400)
 
     file = request.files["file"]
 
     # check if the file has a name
-    if file.filename == "":
-        return Response('{error: "invalid file name"}', status=400)
+    if file.filename == "" or file.filename is None:
+        return Response(json.dumps({"error": "invalid file name"}), status=400)
 
     # check if file has valid extension
     file_ext = os.path.splitext(file.filename)[1]
     if file_ext not in {".jpeg", ".jpg", ".tiff", ".tif"}:
-        return Response('{error: "invalid file type"}', status=400)
+        return Response(json.dumps({"error": "invalid file type"}), status=400)
 
     # lets go upload time!
     if file:
@@ -48,15 +50,17 @@ def validate():
             )
         )
 
-    # check file
-    validation_output = jhove_validation(
-        os.path.join(
-            Config.config().get(section="API", option="UploadFolder"), filename
-        ),
-        Config.config().get(section="JHOVE", option="JhoveInstallPath"),
-    )
+        # check file
+        validation_output = jhove_validation(
+            os.path.join(
+                Config.config().get(section="API", option="UploadFolder"), filename
+            ),
+            Config.config().get(section="JHOVE", option="JhoveInstallPath"),
+        )
 
-    # return result
-    resp = Response("{isValid:" + str(validation_output[1]) + "}", status=200)
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    return resp 
+        # return result
+        resp = Response(json.dumps({"isValid": str(validation_output[1])}), status=200)
+        resp.headers["Access-Control-Allow-Origin"] = "*"
+        return resp
+    else:
+        return Response(json.dumps({"error": "unable to validate file"}), 500)

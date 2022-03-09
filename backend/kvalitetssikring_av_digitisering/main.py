@@ -4,6 +4,7 @@
 from flask import Flask
 
 from .api import validate_endpoint
+from .api import session_endpoint
 
 
 def start():
@@ -16,5 +17,6 @@ def start():
     app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 1024  # 1GB
 
     app.register_blueprint(validate_endpoint)
+    app.register_blueprint(session_endpoint)
 
-    app.run()
+    app.run(host="0.0.0.0")
