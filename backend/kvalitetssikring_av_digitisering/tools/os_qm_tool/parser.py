@@ -90,7 +90,7 @@ def result_summary_parser(url):
             try:
                 section_handler(section, section_name, line, prev_line)
             except Exception as e:
-                print(e)
+                print("Error while parsing " + section_name + ": " + str(e))
 
             # Store line
             prev_line = line
@@ -251,9 +251,3 @@ def set_geometry_value(section, arr, name):
             section.values.update({arr[i][:-1]: arr[i+1]})
     except ValueError:
         print("Did not find " + name + " value")
-
-
-# Temp to test out parser
-data = result_summary_parser(
-    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\UTT\UTT_protokoll_summary.txt")
-print(data)
