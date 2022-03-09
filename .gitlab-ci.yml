@@ -1,4 +1,4 @@
-image: "mikaelfk/bachelor_ci:1.0"
+image: "mikaelfk/bachelor_ci:1.1"
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
