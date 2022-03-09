@@ -6,7 +6,6 @@ class Check:
     result: bool = None
     limits: dict = field(default_factory=dict)
     values: dict = field(default_factory=dict)
-    deviation: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -152,7 +151,8 @@ def check_geometry(section: Check, line):
 
     return section
 
-def set_geometry_value(section, arr, name): 
+
+def set_geometry_value(section, arr, name):
     try:
         i = arr.index(name)
         if name == 'deviation':
@@ -167,4 +167,4 @@ def set_geometry_value(section, arr, name):
 
 # Temp to test out parser
 result_summary_parser(
-    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\GTDevice\GTDevice_protokoll_summary.txt")
+    r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\UTT\UTT_protokoll_summary.txt")
