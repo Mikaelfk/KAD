@@ -2,6 +2,7 @@
 
 """
 from flask import Flask
+from flask_cors import CORS
 
 from .api import validate_endpoint
 from .api import session_endpoint
@@ -15,6 +16,7 @@ def start():
 
     app = Flask(__name__)
     app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 1024  # 1GB
+    CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}}) # Compliant
 
     app.register_blueprint(validate_endpoint)
     app.register_blueprint(session_endpoint)
