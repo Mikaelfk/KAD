@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import HomeIcon from '@mui/icons-material/Home';
 
-const Input = styled('input')({
-    display: 'none',
-});
 
 const HomeButton = () => {
     return (
