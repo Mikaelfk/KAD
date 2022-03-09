@@ -3,6 +3,17 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Check:
+    """Dataclass for each check done by OS QM Tool
+
+    Arg:
+        result (bool): if the check passed or failed
+        limits (dict): A map of the limits for each check
+        values (dict): A map of the values for each check
+
+    Returns:
+        dataclass: info about each check (section)
+    """
+
     result: bool = None
     limits: dict = field(default_factory=dict)
     values: dict = field(default_factory=dict)
@@ -10,6 +21,20 @@ class Check:
 
 @dataclass
 class Results:
+    """Dataclass for the results extracted from the summary
+
+    Arg:
+        delta_e (dataclass): Information about the Delta E check
+        noise (dataclass): Information about the Noise check
+        oecf (dataclass): Information about the OECF check
+        mtf (dataclass): Information about the MTF check
+        homogeneity (dataclass): Information about the Homogeneity check
+        geometry (dataclass): Information about the Geometry check
+
+    Returns:
+        dataclass: Data of the results
+    """
+
     delta_e: dataclass = Check()
     noise: dataclass = Check()
     oecf: dataclass = Check()
@@ -19,6 +44,15 @@ class Results:
 
 
 def result_summary_parser(url):
+    """Parser for the summary output from OS QM Tool
+
+    Args:
+        url (str): Path to summary file
+
+    Returns:
+        dataclass: Structured results extracted from the summary output
+    """
+
     # Variables
     data = Results()
     section = Check()
@@ -53,16 +87,31 @@ def result_summary_parser(url):
         # handle section content
         if in_section and line.strip():
             line = line.lower().strip()
-            section_handler(section, section_name, line, prev_line)
+            try:
+                section_handler(section, section_name, line, prev_line)
+            except Exception as e:
+                print(e)
 
             # Store line
             prev_line = line
 
     # Print data
-    print(data)
+    return data
 
 
 def section_handler(section: Check, section_name, line, prev_line):
+    """Handler for each section
+
+    This function will parse every line from the summary result and forward it to the correct section handler.
+    It will do general filtering before sending it into spesific filters for each check (section).
+
+    Args:
+        section (Check): The section we are currently parsing
+        section_name (str): Name of the section
+        line (str): The current line we are parsing
+        prev_line (str): The previous line we were parsing
+    """
+
     # General filters
     # Get Result
     if line.startswith("result"):
@@ -89,6 +138,13 @@ def section_handler(section: Check, section_name, line, prev_line):
 
 
 def check_delta_e(section: Check, line):
+    """Spesific filter for the Delta E check
+
+    Args:
+        section (Check): The section we are currently parsing
+        line (str): The current line we are parsing
+    """
+
     # Get limits (delta E)
     if line.startswith("max delta e"):
         arr = line.split()
@@ -101,36 +157,57 @@ def check_delta_e(section: Check, line):
     if line.startswith("delta e -"):
         arr = line.split()
         section.values.update({arr[3].replace('.', ''): arr[8]})
-    return section
 
 
 def check_noise(section: Check, line):
+    """Spesific filter for the noise check
+
+    Args:
+        section (Check): The section we are currently parsing
+        line (str): The current line we are parsing
+    """
     # Measured Values:
     if line.startswith("l*"):
         arr = line.split()
         section.values.update({' '.join(arr[0:2]): arr[4]})
-    return section
 
 
 def check_oecf(section: Check, line, prev_line):
+    """Spesific filter for the OECF check
+
+    Args:
+        section (Check): The section we are currently parsing
+        line (str): The current line we are parsing
+        prev_line (str): The previous line we were parsing
+    """
     # Measured Values
     if line.startswith("l:"):
         # Get location (UpperHorizontal etc..)
         location = prev_line.split()[0]
         arr = line.split()
         section.values.update({location: arr[1]})
-    return section
 
 
 def check_mtf(section: Check, line):
+    """Spesific filter for the MTF check
+
+    Args:
+        section (Check): The section we are currently parsing
+        line (str): The current line we are parsing
+    """
     # Measured Values
     if line.startswith("mean"):
         arr = line.split()
         section.values.update({arr[0][:-1]: ' '.join(arr[1:3])})
-    return section
 
 
 def check_homogeneity(section: Check, line):
+    """Spesific filter for the homogeneity check
+
+    Args:
+        section (Check): The section we are currently parsing
+        line (str): The current line we are parsing
+    """
     # Measured Values
     if line.startswith("minimum mean:") or line.startswith("maximum mean:"):
         arr = line.split()
@@ -138,10 +215,15 @@ def check_homogeneity(section: Check, line):
     if line.startswith("inhomogeneity:"):
         arr = line.split()
         section.values.update({arr[0][:-1]: arr[1]})
-    return section
 
 
 def check_geometry(section: Check, line):
+    """Spesific filter for the geometry check
+
+    Args:
+        section (Check): The section we are currently parsing
+        line (str): The current line we are parsing
+    """
     # Measured Values
     if line.startswith("measured values"):
         arr = line.split()
@@ -149,22 +231,29 @@ def check_geometry(section: Check, line):
         set_geometry_value(section, arr, 'vertical:')
         set_geometry_value(section, arr, 'deviation')
 
-    return section
-
 
 def set_geometry_value(section, arr, name):
+    """Sets values for the geometry check
+
+    Args:
+        section (Check): The section we are currently parsing
+        arr (str): The current line we are parsing as an array
+        name (str): The value we are looking for in the array
+    """
+
     try:
         i = arr.index(name)
         if name == 'deviation':
-            section.values.update({' '.join(arr[i:i+2]): ' '.join(arr[i+2:i+4])})
+            section.values.update(
+                {' '.join(arr[i:i+2]): ' '.join(arr[i+2:i+4])})
         else:
             # Update
             section.values.update({arr[i][:-1]: arr[i+1]})
     except ValueError:
         print("Did not find " + name + " value")
-    return section
 
 
 # Temp to test out parser
-result_summary_parser(
+data = result_summary_parser(
     r"C:\Users\Martin Holtmon\Documents\OSQMTOOL\runs\UTT\UTT_protokoll_summary.txt")
+print(data)
