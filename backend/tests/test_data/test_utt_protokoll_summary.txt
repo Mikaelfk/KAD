@@ -1,0 +1,85 @@
+Check started at: Thu Mar  3 14:11:01 2022
+Measurement title: 
+Used parameter file: C:\Users\Jakob\Desktop\OSQMTOOL\runs\UTT\UTT.qmp
+Used image file: C:\Users\Jakob\Desktop\OSQMTOOL\runs\UTT\UTT.tif
+ 
+****************************************************************************************
+Delta E check
+ 
+Analyse Delta E (CIE 1976)
+Profile: WT25-650
+Reference data : C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt
+Limits
+Max Delta E: 25.00
+Mean Delta E: 12.00
+Result: Passed
+Measured Values:
+Delta E - max. Delta E Target 1: 14.99
+Delta E - min. Delta E Target 1: 1.26
+Delta E - Mean Delta E Target 1: 5.33
+ 
+****************************************************************************************
+Noise check
+ 
+Analyse Noise (Grayscale)
+Profile: WT25-650
+Result: Passed
+Measured Values:
+L* UpperHorizontal (Target ID1): 0.92 -> max: 5.00
+L* RightVertical (Target ID1): 0.91 -> max: 5.00
+L* LowerHorizontal (Target ID1): 1.05 -> max: 5.00
+L* LeftVertical (Target ID1): 0.90 -> max: 5.00
+ 
+****************************************************************************************
+OECF check
+ 
+Analyse OECF (Grayscale)
+Profile: WT25-650
+Result: Passed
+Max Measured Deviation:
+UpperHorizontal (Target ID1)
+     L: 41.84 dL: -3.16 -> target value: 45.00
+RightVertical (Target ID1)
+     L: 41.41 dL: -3.59 -> target value: 45.00
+LowerHorizontal (Target ID1)
+     L: 41.56 dL: -3.44 -> target value: 45.00
+LeftVertical (Target ID1)
+     L: 41.83 dL: -3.17 -> target value: 45.00
+ 
+****************************************************************************************
+MTF check
+ 
+Analyse MTF (Minimum MTF 0.10)
+Profile: WT25-650
+Method: Color channel: RGB
+Limits: Minimum MTF 0.10: 4.00 cycles/mm
+Measured Values: All MTF Targets Minimum MTF 0.10:
+     mean: 7.59 cycles/mm
+Result: Passed
+ 
+****************************************************************************************
+Homogeneity check
+ 
+Analyse Homogeneity
+Profile: WT25-650
+Method: Color channel: RGB
+Measured Values:
+     Minimum Mean: 229.41 -> Limit: 200.00
+     Maximum Mean: 235.74 -> Limit: 250.00
+     Inhomogeneity: 6.33 -> Limit: 15.00
+Result: Passed
+ 
+****************************************************************************************
+Geometry check
+ 
+Analyse Geometry
+Profile: WT25-650
+Limits: Maximum Resolution Error: 3.00 %
+Measured Values: All Targets Mean Dpi - Horizontal: 300.22, Vertical: 299.34             Deviation Horizontal/Vertical: 0.29 %
+Result: Passed
+ 
+****************************************************************************************
+Check finished at: Thu Mar  3 14:11:10 2022
+All monitored values are within their limits.
+
+
