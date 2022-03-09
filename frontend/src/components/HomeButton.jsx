@@ -9,7 +9,7 @@ const Input = styled('input')({
 
 const HomeButton = () => {
     return (
-        <IconButton color="primary" aria-label="upload picture" component={Link} to="/" size="large">
+        <IconButton color="primary" aria-label="Home button" component={Link} to="/" size="large">
             <HomeIcon fontSize="large"/>
         </IconButton>
     )
