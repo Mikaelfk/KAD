@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import { Typography, Card, CardContent } from "@mui/material";
+import HomeButton from "../../components/HomeButton";
 import "./ResultsPage.css"
 
 const ResultsPage = () => {
@@ -23,6 +24,7 @@ const ResultsPage = () => {
     // TODO: make home button on this page
     return (
         <div className="container">
+            <HomeButton></HomeButton>
             <Typography variant='h2'>Resultater</Typography>
             {results.map((result) =>
                 <Card className="resultCard" component={Link} to={`/result/${result.id}`} key={result.id} style={{ textDecoration: 'none' }}>
