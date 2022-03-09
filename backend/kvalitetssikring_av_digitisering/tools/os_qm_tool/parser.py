@@ -77,9 +77,7 @@ def section_handler(section: Check, section_name, line, prev_line):
     if line.startswith("limits"):
         arr = line.split()
         if len(arr) > 1:
-            key = ' '.join(arr[i] for i in [1, 3])[:-1]
-            value = ' '.join(arr[4:6])
-            section.limits.update({key: value})
+            section.limits.update({arr[1]: ' '.join(arr[4:6])})
 
     # Spesific section filters
     match section_name:
