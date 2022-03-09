@@ -1,4 +1,6 @@
 from dataclasses import dataclass, field
+from tkinter.messagebox import NO
+from types import NoneType
 
 
 @dataclass
@@ -14,7 +16,7 @@ class Check:
         dataclass: info about each check (section)
     """
 
-    result: bool = None
+    result: NoneType = None
     limits: dict = field(default_factory=dict)
     values: dict = field(default_factory=dict)
 
@@ -95,7 +97,7 @@ def result_summary_parser(url):
             # Store line
             prev_line = line
 
-    # Print data
+    # Return data
     return data
 
 
