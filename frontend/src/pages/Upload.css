@@ -1,7 +1,9 @@
 .upload-options {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: 1.5em;
-    height: 50vh;
+    margin: 10%;
     align-items: center;
 }
 
@@ -9,6 +11,6 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    padding: 5vh;
+    padding: 5%;
     gap: 1%;
 }

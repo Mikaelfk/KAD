@@ -13,7 +13,7 @@ const ResultsPage = () => {
     let params = useParams();
     useEffect(() => {
         // params.resultId will be used to make the request
-        console.log(params.resultId)
+
         // TODO: Set correct path to endpoint 
         fetch("/path/to/api")
             .then(resp => resp.json())
