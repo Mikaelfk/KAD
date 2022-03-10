@@ -10,7 +10,7 @@ pipeline {
                 }
                 updateGitlabCommitStatus(name: 'Frontend: Clean', state: 'success')
 
-                updateGitlabCommitStatus(name: 'Backend documentation: Clean', state: 'success')
+                updateGitlabCommitStatus(name: 'Backend documentation: Clean', state: 'running')
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh 'sudo rm -r /var/www/documentation/*'
                 }
