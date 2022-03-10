@@ -1,6 +1,8 @@
 """Parser for the summary output from OS QM Tool
 """
 from dataclasses import dataclass, field
+from types import NoneType
+import typing
 
 
 @dataclass
@@ -16,7 +18,7 @@ class Check:
         dataclass: info about each check (section)
     """
 
-    result: bool = None
+    result: typing.Optional[bool] = None
     limits: dict = field(default_factory=dict)
     values: dict = field(default_factory=dict)
 
