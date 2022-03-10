@@ -139,6 +139,8 @@ def section_handler(section: Check, section_name, line, prev_line):
         case "mtf": check_mtf(section, line)
         case "homogeneity": check_homogeneity(section, line)
         case "geometry": check_geometry(section, line)
+        case _:
+            raise NotImplementedError(section_name + ' section check does not exist')
 
 
 def check_delta_e(section: Check, line):
