@@ -54,8 +54,7 @@ def validate():
         validation_output = jhove_validation(
             os.path.join(
                 Config.config().get(section="API", option="UploadFolder"), filename
-            ),
-            Config.config().get(section="JHOVE", option="JhoveInstallPath"),
+            )
         )
 
         # return result

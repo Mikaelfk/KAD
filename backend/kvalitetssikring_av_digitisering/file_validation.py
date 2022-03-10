@@ -14,7 +14,6 @@ def jhove_validation(url):
 
     Args:
         url (str): the path of the image which should be validated
-        jhove_path (str): the path to the JHOVE installation
 
     Returns:
         str: output with all the metadata
