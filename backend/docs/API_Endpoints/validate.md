@@ -4,6 +4,7 @@ Endpoint for validating an image.
 Accepts a form with a single file included.
 
 ## Request
+Method: POST
 
 ### Form parameters
 - file: _uploaded file_
@@ -11,7 +12,7 @@ Accepts a form with a single file included.
 ## Response
 
 === "200"
-
+    OK
     ``` json linenums="1" title="JSON"
     {
         isValid: BOOLEAN;
@@ -19,6 +20,7 @@ Accepts a form with a single file included.
     ```
 
 === "400"
+    Bad Request
     ``` json linenums="1" title="JSON"
     {
         error: STRING;
