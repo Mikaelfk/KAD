@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask.wrappers import Response
 import json
 
-from ..tools.iq_analyzer_x.iqx import runAnalysis
+from ..tools.iq_analyzer_x.iqx import run_analysis
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
