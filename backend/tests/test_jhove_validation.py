@@ -1,10 +1,6 @@
 import os
-import configparser
 
 from kvalitetssikring_av_digitisering.file_validation import jhove_validation
-
-config = configparser.ConfigParser()
-config.read("./config")
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
