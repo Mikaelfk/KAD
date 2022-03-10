@@ -60,7 +60,6 @@ def validate():
 
         # return result
         resp = Response(json.dumps({"isValid": str(validation_output[1])}), status=200)
-        resp.headers["Access-Control-Allow-Origin"] = "*"
         return resp
     else:
         return Response(json.dumps({"error": "unable to validate file"}), 500)
