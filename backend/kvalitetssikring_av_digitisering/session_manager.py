@@ -114,6 +114,6 @@ def check_session_exists(session_id):
         Config.config().get(section="API", option="StorageFolder"), session_id
     )
 
-    STATE_file = os.path.join(session_folder, STATE)
+    state_file = os.path.join(session_folder, STATE)
 
-    return os.path.isdir(session_folder) or os.path.exists(STATE_file)
+    return os.path.isdir(session_folder) or os.path.exists(state_file)
