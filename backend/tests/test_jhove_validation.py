@@ -1,10 +1,6 @@
 import os
-import configparser
 
 from kvalitetssikring_av_digitisering.file_validation import jhove_validation
-
-config = configparser.ConfigParser()
-config.read("./config")
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -14,7 +10,7 @@ def test_jhove_validation_good():
     """
 
     image_good = THIS_DIR + "/test_pictures/test_image.jpg"
-    output = jhove_validation(image_good, config["JHOVE"]["JhoveInstallPath"])
+    output = jhove_validation(image_good)
     assert output[1] == True
 
 
@@ -23,5 +19,5 @@ def test_jhove_validation_bad():
     """
 
     image_bad = THIS_DIR + "/test_pictures/test_image-bad.jpg"
-    output = jhove_validation(image_bad, config["JHOVE"]["JhoveInstallPath"])
+    output = jhove_validation(image_bad)
     assert output[1] == False

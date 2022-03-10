@@ -19,7 +19,7 @@ pytest:
   - python3 -m virtualenv venv --python=python3.10
   - source venv/bin/activate
   - pip3 install pytest 
-  - printf "[JHOVE]\nJhoveInstallPath=/usr/bin" > config
+  - printf "[JHOVE]\nJhoveInstallPath=/usr/bin" > config.ini
   - pytest tests
 
 reacttest:

@@ -4,9 +4,12 @@ Requires a valid JHOVE installation to work.
 """
 
 import os
+from .config import Config
 
+jhove_path = Config.config().get(section="JHOVE", option="JhoveInstallPath")
+print(jhove_path)
 
-def jhove_validation(url, jhove_path):
+def jhove_validation(url):
     """File validation using JHOVE.
 
     Args:
