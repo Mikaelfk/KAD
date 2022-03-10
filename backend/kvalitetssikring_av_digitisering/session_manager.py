@@ -8,6 +8,8 @@ import uuid
 
 from .config import Config
 
+#const
+STATE = "STATE.json"
 
 def create_session():
     """Method for creating a sessions.
@@ -69,11 +71,11 @@ def create_analysis_folders(session_id):
             os.mkdir(analysis_dir)
 
             image_src = os.path.join(session_image_folder, file_name)
-            image_src = os.path.join(
+            image_dest = os.path.join(
                 session_output_folder, file_name + "-analysis", file_name
             )
 
-            os.link(image_src, image_src)
+            os.link(image_src, image_dest)
 
 
 def update_session_status(session_id, status):
@@ -83,16 +85,15 @@ def update_session_status(session_id, status):
         session_id (str): the unique id of the session
         status (str): the new status to update to
     """
-
     session_folder = os.path.join(
         Config.config().get(section="API", option="StorageFolder"), session_id
     )
 
     # open state file and update json
     with open(
-        os.path.join(session_folder, "state.json"), "w+", encoding="UTF-8"
+        os.path.join(session_folder, STATE), "w+", encoding="UTF-8"
     ) as json_file:
-        if os.stat(os.path.join(session_folder, "state.json")).st_size == 0:
+        if os.stat(os.path.join(session_folder, STATE)).st_size == 0:
             data = {}
         else:
             data = json.load(json_file)
@@ -113,6 +114,6 @@ def check_session_exists(session_id):
         Config.config().get(section="API", option="StorageFolder"), session_id
     )
 
-    state_file = os.path.join(session_folder, "state.json")
+    STATE_file = os.path.join(session_folder, STATE)
 
-    return os.path.isdir(session_folder) or os.path.exists(state_file)
+    return os.path.isdir(session_folder) or os.path.exists(STATE_file)
