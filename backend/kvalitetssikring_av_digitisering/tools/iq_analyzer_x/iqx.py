@@ -4,7 +4,7 @@ import os
 from kvalitetssikring_av_digitisering.config import Config
 
 
-def runAnalysis(image_file_path: str, specification_level: str):
+def run_analysis(image_file_path: str, specification_level: str):
 
     if specification_level not in ["A", "B", "C"]:
         return False
