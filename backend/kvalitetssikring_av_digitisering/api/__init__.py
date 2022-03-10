@@ -4,3 +4,4 @@
 
 from .validate import validate_endpoint
 from .session import session_endpoint
+from .iqx import iqx_endpoint
