@@ -9,7 +9,7 @@ import uuid
 from .config import Config
 
 #const
-STATE = "STATE.json"
+STATE = "state.json"
 
 def create_session():
     """Method for creating a sessions.
