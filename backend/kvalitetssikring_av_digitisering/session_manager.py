@@ -8,8 +8,9 @@ import uuid
 
 from .config import Config
 
-#const
+# const
 STATE = "state.json"
+
 
 def create_session():
     """Method for creating a sessions.
@@ -70,12 +71,18 @@ def create_analysis_folders(session_id):
         if not os.path.isdir(analysis_dir):
             os.mkdir(analysis_dir)
 
-            image_src = os.path.join(session_image_folder, file_name)
-            image_dest = os.path.join(
-                session_output_folder, file_name + "-analysis", file_name
-            )
+            for char in ["A", "B", "C"]:
+                os.mkdir(os.path.join(analysis_dir, char))
 
-            os.link(image_src, image_dest)
+                image_src = os.path.join(session_image_folder, file_name)
+                image_dest = os.path.join(
+                    session_output_folder,
+                    file_name + "-analysis",
+                    char,
+                    file_name,
+                )
+
+                os.link(image_src, image_dest)
 
 
 def update_session_status(session_id, status):
@@ -90,9 +97,7 @@ def update_session_status(session_id, status):
     )
 
     # open state file and update json
-    with open(
-        os.path.join(session_folder, STATE), "w+", encoding="UTF-8"
-    ) as json_file:
+    with open(os.path.join(session_folder, STATE), "w+", encoding="UTF-8") as json_file:
         if os.stat(os.path.join(session_folder, STATE)).st_size == 0:
             data = {}
         else:
