@@ -1,7 +1,9 @@
 from flask import Blueprint, request
 from flask.wrappers import Response
 import json
+import os
 
+from ..config import Config
 from ..tools.iq_analyzer_x.iqx import run_analysis
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
@@ -15,6 +17,27 @@ def analyze():
     match target:
         case "UTT":
             print("uwu")
+            before_target = request.files["before_target"]
+            after_target = request.files["after_target"]
+            #files = request.files["files"]
+
+
+            before_target_path = os.path.join(
+                Config.config().get(section="API", option="UploadFolder"), before_target.filename
+            )      
+            after_target_path = os.path.join(
+                Config.config().get(section="API", option="UploadFolder"), after_target.filename
+            )
+
+            before_target.save(before_target_path)
+            after_target.save(after_target_path)
+           
+            scores = ["C", "B", "A"] 
+
+            i = 0
+            while(i < len(scores) and run_analysis(before_target_path ,scores[i]) and run_analysis(after_target_path, scores[i])):
+                i += 1
+
 
         case None | "":
             return Response(json.dumps({"error:": "no target specified"}), status=400)
