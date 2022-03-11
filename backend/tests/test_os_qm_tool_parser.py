@@ -36,6 +36,6 @@ def test_parsing_utt():
             values={'horizontal': '300.22,', 'vertical': '299.34', 'deviation horizontal/vertical:': '0.29 %'}))
 
     # Test
-    path = THIS_DIR + "/test_data/test_utt_protokoll_summary.txt"
+    path = os.path.join(THIS_DIR, "test_data", "test_utt_protokoll_summary.txt")
     data = parser(path)
     assert results == data
