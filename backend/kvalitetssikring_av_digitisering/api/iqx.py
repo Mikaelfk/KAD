@@ -5,6 +5,7 @@ import os
 
 from ..config import Config
 from ..tools.iq_analyzer_x.iqx import run_analysis
+from ..session_manager import create_session, create_analysis_folders
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
@@ -17,20 +18,23 @@ def analyze():
     match target:
         case "UTT":
             print("uwu")
+            session_id = create_session()
             before_target = request.files["before_target"]
             after_target = request.files["after_target"]
             #files = request.files["files"]
 
 
             before_target_path = os.path.join(
-                Config.config().get(section="API", option="UploadFolder"), before_target.filename
+                Config.config().get(section="API", option="StorageFolder"), session_id , "images" , before_target.filename
             )      
             after_target_path = os.path.join(
-                Config.config().get(section="API", option="UploadFolder"), after_target.filename
+                Config.config().get(section="API", option="StorageFolder"), session_id , "images" , after_target.filename
             )
 
             before_target.save(before_target_path)
             after_target.save(after_target_path)
+
+            create_analysis_folders(session_id)
            
             scores = ["C", "B", "A"] 
 

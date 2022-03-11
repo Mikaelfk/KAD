@@ -71,7 +71,7 @@ def create_analysis_folders(session_id):
         if not os.path.isdir(analysis_dir):
             os.mkdir(analysis_dir)
 
-            for char in ["A", "B" "C"]:
+            for char in ["A", "B", "C"]:
                 os.mkdir(os.path.join(analysis_dir, char))
 
                 image_src = os.path.join(session_image_folder, file_name)
