@@ -2,9 +2,10 @@ from flask import Blueprint, request
 from flask.wrappers import Response
 import json
 import os
+import asyncio
 
 from ..config import Config
-from ..tools.iq_analyzer_x.iqx import run_analysis
+from ..tools.iq_analyzer_x.iqx import run_analysis, run_analyses
 from ..session_manager import create_session, create_analysis_folders
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
@@ -35,14 +36,10 @@ def analyze():
             after_target.save(after_target_path)
 
             create_analysis_folders(session_id)
+
+            asyncio.run(run_analyses(before_target_path, after_target_path))
+            return Response(json.dumps({"session_id": str(session_id)}), status=200)
            
-            scores = ["C", "B", "A"] 
-
-            i = 0
-            while(i < len(scores) and run_analysis(before_target_path ,scores[i]) and run_analysis(after_target_path, scores[i])):
-                i += 1
-
-
         case None | "":
             return Response(json.dumps({"error:": "no target specified"}), status=400)
 
