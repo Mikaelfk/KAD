@@ -2,6 +2,7 @@ import subprocess
 import os
 
 from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.session_manager import update_session_status
 
 
 def run_analysis(image_file_path: str, specification_level: str):
@@ -39,9 +40,10 @@ def run_analysis(image_file_path: str, specification_level: str):
     return True
 
 
-def run_analyses(before_target_path: str, after_target_path: str):
+def run_analyses(before_target_path: str, after_target_path: str, session_id: str):
     scores = ["C", "B", "A"] 
 
     i = 0
     while(i < len(scores) and run_analysis(before_target_path ,scores[i]) and run_analysis(after_target_path, scores[i])):
         i += 1
+    update_session_status(session_id, "Finished") 

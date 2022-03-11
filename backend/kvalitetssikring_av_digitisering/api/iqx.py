@@ -39,8 +39,8 @@ def analyze():
 
             create_analysis_folders(session_id)
 
-            thr = threading.Thread(target=run_analyses, args=(before_target_path, after_target_path), kwargs={})
-            thr.start() # Will run "foo"
+            thr = threading.Thread(target=run_analyses, args=(before_target_path, after_target_path, session_id), kwargs={})
+            thr.start() # Runs the analyses
             
             return Response(json.dumps({"session_id": str(session_id)}), status=200)
            
