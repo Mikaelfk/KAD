@@ -7,6 +7,7 @@ from flask_cors import CORS
 from .api import validate_endpoint
 from .api import session_endpoint
 from .api import iqx_endpoint
+from .api import results_endpoint
 
 
 def start():
@@ -22,5 +23,6 @@ def start():
     app.register_blueprint(validate_endpoint)
     app.register_blueprint(session_endpoint)
     app.register_blueprint(iqx_endpoint)
+    app.register_blueprint(results_endpoint)
 
     app.run(host="0.0.0.0")
