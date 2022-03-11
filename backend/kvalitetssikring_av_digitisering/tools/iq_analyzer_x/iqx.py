@@ -6,7 +6,15 @@ from kvalitetssikring_av_digitisering.session_manager import update_session_stat
 
 
 def run_analysis(image_file_path: str, specification_level: str):
+    """Runs analysis on one image of given specification level
 
+    Args:
+        image_file_path (str): The path to the file which should be analyzed
+        specification_level (str): Specification ISO level the image should be tested against
+
+    Returns:
+        bool: true if analysis passed, false otherwise
+    """
     if specification_level not in ["A", "B", "C"]:
         return False
 
@@ -41,6 +49,13 @@ def run_analysis(image_file_path: str, specification_level: str):
 
 
 def run_analyses(before_target_path: str, after_target_path: str, session_id: str):
+    """Runs analysis using all three ISO levels on both before and after target
+
+    Args:
+        before_target_path (str): The target which is scanned at the start of an image batch
+        after_target_path (str): The target which is scanend at the end of an image batch
+        session_id (str): The session id of the current session so the session status can be updated.
+    """
     scores = ["C", "B", "A"] 
 
     i = 0

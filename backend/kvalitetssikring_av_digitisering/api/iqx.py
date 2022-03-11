@@ -15,16 +15,22 @@ iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
 @iqx_endpoint.route("/api/analyze/device/iqx", methods=["POST"])
 def analyze():
+    """An endpoint whitch initalizes a session and start analysis on uploaded targets
+
+    Returns:
+        Response: a JSON response which contains the session id.
+    """
     target = request.args.get("target")
 
     # make sure it's a valid target
     match target:
         case "UTT":
-            print("uwu")
+            print("Target which is used: UTT")
             session_id = create_session()
             before_target = request.files["before_target"]
             after_target = request.files["after_target"]
-            #files = request.files["files"]
+            
+            # TODO: also get the rest of the images from request.files["files"] so metadata can be added to them.
 
 
             before_target_path = os.path.join(
