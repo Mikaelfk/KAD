@@ -1,7 +1,6 @@
 """Parser for IQ-Analyzer X
 """
 import xml.etree.ElementTree as ET
-import os
 
 
 def result_summary_parser(uri):
@@ -47,7 +46,7 @@ def fix_xml(uri):
     # Import data
     with open(uri, 'r', encoding='UTF-8') as file:
         data = file.read().replace('\n', '')
-    
+
     # Fix data
     data = data.replace('<Maximum delta L>', '<Maximum Type="delta L">')
     data = data.replace('</Maximum delta L>', '</Maximum>')
