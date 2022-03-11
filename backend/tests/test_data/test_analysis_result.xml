@@ -28689,7 +28689,7 @@
                         </Group>
                         <Group Type="Shading">
                             <Tile_1>
-                                <Maximum Type="delta L">
+                                <Maximum delta L>
                                     <Measure Type="Max_Delta_Gray">
                                         <Patch ID="value" State="succeeded">0.731523</Patch>
                                         <Specification Patch="value"/>
@@ -28698,7 +28698,7 @@
                                         <Patch ID="value" State="succeeded">1.27136</Patch>
                                         <Specification Patch="value"/>
                                     </Measure>
-                                </Maximum>
+                                </Maximum delta L>
                             </Tile_1>
                         </Group>
                         <Group Type="TonalReproduction">
