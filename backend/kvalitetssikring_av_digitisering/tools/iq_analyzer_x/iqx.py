@@ -1,6 +1,5 @@
 import subprocess
 import os
-import asyncio
 
 from kvalitetssikring_av_digitisering.config import Config
 
@@ -40,7 +39,7 @@ def run_analysis(image_file_path: str, specification_level: str):
     return True
 
 
-async def run_analyses(before_target_path: str, after_target_path: str):
+def run_analyses(before_target_path: str, after_target_path: str):
     scores = ["C", "B", "A"] 
 
     i = 0

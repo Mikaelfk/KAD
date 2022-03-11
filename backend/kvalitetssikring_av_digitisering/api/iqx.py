@@ -3,6 +3,8 @@ from flask.wrappers import Response
 import json
 import os
 import asyncio
+import threading
+
 
 from ..config import Config
 from ..tools.iq_analyzer_x.iqx import run_analysis, run_analyses
@@ -37,7 +39,9 @@ def analyze():
 
             create_analysis_folders(session_id)
 
-            asyncio.run(run_analyses(before_target_path, after_target_path))
+            thr = threading.Thread(target=run_analyses, args=(before_target_path, after_target_path), kwargs={})
+            thr.start() # Will run "foo"
+            
             return Response(json.dumps({"session_id": str(session_id)}), status=200)
            
         case None | "":
