@@ -2,3 +2,4 @@ flask
 flask-cors
 mkdocs
 mkdocs-material
+pyexiv2
