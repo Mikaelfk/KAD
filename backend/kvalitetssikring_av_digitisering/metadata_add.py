@@ -16,18 +16,29 @@ def add_metadata_to_file(file_path, result_file):
     with open(result_file, "r") as json_result:
         data = json.load(json_result)
         result_data = data[name]
-        key = ['Xmp', 'xmp']
+        tags = ['Xmp', 'xmp']
         metadata = {}
-        get_xmp_metadata(key, result_data, metadata)
+        get_xmp_metadata(tags, result_data, metadata)
 
     img.modify_xmp(metadata)
 
 
-def get_xmp_metadata(key, result_data, metadata: dict):
-    for v in result_data:
-        key.append(v)
-        if type(result_data.get(v)) == dict:
-            get_xmp_metadata(key, result_data.get(v), metadata)
+def get_xmp_metadata(tags, result_data, metadata: dict):
+    """A recursive function which adds all data to their own xmp tags
+
+    Args:
+        tags (list[str]): a list of the current xmp tags
+        result_data (dict): the value of the current tags
+        metadata (dict): the full xmp data which is to be added to the image
+    """
+    for key in result_data:
+        # Appends the current key as a tag
+        tags.append(key)
+        value = result_data.get(key)
+
+        if type(value) == dict:
+            get_xmp_metadata(tags, value, metadata)
         else:
-            metadata.update({'.'.join(key): result_data.get(v)})
-            del key[-1]
+            metadata.update({'.'.join(tags): value})
+        # Deletes the last tag from the list
+        del tags[-1]
