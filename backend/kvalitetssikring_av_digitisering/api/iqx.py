@@ -1,3 +1,9 @@
+"""Module for IQ Analyzer X endpoint.
+
+This module is for use with Flask, and the methods should therefore never be called directly.
+It defines endpoints for performing analysis with IQ Analyzer X.
+"""
+
 import json
 import os
 import threading
@@ -7,7 +13,7 @@ from flask.wrappers import Response
 
 from ..config import Config
 from ..session_manager import create_analysis_folders, create_session
-from ..tools.iq_analyzer_x.iqx import run_analyses, run_analysis
+from ..tools.iq_analyzer_x.iqx import run_analyses
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
