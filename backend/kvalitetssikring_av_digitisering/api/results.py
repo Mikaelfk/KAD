@@ -30,7 +30,7 @@ def results(session_id):
         "results.json",
     )
 
-    if check_session_exists(session_id):
+    if not check_session_exists(session_id):
         return Response(json.dumps({"error": "session does not exist"}), status=400)
 
     with open(session_results_file, "a+", encoding="UTF-8") as json_file:
@@ -38,6 +38,11 @@ def results(session_id):
 
         if os.path.getsize(session_results_file) > 0:
             # this doesn't seem great, but works, so maybe fix in future?
-            return Response(json.dumps(json.load(json_file)), status=200)
+            json_data = json.load(json_file)
+
+            if "overall_score" not in json_data.keys():
+                json_data["overall_score"] = "none"
+
+            return Response(json.dumps(json_data), status=200)
 
         return Response(json.dumps({"error": "no results"}), status=404)
