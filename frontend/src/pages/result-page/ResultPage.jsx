@@ -31,7 +31,7 @@ const ResultPage = () => {
                 <p>Result goes here</p>
             </div>
             <div className="backButtonContainer">
-                <IconButton color="primary" aria-label="Return to result page" component={Link} to={`/results/${imageResult.session_id}`} size="large">
+                <IconButton color="primary" aria-label="Return to result page" component={Link} to={`/results/${params.session_id}`} size="large">
                     <ArrowBackIosIcon fontSize="large" />
                 </IconButton>
             </div>
