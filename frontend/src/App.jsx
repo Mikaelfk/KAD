@@ -68,19 +68,25 @@ const App = () => {
     const handleDeviceSubmit = () => {
         const formData = new FormData();
 
+        // Adds the targets as files in a form
         formData.append('before_target', startTarget);
         formData.append('after_target', endTarget);
+        // TODO: Add the rest of the files to the upload
 
+        document.getElementById('loader-container').style.visibility = "visible";
+
+        // Makes the request to the api
         fetch(Config.API_URL + '/api/analyze/device/iqx?target=UTT', {
             method: 'POST',
             body: formData
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                console.log(data);
+                document.getElementById('loader-container').style.visibility = "hidden";
 
-                let path = `/results/${data.session_id}`
-                navigate(path)
+                let path = `/results/${data.session_id}`;
+                navigate(path);
             })
             .catch(err => console.log(err))
     }
