@@ -7,6 +7,7 @@ import UploadDevice from './pages/upload-device/UploadDevice';
 import UploadObject from './pages/upload-object/UploadObject';
 import ResultsPage from './pages/results-page/ResultsPage';
 import ResultPage from './pages/result-page/ResultPage'
+import Config from "./config.json"
 
 const App = () => {
 
@@ -49,7 +50,7 @@ const App = () => {
         // Makes a POST request to the endpoint,
         // TODO: Change endpoint to image quality assessment
 
-        fetch('/endpoint/path', {
+        fetch(Config.API_URL + '', {
             method: 'POST',
             body: formData
         })
@@ -65,16 +66,20 @@ const App = () => {
     }
 
     const handleDeviceSubmit = () => {
-        console.log(startTarget)
-        console.log(endTarget)
-        console.log(files)
-        let sessionId = 100
-        // TODO: Set correct path here
-        fetch('/endpoint/path')
+        const formData = new FormData();
+
+        formData.append('before_target', startTarget);
+        formData.append('after_target', endTarget);
+
+        fetch(Config.API_URL + '/api/analyze/device/iqx?target=UTT', {
+            method: 'POST',
+            body: formData
+        })
+            .then(resp => resp.json())
             .then(data => {
                 console.log(data)
-                // TODO: set resultId to what the request response gives.
-                let path = `/results/${sessionId}`
+
+                let path = `/results/${data.session_id}`
                 navigate(path)
             })
             .catch(err => console.log(err))
@@ -97,10 +102,10 @@ const App = () => {
                 {<UploadObject
                     onRender={handleRender}
                     onUpload={handleUpload}
-                    onSubmit={handleObjectSubmit} 
+                    onSubmit={handleObjectSubmit}
                     files={files} />} />
-            <Route path="/results/:resultId" element={<ResultsPage />} />
-            <Route path="/result/:imageId" element={<ResultPage />} />
+            <Route path="/results/:session_id" element={<ResultsPage />} />
+            <Route path="/results/:session_id/:imageId" element={<ResultPage />} />
         </Routes>
     );
 }
