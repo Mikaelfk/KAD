@@ -21,15 +21,19 @@ def result_summary_parser(uri):
 
     # Get results
     results = {}
+    results.update({"passed": True})
+    overall_score = True
     for group in overview_groups:
         children = group.findall('./*')
 
         children_states = {}
         for child in children:
             children_states.update({child.text: child.attrib.get('State')})
-
+            if child.attrib.get('State') == 'failed':
+                overall_score = False
         # Update
         results.update({group.attrib.get('Type'): children_states})
+    results.update({"passed": overall_score})
 
     return results
 
