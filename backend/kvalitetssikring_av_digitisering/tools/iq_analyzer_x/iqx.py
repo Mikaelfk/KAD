@@ -188,6 +188,8 @@ def save_results(
     data = defaultdict(dict, data)
     data[str(filename)]["target_order"] = target_order
     data[str(filename)][str(specification_level)] = results
+    if bool(results["passed"]):
+        data[str(filename)]["overall_score"] = specification_level
 
     # write new data to file
     with open(session_results_file, "w+", encoding="UTF-8") as json_file:
