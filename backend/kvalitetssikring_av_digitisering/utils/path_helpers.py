@@ -119,3 +119,18 @@ def get_analysis_dir_image_file(session_id: str, file_name: str, score: str):
     """
 
     return os.path.join(get_analysis_dir(session_id, file_name, score), file_name)
+
+
+def get_analysis_dir_image_iqx_result_file(session_id: str, file_name: str, score: str):
+    """Method for getting the path to an iqx analysis result in its analysis folder.
+
+    Args:
+        session_id (str): the unique id of a session
+
+    Returns:
+        path (str): path to the iqx analysis result in its analysis folder
+    """
+
+    return os.path.join(
+        get_analysis_dir(session_id, file_name, score), "analysis_result.xml"
+    )
