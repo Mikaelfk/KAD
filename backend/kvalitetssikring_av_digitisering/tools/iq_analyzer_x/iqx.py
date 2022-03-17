@@ -4,18 +4,22 @@ Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
 """
 
-import json
 import os
 import subprocess
-from collections import defaultdict
 
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
     result_summary_parser,
 )
+from kvalitetssikring_av_digitisering.utils.json_helpers import (
+    json_iqx_add_result,
+    json_iqx_set_analysis_failed,
+    read_from_json_file,
+    write_to_json_file,
+)
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
-    get_analysis_dir,
     get_analysis_dir_image_file,
+    get_analysis_dir_image_iqx_result_file,
     get_session_results_file,
 )
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
@@ -79,61 +83,55 @@ def run_analysis(image_file_path: str, specification_level: str):
     return True
 
 
-def run_analyses(
-    before_target_filename: str, after_target_filename: str, session_id: str
-):
-    """Runs analysis using all three ISO levels on both before and after target.
+def run_iso_analysis(file_name: str, session_id: str):
+    """Runs analysis using all three ISO levels on image.
 
     Args:
-        before_target_path (str): The target which is scanned at the start of an image batch
-        after_target_path (str): The target which is scanend at the end of an image batch
+        filename (str): name of file to run analysis on
         session_id (str): The session id of the current session
     """
 
-    for score in ["C", "B", "A"]:
-        before_target_path = get_analysis_dir(session_id, before_target_filename, score)
+    result_data = read_from_json_file(get_session_results_file(session_id))
 
-        after_target_path = get_analysis_dir(session_id, after_target_filename, score)
+    update_session_status(session_id, "running")
 
-        # duplicated twice, but eh might be fine
-
-        # run for before target
-        run_analysis(
-            get_analysis_dir_image_file(session_id, before_target_filename, score),
-            score,
-        )
-        parsed_results_before = parse_results(
-            os.path.join(before_target_path, "analysis_result.xml")
+    for specification_level in ["C", "B", "A"]:
+        # run analysis on image
+        result = run_analysis(
+            get_analysis_dir_image_file(session_id, file_name, specification_level),
+            specification_level,
         )
 
-        if parsed_results_before is not None:
-            save_results(
-                session_id,
-                before_target_filename,
-                score,
-                parsed_results_before,
-                "before_target",
+        # if iqx fails, set result to failed and move on
+        if result is False:
+            print("uwu iqx machine broke")
+            result_data = json_iqx_set_analysis_failed(
+                result_data, file_name, specification_level
             )
+            break
 
-        # run for after target
-        run_analysis(
-            get_analysis_dir_image_file(session_id, after_target_filename, score),
-            score,
-        )
-        parsed_results_after = parse_results(
-            os.path.join(after_target_path, "analysis_result.xml")
-        )
-
-        if parsed_results_after is not None:
-            save_results(
-                session_id,
-                after_target_filename,
-                score,
-                parsed_results_after,
-                "after_target",
+        # parse results from analysis
+        analysis_results = parse_results(
+            get_analysis_dir_image_iqx_result_file(
+                session_id, file_name, specification_level
             )
+        )
 
-    update_session_status(session_id, "Finished")
+        # if parsing fails, iqx probably also fails,
+        # so set result to failed and move on
+        if analysis_results is None:
+            print("uwu parser machine broke")
+            result_data = json_iqx_set_analysis_failed(
+                result_data, file_name, specification_level
+            )
+            break
+
+        # add result to data
+        result_data = json_iqx_add_result(
+            result_data, file_name, specification_level, analysis_results
+        )
+
+        write_to_json_file(get_session_results_file(session_id), result_data)
 
 
 def parse_results(result_file_path: str):
@@ -153,45 +151,3 @@ def parse_results(result_file_path: str):
     except FileNotFoundError as exception:
         print(exception)
         return None
-
-
-def save_results(
-    session_id: str,
-    filename: str,
-    specification_level: str,
-    results: dict,
-    target_order: str,
-):
-    """Method for saving the results after an analysis.
-
-    This method will save the results in the results file in a session
-
-    Args:
-        session_id (str): Unique session id
-        filename (str): name of analyzed file
-        specification_level (str): specification level used when analyzing
-        results (dict): parsed analysis results
-        target_order (str): which target (before, middle, after ...)
-    """
-
-    session_results_file = get_session_results_file(session_id)
-
-    # get data from file
-    with open(session_results_file, "a+", encoding="UTF-8") as json_file:
-        json_file.seek(0)
-
-        if os.path.getsize(session_results_file) > 0:
-            data = json.load(json_file)
-        else:
-            data = {}
-
-    # update data
-    data = defaultdict(dict, data)
-    data[str(filename)]["target_order"] = target_order
-    data[str(filename)][str(specification_level)] = results
-    if bool(results["passed"]):
-        data[str(filename)]["overall_score"] = specification_level
-
-    # write new data to file
-    with open(session_results_file, "w+", encoding="UTF-8") as json_file:
-        json_file.write(json.dumps(dict(data)))
