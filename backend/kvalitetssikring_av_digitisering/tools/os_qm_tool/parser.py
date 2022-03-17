@@ -1,8 +1,7 @@
 """Parser for the summary output from OS QM Tool
 """
-from dataclasses import dataclass, field
-from types import NoneType
 import typing
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -60,9 +59,11 @@ def result_summary_parser(url):
     # Variables
     data = Results()
     section = Check()
-    section_divider = "***********************************************************************"
+    section_divider = (
+        "***********************************************************************"
+    )
     in_section = False
-    section_name = ''
+    section_name = ""
     prev_line = str
 
     # Read file
@@ -79,14 +80,13 @@ def result_summary_parser(url):
 
             # New section
             in_section = True
-            section_name = ''
+            section_name = ""
             section = Check()
             continue
 
         # set section name
-        if section_name == '':
-            section_name = line.replace(
-                ' check', '').strip().lower().replace(' ', '_')
+        if section_name == "":
+            section_name = line.replace(" check", "").strip().lower().replace(" ", "_")
 
         # handle section content
         if in_section and line.strip():
@@ -120,7 +120,7 @@ def section_handler(section: Check, section_name, line, prev_line):
     # Get Result
     if line.startswith("result"):
         arr = line.split()
-        if arr[1] == 'passed':
+        if arr[1] == "passed":
             section.result = True
         else:
             section.result = False
@@ -129,18 +129,24 @@ def section_handler(section: Check, section_name, line, prev_line):
     if line.startswith("limits"):
         arr = line.split()
         if len(arr) > 1:
-            section.limits.update({arr[1]: ' '.join(arr[4:6])})
+            section.limits.update({arr[1]: " ".join(arr[4:6])})
 
     # Spesific section filters
     match section_name:
-        case "delta_e": check_delta_e(section, line)
-        case "noise": check_noise(section, line)
-        case "oecf": check_oecf(section, line, prev_line)
-        case "mtf": check_mtf(section, line)
-        case "homogeneity": check_homogeneity(section, line)
-        case "geometry": check_geometry(section, line)
+        case "delta_e":
+            check_delta_e(section, line)
+        case "noise":
+            check_noise(section, line)
+        case "oecf":
+            check_oecf(section, line, prev_line)
+        case "mtf":
+            check_mtf(section, line)
+        case "homogeneity":
+            check_homogeneity(section, line)
+        case "geometry":
+            check_geometry(section, line)
         case _:
-            raise NotImplementedError(section_name + ' section check does not exist')
+            raise NotImplementedError(section_name + " section check does not exist")
 
 
 def check_delta_e(section: Check, line):
@@ -154,15 +160,15 @@ def check_delta_e(section: Check, line):
     # Get limits (delta E)
     if line.startswith("max delta e"):
         arr = line.split()
-        section.limits.update({'max': arr[3]})
+        section.limits.update({"max": arr[3]})
     if line.startswith("mean delta e"):
         arr = line.split()
-        section.limits.update({'mean': arr[3]})
+        section.limits.update({"mean": arr[3]})
 
     # Measured Values.
     if line.startswith("delta e -"):
         arr = line.split()
-        section.values.update({arr[3].replace('.', ''): arr[8]})
+        section.values.update({arr[3].replace(".", ""): arr[8]})
 
 
 def check_noise(section: Check, line):
@@ -175,7 +181,7 @@ def check_noise(section: Check, line):
     # Measured Values:
     if line.startswith("l*"):
         arr = line.split()
-        section.values.update({' '.join(arr[0:2]): arr[4]})
+        section.values.update({" ".join(arr[0:2]): arr[4]})
 
 
 def check_oecf(section: Check, line, prev_line):
@@ -204,7 +210,7 @@ def check_mtf(section: Check, line):
     # Measured Values
     if line.startswith("mean"):
         arr = line.split()
-        section.values.update({arr[0][:-1]: ' '.join(arr[1:3])})
+        section.values.update({arr[0][:-1]: " ".join(arr[1:3])})
 
 
 def check_homogeneity(section: Check, line):
@@ -217,7 +223,7 @@ def check_homogeneity(section: Check, line):
     # Measured Values
     if line.startswith("minimum mean:") or line.startswith("maximum mean:"):
         arr = line.split()
-        section.values.update({' '.join(arr[0:2])[:-1]: arr[2]})
+        section.values.update({" ".join(arr[0:2])[:-1]: arr[2]})
     if line.startswith("inhomogeneity:"):
         arr = line.split()
         section.values.update({arr[0][:-1]: arr[1]})
@@ -233,9 +239,9 @@ def check_geometry(section: Check, line):
     # Measured Values
     if line.startswith("measured values"):
         arr = line.split()
-        set_geometry_value(section, arr, 'horizontal:')
-        set_geometry_value(section, arr, 'vertical:')
-        set_geometry_value(section, arr, 'deviation')
+        set_geometry_value(section, arr, "horizontal:")
+        set_geometry_value(section, arr, "vertical:")
+        set_geometry_value(section, arr, "deviation")
 
 
 def set_geometry_value(section, arr, name):
@@ -249,11 +255,12 @@ def set_geometry_value(section, arr, name):
 
     try:
         i = arr.index(name)
-        if name == 'deviation':
+        if name == "deviation":
             section.values.update(
-                {' '.join(arr[i:i+2]): ' '.join(arr[i+2:i+4])})
+                {" ".join(arr[i : i + 2]): " ".join(arr[i + 2 : i + 4])}
+            )
         else:
             # Update
-            section.values.update({arr[i][:-1]: arr[i+1]})
+            section.values.update({arr[i][:-1]: arr[i + 1]})
     except ValueError:
         print("Did not find " + name + " value")

@@ -5,21 +5,24 @@ It defines endpoints for performing analysis with IQ Analyzer X.
 """
 
 import json
-import os
 import multiprocessing.pool as ThreadPool
+import os
 
 from flask import Blueprint, request
 from flask.wrappers import Response
-
-from ..config import Config
-from ..session_manager import create_analysis_folders, create_session
-from ..tools.iq_analyzer_x.iqx import run_analyses
+from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import run_analyses
+from kvalitetssikring_av_digitisering.utils.session_manager import (
+    create_analysis_folders,
+    create_session,
+)
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
 # Create pool of n threads
-pool = ThreadPool.ThreadPool(int(Config.config().get(
-    section="IQ ANALYZER X", option="ConcurrentSessions")))
+pool = ThreadPool.ThreadPool(
+    int(Config.config().get(section="IQ ANALYZER X", option="ConcurrentSessions"))
+)
 
 
 @iqx_endpoint.route("/api/analyze/device/iqx", methods=["POST"])
@@ -59,8 +62,10 @@ def analyze():
 
             create_analysis_folders(session_id)
 
-            pool.apply_async(run_analyses, args=(
-                before_target.filename, after_target.filename, session_id))
+            pool.apply_async(
+                run_analyses,
+                args=(before_target.filename, after_target.filename, session_id),
+            )
 
             return Response(json.dumps({"session_id": str(session_id)}), status=200)
 

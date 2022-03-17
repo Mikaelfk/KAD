@@ -9,8 +9,8 @@ import os
 import subprocess
 from collections import defaultdict
 
-from ...config import Config
-from ...session_manager import update_session_status
+from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
 
 from .parser import result_summary_parser
 
@@ -61,8 +61,9 @@ def run_analysis(image_file_path: str, specification_level: str):
             specification,
             exif,
         ],
-        timeout=int(Config.config().get(
-            section="IQ ANALYZER X", option="SessionTimeout")),
+        timeout=int(
+            Config.config().get(section="IQ ANALYZER X", option="SessionTimeout")
+        ),
         check=False,
     )
 
@@ -100,8 +101,7 @@ def run_analyses(
         # duplicated twice, but eh might be fine
 
         # run for before target
-        run_analysis(os.path.join(before_target_path,
-                     before_target_filename), score)
+        run_analysis(os.path.join(before_target_path, before_target_filename), score)
         parsed_results_before = parse_results(
             os.path.join(before_target_path, "analysis_result.xml")
         )
@@ -116,8 +116,7 @@ def run_analyses(
             )
 
         # run for after target
-        run_analysis(os.path.join(after_target_path,
-                     after_target_filename), score)
+        run_analysis(os.path.join(after_target_path, after_target_filename), score)
         parsed_results_after = parse_results(
             os.path.join(after_target_path, "analysis_result.xml")
         )

@@ -9,9 +9,8 @@ import os
 
 from flask import Blueprint
 from flask.wrappers import Response
-
-from ..config import Config
-from ..session_manager import check_session_exists
+from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.utils.session_manager import check_session_exists
 
 results_endpoint = Blueprint("results_endpoint", __name__)
 

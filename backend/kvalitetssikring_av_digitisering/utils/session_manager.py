@@ -6,7 +6,7 @@ import json
 import os
 import uuid
 
-from .config import Config
+from kvalitetssikring_av_digitisering.config import Config
 
 # const
 STATE = "state.json"
