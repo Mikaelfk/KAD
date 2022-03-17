@@ -13,13 +13,15 @@ from kvalitetssikring_av_digitisering.session_manager import (
     create_analysis_folders
 )
 
+
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 STORAGE_FOLDER_DIR = Config.config().get(section="API", option="StorageFolder")
-# Makes a session
-SESSION_ID = create_session()
 
 # Makes the StorageFolder directory
 os.makedirs(STORAGE_FOLDER_DIR, exist_ok=True)
+
+# Makes a session
+SESSION_ID = create_session()
 
 
 def test_create_session():
