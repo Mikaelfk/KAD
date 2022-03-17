@@ -1,6 +1,5 @@
 [API]
-Port = 
-UploadFolder = 
+Port = 5000 
 StorageFolder = 
 
 [JHOVE]
