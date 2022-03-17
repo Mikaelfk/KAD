@@ -9,7 +9,7 @@ import os
 
 from flask import Blueprint
 from flask.wrappers import Response
-from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_results_file
 from kvalitetssikring_av_digitisering.utils.session_manager import check_session_exists
 
 results_endpoint = Blueprint("results_endpoint", __name__)
@@ -23,11 +23,7 @@ def results(session_id):
         A HTTP Response with corresponding status code and data
     """
 
-    session_results_file = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"),
-        session_id,
-        "results.json",
-    )
+    session_results_file = get_session_results_file(session_id)
 
     if not check_session_exists(session_id):
         return Response(json.dumps({"error": "session does not exist"}), status=400)

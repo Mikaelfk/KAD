@@ -6,12 +6,12 @@ It defines endpoints for performing analysis with IQ Analyzer X.
 
 import json
 import multiprocessing.pool as ThreadPool
-import os
 
 from flask import Blueprint, request
 from flask.wrappers import Response
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import run_analyses
+from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_image_file
 from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
@@ -43,18 +43,12 @@ def analyze():
             after_target = request.files["after_target"]
 
             # TODO: also get the rest of the images from request.files["files"] so metadata can be added to them.
-
-            before_target_path = os.path.join(
-                Config.config().get(section="API", option="StorageFolder"),
-                session_id,
-                "images",
-                before_target.filename,
+            before_target_path = get_session_image_file(
+                session_id, before_target.filename
             )
-            after_target_path = os.path.join(
-                Config.config().get(section="API", option="StorageFolder"),
-                session_id,
-                "images",
-                after_target.filename,
+
+            after_target_path = get_session_image_file(
+                session_id, after_target.filename
             )
 
             before_target.save(before_target_path)

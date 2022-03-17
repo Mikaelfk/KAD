@@ -10,6 +10,11 @@ import subprocess
 from collections import defaultdict
 
 from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.utils.path_helpers import (
+    get_analysis_dir,
+    get_analysis_dir_image_file,
+    get_session_results_file,
+)
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
 
 from .parser import result_summary_parser
@@ -82,26 +87,17 @@ def run_analyses(
     """
 
     for score in ["C", "B", "A"]:
-        before_target_path = os.path.join(
-            Config.config().get(section="API", option="StorageFolder"),
-            session_id,
-            "outputs",
-            before_target_filename + "-analysis",
-            score,
-        )
+        before_target_path = get_analysis_dir(session_id, before_target_filename, score)
 
-        after_target_path = os.path.join(
-            Config.config().get(section="API", option="StorageFolder"),
-            session_id,
-            "outputs",
-            after_target_filename + "-analysis",
-            score,
-        )
+        after_target_path = get_analysis_dir(session_id, after_target_filename, score)
 
         # duplicated twice, but eh might be fine
 
         # run for before target
-        run_analysis(os.path.join(before_target_path, before_target_filename), score)
+        run_analysis(
+            get_analysis_dir_image_file(session_id, before_target_filename, score),
+            score,
+        )
         parsed_results_before = parse_results(
             os.path.join(before_target_path, "analysis_result.xml")
         )
@@ -116,7 +112,10 @@ def run_analyses(
             )
 
         # run for after target
-        run_analysis(os.path.join(after_target_path, after_target_filename), score)
+        run_analysis(
+            get_analysis_dir_image_file(session_id, after_target_filename, score),
+            score,
+        )
         parsed_results_after = parse_results(
             os.path.join(after_target_path, "analysis_result.xml")
         )
@@ -171,11 +170,7 @@ def save_results(
         target_order (str): which target (before, middle, after ...)
     """
 
-    session_results_file = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"),
-        session_id,
-        "results.json",
-    )
+    session_results_file = get_session_results_file(session_id)
 
     # get data from file
     with open(session_results_file, "a+", encoding="UTF-8") as json_file:
