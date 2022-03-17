@@ -10,14 +10,15 @@ import subprocess
 from collections import defaultdict
 
 from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
+    result_summary_parser,
+)
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir,
     get_analysis_dir_image_file,
     get_session_results_file,
 )
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
-
-from .parser import result_summary_parser
 
 
 def run_analysis(image_file_path: str, specification_level: str):
