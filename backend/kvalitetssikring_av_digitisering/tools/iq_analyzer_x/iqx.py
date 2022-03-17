@@ -61,7 +61,8 @@ def run_analysis(image_file_path: str, specification_level: str):
             specification,
             exif,
         ],
-        timeout=120,
+        timeout=int(Config.config().get(
+            section="IQ ANALYZER X", option="sessionTimeout")),
         check=False,
     )
 
@@ -99,7 +100,8 @@ def run_analyses(
         # duplicated twice, but eh might be fine
 
         # run for before target
-        run_analysis(os.path.join(before_target_path, before_target_filename), score)
+        run_analysis(os.path.join(before_target_path,
+                     before_target_filename), score)
         parsed_results_before = parse_results(
             os.path.join(before_target_path, "analysis_result.xml")
         )
@@ -114,7 +116,8 @@ def run_analyses(
             )
 
         # run for after target
-        run_analysis(os.path.join(after_target_path, after_target_filename), score)
+        run_analysis(os.path.join(after_target_path,
+                     after_target_filename), score)
         parsed_results_after = parse_results(
             os.path.join(after_target_path, "analysis_result.xml")
         )

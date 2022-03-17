@@ -8,3 +8,5 @@ JhoveInstallPath =
 
 [IQ ANALYZER X]
 InstallPath = 
+concurrentSessions = 4
+sessionTimeout = 120
