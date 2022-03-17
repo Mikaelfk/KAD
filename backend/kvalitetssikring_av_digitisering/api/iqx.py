@@ -19,7 +19,7 @@ iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
 # Create pool of n threads
 pool = ThreadPool.ThreadPool(int(Config.config().get(
-    section="IQ ANALYZER X", option="concurrentSessions")))
+    section="IQ ANALYZER X", option="ConcurrentSessions")))
 
 
 @iqx_endpoint.route("/api/analyze/device/iqx", methods=["POST"])
@@ -61,7 +61,6 @@ def analyze():
 
             pool.apply_async(run_analyses, args=(
                 before_target.filename, after_target.filename, session_id))
-            pool.join()
 
             return Response(json.dumps({"session_id": str(session_id)}), status=200)
 

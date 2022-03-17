@@ -62,7 +62,7 @@ def run_analysis(image_file_path: str, specification_level: str):
             exif,
         ],
         timeout=int(Config.config().get(
-            section="IQ ANALYZER X", option="sessionTimeout")),
+            section="IQ ANALYZER X", option="SessionTimeout")),
         check=False,
     )
 
