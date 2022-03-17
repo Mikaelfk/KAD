@@ -3,6 +3,7 @@
 """
 from flask import Flask
 from flask_cors import CORS
+from .config import Config
 
 from .api import validate_endpoint
 from .api import session_endpoint
@@ -18,11 +19,13 @@ def start():
 
     app = Flask(__name__)
     app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 1024  # 1GB
-    CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}}) # Compliant
+    # Compliant
+    CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 
     app.register_blueprint(validate_endpoint)
     app.register_blueprint(session_endpoint)
     app.register_blueprint(iqx_endpoint)
     app.register_blueprint(results_endpoint)
 
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=int(
+        Config.config().get(section="API", option="Port")))
