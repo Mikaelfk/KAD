@@ -1,6 +1,7 @@
 """Simple main class for running.
 
 """
+import os
 from flask import Flask
 from flask_cors import CORS
 from .config import Config
@@ -26,6 +27,10 @@ def start():
     app.register_blueprint(session_endpoint)
     app.register_blueprint(iqx_endpoint)
     app.register_blueprint(results_endpoint)
+
+    # Create storage folder
+    os.makedirs(Config.config().get(section="API",
+                option="StorageFolder"), exist_ok=True)
 
     app.run(host="0.0.0.0", port=int(
         Config.config().get(section="API", option="Port")))
