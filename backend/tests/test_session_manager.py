@@ -10,6 +10,9 @@ storage_folder_dir = Config.config().get(section="API", option="StorageFolder")
 def test_create_session():
     """tests if create_session function works
     """
+    # Makes the StorageFolder directory
+    os.makedirs(storage_folder_dir, exist_ok=True)
+
     session_id = create_session()
 
     # Asserts that the session_id is a valid uuid
