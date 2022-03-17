@@ -56,22 +56,25 @@ def run_analysis(image_file_path: str, specification_level: str):
     image_file = os.path.normpath(f"{image_file_path}")
     specification = f"--specification='{specification_number}'"
 
-    # order of arguments somewhat arbitrary, but chose same as example in manual just in case
-    subprocess.run(
-        [
-            iqx_executable,
-            image_file,
-            settings_id,
-            reference,
-            utt,
-            specification,
-            exif,
-        ],
-        timeout=int(
-            Config.config().get(section="IQ ANALYZER X", option="SessionTimeout")
-        ),
-        check=False,
-    )
+    try:
+        # order of arguments somewhat arbitrary, but chose same as example in manual just in case
+        subprocess.run(
+            [
+                iqx_executable,
+                image_file,
+                settings_id,
+                reference,
+                utt,
+                specification,
+                exif,
+            ],
+            timeout=int(
+                Config.config().get(section="IQ ANALYZER X", option="SessionTimeout")
+            ),
+            check=True,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return False
 
     return True
 
