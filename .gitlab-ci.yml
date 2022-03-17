@@ -35,7 +35,7 @@ pytest:
         - source venv/bin/activate
     script:
         - pip3 install -r requirements.txt
-        - printf "[JHOVE]\nJhoveInstallPath=/usr/bin" > config.ini
+        - cp tests/test_config/test_config.ini config.ini
         - pytest tests
 
 reacttest:
