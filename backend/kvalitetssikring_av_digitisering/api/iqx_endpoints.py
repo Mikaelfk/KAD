@@ -44,11 +44,11 @@ def analyze():
 
             # TODO: also get the rest of the images from request.files["files"] so metadata can be added to them.
             before_target_path = get_session_image_file(
-                session_id, before_target.filename
+                session_id, str(before_target.filename)
             )
 
             after_target_path = get_session_image_file(
-                session_id, after_target.filename
+                session_id, str(after_target.filename)
             )
 
             before_target.save(before_target_path)
