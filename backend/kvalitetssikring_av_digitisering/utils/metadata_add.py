@@ -1,6 +1,6 @@
+"""Module for adding metadata to a file
+"""
 import json
-import os
-
 import pyexiv2
 
 

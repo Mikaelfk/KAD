@@ -1,4 +1,4 @@
-"""Moodule for performing analusis with IQX.
+"""Module for performing analusis with IQX.
 
 Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
@@ -103,8 +103,7 @@ def run_iso_analysis(file_name: str, session_id: str):
 
         # run analysis on image
         result = run_analysis(
-            get_analysis_dir_image_file(
-                session_id, file_name, specification_level),
+            get_analysis_dir_image_file(session_id, file_name, specification_level),
             specification_level,
         )
 
@@ -114,8 +113,7 @@ def run_iso_analysis(file_name: str, session_id: str):
             result_data = json_iqx_set_analysis_failed(
                 result_data, file_name, specification_level
             )
-            write_to_json_file(
-                get_session_results_file(session_id), result_data)
+            write_to_json_file(get_session_results_file(session_id), result_data)
             continue
 
         # parse results from analysis
@@ -132,8 +130,7 @@ def run_iso_analysis(file_name: str, session_id: str):
             result_data = json_iqx_set_analysis_failed(
                 result_data, file_name, specification_level
             )
-            write_to_json_file(
-                get_session_results_file(session_id), result_data)
+            write_to_json_file(get_session_results_file(session_id), result_data)
             continue
 
         # add result to data
@@ -179,8 +176,10 @@ def run_before_after_target_analysis(
     ]
 
     for file_name in image_files:
-        add_metadata_to_file(get_session_image_file(
-            session_id, file_name), get_session_results_file(session_id))
+        add_metadata_to_file(
+            get_session_image_file(session_id, file_name),
+            get_session_results_file(session_id),
+        )
 
     # set session status as finished
     update_session_status(session_id, "finished")
