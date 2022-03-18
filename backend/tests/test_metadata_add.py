@@ -1,3 +1,5 @@
+"""Testing adding metadata to image
+"""
 import os
 
 import pyexiv2

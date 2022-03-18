@@ -1,3 +1,5 @@
+"""Testing jhove validation code
+"""
 import os
 
 from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
@@ -10,7 +12,7 @@ def test_jhove_validation_good():
 
     image_good = THIS_DIR + "/test_pictures/test_image.jpg"
     output = jhove_validation(image_good)
-    assert output[1] == True
+    assert output[1]
 
 
 def test_jhove_validation_bad():
@@ -18,4 +20,4 @@ def test_jhove_validation_bad():
 
     image_bad = THIS_DIR + "/test_pictures/test_image-bad.jpg"
     output = jhove_validation(image_bad)
-    assert output[1] == False
+    assert not output[1]
