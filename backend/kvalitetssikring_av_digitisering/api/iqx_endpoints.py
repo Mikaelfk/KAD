@@ -43,8 +43,8 @@ def analyze():
             session_id = create_session()
             before_target = request.files["before_target"]
             after_target = request.files["after_target"]
+            files = request.files.getlist("files")
 
-            # TODO: also get the rest of the images from request.files["files"] so metadata can be added to them.
             before_target_path = get_session_image_file(
                 session_id, str(before_target.filename)
             )
@@ -57,6 +57,10 @@ def analyze():
             after_target.save(after_target_path)
 
             create_analysis_folders(session_id)
+
+            for file in files:
+                file.save(get_session_image_file(
+                    session_id, str(file.filename)))
 
             pool.apply_async(
                 run_before_after_target_analysis,

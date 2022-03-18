@@ -68,7 +68,8 @@ def create_analysis_folders(session_id):
 
     # check if directory exsists, and if not: create it
     for file_name in image_files:
-        analysis_dir = os.path.join(session_output_folder, file_name + "-analysis")
+        analysis_dir = os.path.join(
+            session_output_folder, file_name + "-analysis")
 
         if not os.path.isdir(analysis_dir):
             os.mkdir(analysis_dir)
@@ -77,7 +78,8 @@ def create_analysis_folders(session_id):
                 os.mkdir(os.path.join(analysis_dir, char))
 
                 image_src = get_session_image_file(session_id, file_name)
-                image_dest = get_analysis_dir_image_file(session_id, file_name, char)
+                image_dest = get_analysis_dir_image_file(
+                    session_id, file_name, char)
 
                 os.link(image_src, image_dest)
 

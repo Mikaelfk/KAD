@@ -12,14 +12,11 @@ def add_metadata_to_file(file_path, result_file):
         result_file (str): Path to the result json file
     """
     img = pyexiv2.Image(file_path)
-    name = os.path.basename(os.path.normpath(file_path))
-    with open(result_file, "r") as json_result:
+    with open(result_file, "r", encoding="UTF-8") as json_result:
         data = json.load(json_result)
-        result_data = data[name]
         tags = ["Xmp", "xmp"]
         metadata = {}
-        get_xmp_metadata(tags, result_data, metadata)
-
+        get_xmp_metadata(tags, data, metadata)
     img.modify_xmp(metadata)
 
 
