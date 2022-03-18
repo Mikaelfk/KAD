@@ -14,6 +14,7 @@ from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
 from kvalitetssikring_av_digitisering.utils.json_helpers import (
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
+    json_iqx_set_image_tag,
     read_from_json_file,
     write_to_json_file,
 )
@@ -91,11 +92,11 @@ def run_iso_analysis(file_name: str, session_id: str):
         session_id (str): The session id of the current session
     """
 
-    result_data = read_from_json_file(get_session_results_file(session_id))
-
     update_session_status(session_id, "running")
 
     for specification_level in ["C", "B", "A"]:
+        result_data = read_from_json_file(get_session_results_file(session_id))
+
         # run analysis on image
         result = run_analysis(
             get_analysis_dir_image_file(session_id, file_name, specification_level),
@@ -132,6 +133,35 @@ def run_iso_analysis(file_name: str, session_id: str):
         )
 
         write_to_json_file(get_session_results_file(session_id), result_data)
+
+
+def run_before_after_target_analysis(
+    before_target_filename: str, after_target_filename: str, session_id
+):
+    """Method for running analysis for the before and after target usecase.
+
+    Args:
+        before_target_filename (str): filename of the first target
+        after_target_filename (str): filename of the second target
+        session_id (str): the session id of the current session
+    """
+
+    # run analysis
+    run_iso_analysis(before_target_filename, session_id)
+    run_iso_analysis(after_target_filename, session_id)
+
+    # set image tags
+    result_data = read_from_json_file(get_session_results_file(session_id))
+    result_data = json_iqx_set_image_tag(
+        result_data, before_target_filename, "before_target"
+    )
+    result_data = json_iqx_set_image_tag(
+        result_data, after_target_filename, "after_target"
+    )
+    write_to_json_file(get_session_results_file(session_id), result_data)
+
+    # set session status as finished
+    update_session_status(session_id, "finished")
 
 
 def parse_results(result_file_path: str):
