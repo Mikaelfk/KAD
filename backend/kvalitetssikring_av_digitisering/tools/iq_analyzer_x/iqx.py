@@ -1,4 +1,4 @@
-"""Moodule for performing analusis with IQX.
+"""Module for performing analusis with IQX.
 
 Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
@@ -21,8 +21,12 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_analysis_dir_image_iqx_result_file,
+    get_session_dir,
+    get_session_image_file,
+    get_session_images_dir,
     get_session_results_file,
 )
+from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
 
 
@@ -109,7 +113,8 @@ def run_iso_analysis(file_name: str, session_id: str):
             result_data = json_iqx_set_analysis_failed(
                 result_data, file_name, specification_level
             )
-            break
+            write_to_json_file(get_session_results_file(session_id), result_data)
+            continue
 
         # parse results from analysis
         analysis_results = parse_results(
@@ -125,7 +130,8 @@ def run_iso_analysis(file_name: str, session_id: str):
             result_data = json_iqx_set_analysis_failed(
                 result_data, file_name, specification_level
             )
-            break
+            write_to_json_file(get_session_results_file(session_id), result_data)
+            continue
 
         # add result to data
         result_data = json_iqx_add_result(
@@ -159,6 +165,21 @@ def run_before_after_target_analysis(
         result_data, after_target_filename, "after_target"
     )
     write_to_json_file(get_session_results_file(session_id), result_data)
+
+    session_image_folder = get_session_images_dir(session_id)
+
+    # find name of all image files in session
+    image_files = [
+        f
+        for f in os.listdir(session_image_folder)
+        if os.path.isfile(os.path.join(session_image_folder, f))
+    ]
+
+    for file_name in image_files:
+        add_metadata_to_file(
+            get_session_image_file(session_id, file_name),
+            get_session_results_file(session_id),
+        )
 
     # set session status as finished
     update_session_status(session_id, "finished")

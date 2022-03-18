@@ -35,9 +35,6 @@ def results(session_id):
             # this doesn't seem great, but works, so maybe fix in future?
             json_data = json.load(json_file)
 
-            if "overall_score" not in json_data.keys():
-                json_data["overall_score"] = "none"
-
             return Response(json.dumps(json_data), status=200)
 
         return Response(json.dumps({"error": "no results"}), status=404)
