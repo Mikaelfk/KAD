@@ -108,6 +108,23 @@ def get_session_results_file(session_id: str):
     )
 
 
+def get_session_state_file(session_id: str):
+    """Method for getting the path to a sessions state file.
+
+    Args:
+        session_id (str): the unique id of a session
+
+    Returns:
+        path (str): path to the state file in a session
+    """
+
+    return os.path.join(
+        Config.config().get(section="API", option="StorageFolder"),
+        session_id,
+        "state.json",
+    )
+
+
 def get_analysis_dir_image_file(session_id: str, file_name: str, score: str):
     """Method for getting the path to an image in its analysis folder.
 
