@@ -54,11 +54,19 @@ def json_iqx_add_result(
     Returns:
         dict: updated json data
     """
+    data = json_data.get(file_name)
 
-    data = defaultdict(dict, json_data)
-    data[file_name][specification_level]["completed"] = True
-    data[file_name][specification_level][results] = results
-    return dict(data)
+    if data is None:
+        data = {}
+
+    data = defaultdict(dict, data)
+
+    data[specification_level]["completed"] = True
+    data[specification_level]["results"] = results
+
+    json_data[file_name] = dict(data)
+
+    return json_data
 
 
 def json_iqx_set_analysis_failed(
@@ -75,9 +83,18 @@ def json_iqx_set_analysis_failed(
         dict: updated json data
     """
 
-    data = defaultdict(dict, json_data)
-    data[file_name][specification_level]["completed"] = False
-    return dict(data)
+    data = json_data.get(file_name)
+
+    if data is None:
+        data = {}
+
+    data = defaultdict(dict, data)
+
+    data[specification_level]["completed"] = False
+
+    json_data[file_name] = dict(data)
+
+    return json_data
 
 
 def json_iqx_set_image_tag(json_data: dict, file_name: str, image_tag: str):
@@ -92,12 +109,21 @@ def json_iqx_set_image_tag(json_data: dict, file_name: str, image_tag: str):
         dict: updated json data
     """
 
-    data = defaultdict(dict, json_data)
-    data[file_name]["image_tag"] = image_tag
-    return dict(data)
+    data = json_data.get(file_name)
+
+    if data is None:
+        data = {}
+
+    data = defaultdict(str, data)
+
+    data["image_tag"] = image_tag
+
+    json_data[file_name] = dict(data)
+
+    return json_data
 
 
-def json_iqx_set_overall_score(json_data: dict, overall_score: str):
+def json_iqx_set_overall_score(json_data: dict, file_name: str, overall_score: str):
     """Method for setting the overall score of a iqx analysis result.
 
     Args:
@@ -108,6 +134,15 @@ def json_iqx_set_overall_score(json_data: dict, overall_score: str):
         dict: updated json data
     """
 
-    data = defaultdict(str, json_data)
+    data = json_data.get(file_name)
+
+    if data is None:
+        data = {}
+
+    data = defaultdict(str, data)
+
     data["overall_score"] = overall_score
-    return dict(data)
+
+    json_data[file_name] = dict(data)
+
+    return json_data
