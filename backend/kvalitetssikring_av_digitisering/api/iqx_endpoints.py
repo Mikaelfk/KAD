@@ -10,7 +10,9 @@ import multiprocessing.pool as ThreadPool
 from flask import Blueprint, request
 from flask.wrappers import Response
 from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import run_analyses
+from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import (
+    run_before_after_target_analysis,
+)
 from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_image_file
 from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
@@ -57,7 +59,7 @@ def analyze():
             create_analysis_folders(session_id)
 
             pool.apply_async(
-                run_analyses,
+                run_before_after_target_analysis,
                 args=(before_target.filename, after_target.filename, session_id),
             )
 
