@@ -4,15 +4,26 @@ Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
 """
 
-import json
 import os
 import subprocess
-from collections import defaultdict
 
-from ...config import Config
-from ...session_manager import update_session_status
-
-from .parser import result_summary_parser
+from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
+    result_summary_parser,
+)
+from kvalitetssikring_av_digitisering.utils.json_helpers import (
+    json_iqx_add_result,
+    json_iqx_set_analysis_failed,
+    json_iqx_set_image_tag,
+    read_from_json_file,
+    write_to_json_file,
+)
+from kvalitetssikring_av_digitisering.utils.path_helpers import (
+    get_analysis_dir_image_file,
+    get_analysis_dir_image_iqx_result_file,
+    get_session_results_file,
+)
+from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
 
 
 def run_analysis(image_file_path: str, specification_level: str):
@@ -50,88 +61,107 @@ def run_analysis(image_file_path: str, specification_level: str):
     image_file = os.path.normpath(f"{image_file_path}")
     specification = f"--specification='{specification_number}'"
 
-    # order of arguments somewhat arbitrary, but chose same as example in manual just in case
-    subprocess.run(
-        [
-            iqx_executable,
-            image_file,
-            settings_id,
-            reference,
-            utt,
-            specification,
-            exif,
-        ],
-        timeout=int(Config.config().get(
-            section="IQ ANALYZER X", option="SessionTimeout")),
-        check=False,
-    )
+    try:
+        # order of arguments somewhat arbitrary, but chose same as example in manual just in case
+        subprocess.run(
+            [
+                iqx_executable,
+                image_file,
+                settings_id,
+                reference,
+                utt,
+                specification,
+                exif,
+            ],
+            timeout=int(
+                Config.config().get(section="IQ ANALYZER X", option="SessionTimeout")
+            ),
+            check=True,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return False
 
     return True
 
 
-def run_analyses(
-    before_target_filename: str, after_target_filename: str, session_id: str
-):
-    """Runs analysis using all three ISO levels on both before and after target.
+def run_iso_analysis(file_name: str, session_id: str):
+    """Runs analysis using all three ISO levels on image.
 
     Args:
-        before_target_path (str): The target which is scanned at the start of an image batch
-        after_target_path (str): The target which is scanend at the end of an image batch
+        filename (str): name of file to run analysis on
         session_id (str): The session id of the current session
     """
 
-    for score in ["C", "B", "A"]:
-        before_target_path = os.path.join(
-            Config.config().get(section="API", option="StorageFolder"),
-            session_id,
-            "outputs",
-            before_target_filename + "-analysis",
-            score,
+    update_session_status(session_id, "running")
+
+    for specification_level in ["C", "B", "A"]:
+        result_data = read_from_json_file(get_session_results_file(session_id))
+
+        # run analysis on image
+        result = run_analysis(
+            get_analysis_dir_image_file(session_id, file_name, specification_level),
+            specification_level,
         )
 
-        after_target_path = os.path.join(
-            Config.config().get(section="API", option="StorageFolder"),
-            session_id,
-            "outputs",
-            after_target_filename + "-analysis",
-            score,
-        )
-
-        # duplicated twice, but eh might be fine
-
-        # run for before target
-        run_analysis(os.path.join(before_target_path,
-                     before_target_filename), score)
-        parsed_results_before = parse_results(
-            os.path.join(before_target_path, "analysis_result.xml")
-        )
-
-        if parsed_results_before is not None:
-            save_results(
-                session_id,
-                before_target_filename,
-                score,
-                parsed_results_before,
-                "before_target",
+        # if iqx fails, set result to failed and move on
+        if result is False:
+            print("uwu iqx machine broke")
+            result_data = json_iqx_set_analysis_failed(
+                result_data, file_name, specification_level
             )
+            break
 
-        # run for after target
-        run_analysis(os.path.join(after_target_path,
-                     after_target_filename), score)
-        parsed_results_after = parse_results(
-            os.path.join(after_target_path, "analysis_result.xml")
+        # parse results from analysis
+        analysis_results = parse_results(
+            get_analysis_dir_image_iqx_result_file(
+                session_id, file_name, specification_level
+            )
         )
 
-        if parsed_results_after is not None:
-            save_results(
-                session_id,
-                after_target_filename,
-                score,
-                parsed_results_after,
-                "after_target",
+        # if parsing fails, iqx probably also fails,
+        # so set result to failed and move on
+        if analysis_results is None:
+            print("uwu parser machine broke")
+            result_data = json_iqx_set_analysis_failed(
+                result_data, file_name, specification_level
             )
+            break
 
-    update_session_status(session_id, "Finished")
+        # add result to data
+        result_data = json_iqx_add_result(
+            result_data, file_name, specification_level, analysis_results
+        )
+
+        write_to_json_file(get_session_results_file(session_id), result_data)
+
+
+def run_before_after_target_analysis(
+    before_target_filename: str, after_target_filename: str, session_id
+):
+    """Method for running analysis for the before and after target usecase.
+
+    Args:
+        before_target_filename (str): filename of the first target
+        after_target_filename (str): filename of the second target
+        session_id (str): the session id of the current session
+    """
+
+    # run analysis
+    run_iso_analysis(before_target_filename, session_id)
+    run_iso_analysis(after_target_filename, session_id)
+
+    # set image tags
+    result_data = read_from_json_file(get_session_results_file(session_id))
+    result_data = json_iqx_set_image_tag(
+        result_data, before_target_filename, "before_target"
+    )
+    result_data = json_iqx_set_image_tag(
+        result_data, after_target_filename, "after_target"
+    )
+    write_to_json_file(get_session_results_file(session_id), result_data)
+
+    # set session status as finished
+    update_session_status(session_id, "finished")
 
 
 def parse_results(result_file_path: str):
@@ -151,49 +181,3 @@ def parse_results(result_file_path: str):
     except FileNotFoundError as exception:
         print(exception)
         return None
-
-
-def save_results(
-    session_id: str,
-    filename: str,
-    specification_level: str,
-    results: dict,
-    target_order: str,
-):
-    """Method for saving the results after an analysis.
-
-    This method will save the results in the results file in a session
-
-    Args:
-        session_id (str): Unique session id
-        filename (str): name of analyzed file
-        specification_level (str): specification level used when analyzing
-        results (dict): parsed analysis results
-        target_order (str): which target (before, middle, after ...)
-    """
-
-    session_results_file = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"),
-        session_id,
-        "results.json",
-    )
-
-    # get data from file
-    with open(session_results_file, "a+", encoding="UTF-8") as json_file:
-        json_file.seek(0)
-
-        if os.path.getsize(session_results_file) > 0:
-            data = json.load(json_file)
-        else:
-            data = {}
-
-    # update data
-    data = defaultdict(dict, data)
-    data[str(filename)]["target_order"] = target_order
-    data[str(filename)][str(specification_level)] = results
-    if bool(results["passed"]):
-        data[str(filename)]["overall_score"] = specification_level
-
-    # write new data to file
-    with open(session_results_file, "w+", encoding="UTF-8") as json_file:
-        json_file.write(json.dumps(dict(data)))

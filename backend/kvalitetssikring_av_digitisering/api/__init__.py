@@ -2,7 +2,7 @@
 
 """
 
-from .validate import validate_endpoint
-from .session import session_endpoint
-from .iqx import iqx_endpoint
-from .results import results_endpoint
+from .iqx_endpoints import iqx_endpoint
+from .results_endpoints import results_endpoint
+from .session_endpoints import session_endpoint
+from .validate_endpoints import validate_endpoint

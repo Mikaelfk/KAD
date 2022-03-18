@@ -6,7 +6,18 @@ import json
 import os
 import uuid
 
-from .config import Config
+from kvalitetssikring_av_digitisering.utils.json_helpers import (
+    read_from_json_file,
+    write_to_json_file,
+)
+from kvalitetssikring_av_digitisering.utils.path_helpers import (
+    get_analysis_dir_image_file,
+    get_session_dir,
+    get_session_image_file,
+    get_session_images_dir,
+    get_session_outputs_dir,
+    get_session_state_file,
+)
 
 # const
 STATE = "state.json"
@@ -23,14 +34,11 @@ def create_session():
     session_id = str(uuid.uuid4())
 
     # create session dir
-    root_folder = Config.config().get(section="API", option="StorageFolder")
-    session_dir = os.path.join(root_folder, session_id)
-    os.mkdir(session_dir)
+    os.mkdir(get_session_dir(session_id))
 
     # create folder structure
-    os.mkdir(os.path.join(session_dir, "results"))
-    os.mkdir(os.path.join(session_dir, "images"))
-    os.mkdir(os.path.join(session_dir, "outputs"))
+    os.mkdir(get_session_images_dir(session_id))
+    os.mkdir(get_session_outputs_dir(session_id))
 
     update_session_status(session_id, "created")
 
@@ -47,15 +55,9 @@ def create_analysis_folders(session_id):
         session_id (str): the unique id of the session
     """
 
-    session_image_folder = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"), session_id, "images"
-    )
+    session_image_folder = get_session_images_dir(session_id)
 
-    session_output_folder = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"),
-        session_id,
-        "outputs",
-    )
+    session_output_folder = get_session_outputs_dir(session_id)
 
     # find name of all image files in session
     image_files = [
@@ -74,13 +76,8 @@ def create_analysis_folders(session_id):
             for char in ["A", "B", "C"]:
                 os.mkdir(os.path.join(analysis_dir, char))
 
-                image_src = os.path.join(session_image_folder, file_name)
-                image_dest = os.path.join(
-                    session_output_folder,
-                    file_name + "-analysis",
-                    char,
-                    file_name,
-                )
+                image_src = get_session_image_file(session_id, file_name)
+                image_dest = get_analysis_dir_image_file(session_id, file_name, char)
 
                 os.link(image_src, image_dest)
 
@@ -92,20 +89,9 @@ def update_session_status(session_id, status):
         session_id (str): the unique id of the session
         status (str): the new status to update to
     """
-    session_folder = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"), session_id
-    )
-
-    # open state file and update json
-    with open(os.path.join(session_folder, STATE), "w+", encoding="UTF-8") as json_file:
-        if os.stat(os.path.join(session_folder, STATE)).st_size == 0:
-            data = {}
-        else:
-            data = json.load(json_file)
-
-        data["status"] = status
-
-        json_file.write(json.dumps(data))
+    data = read_from_json_file(get_session_state_file(session_id))
+    data["status"] = status
+    write_to_json_file(get_session_state_file(session_id), data)
 
 
 def check_session_exists(session_id):
@@ -115,9 +101,7 @@ def check_session_exists(session_id):
         session_id (str): unique id of the session
     """
 
-    session_folder = os.path.join(
-        Config.config().get(section="API", option="StorageFolder"), session_id
-    )
+    session_folder = get_session_dir(session_id)
 
     state_file = os.path.join(session_folder, STATE)
 

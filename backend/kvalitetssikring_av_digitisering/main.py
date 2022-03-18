@@ -2,14 +2,17 @@
 
 """
 import os
+
 from flask import Flask
 from flask_cors import CORS
-from .config import Config
 
-from .api import validate_endpoint
-from .api import session_endpoint
-from .api import iqx_endpoint
-from .api import results_endpoint
+from kvalitetssikring_av_digitisering.api import (
+    iqx_endpoint,
+    results_endpoint,
+    session_endpoint,
+    validate_endpoint,
+)
+from kvalitetssikring_av_digitisering.config import Config
 
 
 def start():
@@ -29,8 +32,8 @@ def start():
     app.register_blueprint(results_endpoint)
 
     # Create storage folder
-    os.makedirs(Config.config().get(section="API",
-                option="StorageFolder"), exist_ok=True)
+    os.makedirs(
+        Config.config().get(section="API", option="StorageFolder"), exist_ok=True
+    )
 
-    app.run(host="0.0.0.0", port=int(
-        Config.config().get(section="API", option="Port")))
+    app.run(host="0.0.0.0", port=int(Config.config().get(section="API", option="Port")))

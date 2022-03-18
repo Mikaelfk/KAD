@@ -1,7 +1,7 @@
-from array import array
-import pyexiv2
 import json
 import os
+
+import pyexiv2
 
 
 def add_metadata_to_file(file_path, result_file):
@@ -16,7 +16,7 @@ def add_metadata_to_file(file_path, result_file):
     with open(result_file, "r") as json_result:
         data = json.load(json_result)
         result_data = data[name]
-        tags = ['Xmp', 'xmp']
+        tags = ["Xmp", "xmp"]
         metadata = {}
         get_xmp_metadata(tags, result_data, metadata)
 
@@ -39,6 +39,6 @@ def get_xmp_metadata(tags, result_data, metadata: dict):
         if type(value) == dict:
             get_xmp_metadata(tags, value, metadata)
         else:
-            metadata.update({'.'.join(tags): value})
+            metadata.update({".".join(tags): value})
         # Deletes the last tag from the list
         del tags[-1]

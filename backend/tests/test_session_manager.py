@@ -1,18 +1,24 @@
 """test for the session_manager module
 """
-import uuid
-import os.path
-import json
+import os
 import shutil
+import uuid
 
 from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.session_manager import (
-    create_session,
-    check_session_exists,
-    update_session_status,
-    create_analysis_folders
+from kvalitetssikring_av_digitisering.utils.json_helpers import read_from_json_file
+from kvalitetssikring_av_digitisering.utils.path_helpers import (
+    get_analysis_dir,
+    get_analysis_dir_image_file,
+    get_session_images_dir,
+    get_session_outputs_dir,
+    get_session_state_file,
 )
-
+from kvalitetssikring_av_digitisering.utils.session_manager import (
+    check_session_exists,
+    create_analysis_folders,
+    create_session,
+    update_session_status,
+)
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 STORAGE_FOLDER_DIR = Config.config().get(section="API", option="StorageFolder")
@@ -25,8 +31,7 @@ SESSION_ID = create_session()
 
 
 def test_create_session():
-    """Tests if create_session function works
-    """
+    """Tests if create_session function works"""
 
     # Asserts that the SESSION_ID is a valid uuid
     try:
@@ -35,46 +40,33 @@ def test_create_session():
     except ValueError:
         assert False
 
-    session_state_file = os.path.join(
-        STORAGE_FOLDER_DIR, SESSION_ID, "state.json")
+    session_state_file = get_session_state_file(SESSION_ID)
 
     # Checks that the storage folder exists
     assert os.path.isdir(STORAGE_FOLDER_DIR)
 
     # Checks that the outputs folder exists
-    assert os.path.isdir(os.path.join(
-        STORAGE_FOLDER_DIR, SESSION_ID, "outputs"))
+    assert os.path.isdir(get_session_outputs_dir(SESSION_ID))
 
     # Checks that the images folder exists
-    assert os.path.isdir(os.path.join(
-        STORAGE_FOLDER_DIR, SESSION_ID, "images"))
+    assert os.path.isdir(get_session_images_dir(SESSION_ID))
 
     # Checks that the state.json file exists
     assert os.path.isfile(session_state_file)
 
-    with open(session_state_file, "a+", encoding="UTF-8") as json_file:
-        json_file.seek(0)
-
-        if os.path.getsize(session_state_file) > 0:
-            data = json.load(json_file)
-        else:
-            data = {}
-
-        # Checks that the status in state.json is "created"
-        assert data["status"] == "created"
+    data = read_from_json_file(session_state_file)
+    assert data["status"] == "created"
 
 
 def test_create_analysis_folders():
-    """Test the create_analysis_folders function
-    """
+    """Test the create_analysis_folders function"""
     # Define constants for image name and image analysis folder
     test_image_name = "test_image.jpg"
     test_image_analysis_path = test_image_name + "-analysis"
 
     # Sets the source and destination path for the test image
     src = os.path.join(THIS_DIR, "test_pictures", test_image_name)
-    dst = os.path.join(STORAGE_FOLDER_DIR, SESSION_ID,
-                       "images")
+    dst = get_session_images_dir(SESSION_ID)
 
     # Copies the image to the destination path
     shutil.copy(src, dst)
@@ -85,39 +77,26 @@ def test_create_analysis_folders():
     iso_scores = ["A", "B", "C"]
 
     for score in iso_scores:
-        assert os.path.isdir(os.path.join(
-            STORAGE_FOLDER_DIR, SESSION_ID, "outputs", test_image_analysis_path, score))
-        assert os.path.isfile(os.path.join(
-            STORAGE_FOLDER_DIR, SESSION_ID, "outputs", test_image_analysis_path, score, test_image_name))
+        assert os.path.isdir(get_analysis_dir(SESSION_ID, test_image_name, score))
+
+        assert os.path.isfile(
+            get_analysis_dir_image_file(SESSION_ID, test_image_name, score)
+        )
 
 
 def test_check_session_exists_postive():
-    """Tests the check_session_exists function when SESSION_ID is correct
-    """
+    """Tests the check_session_exists function when SESSION_ID is correct"""
     assert check_session_exists(SESSION_ID)
 
 
 def test_check_session_exists_negative():
-    """Tests the check_session_exists function when SESSION_ID is not correct
-    """
+    """Tests the check_session_exists function when SESSION_ID is not correct"""
     assert not check_session_exists("wrong_SESSION_ID_:)")
 
 
 def test_update_session_status():
-    """Sets the session status in state.json to finished and asserts if the change was made
-    """
+    """Sets the session status in state.json to finished and asserts if the change was made"""
     update_session_status(SESSION_ID, "finished")
 
-    session_state_file = os.path.join(
-        STORAGE_FOLDER_DIR, SESSION_ID, "state.json")
-
-    with open(session_state_file, "a+", encoding="UTF-8") as json_file:
-        json_file.seek(0)
-
-        if os.path.getsize(session_state_file) > 0:
-            data = json.load(json_file)
-        else:
-            data = {}
-
-        # Checks that the status in state.json is "created"
-        assert data["status"] == "finished"
+    data = read_from_json_file(get_session_state_file(SESSION_ID))
+    assert data["status"] == "finished"
