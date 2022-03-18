@@ -6,12 +6,17 @@ import json
 import os
 import uuid
 
+from kvalitetssikring_av_digitisering.utils.json_helpers import (
+    read_from_json_file,
+    write_to_json_file,
+)
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_session_dir,
     get_session_image_file,
     get_session_images_dir,
     get_session_outputs_dir,
+    get_session_state_file,
 )
 
 # const
@@ -84,18 +89,9 @@ def update_session_status(session_id, status):
         session_id (str): the unique id of the session
         status (str): the new status to update to
     """
-    session_folder = get_session_dir(session_id)
-
-    # open state file and update json
-    with open(os.path.join(session_folder, STATE), "w+", encoding="UTF-8") as json_file:
-        if os.stat(os.path.join(session_folder, STATE)).st_size == 0:
-            data = {}
-        else:
-            data = json.load(json_file)
-
-        data["status"] = status
-
-        json_file.write(json.dumps(data))
+    data = read_from_json_file(get_session_state_file(session_id))
+    data["status"] = status
+    write_to_json_file(get_session_state_file(session_id), data)
 
 
 def check_session_exists(session_id):
