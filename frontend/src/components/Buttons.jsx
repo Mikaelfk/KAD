@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { styled, StyledEngineProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import './Buttons.css';
@@ -13,7 +14,7 @@ export const UploadButton = (props) => {
     if (props.uploadTypeSingle === true) {
         input = <Input accept="image/*" id={"contained-button-file" + props.buttonId} type="file" onChange={props.onUpload} />
     } else {
-        input = <Input accept="image/*" id={"contained-button-file" + props.buttonId} multiple type="file" onChange={props.onUpload} /> 
+        input = <Input accept="image/*" id={"contained-button-file" + props.buttonId} multiple type="file" onChange={props.onUpload} />
     }
     return (
         <StyledEngineProvider injectFirst>
@@ -27,6 +28,14 @@ export const UploadButton = (props) => {
             </form>
         </StyledEngineProvider >
     );
+}
+
+UploadButton.propTypes = {
+    uploadTypeSingle: PropTypes.bool,
+    onUpload: PropTypes.func.isRequired,
+    buttonId: PropTypes.number,
+    buttonType: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired
 }
 
 
@@ -48,6 +57,10 @@ export const SubmitButton = (props) => {
     );
 }
 
+SubmitButton.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+}
+
 export const CancelButton = (props) => {
     return (
         <Button
@@ -56,4 +69,9 @@ export const CancelButton = (props) => {
             to={props.to}>
             Cancel
         </Button>);
+}
+
+CancelButton.propTypes = {
+    component: PropTypes.object.isRequired,
+    to: PropTypes.string.isRequired
 }

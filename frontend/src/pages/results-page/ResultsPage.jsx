@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import { Typography, Card, CardContent } from "@mui/material";
 import HomeButton from "../../components/HomeButton";
