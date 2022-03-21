@@ -2,6 +2,7 @@
     "test_metadata.jpg": {
         "target_order": "before_target",
         "B": {
+            "passed": true,
             "TonalReproduction": {
                 "Delta_C": "failed",
                 "Delta_E": "succeeded",

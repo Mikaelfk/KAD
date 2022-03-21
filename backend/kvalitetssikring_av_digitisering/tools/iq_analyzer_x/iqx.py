@@ -15,8 +15,10 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
     json_iqx_set_image_tag,
+    json_iqx_set_overall_score,
     read_from_json_file,
     write_to_json_file,
+    json_get_best_passing_iso_score,
 )
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
@@ -164,6 +166,19 @@ def run_before_after_target_analysis(
     result_data = json_iqx_set_image_tag(
         result_data, after_target_filename, "after_target"
     )
+
+    # set the overall score of the targets
+    result_data = json_iqx_set_overall_score(
+        result_data,
+        before_target_filename,
+        str(json_get_best_passing_iso_score(result_data, before_target_filename)),
+    )
+    result_data = json_iqx_set_overall_score(
+        result_data,
+        after_target_filename,
+        str(json_get_best_passing_iso_score(result_data, after_target_filename)),
+    )
+
     write_to_json_file(get_session_results_file(session_id), result_data)
 
     session_image_folder = get_session_images_dir(session_id)

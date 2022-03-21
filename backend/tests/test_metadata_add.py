@@ -22,6 +22,7 @@ def test_add_metadata_to_file():
 
     assert xmp_data == {
         "Xmp.xmp.test_metadata.jpg.target_order": "before_target",
+        "Xmp.xmp.test_metadata.jpg.B.passed": "True",
         "Xmp.xmp.test_metadata.jpg.B.TonalReproduction.Delta_C": "failed",
         "Xmp.xmp.test_metadata.jpg.B.TonalReproduction.Delta_E": "succeeded",
         "Xmp.xmp.test_metadata.jpg.B.TonalReproduction.Lab_L": "failed",

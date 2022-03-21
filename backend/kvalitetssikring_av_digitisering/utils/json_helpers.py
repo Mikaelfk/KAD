@@ -146,3 +146,23 @@ def json_iqx_set_overall_score(json_data: dict, file_name: str, overall_score: s
     json_data[file_name] = dict(data)
 
     return json_data
+
+
+def json_get_best_passing_iso_score(json_data: dict, file_name: str):
+    data = json_data.get(file_name)
+
+    if data is None:
+        data = {}
+
+    data = defaultdict(dict, data)
+
+    for score in ["A", "B", "C"]:
+        if (
+            data[file_name]
+            and data[file_name][score]
+            and data[file_name][score]["completed"]
+            and data[file_name][score]["results"]["passed"]
+        ):
+            return score
+
+    return None
