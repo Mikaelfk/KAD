@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types'
 import { Typography } from '@mui/material';
 import { UploadButton, SubmitButton, CancelButton } from '../../components/Buttons';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,13 @@ const UploadObject = (props) => {
             </div>
         </div>
     );
+}
+
+UploadObject.propTypes = {
+    onRender: PropTypes.func.isRequired,
+    onUpload: PropTypes.func.isRequired,
+    files: PropTypes.array.isRequired,
+    onSubmit: PropTypes.func.isRequired
 }
 
 export default UploadObject;
