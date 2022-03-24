@@ -97,8 +97,6 @@ def run_iso_analysis(file_name: str, session_id: str):
         session_id (str): The session id of the current session
     """
 
-    update_session_status(session_id, "running")
-
     for specification_level in ["C", "B", "A"]:
         result_data = read_from_json_file(get_session_results_file(session_id))
 
@@ -152,6 +150,8 @@ def run_before_after_target_analysis(
         after_target_filename (str): filename of the second target
         session_id (str): the session id of the current session
     """
+
+    update_session_status(session_id, "running")
 
     # run analysis
     run_iso_analysis(before_target_filename, session_id)
