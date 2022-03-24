@@ -102,7 +102,6 @@ const ResultPage = () => {
             )
     }
 
-    // TODO: make home button on this page
     return (
         <div className="container" >
             <HomeButton></HomeButton>
