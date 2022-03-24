@@ -1,9 +1,9 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
-import { Typography, Card, CardContent } from "@mui/material";
 import HomeButton from "../../components/HomeButton";
-import "./ResultsPage.css"
-import Config from "../../config.json"
+import Config from "../../config.json";
+import "./ResultsPage.css";
 
 const ResultsPage = () => {
 
@@ -25,7 +25,7 @@ const ResultsPage = () => {
     return (
         <div className="container">
             <HomeButton></HomeButton>
-            <Typography variant='h2'>Resultater</Typography>
+            <Typography variant='h2'>Results</Typography>
             {console.log(results)}
             {Object.keys(results).map((key) =>
                 <Card className="resultCard" component={Link} to={`/results/${params.session_id}/${key}`} key={key} style={{ textDecoration: 'none' }}>
