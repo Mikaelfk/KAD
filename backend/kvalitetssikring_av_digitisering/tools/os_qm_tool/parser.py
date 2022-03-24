@@ -38,7 +38,7 @@ class Results:
         dataclass: Data of the results
     """
 
-    overall_score: typing.Optional[bool] = None
+    passed: typing.Optional[bool] = None
     delta_e: Check = Check()
     noise: Check = Check()
     oecf: Check = Check()
@@ -286,4 +286,4 @@ def set_overall_score(data: Results):
         check = getattr(data, data_field.name)
         if isinstance(check, Check) and check.result is False:
             score = False
-    data.overall_score = score
+    data.passed = score

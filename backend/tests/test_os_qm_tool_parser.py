@@ -15,7 +15,7 @@ def test_parsing_utt():
 
     # Known values
     results = Results(
-        overall_score=True,
+        passed=True,
         delta_e=Check(
             result=True,
             limits={"max": "25.00", "mean": "12.00"},
