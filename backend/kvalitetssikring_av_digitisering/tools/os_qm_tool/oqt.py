@@ -11,6 +11,7 @@ from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_session_images_dir,
 )
+from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -29,8 +30,12 @@ def run_analyses_all_images(session_id: str, target_name: str):
         f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))
     ]
 
+    update_session_status(session_id, "running")
+
     for image_name in image_files:
         run_iso_analysis(image_name, target_name, session_id)
+
+    update_session_status(session_id, "finished")
 
 
 def run_iso_analysis(image_name: str, target_name: str, session_id: str):
