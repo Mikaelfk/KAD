@@ -15,25 +15,31 @@ const UploadDevice = (props) => {
         <div className='container'>
             <Typography variant='h2'>Device Level Target</Typography>
             <div className='upload-options'>
-                <UploadButton
-                    buttonText="Select start target"
-                    buttonType='button-orange'
-                    onUpload={props.onStartTargetUpload}
-                    uploadTypeSingle={true}
-                    buttonId={1} />
-                <Typography>Selected start target: {props.startTarget.name}</Typography>
-                <UploadButton
-                    buttonText="Select slutt target"
-                    buttonType='button-orange'
-                    onUpload={props.onEndTargetUpload}
-                    uploadTypeSingle={true}
-                    buttonId={2} />
-                <Typography>Selected end target: {props.endTarget.name}</Typography>
-                <UploadButton
-                    buttonText="Select images"
-                    onUpload={props.onUpload}
-                    buttonId={3} />
-                <Typography>Selected images count: {props.files.length}</Typography>
+                <div>
+                    <UploadButton
+                        buttonText="Select start target"
+                        buttonType='button-orange'
+                        onUpload={props.onStartTargetUpload}
+                        uploadTypeSingle={true}
+                        buttonId={1} />
+                    <Typography>Selected start target: {props.startTarget.name}</Typography>
+                </div>
+                <div>
+                    <UploadButton
+                        buttonText="Select slutt target"
+                        buttonType='button-orange'
+                        onUpload={props.onEndTargetUpload}
+                        uploadTypeSingle={true}
+                        buttonId={2} />
+                    <Typography>Selected end target: {props.endTarget.name}</Typography>
+                </div>
+                <div>
+                    <UploadButton
+                        buttonText="Select images"
+                        onUpload={props.onUpload}
+                        buttonId={3} />
+                    <Typography>Selected images count: {props.files.length}</Typography>
+                </div>
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />

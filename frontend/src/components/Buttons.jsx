@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types'
-import { styled, StyledEngineProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { styled, StyledEngineProvider } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
 import './Buttons.css';
 
 const Input = styled('input')({

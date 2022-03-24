@@ -1,32 +1,55 @@
+/* For tiny */
+@media screen and (max-width: 1200px) {
+    .image-target-menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .MuiCardMedia-root {
+        width: 200px !important;
+    }
+
+    .image-target-menu {
+        width: auto;
+    }
+}
+
+/* For big */
+@media screen and (min-width: 1200px) {
+    .image-target-menu {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .MuiCardMedia-root {
+        width: 300px !important;
+    }
+
+    .image-target-menu {
+        width: 100%;
+    }
+}
+
 .image-target-menu {
-    padding: 25px;
     display: flex;
-    justify-content: center;
-    width: auto;
-    gap: 40px;
 }
 
 .image-target-menu-option {
     display: flex;
     flex-direction: column;
-    background-color: #DAEFEF;
-    width: auto;
-    height: 100%;
     align-items: center;
-    justify-content: flex-start;
 }
 
-.image-target-menu-option:hover {
-    background-color: #B9C5DF;
+.MuiCard-root {
+    background-color: #DAEFEF !important;
+    height: auto !important;
 }
 
-@media only screen and (max-width: 1400px) {
-    .image-target-menu {
-        padding: 25px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: auto;
-        gap: 40px;
-    }
+.MuiCard-root:hover {
+    background-color: #B9C5DF !important;
+
+}
+
+.image-target-menu-option * {
+    margin: 15px;
 }

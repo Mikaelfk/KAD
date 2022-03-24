@@ -1,6 +1,23 @@
-.backButtonContainer {
+.top-bar {
+    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    width: 60%;
-    margin: auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.results {
+    width: 100%;
+}
+
+.category-accordion {
+    background-color: #DAEFEF !important;
+    margin-bottom: 15px !important;
+}
+
+.result-accordion {
+    margin-bottom: 15px !important;
 }
