@@ -192,7 +192,7 @@ def run_before_after_target_analysis(
     for file_name in image_files:
         add_metadata_to_file(
             get_session_image_file(session_id, file_name),
-            get_session_results_file(session_id),
+            read_from_json_file(get_session_results_file(session_id)),
         )
 
     # set session status as finished
