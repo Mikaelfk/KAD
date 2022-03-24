@@ -1,7 +1,7 @@
 """Parser for the summary output from OS QM Tool
 """
 import typing
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, fields
 
 
 @dataclass
@@ -38,6 +38,7 @@ class Results:
         dataclass: Data of the results
     """
 
+    overall_score: typing.Optional[bool] = None
     delta_e: Check = Check()
     noise: Check = Check()
     oecf: Check = Check()
@@ -105,6 +106,7 @@ def result_summary_parser(url):
             prev_line = line
 
     # Return data
+    set_overall_score(data)
     return data
 
 
@@ -269,3 +271,19 @@ def set_geometry_value(section, arr, name):
             section.values.update({arr[i][:-1]: arr[i + 1]})
     except ValueError:
         print("Did not find " + name + " value")
+
+
+def set_overall_score(data: Results):
+    """Set the overall score for the results
+
+    If all sections passed, then the overall score passed.
+
+    Args:
+        data (Results): The results
+    """
+    score = True
+    for data_field in fields(data):
+        check = getattr(data, data_field.name)
+        if isinstance(check, Check) and check.result is False:
+            score = False
+    data.overall_score = score

@@ -15,6 +15,7 @@ def test_parsing_utt():
 
     # Known values
     results = Results(
+        overall_score=True,
         delta_e=Check(
             result=True,
             limits={"max": "25.00", "mean": "12.00"},
@@ -68,4 +69,5 @@ def test_parsing_utt():
     # Test
     path = os.path.join(THIS_DIR, "test_data", "test_utt_protokoll_summary.txt")
     data = parser(path)
+    print(data)
     assert results == data
