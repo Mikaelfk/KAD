@@ -1,7 +1,7 @@
 """Parser for the summary output from OS QM Tool
 """
 import typing
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field, fields
 
 
 @dataclass
@@ -35,15 +35,16 @@ class Results:
         geometry (dataclass): Information about the Geometry check
 
     Returns:
-        dataclass: Data of the results
+        dict: Data of the results
     """
 
-    delta_e: dataclass = Check()
-    noise: dataclass = Check()
-    oecf: dataclass = Check()
-    mtf: dataclass = Check()
-    homogeneity: dataclass = Check()
-    geometry: dataclass = Check()
+    passed: typing.Optional[bool] = None
+    delta_e: Check = Check()
+    noise: Check = Check()
+    oecf: Check = Check()
+    mtf: Check = Check()
+    homogeneity: Check = Check()
+    geometry: Check = Check()
 
 
 def result_summary_parser(url):
@@ -67,15 +68,20 @@ def result_summary_parser(url):
     prev_line = str
 
     # Read file
-    with open(url) as f:
-        lines = f.readlines()
+    with open(url, encoding="UTF-8") as file:
+        lines = file.readlines()
+
+    # Makes a list of all the field names in the Results dataclass
+    field_names = []
+    for field_name in asdict(data):
+        field_names.append(field_name)
 
     # Parse every line
     for line in lines:
         # find new section
         if line.__contains__(section_divider):
             # Update data with section/results
-            if section_name in data.__match_args__:
+            if section_name in field_names:
                 data.__setattr__(section_name, section)
 
             # New section
@@ -93,14 +99,15 @@ def result_summary_parser(url):
             line = line.lower().strip()
             try:
                 section_handler(section, section_name, line, prev_line)
-            except Exception as e:
-                print("Error while parsing " + section_name + ": " + str(e))
+            except Exception as exception:
+                print("Error while parsing " + section_name + ": " + str(exception))
 
             # Store line
             prev_line = line
 
     # Return data
-    return data
+    set_overall_score(data)
+    return asdict(data)
 
 
 def section_handler(section: Check, section_name, line, prev_line):
@@ -146,7 +153,7 @@ def section_handler(section: Check, section_name, line, prev_line):
         case "geometry":
             check_geometry(section, line)
         case _:
-            raise NotImplementedError(section_name + " section check does not exist")
+            raise NotImplementedError("section does not exist")
 
 
 def check_delta_e(section: Check, line):
@@ -264,3 +271,19 @@ def set_geometry_value(section, arr, name):
             section.values.update({arr[i][:-1]: arr[i + 1]})
     except ValueError:
         print("Did not find " + name + " value")
+
+
+def set_overall_score(data: Results):
+    """Set the overall score for the results
+
+    If all sections passed, then the overall score passed.
+
+    Args:
+        data (Results): The results
+    """
+    score = True
+    for data_field in fields(data):
+        check = getattr(data, data_field.name)
+        if isinstance(check, Check) and check.result is False:
+            score = False
+    data.passed = score

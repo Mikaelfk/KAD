@@ -4,7 +4,7 @@ import json
 import pyexiv2
 
 
-def add_metadata_to_file(file_path, result_file):
+def add_metadata_to_file(file_path, result_dict: dict):
     """Adds json result as metadata to a given file
 
     Args:
@@ -12,12 +12,12 @@ def add_metadata_to_file(file_path, result_file):
         result_file (str): Path to the result json file
     """
     img = pyexiv2.Image(file_path)
-    with open(result_file, "r", encoding="UTF-8") as json_result:
-        data = json.load(json_result)
-        tags = ["Xmp", "xmp"]
-        metadata = {}
-        get_xmp_metadata(tags, data, metadata)
+    data = result_dict
+    tags = ["Xmp", "xmp"]
+    metadata = {}
+    get_xmp_metadata(tags, data, metadata)
     img.modify_xmp(metadata)
+    img.close()
 
 
 def get_xmp_metadata(tags, result_data, metadata: dict):
@@ -30,7 +30,9 @@ def get_xmp_metadata(tags, result_data, metadata: dict):
     """
     for key in result_data:
         # Appends the current key as a tag
-        tags.append(key)
+        tags.append(
+            key.replace(" ", "_").replace("*", "").replace("/", "").replace(":", "")
+        )
         value = result_data.get(key)
 
         if type(value) == dict:

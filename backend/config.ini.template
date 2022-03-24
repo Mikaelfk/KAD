@@ -9,3 +9,8 @@ JhoveInstallPath =
 InstallPath = 
 ConcurrentSessions = 3
 SessionTimeout = 120
+
+[OS QM-Tool]
+InstallPath = 
+ConcurrentSessions = 3
+SessionTimeout = 60

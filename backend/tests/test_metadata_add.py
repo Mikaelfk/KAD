@@ -3,6 +3,7 @@
 import os
 
 import pyexiv2
+from kvalitetssikring_av_digitisering.utils.json_helpers import read_from_json_file
 from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,9 +15,8 @@ def test_add_metadata_to_file():
 
     img = pyexiv2.Image(test_file_path)
     img.clear_xmp()
-    add_metadata_to_file(
-        test_file_path, os.path.join(THIS_DIR, "test_data", "test_results.json")
-    )
+    data = read_from_json_file(os.path.join(THIS_DIR, "test_data", "test_results.json"))
+    add_metadata_to_file(test_file_path, data)
     with pyexiv2.Image(test_file_path) as img:
         xmp_data = img.read_xmp()
 

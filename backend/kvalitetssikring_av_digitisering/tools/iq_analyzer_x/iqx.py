@@ -1,9 +1,8 @@
-"""Module for performing analusis with IQX.
+"""Module for performing analysis with IQX.
 
 Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
 """
-
 import os
 import subprocess
 
@@ -23,7 +22,6 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_analysis_dir_image_iqx_result_file,
-    get_session_dir,
     get_session_image_file,
     get_session_images_dir,
     get_session_results_file,
@@ -98,8 +96,6 @@ def run_iso_analysis(file_name: str, session_id: str):
         session_id (str): The session id of the current session
     """
 
-    update_session_status(session_id, "running")
-
     for specification_level in ["C", "B", "A"]:
         result_data = read_from_json_file(get_session_results_file(session_id))
 
@@ -154,6 +150,8 @@ def run_before_after_target_analysis(
         session_id (str): the session id of the current session
     """
 
+    update_session_status(session_id, "running")
+
     # run analysis
     run_iso_analysis(before_target_filename, session_id)
     run_iso_analysis(after_target_filename, session_id)
@@ -193,7 +191,7 @@ def run_before_after_target_analysis(
     for file_name in image_files:
         add_metadata_to_file(
             get_session_image_file(session_id, file_name),
-            get_session_results_file(session_id),
+            read_from_json_file(get_session_results_file(session_id)),
         )
 
     # set session status as finished

@@ -62,7 +62,6 @@ def test_create_analysis_folders():
     """Test the create_analysis_folders function"""
     # Define constants for image name and image analysis folder
     test_image_name = "test_image.jpg"
-    test_image_analysis_path = test_image_name + "-analysis"
 
     # Sets the source and destination path for the test image
     src = os.path.join(THIS_DIR, "test_pictures", test_image_name)

@@ -151,3 +151,19 @@ def get_analysis_dir_image_iqx_result_file(session_id: str, file_name: str, scor
     return os.path.join(
         get_analysis_dir(session_id, file_name, score), "analysis_result.xml"
     )
+
+
+def get_analysis_dir_image_oqt_result_file(session_id: str, file_name: str, score: str):
+    """Method for getting the path to oqt summary analysis result
+
+    Args:
+        session_id (str): the unique id of a session
+        file_name (str): name of the file analysed
+        score (str): the iso score
+
+    Returns:
+        path (str): path to the oqt analysis result
+    """
+    return os.path.join(
+        get_analysis_dir(session_id, file_name, score), "result_summary.txt"
+    )
