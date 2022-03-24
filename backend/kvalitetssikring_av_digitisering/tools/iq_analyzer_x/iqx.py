@@ -23,7 +23,6 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_analysis_dir_image_iqx_result_file,
-    get_session_dir,
     get_session_image_file,
     get_session_images_dir,
     get_session_results_file,
