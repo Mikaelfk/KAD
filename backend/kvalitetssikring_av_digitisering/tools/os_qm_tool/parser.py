@@ -35,7 +35,7 @@ class Results:
         geometry (dataclass): Information about the Geometry check
 
     Returns:
-        dataclass: Data of the results
+        dict: Data of the results
     """
 
     passed: typing.Optional[bool] = None
@@ -107,7 +107,7 @@ def result_summary_parser(url):
 
     # Return data
     set_overall_score(data)
-    return data
+    return data.__dict__()
 
 
 def section_handler(section: Check, section_name, line, prev_line):

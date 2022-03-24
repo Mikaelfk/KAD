@@ -5,11 +5,20 @@ Contains methods for running multiple or single analyses
 import os
 import subprocess
 
+from kvalitetssikring_av_digitisering.tools.os_qm_tool.parser import (
+    result_summary_parser,
+)
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir,
     get_analysis_dir_image_file,
     get_session_images_dir,
+    get_session_results_file,
+    get_analysis_dir_image_oqt_result_file,
+)
+from kvalitetssikring_av_digitisering.utils.json_helpers import (
+    json_iqx_add_result,
+    write_to_json_file,
 )
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
 
@@ -38,28 +47,42 @@ def run_analyses_all_images(session_id: str, target_name: str):
     update_session_status(session_id, "finished")
 
 
-def run_iso_analysis(image_name: str, target_name: str, session_id: str):
+def run_iso_analysis(file_name: str, target_name: str, session_id: str):
     """Method for running all iso level analyses on a single image
 
     Args:
-        image_name (str): image to be analyzed
+        file_name (str): image to be analyzed
         target_name (str): image target which is used for analysis
         session_id (str): session id of the current session
     """
     for specification_level in ["A", "B", "C"]:
         image_path = get_analysis_dir_image_file(
-            session_id, image_name, specification_level
+            session_id, file_name, specification_level
         )
 
         run_analysis(
             image_path,
             target_name,
             os.path.join(
-                get_analysis_dir(session_id, image_name, specification_level),
+                get_analysis_dir(session_id, file_name, specification_level),
                 "result.txt",
             ),
             specification_level,
         )
+
+        # parse results from analysis
+        analysis_results = parse_results(
+            get_analysis_dir_image_oqt_result_file(
+                session_id, file_name, specification_level
+            )
+        )
+
+        # add result to data
+        result_data = json_iqx_add_result(
+            result_data, file_name, specification_level, analysis_results
+        )
+
+        write_to_json_file(get_session_results_file(session_id), result_data)
 
 
 def run_analysis(
@@ -111,3 +134,22 @@ def run_analysis(
         return False
 
     return True
+
+
+def parse_results(result_file_path: str):
+    """Method for parsing the results
+
+    Args:
+        result_file_path(str): absolute path to a file that contains the results of an analyis
+
+    Returns:
+        dict | None: returns the parsed results as a dict or None if no results were found
+    """
+
+    try:
+        parsed_result = result_summary_parser(result_file_path)
+
+        return parsed_result
+    except FileNotFoundError as exception:
+        print(exception)
+        return None
