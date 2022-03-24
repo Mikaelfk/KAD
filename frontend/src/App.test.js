@@ -1,49 +1,47 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
-import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
 const setup = () => {
-  render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
+    render(
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    );
 }
 
 test('Renders title of main page', () => {
-  setup();
-  const titleElement = screen.getByText(/Kvalitetssikring/i);
-  expect(titleElement).toBeInTheDocument();
+    setup();
+    const titleElement = screen.getByText(/Kvalitetssikring/i);
+    expect(titleElement).toBeInTheDocument();
 });
 
 
 test('Navigate to Object Level Target page and back to main page', () => {
-  setup();
-  const leftClick = { button: 0 }
-  userEvent.click(screen.getByText(/Object Level Target/i), leftClick)
-  const titleElement = screen.getByText(/Object Level Target/);
-  expect(titleElement).toBeInTheDocument();
-  userEvent.click(screen.getByText(/Cancel/i), leftClick)
-  expect(screen.getByText(/Kvalitetssikring/)).toBeInTheDocument();
+    setup();
+    const leftClick = { button: 0 }
+    userEvent.click(screen.getByText(/Object Level Target/i), leftClick)
+    const titleElement = screen.getByText(/Object Level Target/);
+    expect(titleElement).toBeInTheDocument();
+    userEvent.click(screen.getByText(/Cancel/i), leftClick)
+    expect(screen.getByText(/Kvalitetssikring/)).toBeInTheDocument();
 })
 
 test('Navigate to Device Level Target page and back to main page', () => {
-  setup();
-  const leftClick = { button: 0 }
-  userEvent.click(screen.getByText(/Device Level Target/i), leftClick)
-  const titleElement = screen.getByText(/Device Level Target/);
-  expect(titleElement).toBeInTheDocument();
-  userEvent.click(screen.getByText(/Cancel/i), leftClick)
-  expect(screen.getByText(/Kvalitetssikring/)).toBeInTheDocument();
+    setup();
+    const leftClick = { button: 0 }
+    userEvent.click(screen.getByText(/Device Level Target/i), leftClick)
+    const titleElement = screen.getByText(/Device Level Target/);
+    expect(titleElement).toBeInTheDocument();
+    userEvent.click(screen.getByText(/Cancel/i), leftClick)
+    expect(screen.getByText(/Kvalitetssikring/)).toBeInTheDocument();
 })
 
 test('Navigate to Result page', () => {
-  setup();
-  const leftClick = { button: 0 };
-  userEvent.click(screen.getByText(/Object Level Target/i), leftClick)
-  userEvent.click(screen.getByText(/Submit/i), leftClick)
-  // uncomment the next two lines when api works
-  //const titleElement = screen.getByText(/Resultater/);
-  //expect(titleElement).toBeInTheDocument();
+    setup();
+    const leftClick = { button: 0 };
+    userEvent.click(screen.getByText(/Object Level Target/i), leftClick)
+    userEvent.click(screen.getByText(/Submit/i), leftClick)
 })
