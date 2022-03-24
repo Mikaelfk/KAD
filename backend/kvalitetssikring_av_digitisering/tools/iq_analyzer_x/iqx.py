@@ -3,7 +3,6 @@
 Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
 """
-
 import os
 import subprocess
 
