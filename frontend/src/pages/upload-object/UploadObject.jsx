@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types'
 import { Typography } from '@mui/material';
-import { UploadButton, SubmitButton, CancelButton } from '../../components/Buttons';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../Upload.css'
+import { CancelButton, SubmitButton, UploadButton } from '../../components/Buttons';
+import '../Upload.css';
 
 const UploadObject = (props) => {
     let onRender = props.onRender;
@@ -15,8 +15,8 @@ const UploadObject = (props) => {
         <div className='container'>
             <Typography variant='h2'>Object Level Target</Typography>
             <div className='upload-options'>
-                <UploadButton buttonText="Velg bilder" onUpload={props.onUpload} />
-                <Typography>Antall bilder valgt: {props.files.length}</Typography>
+                <UploadButton buttonText="Select images" onUpload={props.onUpload} />
+                <Typography>Selected images count: {props.files.length}</Typography>
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
