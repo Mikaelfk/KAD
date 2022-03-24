@@ -8,6 +8,7 @@ from flask_cors import CORS
 
 from kvalitetssikring_av_digitisering.api import (
     iqx_endpoint,
+    oqt_endpoint,
     results_endpoint,
     session_endpoint,
     validate_endpoint,
@@ -30,6 +31,7 @@ def start():
     app.register_blueprint(session_endpoint)
     app.register_blueprint(iqx_endpoint)
     app.register_blueprint(results_endpoint)
+    app.register_blueprint(oqt_endpoint)
 
     # Create storage folder
     os.makedirs(
