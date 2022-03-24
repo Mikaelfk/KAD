@@ -1,13 +1,20 @@
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './App';
+import './global.css';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

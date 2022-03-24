@@ -1,4 +1,5 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary, IconButton, Typography } from "@mui/material";
 import React, { useEffect, useState } from 'react';
@@ -35,7 +36,7 @@ const ResultPage = () => {
 
         // results teim :)
 
-        return <div>
+        return <div className="results">
             {
                 // loop over specification levels
                 Object.keys(results[params.imageId])
@@ -46,13 +47,13 @@ const ResultPage = () => {
                     // A, B C instead of C, B, A
                     .reverse()
                     .map((specification_level) =>
-                        <Accordion key={specification_level}>
+                        <Accordion className='category-accordion' key={specification_level}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                                    <Typography display="inline">
+                                    <Typography variant="h5" display="inline">
                                         {specification_level}
                                     </Typography>
-                                    <Typography display="inline">
+                                    <Typography variant="h5" display="inline">
                                         {
                                             "Passed: " +
                                             (results[params.imageId][specification_level]["results"]["passed"] ? "Yes" : "No")
@@ -77,9 +78,9 @@ const ResultPage = () => {
             // not care about passed/not passed here
             .filter((result_category) => result_category != "passed")
             .map((result_category) =>
-                <Accordion key={result_category}>
+                <Accordion className="result-accordion" key={result_category}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>
+                        <Typography variant="h6">
                             {result_category}
                         </Typography>
                     </AccordionSummary>
@@ -88,7 +89,7 @@ const ResultPage = () => {
                             // loop over category specific results
                             Object.keys(resultData[result_category])
                                 .map((detailed_result) =>
-                                    <Typography key={detailed_result}>
+                                    <Typography variant="h6" key={detailed_result}>
                                         {
                                             detailed_result +
                                             ": " +
@@ -104,20 +105,26 @@ const ResultPage = () => {
 
     return (
         <div className="container" >
-            <HomeButton></HomeButton>
-            <Typography variant="h2">
-                Resultat: {params.imageId}
-
-            </Typography>
-            <div>
-                {
-                    generateResults()
-                }
-            </div>
-            <div className="backButtonContainer">
+            <div className="top-bar">
                 <IconButton color="primary" aria-label="Return to result page" component={Link} to={`/results/${params.session_id}`} size="large">
                     <ArrowBackIosIcon fontSize="large" />
                 </IconButton>
+                <HomeButton></HomeButton>
+                <IconButton className="hidden" aria-label="Invisible button for positioning" size="large">
+                    <EmojiPeopleIcon fontSize='large' />
+                </IconButton>
+            </div>
+
+            <Typography variant="h2">
+                Resultat: {params.imageId}
+            </Typography>
+
+            {
+                generateResults()
+            }
+
+            <div className="backButtonContainer">
+
             </div>
         </div>
     )

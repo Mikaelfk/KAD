@@ -1,9 +1,29 @@
-.resultCard {
-    width: 60%;
+/* For tiny */
+@media screen and (max-width: 1200px) {
+    .result {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .resultCard {
+        width: auto;
+    }
+}
+
+/* For big */
+@media screen and (min-width: 1200px) {
+    .result {
+        flex-direction: row;
+    }
+
+    .resultCard {
+        width: 100%;
+    }
 }
 
 .result {
     display: flex;
-    margin: auto;
     justify-content: space-between;
 }

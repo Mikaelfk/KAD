@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Divider, Typography } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import HomeButton from "../../components/HomeButton";
@@ -26,13 +26,13 @@ const ResultsPage = () => {
         <div className="container">
             <HomeButton></HomeButton>
             <Typography variant='h2'>Results</Typography>
-            {console.log(results)}
             {Object.keys(results).map((key) =>
                 <Card className="resultCard" component={Link} to={`/results/${params.session_id}/${key}`} key={key} style={{ textDecoration: 'none' }}>
                     <CardContent className="result">
                         <Typography variant="h5">
                             Name: {key}
                         </Typography>
+                        <Divider flexItem />
                         <Typography variant="h5">
                             ISO score: {results[key].overall_score}
                         </Typography>
