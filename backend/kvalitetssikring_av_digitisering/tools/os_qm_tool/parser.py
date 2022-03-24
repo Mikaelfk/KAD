@@ -107,7 +107,7 @@ def result_summary_parser(url):
 
     # Return data
     set_overall_score(data)
-    return data.__dict__()
+    return asdict(data)
 
 
 def section_handler(section: Check, section_name, line, prev_line):

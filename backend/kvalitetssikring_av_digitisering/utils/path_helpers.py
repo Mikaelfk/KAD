@@ -165,5 +165,5 @@ def get_analysis_dir_image_oqt_result_file(session_id: str, file_name: str, scor
         path (str): path to the oqt analysis result
     """
     return os.path.join(
-        get_analysis_dir(session_id, file_name, score), "result_summarty.txt"
+        get_analysis_dir(session_id, file_name, score), "result_summary.txt"
     )

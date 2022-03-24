@@ -9,9 +9,15 @@ from kvalitetssikring_av_digitisering.tools.os_qm_tool.parser import (
     result_summary_parser,
 )
 from kvalitetssikring_av_digitisering.config import Config
+from kvalitetssikring_av_digitisering.utils.json_helpers import (
+    json_iqx_set_analysis_failed,
+    read_from_json_file,
+)
+from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir,
     get_analysis_dir_image_file,
+    get_session_image_file,
     get_session_images_dir,
     get_session_results_file,
     get_analysis_dir_image_oqt_result_file,
@@ -41,9 +47,19 @@ def run_analyses_all_images(session_id: str, target_name: str):
 
     update_session_status(session_id, "running")
 
+    # performs analysis on all images
     for image_name in image_files:
         run_iso_analysis(image_name, target_name, session_id)
 
+    # adds metadata to all images
+    results_file = read_from_json_file(get_session_results_file(session_id))
+    for image_name in image_files:
+        add_metadata_to_file(
+            get_session_image_file(session_id, image_name),
+            results_file[image_name],
+        )
+
+    # sets session status to finished
     update_session_status(session_id, "finished")
 
 
@@ -60,7 +76,7 @@ def run_iso_analysis(file_name: str, target_name: str, session_id: str):
             session_id, file_name, specification_level
         )
 
-        run_analysis(
+        result = run_analysis(
             image_path,
             target_name,
             os.path.join(
@@ -70,12 +86,33 @@ def run_iso_analysis(file_name: str, target_name: str, session_id: str):
             specification_level,
         )
 
+        result_data = read_from_json_file(get_session_results_file(session_id))
+
+        # if os qm tool fails, set result to failed and move on
+        if result is False:
+            print("uwu os qm tool machine broke")
+            result_data = json_iqx_set_analysis_failed(
+                result_data, file_name, specification_level
+            )
+            write_to_json_file(get_session_results_file(session_id), result_data)
+            continue
+
         # parse results from analysis
         analysis_results = parse_results(
             get_analysis_dir_image_oqt_result_file(
                 session_id, file_name, specification_level
             )
         )
+
+        # if parsing fails, os qm tool probably also fails,
+        # so set result to failed and move on
+        if analysis_results is None:
+            print("uwu parser machine broke")
+            result_data = json_iqx_set_analysis_failed(
+                result_data, file_name, specification_level
+            )
+            write_to_json_file(get_session_results_file(session_id), result_data)
+            continue
 
         # add result to data
         result_data = json_iqx_add_result(

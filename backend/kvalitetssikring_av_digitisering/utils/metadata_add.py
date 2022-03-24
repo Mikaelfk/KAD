@@ -17,6 +17,7 @@ def add_metadata_to_file(file_path, result_dict: dict):
     metadata = {}
     get_xmp_metadata(tags, data, metadata)
     img.modify_xmp(metadata)
+    img.close()
 
 
 def get_xmp_metadata(tags, result_data, metadata: dict):
@@ -29,7 +30,9 @@ def get_xmp_metadata(tags, result_data, metadata: dict):
     """
     for key in result_data:
         # Appends the current key as a tag
-        tags.append(key)
+        tags.append(
+            key.replace(" ", "_").replace("*", "").replace("/", "").replace(":", "")
+        )
         value = result_data.get(key)
 
         if type(value) == dict:
