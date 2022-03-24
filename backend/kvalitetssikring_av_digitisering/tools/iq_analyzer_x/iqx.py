@@ -1,4 +1,4 @@
-"""Module for performing analusis with IQX.
+"""Module for performing analysis with IQX.
 
 Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session

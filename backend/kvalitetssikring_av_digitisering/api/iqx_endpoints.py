@@ -59,8 +59,7 @@ def analyze():
             create_analysis_folders(session_id)
 
             for file in files:
-                file.save(get_session_image_file(
-                    session_id, str(file.filename)))
+                file.save(get_session_image_file(session_id, str(file.filename)))
 
             pool.apply_async(
                 run_before_after_target_analysis,
