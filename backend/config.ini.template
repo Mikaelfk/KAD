@@ -12,4 +12,5 @@ SessionTimeout = 120
 
 [OS QM-Tool]
 InstallPath = 
-SessionTimeout = 
+ConcurrentSessions = 3
+SessionTimeout = 60
