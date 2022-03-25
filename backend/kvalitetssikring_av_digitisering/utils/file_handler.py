@@ -1,6 +1,5 @@
 """Function that modify uploaded files, but stores the original filename in the session root
 """
-from asyncore import read
 import uuid
 import os
 import pathlib

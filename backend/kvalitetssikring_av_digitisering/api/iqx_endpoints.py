@@ -9,12 +9,10 @@ import multiprocessing.pool as ThreadPool
 
 from flask import Blueprint, request
 from flask.wrappers import Response
-from isort import file
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import (
     run_before_after_target_analysis,
 )
-from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_image_file
 from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
