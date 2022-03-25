@@ -43,20 +43,19 @@ const App = () => {
 
     const handleObjectSubmit = () => {
         const formData = new FormData();
-        const fileField = document.querySelector('input[type="file"]');
 
-        formData.append('file', fileField.files[0]);
-        let sessionId = 100
+        for (const file of files) {
+            formData.append('files', file)
+        }
+
         // Makes a POST request to the endpoint,
-        // TODO: Change endpoint to image quality assessment
-
-        fetch(Config.API_URL + '', {
+        fetch(Config.API_URL + '/api/analyze/device/oqt?target=GTObject', {
             method: 'POST',
             body: formData
         })
-            .then(result => {
-                console.log('Success:', result.text());
-                let path = `/results/${sessionId}`
+            .then(resp => resp.json())
+            .then(data => {
+                let path = `/results/${data.session_id}`
                 navigate(path)
             })
             .catch(error => {
