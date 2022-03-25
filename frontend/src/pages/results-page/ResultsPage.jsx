@@ -21,7 +21,6 @@ const ResultsPage = () => {
     }, [params.session_id])
 
 
-    // TODO: make home button on this page
     return (
         <div className="container">
             <HomeButton></HomeButton>
