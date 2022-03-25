@@ -71,7 +71,9 @@ const App = () => {
         // Adds the targets as files in a form
         formData.append('before_target', startTarget);
         formData.append('after_target', endTarget);
-        // TODO: Add the rest of the files to the upload
+        for (const file of files) {
+            formData.append('files', file)
+        }
 
         document.getElementById('loader-container').style.visibility = "visible";
 
@@ -82,7 +84,6 @@ const App = () => {
         })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
                 document.getElementById('loader-container').style.visibility = "hidden";
 
                 let path = `/results/${data.session_id}`;
