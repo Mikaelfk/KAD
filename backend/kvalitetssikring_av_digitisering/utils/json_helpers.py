@@ -159,6 +159,7 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
         str: The iso score of the target
     """
     data = json_data.get(file_name)
+    print(data)
 
     if data is None:
         data = {}
@@ -167,11 +168,9 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
 
     for score in ["A", "B", "C"]:
         if (
-            data[file_name]
-            and data[file_name][score]
-            and data[file_name][score]["completed"]
-            and data[file_name][score]["results"]["passed"]
+            score in data
+            and data[score]["completed"]
+            and data[score]["results"]["passed"]
         ):
             return score
-
     return None
