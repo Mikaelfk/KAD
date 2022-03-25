@@ -10,6 +10,9 @@ from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
     result_summary_parser,
 )
+from kvalitetssikring_av_digitisering.utils.image_zipper import (
+    zip_all_images_in_session,
+)
 from kvalitetssikring_av_digitisering.utils.json_helpers import (
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
@@ -194,7 +197,9 @@ def run_before_after_target_analysis(
             read_from_json_file(get_session_results_file(session_id)),
         )
 
-    # set session status as finished
+    zip_all_images_in_session(session_id)
+
+    # set session status to finished
     update_session_status(session_id, "finished")
 
 

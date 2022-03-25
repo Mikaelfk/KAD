@@ -5,6 +5,10 @@ Contains methods for running multiple or single analyses
 import os
 import subprocess
 
+from kvalitetssikring_av_digitisering.utils.image_zipper import (
+    zip_all_images_in_session,
+)
+
 from kvalitetssikring_av_digitisering.tools.os_qm_tool.parser import (
     result_summary_parser,
 )
@@ -58,6 +62,8 @@ def run_analyses_all_images(session_id: str, target_name: str):
             get_session_image_file(session_id, image_name),
             results_file[image_name],
         )
+
+    zip_all_images_in_session(session_id)
 
     # sets session status to finished
     update_session_status(session_id, "finished")
