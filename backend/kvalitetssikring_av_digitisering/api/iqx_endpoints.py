@@ -17,11 +17,8 @@ from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
-<<<<<<< HEAD
-from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
-=======
 from kvalitetssikring_av_digitisering.utils.file_handler import save_files
->>>>>>> 2736370... Generate unique filenames for iqx endpoint
+from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
@@ -49,7 +46,6 @@ def analyze():
             after_target = request.files["after_target"]
             files = request.files.getlist("files")
 
-<<<<<<< HEAD
             if is_file_empty(before_target):
                 return Response(
                     json.dumps(
@@ -65,36 +61,32 @@ def analyze():
                     status=400,
                 )
 
-            before_target_path = get_session_image_file(
-                session_id, str(before_target.filename)
-            )
-
-            after_target_path = get_session_image_file(
-                session_id, str(after_target.filename)
-            )
-
-            before_target.save(before_target_path)
-            after_target.save(after_target_path)
-=======
             # Save before and after target
             save_files(session_id, [before_target, after_target])
->>>>>>> 2736370... Generate unique filenames for iqx endpoint
+
+            # Save before target
+            before_target_filename = list(
+                save_files(session_id, [before_target]).keys()
+            )[-1]
+
+            # Save after target
+            after_target_filename = list(save_files(session_id, [after_target]).keys())[
+                -1
+            ]
 
             # Create analysis folder
             create_analysis_folders(session_id)
 
-<<<<<<< HEAD
-            for file in files:
-                if not is_file_empty(file):
-                    file.save(get_session_image_file(session_id, str(file.filename)))
-=======
             # Save files
             save_files(session_id, files)
->>>>>>> 2736370... Generate unique filenames for iqx endpoint
 
             pool.apply_async(
                 run_before_after_target_analysis,
-                args=(before_target.filename, after_target.filename, session_id),
+                args=(
+                    before_target_filename,
+                    after_target_filename,
+                    session_id,
+                ),
             )
 
             return Response(json.dumps({"session_id": str(session_id)}), status=200)

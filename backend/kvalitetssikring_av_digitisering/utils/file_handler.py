@@ -2,7 +2,6 @@
 """
 import uuid
 import os
-import pathlib
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_session_dir,
     get_session_image_file,
@@ -31,3 +30,4 @@ def save_files(session_id: str, files):
 
     # Store mapped names
     write_to_json_file(json_file, file_names)
+    return file_names
