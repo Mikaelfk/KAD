@@ -1,5 +1,6 @@
 """Function that modify uploaded files, but stores the original filename in the session root
 """
+from asyncore import read
 import uuid
 import os
 import pathlib
@@ -9,6 +10,7 @@ from kvalitetssikring_av_digitisering.utils.path_helpers import (
 )
 from kvalitetssikring_av_digitisering.utils.json_helpers import write_to_json_file
 from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
+from kvalitetssikring_av_digitisering.utils.json_helpers import read_from_json_file
 
 
 def save_files(session_id: str, files):
@@ -18,7 +20,8 @@ def save_files(session_id: str, files):
         session_id (str): id of the session
         files (list[FileStorage]): list of uploaded files
     """
-    file_names = {}
+    json_file = os.path.join(get_session_dir(session_id), "file_names.json")
+    file_names = read_from_json_file(json_file)
 
     # Store files
     for file in files:
@@ -28,6 +31,4 @@ def save_files(session_id: str, files):
             file.save(get_session_image_file(session_id, new_file_name))
 
     # Store mapped names
-    write_to_json_file(
-        os.path.join(get_session_dir(session_id), "file_names.json"), file_names
-    )
+    write_to_json_file(json_file, file_names)
