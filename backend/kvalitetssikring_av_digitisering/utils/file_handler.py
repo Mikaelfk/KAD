@@ -2,9 +2,10 @@
 """
 import uuid
 import os
+import pathlib
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
+    get_session_dir,
     get_session_image_file,
-    get_analysis_dir,
 )
 from kvalitetssikring_av_digitisering.utils.json_helpers import write_to_json_file
 from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
@@ -27,4 +28,6 @@ def save_files(session_id: str, files):
             file.save(get_session_image_file(session_id, new_file_name))
 
     # Store mapped names
-    write_to_json_file(os.path.join(get_analysis_dir, "file_names.json"), file_names)
+    write_to_json_file(
+        os.path.join(get_session_dir(session_id), "file_names.json"), file_names
+    )
