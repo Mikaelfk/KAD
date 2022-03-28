@@ -46,10 +46,17 @@ def analyze():
             after_target = request.files["after_target"]
             files = request.files.getlist("files")
 
-            if is_file_empty(before_target) or is_file_empty(after_target):
+            if is_file_empty(before_target):
                 return Response(
                     json.dumps(
-                        {"error": "before_target or after_target not specified"},
+                        {"error": "before_target not specified"},
+                    ),
+                    status=400,
+                )
+            elif is_file_empty(after_target):
+                return Response(
+                    json.dumps(
+                        {"error": "after_target not specified"},
                     ),
                     status=400,
                 )
