@@ -1,6 +1,5 @@
 """Module for zipping all images in a session
 """
-import os
 from shutil import make_archive
 from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_dir
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
