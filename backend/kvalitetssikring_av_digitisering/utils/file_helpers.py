@@ -15,5 +15,7 @@ def is_file_empty(file):
     """
     file.seek(0, os.SEEK_END)
     if file.tell() == 0:
+        file.seek(0)
         return True
+    file.seek(0)
     return False

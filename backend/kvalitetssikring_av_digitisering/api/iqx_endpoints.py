@@ -13,11 +13,11 @@ from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import (
     run_before_after_target_analysis,
 )
-from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_image_file
 from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
+from kvalitetssikring_av_digitisering.utils.filename_handler import save_uploaded_files
 from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
@@ -45,6 +45,7 @@ def analyze():
             before_target = request.files["before_target"]
             after_target = request.files["after_target"]
             files = request.files.getlist("files")
+            file_names = []
 
             if is_file_empty(before_target):
                 return Response(
@@ -61,26 +62,29 @@ def analyze():
                     status=400,
                 )
 
-            before_target_path = get_session_image_file(
-                session_id, str(before_target.filename)
+            # Save before target
+            before_target_filename = save_uploaded_files(
+                session_id, [before_target], file_names
             )
 
-            after_target_path = get_session_image_file(
-                session_id, str(after_target.filename)
+            # Save after target
+            after_target_filename = save_uploaded_files(
+                session_id, [after_target], file_names
             )
 
-            before_target.save(before_target_path)
-            after_target.save(after_target_path)
-
+            # Create analysis folder
             create_analysis_folders(session_id)
 
-            for file in files:
-                if not is_file_empty(file):
-                    file.save(get_session_image_file(session_id, str(file.filename)))
+            # Save files
+            save_uploaded_files(session_id, files, file_names)
 
             pool.apply_async(
                 run_before_after_target_analysis,
-                args=(before_target.filename, after_target.filename, session_id),
+                args=(
+                    before_target_filename,
+                    after_target_filename,
+                    session_id,
+                ),
             )
 
             return Response(json.dumps({"session_id": str(session_id)}), status=200)
