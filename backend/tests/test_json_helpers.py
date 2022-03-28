@@ -1,4 +1,4 @@
-"""_summary_
+"""
 """
 import os
 import shutil
@@ -20,7 +20,6 @@ FILE_NAME = os.path.basename(os.path.normpath(TEST_JSON_FILE))
 def test_read_from_json_file():
     """test for read_from_json_file method"""
     data = read_from_json_file(TEST_JSON_FILE)
-    print(data)
     assert data == {
         "test_metadata.jpg": {
             "target_order": "before_target",
@@ -134,9 +133,7 @@ def test_json_iqx_add_results():
                 },
             },
         },
-        "test_results.json": {
-            "A": {"completed": True, "results": {"test_key": "test_value"}}
-        },
+        FILE_NAME: {"A": {"completed": True, "results": {"test_key": "test_value"}}},
     }
 
 
@@ -244,7 +241,7 @@ def test_json_iqx_set_image_tag():
                 },
             },
         },
-        "test_results.json": {"image_tag": "before_target"},
+        FILE_NAME: {"image_tag": "before_target"},
     }
 
 
@@ -298,7 +295,7 @@ def test_json_iqx_set_overall_score():
                 },
             },
         },
-        "test_results.json": {"overall_score": "A"},
+        FILE_NAME: {"overall_score": "A"},
     }
 
 
