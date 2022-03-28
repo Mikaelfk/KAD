@@ -45,6 +45,7 @@ def analyze():
             before_target = request.files["before_target"]
             after_target = request.files["after_target"]
             files = request.files.getlist("files")
+            file_names = []
 
             if is_file_empty(before_target):
                 return Response(
@@ -62,20 +63,22 @@ def analyze():
                 )
 
             # Save before target
-            before_target_filename = save_uploaded_files(session_id, [before_target])[
-                -1
-            ]
+            before_target_filename = save_uploaded_files(
+                session_id, [before_target], file_names
+            )[-1]
+            file_names.append(before_target_filename)
 
             # Save after target
-            after_target_filename = save_uploaded_files(session_id, [after_target])[-1]
+            after_target_filename = save_uploaded_files(
+                session_id, [after_target], file_names
+            )[-1]
+            file_names.append(after_target)
 
             # Create analysis folder
             create_analysis_folders(session_id)
 
             # Save files
-            save_uploaded_files(
-                session_id, files, [before_target_filename, after_target_filename]
-            )
+            save_uploaded_files(session_id, files, file_names)
 
             pool.apply_async(
                 run_before_after_target_analysis,
