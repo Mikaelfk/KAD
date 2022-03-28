@@ -2,46 +2,49 @@
     "test_metadata.jpg": {
         "target_order": "before_target",
         "B": {
-            "passed": true,
-            "TonalReproduction": {
-                "Delta_C": "failed",
-                "Delta_E": "succeeded",
-                "Lab_L": "failed",
-                "Max_Gain_Modulation_L": "failed",
-                "Min_Gain_Modulation_L": "failed"
-            },
-            "Resolution": {
-                "MTF10": "succeeded",
-                "MTF50": "succeeded",
-                "Max_Misregistration": "succeeded",
-                "Max_Modulation": "succeeded",
-                "Min_Sampling_Efficiency": "succeeded",
-                "Obt_Sampling_Rate": "succeeded"
-            },
-            "Color": {
-                "Max_Delta_C": "succeeded",
-                "Max_Delta_E": "failed",
-                "Max_Delta_H": "succeeded",
-                "Max_Delta_L": "succeeded",
-                "Mean_Delta_C": "succeeded",
-                "Mean_Delta_E": "failed",
-                "Mean_Delta_H": "succeeded",
-                "Mean_Delta_L": "succeeded"
-            },
-            "Shading": {
-                "Max_Delta_Gray": "succeeded",
-                "Max_Delta_White": "succeeded"
-            },
-            "Distortion": {
-                "Max_Distortion": "succeeded"
-            },
-            "Lines": {
-                "Max_Out_Black": "succeeded",
-                "Max_Out_Gray": "succeeded",
-                "Max_Out_White": "succeeded"
-            },
-            "Noise": {
-                "Visual_Noise": "succeeded"
+            "completed": true,
+            "results": {
+                "passed": true,
+                "TonalReproduction": {
+                    "Delta_C": "failed",
+                    "Delta_E": "succeeded",
+                    "Lab_L": "failed",
+                    "Max_Gain_Modulation_L": "failed",
+                    "Min_Gain_Modulation_L": "failed"
+                },
+                "Resolution": {
+                    "MTF10": "succeeded",
+                    "MTF50": "succeeded",
+                    "Max_Misregistration": "succeeded",
+                    "Max_Modulation": "succeeded",
+                    "Min_Sampling_Efficiency": "succeeded",
+                    "Obt_Sampling_Rate": "succeeded"
+                },
+                "Color": {
+                    "Max_Delta_C": "succeeded",
+                    "Max_Delta_E": "failed",
+                    "Max_Delta_H": "succeeded",
+                    "Max_Delta_L": "succeeded",
+                    "Mean_Delta_C": "succeeded",
+                    "Mean_Delta_E": "failed",
+                    "Mean_Delta_H": "succeeded",
+                    "Mean_Delta_L": "succeeded"
+                },
+                "Shading": {
+                    "Max_Delta_Gray": "succeeded",
+                    "Max_Delta_White": "succeeded"
+                },
+                "Distortion": {
+                    "Max_Distortion": "succeeded"
+                },
+                "Lines": {
+                    "Max_Out_Black": "succeeded",
+                    "Max_Out_Gray": "succeeded",
+                    "Max_Out_White": "succeeded"
+                },
+                "Noise": {
+                    "Visual_Noise": "succeeded"
+                }
             }
         }
     }

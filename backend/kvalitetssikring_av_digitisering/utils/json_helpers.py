@@ -49,7 +49,7 @@ def json_iqx_add_result(
         json_data (dict): json data to add results to
         file_name (str): name of file to add results to
         specification_level (str): specification level for analysis
-        results (str): analysis results
+        results (dict): analysis results
 
     Returns:
         dict: updated json data
@@ -102,7 +102,7 @@ def json_iqx_set_image_tag(json_data: dict, file_name: str, image_tag: str):
 
     Args:
         json_data (dict): json data to set tag in
-        file_name (str): name of file set tag on
+        file_name (str): name of file to set tag on
         image_tag (str): tag to add
 
     Returns:
@@ -128,6 +128,7 @@ def json_iqx_set_overall_score(json_data: dict, file_name: str, overall_score: s
 
     Args:
         json_data (dict): json data to set overall score in
+        file_name(str): name of file to set overall score to
         overall_score (str): overall score to set
 
     Returns:
@@ -159,7 +160,6 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
         str: The iso score of the target
     """
     data = json_data.get(file_name)
-    print(data)
 
     if data is None:
         data = {}
@@ -169,7 +169,7 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
     for score in ["A", "B", "C"]:
         if (
             score in data
-            and data[score]["completed"]
+            and "completed" in data[score]
             and data[score]["results"]["passed"]
         ):
             return score
