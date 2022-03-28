@@ -18,6 +18,7 @@ from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
+from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
@@ -45,6 +46,14 @@ def analyze():
             after_target = request.files["after_target"]
             files = request.files.getlist("files")
 
+            if is_file_empty(before_target) or is_file_empty(after_target):
+                return Response(
+                    json.dumps(
+                        {"error": "before_target or after_target not specified"},
+                    ),
+                    status=400,
+                )
+
             before_target_path = get_session_image_file(
                 session_id, str(before_target.filename)
             )
@@ -59,7 +68,8 @@ def analyze():
             create_analysis_folders(session_id)
 
             for file in files:
-                file.save(get_session_image_file(session_id, str(file.filename)))
+                if not is_file_empty(file):
+                    file.save(get_session_image_file(session_id, str(file.filename)))
 
             pool.apply_async(
                 run_before_after_target_analysis,
@@ -69,7 +79,7 @@ def analyze():
             return Response(json.dumps({"session_id": str(session_id)}), status=200)
 
         case None | "":
-            return Response(json.dumps({"error:": "no target specified"}), status=400)
+            return Response(json.dumps({"error": "no target specified"}), status=400)
 
         case _:
             return Response(json.dumps({"error": "invalid target"}), status=400)
