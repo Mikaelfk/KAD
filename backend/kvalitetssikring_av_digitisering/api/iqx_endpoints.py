@@ -65,14 +65,12 @@ def analyze():
             # Save before target
             before_target_filename = save_uploaded_files(
                 session_id, [before_target], file_names
-            )[-1]
-            file_names.append(before_target_filename)
+            )
 
             # Save after target
             after_target_filename = save_uploaded_files(
                 session_id, [after_target], file_names
-            )[-1]
-            file_names.append(after_target)
+            )
 
             # Create analysis folder
             create_analysis_folders(session_id)

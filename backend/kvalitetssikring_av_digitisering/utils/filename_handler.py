@@ -15,7 +15,7 @@ def save_uploaded_files(session_id: str, files, file_names=None):
         files (list[FileStorage]): list of uploaded files
 
     Returns:
-        list: filenames
+        str: filename to the last imported file (used to get target image)
     """
     if file_names is None:
         file_names = []
@@ -30,9 +30,11 @@ def save_uploaded_files(session_id: str, files, file_names=None):
                 r_id = str(uuid.uuid4())[:4]
                 file_name = f"{r_id}-{file_name}"
 
-            # Save file
-            file_names.append(file.filename)
-            file.save(get_session_image_file(session_id, file.filename))
+        # Save file
+        file.save(get_session_image_file(session_id, file_name))
+        file_names.append(file_name)
 
     # Store mapped names
-    return file_names
+    if len(file_names) > 0:
+        return file_names[-1]
+    return ""
