@@ -13,12 +13,11 @@ from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.os_qm_tool.oqt import (
     run_analyses_all_images,
 )
-from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_image_file
 from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
-from kvalitetssikring_av_digitisering.utils.file_handler import save_files
+from kvalitetssikring_av_digitisering.utils.filename_handler import save_uploaded_files
 
 oqt_endpoint = Blueprint("oqt_endpoint", __name__)
 
@@ -44,7 +43,7 @@ def analyze():
             files = request.files.getlist("files")
             session_id = create_session()
 
-            save_files(session_id, files)
+            save_uploaded_files(session_id, files)
             create_analysis_folders(session_id)
 
             pool.apply_async(

@@ -17,7 +17,7 @@ from kvalitetssikring_av_digitisering.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
-from kvalitetssikring_av_digitisering.utils.file_handler import save_files
+from kvalitetssikring_av_digitisering.utils.filename_handler import save_uploaded_files
 from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
@@ -61,24 +61,21 @@ def analyze():
                     status=400,
                 )
 
-            # Save before and after target
-            save_files(session_id, [before_target, after_target])
-
             # Save before target
             before_target_filename = list(
-                save_files(session_id, [before_target]).keys()
+                save_uploaded_files(session_id, [before_target]).keys()
             )[-1]
 
             # Save after target
-            after_target_filename = list(save_files(session_id, [after_target]).keys())[
-                -1
-            ]
+            after_target_filename = list(
+                save_uploaded_files(session_id, [after_target]).keys()
+            )[-1]
 
             # Create analysis folder
             create_analysis_folders(session_id)
 
             # Save files
-            save_files(session_id, files)
+            save_uploaded_files(session_id, files)
 
             pool.apply_async(
                 run_before_after_target_analysis,
