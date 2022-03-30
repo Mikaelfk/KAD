@@ -72,7 +72,7 @@ def run_analyses_all_images(session_id: str, target_name: str):
 
             # Update result
             result_data = read_from_json_file(get_session_results_file(session_id))
-            result_data = json_set_validation_failed(result_data, image_name)
+            result_data = json_set_validation_failed(result_data, image_name, "after")
             write_to_json_file(get_session_results_file(session_id), result_data)
     zip_all_images_in_session(session_id)
 

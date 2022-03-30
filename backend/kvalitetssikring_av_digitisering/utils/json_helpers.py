@@ -176,7 +176,7 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
     return None
 
 
-def json_set_validation_failed(json_data: dict, file_name: str):
+def json_set_validation_failed(json_data: dict, file_name: str, analysis_order: str):
     """Sets validation error for the spesified file name
 
     Args:
@@ -190,7 +190,14 @@ def json_set_validation_failed(json_data: dict, file_name: str):
 
     if data is None:
         data = {}
-    data.update({"overall_score": "validation error"})
 
-    json_data[file_name] = dict(data)
+    validation = data.get("file_validation")
+    if validation is None:
+        validation = {}
+
+    match analysis_order:
+        case "before" | "after":
+            validation.update({analysis_order: False})
+
+    json_data[file_name][validation] = dict(validation)
     return json_data

@@ -158,6 +158,26 @@ def run_before_after_target_analysis(
 
     update_session_status(session_id, "running")
 
+    # find name of all image files in session
+    session_image_folder = get_session_images_dir(session_id)
+    image_files = [
+        f
+        for f in os.listdir(session_image_folder)
+        if os.path.isfile(os.path.join(session_image_folder, f))
+    ]
+
+    # file validation
+    for file_name in image_files:
+        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
+        if validation is False:
+            # Delete file
+            delete_file(session_id, file_name)
+
+            # Update result
+            result_data = read_from_json_file(get_session_results_file(session_id))
+            result_data = json_set_validation_failed(result_data, file_name, "before")
+            write_to_json_file(get_session_results_file(session_id), result_data)
+
     # run analysis
     run_iso_analysis(before_target_filename, session_id)
     run_iso_analysis(after_target_filename, session_id)
@@ -185,15 +205,6 @@ def run_before_after_target_analysis(
 
     write_to_json_file(get_session_results_file(session_id), result_data)
 
-    session_image_folder = get_session_images_dir(session_id)
-
-    # find name of all image files in session
-    image_files = [
-        f
-        for f in os.listdir(session_image_folder)
-        if os.path.isfile(os.path.join(session_image_folder, f))
-    ]
-
     for file_name in image_files:
         add_metadata_to_file(
             get_session_image_file(session_id, file_name),
@@ -206,7 +217,7 @@ def run_before_after_target_analysis(
 
             # Update result
             result_data = read_from_json_file(get_session_results_file(session_id))
-            result_data = json_set_validation_failed(result_data, file_name)
+            result_data = json_set_validation_failed(result_data, file_name, "after")
             write_to_json_file(get_session_results_file(session_id), result_data)
 
     zip_all_images_in_session(session_id)
