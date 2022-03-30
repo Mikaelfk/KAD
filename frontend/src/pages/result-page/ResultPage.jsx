@@ -66,7 +66,7 @@ const ResultPage = () => {
                     // A, B C instead of C, B, A
                     .reverse()
                     .map((specification_level) =>
-                        <Accordion className='category-accordion' key={specification_level}>
+                        <Accordion className='category-accordion' key={specification_level} aria-label="Click to view details about this specification level analysis">
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
                                     <Typography variant="h5" display="inline">
@@ -97,7 +97,7 @@ const ResultPage = () => {
             // not care about passed/not passed here
             .filter((result_category) => result_category != "passed")
             .map((result_category) =>
-                <Accordion className="result-accordion" key={result_category}>
+                <Accordion className="result-accordion" key={result_category} aria-label="Click to view details about an analysis category">
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography variant="h6">
                             {result_category}
@@ -128,8 +128,13 @@ const ResultPage = () => {
                 <IconButton color="primary" aria-label="Return to result page" component={Link} to={`/results/${params.session_id}`} size="large">
                     <ArrowBackIosIcon fontSize="large" />
                 </IconButton>
-                <HomeButton></HomeButton>
-                <IconButton aria-label="Download button for single image" size="large" sx={{ color: "#1976d2" }} onClick={handleDownload}>
+                <HomeButton aria-label="Button for going back to home page"></HomeButton>
+                <IconButton
+                    aria-label="Download button for single image"
+                    size="large"
+                    sx={{ color: "#1976d2" }}
+                    onClick={handleDownload}
+                    title="Download image">
                     <DownloadIcon fontSize='large' />
                 </IconButton>
             </div>

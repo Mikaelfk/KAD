@@ -21,7 +21,13 @@ export const UploadButton = (props) => {
             <form>
                 <label htmlFor={"contained-button-file" + props.buttonId}>
                     {input}
-                    <Button component='span' className={props.buttonType + ' button-upload'} variant="contained" size='large'>
+                    <Button
+                        component='span'
+                        className={props.buttonType + ' button-upload'}
+                        variant="contained"
+                        size='large'
+                        aria-label="Upload button"
+                        title={props.title}>
                         {props.buttonText}
                     </Button>
                 </label>
@@ -35,12 +41,14 @@ UploadButton.propTypes = {
     onUpload: PropTypes.func.isRequired,
     buttonId: PropTypes.number,
     buttonType: PropTypes.string.isRequired,
-    buttonText: PropTypes.string.isRequired
+    buttonText: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
 }
 
 
 UploadButton.defaultProps = {
-    buttonType: "button"
+    buttonType: "button",
+    title: "Upload button"
 }
 
 export const SubmitButton = (props) => {
@@ -50,7 +58,9 @@ export const SubmitButton = (props) => {
                 className='button'
                 size="medium"
                 variant="contained"
-                onClick={props.onSubmit}>
+                onClick={props.onSubmit}
+                title="Submits the chosen images"
+                aria-label="Submit button">
                 Submit
             </Button>
         </div>
@@ -66,7 +76,9 @@ export const CancelButton = (props) => {
         <Button
             size="medium"
             component={props.component}
-            to={props.to}>
+            to={props.to}
+            title="Cancel upload"
+            aria-label="Cancel button">
             Cancel
         </Button>);
 }

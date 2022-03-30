@@ -21,23 +21,26 @@ const UploadDevice = (props) => {
                         buttonType='button-orange'
                         onUpload={props.onStartTargetUpload}
                         uploadTypeSingle={true}
-                        buttonId={1} />
+                        buttonId={1}
+                        title="Upload target scanned before the scanned images" />
                     <Typography>Selected start target: {props.startTarget.name}</Typography>
                 </div>
                 <div>
                     <UploadButton
-                        buttonText="Select slutt target"
+                        buttonText="Select end target"
                         buttonType='button-orange'
                         onUpload={props.onEndTargetUpload}
                         uploadTypeSingle={true}
-                        buttonId={2} />
+                        buttonId={2}
+                        title="Upload target scanned after the scanned images" />
                     <Typography>Selected end target: {props.endTarget.name}</Typography>
                 </div>
                 <div>
                     <UploadButton
                         buttonText="Select images"
                         onUpload={props.onUpload}
-                        buttonId={3} />
+                        buttonId={3}
+                        title="Upload the scanned images" />
                     <Typography>Selected images count: {props.files.length}</Typography>
                 </div>
             </div>
