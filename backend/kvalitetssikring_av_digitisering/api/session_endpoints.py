@@ -5,8 +5,6 @@ It defines endpoints for managing sessions.
 
 NOTE: Deprecated, not in use
 """
-
-
 import json
 
 from flask import Blueprint, request

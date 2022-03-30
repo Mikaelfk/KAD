@@ -24,13 +24,17 @@ def save_uploaded_files(session_id: str, files, file_names=None):
 
     # Store files
     for file in files:
-        if not is_file_empty(file):
-            file_name = secure_filename(file.filename)
+        if is_file_empty(file):
+            continue
 
-            # Check for dupliates
-            while file_name in file_names:
-                r_id = str(uuid.uuid4())[:4]
-                file_name = f"{r_id}-{file_name}"
+        file_name = secure_filename(file.filename)
+        if file_name == "":
+            file_name = str(uuid.uuid4())[:6]
+
+        # Check for dupliates
+        while file_name in file_names:
+            r_id = str(uuid.uuid4())[:4]
+            file_name = f"{r_id}-{file_name}"
 
         # Save file
         file.save(get_session_image_file(session_id, file_name))
