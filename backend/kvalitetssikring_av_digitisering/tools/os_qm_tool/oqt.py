@@ -16,7 +16,7 @@ from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.utils.json_helpers import (
     json_iqx_set_analysis_failed,
     read_from_json_file,
-    json_set_validation_failed,
+    json_set_validation,
 )
 from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
@@ -66,14 +66,11 @@ def run_analyses_all_images(session_id: str, target_name: str):
             results_file[image_name],
         )
         _, validation = jhove_validation(get_session_image_file(session_id, image_name))
-        if validation is False:
-            # Delete file
-            delete_file(session_id, image_name)
+        # Update result
+        result_data = read_from_json_file(get_session_results_file(session_id))
+        result_data = json_set_validation(result_data, image_name, "after", validation)
+        write_to_json_file(get_session_results_file(session_id), result_data)
 
-            # Update result
-            result_data = read_from_json_file(get_session_results_file(session_id))
-            result_data = json_set_validation_failed(result_data, image_name, "after")
-            write_to_json_file(get_session_results_file(session_id), result_data)
     zip_all_images_in_session(session_id)
 
     # sets session status to finished
