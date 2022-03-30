@@ -10,13 +10,16 @@ def add_metadata_to_file(file_path, result_dict: dict):
         file_path (str): Path to the image
         result_file (str): Path to the result json file
     """
-    img = pyexiv2.Image(file_path)
-    data = result_dict
-    tags = ["Xmp", "xmp"]
-    metadata = {}
-    get_xmp_metadata(tags, data, metadata)
-    img.modify_xmp(metadata)
-    img.close()
+    try:
+        img = pyexiv2.Image(file_path)
+        data = result_dict
+        tags = ["Xmp", "xmp"]
+        metadata = {}
+        get_xmp_metadata(tags, data, metadata)
+        img.modify_xmp(metadata)
+        img.close()
+    except Exception as err:
+        print(err)
 
 
 def get_xmp_metadata(tags, result_data, metadata: dict):
