@@ -54,7 +54,7 @@ def analyze():
                     ),
                     status=400,
                 )
-            elif is_file_empty(after_target):
+            if is_file_empty(after_target):
                 return Response(
                     json.dumps(
                         {"error": "after_target not specified"},

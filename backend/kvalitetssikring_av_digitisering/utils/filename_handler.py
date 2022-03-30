@@ -1,6 +1,7 @@
 """Function that modify uploaded files, but stores the original filename in the session root
 """
 import uuid
+from werkzeug.utils import secure_filename
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_session_image_file,
 )
@@ -13,6 +14,7 @@ def save_uploaded_files(session_id: str, files, file_names=None):
     Args:
         session_id (str): id of the session
         files (list[FileStorage]): list of uploaded files
+        file_names (list[str]): list of all file names
 
     Returns:
         str: filename to the last imported file (used to get target image)
@@ -23,7 +25,7 @@ def save_uploaded_files(session_id: str, files, file_names=None):
     # Store files
     for file in files:
         if not is_file_empty(file):
-            file_name = file.filename
+            file_name = secure_filename(file.filename)
 
             # Check for dupliates
             while file_name in file_names:
