@@ -26,7 +26,7 @@ def results(session_id):
     session_results_file = get_session_results_file(session_id)
 
     if not check_session_exists(session_id):
-        return Response(json.dumps({"error": "session does not exist"}), status=400)
+        return Response(json.dumps({"error": "session does not exist"}), status=404)
 
     with open(session_results_file, "a+", encoding="UTF-8") as json_file:
         json_file.seek(0)
