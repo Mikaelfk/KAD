@@ -75,7 +75,6 @@ const App = () => {
         }
 
         document.getElementById('loader-container').style.visibility = "visible";
-
         // Makes the request to the api
         fetch(Config.API_URL + '/api/analyze/device/iqx?target=UTT', {
             method: 'POST',
@@ -90,6 +89,7 @@ const App = () => {
             })
             .catch(err => console.log(err))
     }
+
 
     return (
         <Routes>
@@ -110,8 +110,9 @@ const App = () => {
                     onUpload={handleUpload}
                     onSubmit={handleObjectSubmit}
                     files={files} />} />
-            <Route path="/results/:session_id" element={<ResultsPage />} />
-            <Route path="/results/:session_id/:imageId" element={<ResultPage />} />
+            <Route path="/results/:session_id" element=
+                {<ResultsPage />} />
+            <Route path="/results/:session_id/:image_id" element={<ResultPage />} />
         </Routes>
     );
 }

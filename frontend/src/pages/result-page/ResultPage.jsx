@@ -1,5 +1,5 @@
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import DownloadIcon from '@mui/icons-material/Download';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary, IconButton, Typography } from "@mui/material";
 import React, { useEffect, useState } from 'react';
@@ -14,17 +14,35 @@ const ResultPage = () => {
 
     let params = useParams();
     useEffect(() => {
-        // params.session_id will be used to make the request
+        // Fetches the results from the api
         fetch(Config.API_URL + `/api/results/${params.session_id}`)
             .then(resp => resp.json())
             .then(data => setResults(data))
             .catch(err => console.log(err))
-    }, [params.session_id, params.imageId])
+    }, [params.session_id, params.image_id])
 
-    let generateResults = () => {
+    // Downloads the images.zip file from a session
+    const handleDownload = () => {
+        fetch(Config.API_URL + `/api/download/${params.session_id}?file_name=${params.image_id}`)
+            .then(resp => resp.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                // the filename you want
+                a.download = params.image_id;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(err => console.log(err))
+    }
+
+    const generateResults = () => {
         // first do checks for smthn wrong and if wrong return no results
-        if ((Object.keys(results).length == 0) || results["error"] || !results[params.imageId]) {
-            // return error :O
+        if ((Object.keys(results).length == 0) || results["error"] || !results[params.image_id]) {
+            // return error
             return (
                 <div>
                     <Typography variant="h3">
@@ -34,16 +52,17 @@ const ResultPage = () => {
             )
         }
 
-        // results teim :)
 
         return <div className="results">
             {
                 // loop over specification levels
-                Object.keys(results[params.imageId])
+                Object.keys(results[params.image_id])
                     // only get A B C sections
                     .filter(specification_level => (
                         (specification_level != "image_tag") && (specification_level != "overall_score"))
                     )
+                    .filter(specification_level => (
+                        (results[params.image_id][specification_level]["completed"])))
                     // A, B C instead of C, B, A
                     .reverse()
                     .map((specification_level) =>
@@ -56,14 +75,14 @@ const ResultPage = () => {
                                     <Typography variant="h5" display="inline">
                                         {
                                             "Passed: " +
-                                            (results[params.imageId][specification_level]["results"]["passed"] ? "Yes" : "No")
+                                            (results[params.image_id][specification_level]["results"]["passed"] ? "Yes" : "No")
                                         }
                                     </Typography>
                                 </div>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {
-                                    generateResultsAccordion(results[params.imageId][specification_level]["results"])
+                                    generateResultsAccordion(results[params.image_id][specification_level]["results"])
                                 }
                             </AccordionDetails>
                         </Accordion >
@@ -72,7 +91,7 @@ const ResultPage = () => {
         </div >
     }
 
-    let generateResultsAccordion = (resultData) => {
+    const generateResultsAccordion = (resultData) => {
         // loop over result categories
         return Object.keys(resultData)
             // not care about passed/not passed here
@@ -110,13 +129,13 @@ const ResultPage = () => {
                     <ArrowBackIosIcon fontSize="large" />
                 </IconButton>
                 <HomeButton></HomeButton>
-                <IconButton className="hidden" aria-label="Invisible button for positioning" size="large">
-                    <EmojiPeopleIcon fontSize='large' />
+                <IconButton aria-label="Download button for single image" size="large" sx={{ color: "#1976d2" }} onClick={handleDownload}>
+                    <DownloadIcon fontSize='large' />
                 </IconButton>
             </div>
 
             <Typography variant="h2">
-                Resultat: {params.imageId}
+                Resultat: {params.image_id}
             </Typography>
 
             {
