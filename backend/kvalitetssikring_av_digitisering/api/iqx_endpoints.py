@@ -28,7 +28,7 @@ pool = ThreadPool.ThreadPool(
 )
 
 
-@iqx_endpoint.route("/api/analyze/device/iqx", methods=["POST"])
+@iqx_endpoint.route("/api/analyze/iqx", methods=["POST"])
 def analyze():
     """An endpoint whitch initalizes a session and start analysis on uploaded targets
 
