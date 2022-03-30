@@ -61,6 +61,8 @@ const ResultPage = () => {
                     .filter(specification_level => (
                         (specification_level != "image_tag") && (specification_level != "overall_score"))
                     )
+                    .filter(specification_level => (
+                        (results[params.image_id][specification_level]["completed"])))
                     // A, B C instead of C, B, A
                     .reverse()
                     .map((specification_level) =>
@@ -133,7 +135,7 @@ const ResultPage = () => {
             </div>
 
             <Typography variant="h2">
-                Resultat: {params.imageId}
+                Resultat: {params.image_id}
             </Typography>
 
             {
