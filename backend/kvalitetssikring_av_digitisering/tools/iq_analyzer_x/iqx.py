@@ -6,6 +6,8 @@ parsing results and saving them in a session
 import os
 import subprocess
 
+from isort import file
+
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
     result_summary_parser,
@@ -31,6 +33,8 @@ from kvalitetssikring_av_digitisering.utils.path_helpers import (
 )
 from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
+from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
+from kvalitetssikring_av_digitisering.utils.file_helpers import delete_file
 
 
 def run_analysis(image_file_path: str, specification_level: str):
@@ -196,6 +200,10 @@ def run_before_after_target_analysis(
             get_session_image_file(session_id, file_name),
             read_from_json_file(get_session_results_file(session_id)),
         )
+        validation = jhove_validation(get_session_image_file(session_id, file_name))
+        if validation is False:
+            # Delete file
+            delete_file(session_id, file_name)
 
     zip_all_images_in_session(session_id)
 

@@ -31,6 +31,8 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
     write_to_json_file,
 )
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
+from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
+from kvalitetssikring_av_digitisering.utils.file_helpers import delete_file
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -62,6 +64,10 @@ def run_analyses_all_images(session_id: str, target_name: str):
             get_session_image_file(session_id, image_name),
             results_file[image_name],
         )
+        validation = jhove_validation(get_session_image_file(session_id, image_name))
+        if validation is False:
+            # Delete file
+            delete_file(session_id, image_name)
 
     zip_all_images_in_session(session_id)
 
