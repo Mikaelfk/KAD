@@ -18,6 +18,8 @@ def result_summary_parser(uri):
     # Parse XML to find overview
     root = ET.fromstring(fixed_xml)
     overview_groups = root.findall("./Group/Image/Curves/UTT/Overview/*")
+    if len(overview_groups) == 0:
+        return {"passed": False}
 
     # Get results
     results = {}
