@@ -30,9 +30,9 @@ def save_uploaded_files(session_id: str, files, file_names=None):
                 r_id = str(uuid.uuid4())[:4]
                 file_name = f"{r_id}-{file_name}"
 
-        # Save file
-        file.save(get_session_image_file(session_id, file_name))
-        file_names.append(file_name)
+            # Save file
+            file.save(get_session_image_file(session_id, file_name))
+            file_names.append(file_name)
 
     # Store mapped names
     if len(file_names) > 0:
