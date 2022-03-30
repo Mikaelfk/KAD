@@ -66,7 +66,11 @@ const ResultPage = () => {
                     // A, B C instead of C, B, A
                     .reverse()
                     .map((specification_level) =>
-                        <Accordion className='category-accordion' key={specification_level} aria-label="Click to view details about this specification level analysis">
+                        <Accordion
+                            className='category-accordion'
+                            key={specification_level}
+                            aria-label="Click to view details about this specification level analysis"
+                            title={`View details about specification level ${specification_level} analysis`}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                 <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
                                     <Typography variant="h5" display="inline">
@@ -97,7 +101,11 @@ const ResultPage = () => {
             // not care about passed/not passed here
             .filter((result_category) => result_category != "passed")
             .map((result_category) =>
-                <Accordion className="result-accordion" key={result_category} aria-label="Click to view details about an analysis category">
+                <Accordion
+                    className="result-accordion"
+                    key={result_category}
+                    aria-label="Click to view details about an analysis category"
+                    title={`View ${result_category} details`} >
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography variant="h6">
                             {result_category}
@@ -118,14 +126,20 @@ const ResultPage = () => {
                                 )
                         }
                     </AccordionDetails>
-                </Accordion>
+                </Accordion >
             )
     }
 
     return (
         <div className="container" >
             <div className="top-bar">
-                <IconButton color="primary" aria-label="Return to result page" component={Link} to={`/results/${params.session_id}`} size="large">
+                <IconButton
+                    color="primary"
+                    aria-label="Return to result page"
+                    component={Link}
+                    to={`/ results / ${params.session_id}`}
+                    size="large"
+                    title="Go back to result overview">
                     <ArrowBackIosIcon fontSize="large" />
                 </IconButton>
                 <HomeButton aria-label="Button for going back to home page"></HomeButton>

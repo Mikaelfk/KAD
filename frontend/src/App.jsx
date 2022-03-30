@@ -24,6 +24,7 @@ const App = () => {
     }, []);
 
     const handleUpload = (event) => {
+        document.getElementById("images-text").style.visibility = "visible"
         const inputFiles = event.target.files
         // Empty array before adding files
         setFiles([])
@@ -34,10 +35,12 @@ const App = () => {
     }
 
     const handleStartTargetUpload = (event) => {
+        document.getElementById("start-target-text").style.visibility = "visible"
         setStartTarget(event.target.files[0])
     }
 
     const handleEndTargetUpload = (event) => {
+        document.getElementById("end-target-text").style.visibility = "visible"
         setEndTarget(event.target.files[0])
     }
 
