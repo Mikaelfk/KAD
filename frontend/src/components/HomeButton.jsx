@@ -6,7 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 const HomeButton = () => {
     return (
-        <IconButton color="primary" aria-label="Home button" component={Link} to="/" size="large">
+        <IconButton color="primary" aria-label="Home button" component={Link} to="/" size="large" title="Go back to home page">
             <HomeIcon fontSize="large" />
         </IconButton>
     )

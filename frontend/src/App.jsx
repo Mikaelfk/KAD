@@ -24,6 +24,7 @@ const App = () => {
     }, []);
 
     const handleUpload = (event) => {
+        document.getElementById("images-text").style.visibility = "visible"
         const inputFiles = event.target.files
         // Empty array before adding files
         setFiles([])
@@ -34,10 +35,12 @@ const App = () => {
     }
 
     const handleStartTargetUpload = (event) => {
+        document.getElementById("start-target-text").style.visibility = "visible"
         setStartTarget(event.target.files[0])
     }
 
     const handleEndTargetUpload = (event) => {
+        document.getElementById("end-target-text").style.visibility = "visible"
         setEndTarget(event.target.files[0])
     }
 
@@ -49,7 +52,7 @@ const App = () => {
         }
 
         // Makes a POST request to the endpoint,
-        fetch(Config.API_URL + '/api/analyze/device/oqt?target=GTObject', {
+        fetch(Config.API_URL + '/api/analyze/oqt?target=GTObject', {
             method: 'POST',
             body: formData
         })
@@ -76,7 +79,7 @@ const App = () => {
 
         document.getElementById('loader-container').style.visibility = "visible";
         // Makes the request to the api
-        fetch(Config.API_URL + '/api/analyze/device/iqx?target=UTT', {
+        fetch(Config.API_URL + '/api/analyze/iqx?target=UTT', {
             method: 'POST',
             body: formData
         })

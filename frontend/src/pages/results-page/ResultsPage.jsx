@@ -45,14 +45,26 @@ const ResultsPage = () => {
                 <IconButton className="hidden" aria-label="Invisible button for positioning" size="large">
                     <EmojiPeopleIcon fontSize='large' />
                 </IconButton>
-                <HomeButton></HomeButton>
-                <IconButton aria-label="Download button" size="large" sx={{ color: "#1976d2" }} onClick={handleDownloadAll}>
+                <HomeButton aria-label="Button for going back to the home page" ></HomeButton>
+                <IconButton
+                    aria-label="button for downloading all analysed files"
+                    size="large"
+                    sx={{ color: "#1976d2" }}
+                    onClick={handleDownloadAll}
+                    title="Download all images">
                     <DownloadIcon fontSize='large' />
                 </IconButton>
             </div>
             <Typography variant='h2'>Results</Typography>
             {Object.keys(results).map((key) =>
-                <Card className="resultCard" component={Link} to={`/results/${params.session_id}/${key}`} key={key} style={{ textDecoration: 'none' }}>
+                <Card
+                    className="resultCard"
+                    component={Link}
+                    to={`/results/${params.session_id}/${key}`}
+                    key={key}
+                    style={{ textDecoration: 'none' }}
+                    title="View analysis details"
+                    aria-label="Field which shows image and analysis results, can be clicked on to view analysis details">
                     <CardContent className="result">
                         <Typography variant="h5">
                             Name: {key}

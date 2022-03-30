@@ -16,7 +16,7 @@ const UploadObject = (props) => {
             <Typography variant='h2'>Object Level Target</Typography>
             <div className='upload-options'>
                 <UploadButton buttonText="Select images" onUpload={props.onUpload} />
-                <Typography>Selected images count: {props.files.length}</Typography>
+                <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />

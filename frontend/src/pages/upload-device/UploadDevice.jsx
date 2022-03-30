@@ -21,26 +21,29 @@ const UploadDevice = (props) => {
                         buttonType='button-orange'
                         onUpload={props.onStartTargetUpload}
                         uploadTypeSingle={true}
-                        buttonId={1} />
-                    <Typography>Selected start target: {props.startTarget.name}</Typography>
+                        buttonId={1}
+                        title="Upload target scanned before the scanned images" />
+                    <Typography sx={{ visibility: "hidden" }} id="start-target-text">Selected start target: {props.startTarget.name}</Typography>
                 </div>
                 <div>
                     <UploadButton
-                        buttonText="Select slutt target"
+                        buttonText="Select end target"
                         buttonType='button-orange'
                         onUpload={props.onEndTargetUpload}
                         uploadTypeSingle={true}
-                        buttonId={2} />
-                    <Typography>Selected end target: {props.endTarget.name}</Typography>
+                        buttonId={2}
+                        title="Upload target scanned after the scanned images" />
+                    <Typography sx={{ visibility: "hidden" }} id="end-target-text">Selected end target: {props.endTarget.name}</Typography>
                 </div>
                 <div>
                     <UploadButton
                         buttonText="Select images"
                         onUpload={props.onUpload}
-                        buttonId={3} />
-                    <Typography>Selected images count: {props.files.length}</Typography>
+                        buttonId={3}
+                        title="Upload the scanned images" />
+                    <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
                 </div>
-            </div>
+            </div >
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
                 <SubmitButton onSubmit={props.onSubmit} />
@@ -48,7 +51,7 @@ const UploadDevice = (props) => {
             <div className="loader-container" id="loader-container">
                 <div className="loader"></div>
             </div>
-        </div>
+        </div >
     );
 }
 
