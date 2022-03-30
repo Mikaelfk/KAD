@@ -6,8 +6,6 @@ parsing results and saving them in a session
 import os
 import subprocess
 
-from isort import file
-
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
     result_summary_parser,
@@ -23,6 +21,7 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
     read_from_json_file,
     write_to_json_file,
     json_get_best_passing_iso_score,
+    json_set_validation_failed,
 )
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
@@ -204,6 +203,11 @@ def run_before_after_target_analysis(
         if validation is False:
             # Delete file
             delete_file(session_id, file_name)
+
+            # Update result
+            result_data = read_from_json_file(get_session_results_file(session_id))
+            result_data = json_set_validation_failed(result_data, file_name)
+            write_to_json_file(get_session_results_file(session_id), result_data)
 
     zip_all_images_in_session(session_id)
 
