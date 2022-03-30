@@ -65,7 +65,7 @@ def run_analyses_all_images(session_id: str, target_name: str):
             get_session_image_file(session_id, image_name),
             results_file[image_name],
         )
-        validation = jhove_validation(get_session_image_file(session_id, image_name))
+        _, validation = jhove_validation(get_session_image_file(session_id, image_name))
         if validation is False:
             # Delete file
             delete_file(session_id, image_name)

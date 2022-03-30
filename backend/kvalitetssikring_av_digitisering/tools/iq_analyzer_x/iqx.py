@@ -199,7 +199,7 @@ def run_before_after_target_analysis(
             get_session_image_file(session_id, file_name),
             read_from_json_file(get_session_results_file(session_id)),
         )
-        validation = jhove_validation(get_session_image_file(session_id, file_name))
+        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
         if validation is False:
             # Delete file
             delete_file(session_id, file_name)
