@@ -2,8 +2,9 @@
 
 This module is for use with Flask, and the methods should therefore never be called directly.
 It defines endpoints for managing sessions.
-"""
 
+NOTE: Deprecated, not in use
+"""
 import json
 
 from flask import Blueprint, request

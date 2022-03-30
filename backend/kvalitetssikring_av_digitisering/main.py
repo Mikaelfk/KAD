@@ -10,8 +10,6 @@ from kvalitetssikring_av_digitisering.api import (
     iqx_endpoint,
     oqt_endpoint,
     results_endpoint,
-    session_endpoint,
-    validate_endpoint,
     download_endpoint,
 )
 from kvalitetssikring_av_digitisering.config import Config
@@ -28,11 +26,9 @@ def start():
     # Compliant
     CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 
-    app.register_blueprint(validate_endpoint)
-    app.register_blueprint(session_endpoint)
     app.register_blueprint(iqx_endpoint)
-    app.register_blueprint(results_endpoint)
     app.register_blueprint(oqt_endpoint)
+    app.register_blueprint(results_endpoint)
     app.register_blueprint(download_endpoint)
 
     # Create storage folder

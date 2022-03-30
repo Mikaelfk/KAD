@@ -3,6 +3,8 @@
 This module is for use with Flask, and should therefore not be directly called.
 It defines the code for an endpoint that takes an image, checks it with JHove and returns
 validity result.
+
+NOTE: Deprecated, not in use
 """
 
 import json
@@ -56,7 +58,6 @@ def validate():
             )
         )
 
-        # return result
         resp = Response(json.dumps({"isValid": str(validation_output[1])}), status=200)
         return resp
     else:

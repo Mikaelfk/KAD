@@ -28,7 +28,7 @@ pool = ThreadPool.ThreadPool(
 )
 
 
-@oqt_endpoint.route("/api/analyze/device/oqt", methods=["POST"])
+@oqt_endpoint.route("/api/analyze/oqt", methods=["POST"])
 def analyze():
     """An endpoint which initializes a session and starts analysis on all images uploaded
 
@@ -42,6 +42,9 @@ def analyze():
             print("Target which is used: " + target)
             files = request.files.getlist("files")
             session_id = create_session()
+
+            if len(files) == 0:
+                return Response(json.dumps({"error": "no files uploaded"}), status=400)
 
             save_uploaded_files(session_id, files)
             create_analysis_folders(session_id)
