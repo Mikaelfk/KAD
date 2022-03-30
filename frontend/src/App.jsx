@@ -49,7 +49,7 @@ const App = () => {
         }
 
         // Makes a POST request to the endpoint,
-        fetch(Config.API_URL + '/api/analyze/device/oqt?target=GTObject', {
+        fetch(Config.API_URL + '/api/analyze/oqt?target=GTObject', {
             method: 'POST',
             body: formData
         })
@@ -76,7 +76,7 @@ const App = () => {
 
         document.getElementById('loader-container').style.visibility = "visible";
         // Makes the request to the api
-        fetch(Config.API_URL + '/api/analyze/device/iqx?target=UTT', {
+        fetch(Config.API_URL + '/api/analyze/iqx?target=UTT', {
             method: 'POST',
             body: formData
         })
