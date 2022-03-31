@@ -5,7 +5,6 @@ parsing results and saving them in a session
 """
 import os
 import subprocess
-from unittest import result
 
 from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
@@ -204,7 +203,6 @@ def run_before_after_target_analysis(
     write_to_json_file(get_session_results_file(session_id), result_data)
 
     for file_name in image_files:
-        # TODO: stops here if input file is corrupt
         add_metadata_to_file(
             get_session_image_file(session_id, file_name),
             read_from_json_file(get_session_results_file(session_id)),
