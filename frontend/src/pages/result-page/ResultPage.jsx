@@ -137,7 +137,7 @@ const ResultPage = () => {
                     color="primary"
                     aria-label="Return to result page"
                     component={Link}
-                    to={`/ results / ${params.session_id}`}
+                    to={`/results/${params.session_id}`}
                     size="large"
                     title="Go back to result overview">
                     <ArrowBackIosIcon fontSize="large" />
