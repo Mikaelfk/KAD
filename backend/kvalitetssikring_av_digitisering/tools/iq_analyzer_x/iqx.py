@@ -21,6 +21,7 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
     read_from_json_file,
     write_to_json_file,
     json_get_best_passing_iso_score,
+    json_set_validation,
 )
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_analysis_dir_image_file,
@@ -31,6 +32,7 @@ from kvalitetssikring_av_digitisering.utils.path_helpers import (
 )
 from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
+from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
 
 
 def run_analysis(image_file_path: str, specification_level: str):
@@ -155,6 +157,24 @@ def run_before_after_target_analysis(
 
     update_session_status(session_id, "running")
 
+    # find name of all image files in session
+    session_image_folder = get_session_images_dir(session_id)
+    image_files = [
+        f
+        for f in os.listdir(session_image_folder)
+        if os.path.isfile(os.path.join(session_image_folder, f))
+    ]
+
+    # file validation
+    result_data = {}
+    for file_name in [before_target_filename, after_target_filename]:
+        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
+        result_data = read_from_json_file(get_session_results_file(session_id))
+        result_data = json_set_validation(result_data, file_name, "before", validation)
+        write_to_json_file(get_session_results_file(session_id), result_data)
+
+    # TODO: Only run analysis on target that is not currupt
+
     # run analysis
     run_iso_analysis(before_target_filename, session_id)
     run_iso_analysis(after_target_filename, session_id)
@@ -182,20 +202,16 @@ def run_before_after_target_analysis(
 
     write_to_json_file(get_session_results_file(session_id), result_data)
 
-    session_image_folder = get_session_images_dir(session_id)
-
-    # find name of all image files in session
-    image_files = [
-        f
-        for f in os.listdir(session_image_folder)
-        if os.path.isfile(os.path.join(session_image_folder, f))
-    ]
-
     for file_name in image_files:
         add_metadata_to_file(
             get_session_image_file(session_id, file_name),
             read_from_json_file(get_session_results_file(session_id)),
         )
+    for file_name in [before_target_filename, after_target_filename]:
+        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
+        result_data = read_from_json_file(get_session_results_file(session_id))
+        result_data = json_set_validation(result_data, file_name, "after", validation)
+        write_to_json_file(get_session_results_file(session_id), result_data)
 
     zip_all_images_in_session(session_id)
 

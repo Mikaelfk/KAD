@@ -37,7 +37,7 @@ def jhove_validation(url):
     elif url.lower().endswith(".tiff") or url.lower().endswith(".tif"):
         stream = os.popen(jhove_command + " -m TIFF-hul -kr " + '"' + url + '"')
     else:
-        return "Filetype not valid", None
+        return "Filetype not valid", False
     output = stream.read()
 
     # Checks if the validation was successful

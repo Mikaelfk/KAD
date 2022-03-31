@@ -174,3 +174,35 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
         ):
             return score
     return None
+
+
+def json_set_validation(
+    json_data: dict, file_name: str, analysis_order: str, validation_status: bool
+):
+    """Sets validation error for the spesified file name
+
+    Args:
+        json_data (dict): result file as a dict
+        file_name (str): the current file
+
+    Returns:
+        dict: updated results as a dict
+    """
+    data = json_data.get(file_name)
+
+    if data is None:
+        data = {}
+
+    validation = data.get("file_validation")
+    if validation is None:
+        validation = {}
+
+    match analysis_order:
+        case "before" | "after":
+            validation.update({analysis_order: validation_status})
+
+    data = defaultdict(dict, data)
+    data["file_validation"] = validation
+
+    json_data[file_name] = dict(data)
+    return json_data

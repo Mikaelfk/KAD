@@ -16,6 +16,7 @@ from kvalitetssikring_av_digitisering.config import Config
 from kvalitetssikring_av_digitisering.utils.json_helpers import (
     json_iqx_set_analysis_failed,
     read_from_json_file,
+    json_set_validation,
 )
 from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
 from kvalitetssikring_av_digitisering.utils.path_helpers import (
@@ -31,6 +32,7 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
     write_to_json_file,
 )
 from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
+from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -51,17 +53,28 @@ def run_analyses_all_images(session_id: str, target_name: str):
 
     update_session_status(session_id, "running")
 
+    # Validate files
+    for file_name in image_files:
+        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
+        result_data = read_from_json_file(get_session_results_file(session_id))
+        result_data = json_set_validation(result_data, file_name, "before", validation)
+        write_to_json_file(get_session_results_file(session_id), result_data)
+
     # performs analysis on all images
     for image_name in image_files:
         run_iso_analysis(image_name, target_name, session_id)
 
     # adds metadata to all images
     results_file = read_from_json_file(get_session_results_file(session_id))
-    for image_name in image_files:
+    for file_name in image_files:
         add_metadata_to_file(
-            get_session_image_file(session_id, image_name),
-            results_file[image_name],
+            get_session_image_file(session_id, file_name),
+            results_file[file_name],
         )
+        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
+        result_data = read_from_json_file(get_session_results_file(session_id))
+        result_data = json_set_validation(result_data, file_name, "after", validation)
+        write_to_json_file(get_session_results_file(session_id), result_data)
 
     zip_all_images_in_session(session_id)
 
