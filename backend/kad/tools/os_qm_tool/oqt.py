@@ -216,7 +216,17 @@ def run_analysis(
             ),
             check=True,
         )
-    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+    except subprocess.CalledProcessError as err:
+        if (err.returncode) != 2:
+            # If exit code is 2, it means that the result of the analysis did not pass,
+            # but the analysis was done, so continue
+            logging.getLogger().warning(
+                "Failed to run analysis on %s with specification level %s",
+                image_file_path,
+                specification_level,
+            )
+            return False
+    except subprocess.TimeoutExpired:
         logging.getLogger().warning(
             "Failed to run analysis on %s with specification level %s",
             image_file_path,
