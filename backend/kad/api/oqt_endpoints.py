@@ -18,6 +18,7 @@ from kad.utils.session_manager import (
     create_session,
 )
 from kad.utils.filename_handler import save_uploaded_files
+from kad.utils.file_helpers import are_files_valid
 
 oqt_endpoint = Blueprint("oqt_endpoint", __name__)
 
@@ -45,6 +46,16 @@ def analyze():
 
             if len(files) == 0:
                 return Response(json.dumps({"error": "no files uploaded"}), status=400)
+            
+            # Checks if the filetypes are valid
+            files_valid, file_name = are_files_valid(files)
+            if not files_valid:
+                return Response(
+                        json.dumps(
+                            {"error": "File extension not supported for file: " + str(file_name)},
+                        ),
+                        status=400,
+                    )
 
             save_uploaded_files(session_id, files)
             create_analysis_folders(session_id)

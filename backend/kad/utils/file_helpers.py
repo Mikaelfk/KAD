@@ -2,6 +2,7 @@
 """
 
 import os, errno
+from werkzeug.datastructures import FileStorage
 from kad.utils.path_helpers import (
     get_session_image_file,
     get_analysis_dir_image_file,
@@ -23,6 +24,24 @@ def is_file_empty(file):
         return True
     file.seek(0)
     return False
+
+
+def are_files_valid(files: list[FileStorage]):
+    """Checks if files are valid
+
+    Args:
+        files (list[FileStorage]): list of files to be checked
+
+    Returns:
+        bool: True if all files are valid, False otherwise
+        str: file name if invalid file is found
+    """
+    for file in files:
+        if file.content_type == None:
+            continue
+        if not file.content_type in ["image/tiff", "image/jpeg"]:
+            return False, file.filename
+    return True, None
 
 
 def delete_file(session_id, file_name):
