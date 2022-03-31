@@ -123,7 +123,7 @@ def json_iqx_set_image_tag(json_data: dict, file_name: str, image_tag: str):
     return json_data
 
 
-def json_iqx_set_overall_score(json_data: dict, file_name: str, overall_score: str):
+def json_set_overall_score(json_data: dict, file_name: str, overall_score: str):
     """Method for setting the overall score of a iqx analysis result.
 
     Args:

@@ -13,7 +13,13 @@ from kad.utils.image_zipper import zip_all_images_in_session
 from kad.utils.json_helpers import (
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
+<<<<<<< HEAD
     json_iqx_set_overall_score,
+=======
+    read_from_json_file,
+    json_set_validation,
+    json_set_overall_score,
+>>>>>>> 85c79c0... Renamed json_iqx_set_overall_score to json_set_overall_score
     json_get_best_passing_iso_score,
     json_set_validation,
     read_from_json_file,
@@ -70,7 +76,7 @@ def run_analyses_all_images(session_id: str, target_name: str):
 
     # set the overall score of the targets
     for file_name in image_files:
-        result_data = json_iqx_set_overall_score(
+        result_data = json_set_overall_score(
             result_data,
             file_name,
             str(json_get_best_passing_iso_score(result_data, file_name)),

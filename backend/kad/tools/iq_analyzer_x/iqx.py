@@ -16,8 +16,8 @@ from kad.utils.json_helpers import (
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
     json_iqx_set_image_tag,
-    json_iqx_set_overall_score,
     json_set_validation,
+    json_set_overall_score,
     read_from_json_file,
     write_to_json_file,
 )
@@ -234,12 +234,12 @@ def run_before_after_target_analysis(
     )
 
     # set the overall score of the targets
-    result_data = json_iqx_set_overall_score(
+    result_data = json_set_overall_score(
         result_data,
         before_target_filename,
         str(json_get_best_passing_iso_score(result_data, before_target_filename)),
     )
-    result_data = json_iqx_set_overall_score(
+    result_data = json_set_overall_score(
         result_data,
         after_target_filename,
         str(json_get_best_passing_iso_score(result_data, after_target_filename)),
