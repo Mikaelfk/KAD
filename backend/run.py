@@ -1,4 +1,4 @@
-from kvalitetssikring_av_digitisering.main import start
+from kad.main import start
 
 
 def main():

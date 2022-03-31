@@ -8,11 +8,11 @@ from flask import Blueprint, request, send_from_directory
 from flask.wrappers import Response
 from werkzeug.utils import secure_filename
 
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.utils.path_helpers import (
     get_session_dir,
     get_session_images_dir,
 )
-from kvalitetssikring_av_digitisering.utils.session_manager import check_session_exists
+from kad.utils.session_manager import check_session_exists
 
 
 download_endpoint = Blueprint("download_endpoint", __name__)
@@ -38,7 +38,9 @@ def download_images(session_id):
             get_session_dir(session_id), "images.zip", as_attachment=True
         )
 
-    file_path = os.path.join(get_session_images_dir(session_id), secure_filename(file_name))
+    file_path = os.path.join(
+        get_session_images_dir(session_id), secure_filename(file_name)
+    )
     if not os.path.isfile(file_path):
         return Response(json.dumps({"error": "image does not exist"}), status=404)
 

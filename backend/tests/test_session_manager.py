@@ -4,16 +4,16 @@ import os
 import shutil
 import uuid
 
-from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.utils.json_helpers import read_from_json_file
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.config import Config
+from kad.utils.json_helpers import read_from_json_file
+from kad.utils.path_helpers import (
     get_analysis_dir,
     get_analysis_dir_image_file,
     get_session_images_dir,
     get_session_outputs_dir,
     get_session_state_file,
 )
-from kvalitetssikring_av_digitisering.utils.session_manager import (
+from kad.utils.session_manager import (
     check_session_exists,
     create_analysis_folders,
     create_session,

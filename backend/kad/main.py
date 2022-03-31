@@ -6,13 +6,13 @@ import os
 from flask import Flask
 from flask_cors import CORS
 
-from kvalitetssikring_av_digitisering.api import (
+from kad.api import (
     iqx_endpoint,
     oqt_endpoint,
     results_endpoint,
     download_endpoint,
 )
-from kvalitetssikring_av_digitisering.config import Config
+from kad.config import Config
 
 
 def start():

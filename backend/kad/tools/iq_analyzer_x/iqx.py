@@ -6,14 +6,14 @@ parsing results and saving them in a session
 import os
 import subprocess
 
-from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
+from kad.config import Config
+from kad.tools.iq_analyzer_x.parser import (
     result_summary_parser,
 )
-from kvalitetssikring_av_digitisering.utils.image_zipper import (
+from kad.utils.image_zipper import (
     zip_all_images_in_session,
 )
-from kvalitetssikring_av_digitisering.utils.json_helpers import (
+from kad.utils.json_helpers import (
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
     json_iqx_set_image_tag,
@@ -23,16 +23,16 @@ from kvalitetssikring_av_digitisering.utils.json_helpers import (
     json_get_best_passing_iso_score,
     json_set_validation,
 )
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_analysis_dir_image_iqx_result_file,
     get_session_image_file,
     get_session_images_dir,
     get_session_results_file,
 )
-from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
-from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
-from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
+from kad.utils.metadata_add import add_metadata_to_file
+from kad.utils.session_manager import update_session_status
+from kad.utils.file_validation import jhove_validation
 
 
 def run_analysis(image_file_path: str, specification_level: str):

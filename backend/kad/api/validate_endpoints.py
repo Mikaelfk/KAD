@@ -12,8 +12,8 @@ import os
 
 from flask import Blueprint, request
 from flask.wrappers import Response
-from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
+from kad.config import Config
+from kad.utils.file_validation import jhove_validation
 from werkzeug.utils import secure_filename
 
 validate_endpoint = Blueprint("validate_endpoint", __name__)

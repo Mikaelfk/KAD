@@ -5,7 +5,7 @@ Requires a valid JHOVE installation to work.
 
 import os
 
-from kvalitetssikring_av_digitisering.config import Config
+from kad.config import Config
 
 jhove_path = Config.config().get(section="JHOVE", option="JhoveInstallPath")
 print(jhove_path)

@@ -2,7 +2,7 @@
 """
 
 import os, errno
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.utils.path_helpers import (
     get_session_image_file,
     get_analysis_dir_image_file,
 )

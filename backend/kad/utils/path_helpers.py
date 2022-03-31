@@ -4,7 +4,7 @@ Contains methods needed for getting paths for various files and folders in sessi
 """
 import os
 
-from kvalitetssikring_av_digitisering.config import Config
+from kad.config import Config
 
 
 def get_session_dir(session_id: str):

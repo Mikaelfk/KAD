@@ -2,7 +2,7 @@
 """
 import os
 
-from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.parser import (
+from kad.tools.iq_analyzer_x.parser import (
     result_summary_parser as parser,
 )
 

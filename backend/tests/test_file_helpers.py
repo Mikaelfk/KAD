@@ -3,7 +3,7 @@
 import os
 
 from werkzeug.datastructures import FileStorage
-from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
+from kad.utils.file_helpers import is_file_empty
 
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))

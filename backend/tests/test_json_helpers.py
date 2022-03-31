@@ -2,7 +2,7 @@
 """
 import os
 import shutil
-from kvalitetssikring_av_digitisering.utils.json_helpers import (
+from kad.utils.json_helpers import (
     json_get_best_passing_iso_score,
     json_iqx_set_image_tag,
     json_iqx_set_overall_score,

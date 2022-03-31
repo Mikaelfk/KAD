@@ -5,11 +5,11 @@ Contains several methods for creating, updating and modifying sessions.
 import os
 import uuid
 
-from kvalitetssikring_av_digitisering.utils.json_helpers import (
+from kad.utils.json_helpers import (
     read_from_json_file,
     write_to_json_file,
 )
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_session_dir,
     get_session_image_file,
