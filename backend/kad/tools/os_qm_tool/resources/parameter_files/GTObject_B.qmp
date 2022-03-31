@@ -1,669 +1,808 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
-<OS-QMTool><Noise><AlternativeMode><AimValues><MaxWarning_3>3.000000</MaxWarning_3>
-<MaxOK_3>5.000000</MaxOK_3>
-<MaxWarning_2>3.000000</MaxWarning_2>
-<MaxOK_2>5.000000</MaxOK_2>
-<MaxWarning_1>3.000000</MaxWarning_1>
-<MaxOK_1>5.000000</MaxOK_1>
-<MaxWarning_0>3.000000</MaxWarning_0>
-<MaxOK_0>5.000000</MaxOK_0>
-<AMToleranceVariable>0</AMToleranceVariable>
-</AimValues>
-<Settings><ColorSpace>2</ColorSpace>
-<CheckType>1</CheckType>
-</Settings>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-</AlternativeMode>
-<GrayBar><AimValues><MaxWarning_2>3.000000</MaxWarning_2>
-<MaxOK_2>5.000000</MaxOK_2>
-<MaxWarning_1>3.000000</MaxWarning_1>
-<MaxOK_1>5.000000</MaxOK_1>
-<MaxWarning_0>3.000000</MaxWarning_0>
-<MaxOK_0>5.000000</MaxOK_0>
-<GBToleranceVariable>0</GBToleranceVariable>
-</AimValues>
-<Settings><ColorSpace>2</ColorSpace>
-<CheckType>1</CheckType>
-<Offset>256</Offset>
-<GrayBarLines>3</GrayBarLines>
-<FieldWidth>256</FieldWidth>
-</Settings>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-</GrayBar>
-<GrayScale><AimValues><MaxWarning_11>3.500000</MaxWarning_11>
-<MaxOK_11>4.000000</MaxOK_11>
-<MaxWarning_10>3.500000</MaxWarning_10>
-<MaxOK_10>4.000000</MaxOK_10>
-<MaxWarning_9>3.500000</MaxWarning_9>
-<MaxOK_9>4.000000</MaxOK_9>
-<MaxWarning_8>3.500000</MaxWarning_8>
-<MaxOK_8>4.000000</MaxOK_8>
-<MaxWarning_7>3.500000</MaxWarning_7>
-<MaxOK_7>4.000000</MaxOK_7>
-<MaxWarning_6>3.500000</MaxWarning_6>
-<MaxOK_6>4.000000</MaxOK_6>
-<MaxWarning_5>3.500000</MaxWarning_5>
-<MaxOK_5>4.000000</MaxOK_5>
-<MaxWarning_4>3.500000</MaxWarning_4>
-<MaxOK_4>4.000000</MaxOK_4>
-<MaxWarning_3>3.500000</MaxWarning_3>
-<MaxOK_3>4.000000</MaxOK_3>
-<MaxWarning_2>3.500000</MaxWarning_2>
-<MaxOK_2>4.000000</MaxOK_2>
-<MaxWarning_1>3.500000</MaxWarning_1>
-<MaxOK_1>4.000000</MaxOK_1>
-<MaxWarning_0>3.500000</MaxWarning_0>
-<MaxOK_0>4.000000</MaxOK_0>
-<GSToleranceVariable>0</GSToleranceVariable>
-</AimValues>
-<Settings><ColorSpace>2</ColorSpace>
-<CheckType>1</CheckType>
-<FieldAnzNotUsed>0</FieldAnzNotUsed>
-<RelativeFieldSize>20</RelativeFieldSize>
-<FixedFieldSize>20</FixedFieldSize>
-<RelativeSearchFieldSize>60</RelativeSearchFieldSize>
-<FixedSearchFieldSize>60</FixedSearchFieldSize>
-<FieldVariant>0</FieldVariant>
-<AmountOfFields>12</AmountOfFields>
-</Settings>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-</GrayScale>
-<DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
-</Noise>
-<OECF><GrayBar><AimValues_2><MinWarning_2>1.000000</MinWarning_2>
-<MinOK_2>0.000000</MinOK_2>
-<TargetValue_2>5.000000</TargetValue_2>
-<MaxWarning_2>9.000000</MaxWarning_2>
-<MaxOK_2>10.000000</MaxOK_2>
-<MinWarning_1>91.000000</MinWarning_1>
-<MinOK_1>90.000000</MinOK_1>
-<TargetValue_1>95.000000</TargetValue_1>
-<MaxWarning_1>99.000000</MaxWarning_1>
-<MaxOK_1>100.000000</MaxOK_1>
-<MinWarning_0>46.000000</MinWarning_0>
-<MinOK_0>45.000000</MinOK_0>
-<TargetValue_0>50.000000</TargetValue_0>
-<MaxWarning_0>54.000000</MaxWarning_0>
-<MaxOK_0>55.000000</MaxOK_0>
-<GBToleranceAsymetric>0</GBToleranceAsymetric>
-<GBToleranceVariable>0</GBToleranceVariable>
-</AimValues_2>
-<AimValues_1><MinWarning_2>31.000000</MinWarning_2>
-<MinOK_2>30.000000</MinOK_2>
-<TargetValue_2>35.000000</TargetValue_2>
-<MaxWarning_2>39.000000</MaxWarning_2>
-<MaxOK_2>40.000000</MaxOK_2>
-<MinWarning_1>233.000000</MinWarning_1>
-<MinOK_1>232.000000</MinOK_1>
-<TargetValue_1>237.000000</TargetValue_1>
-<MaxWarning_1>241.000000</MaxWarning_1>
-<MaxOK_1>242.000000</MaxOK_1>
-<MinWarning_0>133.000000</MinWarning_0>
-<MinOK_0>132.000000</MinOK_0>
-<TargetValue_0>137.000000</TargetValue_0>
-<MaxWarning_0>141.000000</MaxWarning_0>
-<MaxOK_0>142.000000</MaxOK_0>
-<GBToleranceAsymetric>0</GBToleranceAsymetric>
-<GBToleranceVariable>0</GBToleranceVariable>
-</AimValues_1>
-<Settings><ColorSpace>2</ColorSpace>
-<CheckType>1</CheckType>
-<Offset>256</Offset>
-<GrayBarLines>3</GrayBarLines>
-<FieldWidth>256</FieldWidth>
-</Settings>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-</GrayBar>
-<GrayScale><AimValues_2><GainModulationMinWarning_11>0.730000</GainModulationMinWarning_11>
-<GainModulationMaxWarning_11>1.270000</GainModulationMaxWarning_11>
-<GainModulationMinOK_11>0.600000</GainModulationMinOK_11>
-<GainModulationMaxOK_11>1.400000</GainModulationMaxOK_11>
-<DeltaCMaxWarning_11>1.330000</DeltaCMaxWarning_11>
-<DeltaCMaxOK_11>2.000000</DeltaCMaxOK_11>
-<DeltaEabMaxWarning_11>2.500000</DeltaEabMaxWarning_11>
-<DeltaEabMaxOK_11>3.000000</DeltaEabMaxOK_11>
-<DeltaEMaxWarning_11>1.890000</DeltaEMaxWarning_11>
-<DeltaEMaxOK_11>2.830000</DeltaEMaxOK_11>
-<MinWarning_11>-4.000000</MinWarning_11>
-<MinOK_11>-5.000000</MinOK_11>
-<TargetValue_11>0.000000</TargetValue_11>
-<MaxWarning_11>4.000000</MaxWarning_11>
-<MaxOK_11>5.000000</MaxOK_11>
-<GainModulationMinWarning_10>0.730000</GainModulationMinWarning_10>
-<GainModulationMaxWarning_10>1.270000</GainModulationMaxWarning_10>
-<GainModulationMinOK_10>0.600000</GainModulationMinOK_10>
-<GainModulationMaxOK_10>1.400000</GainModulationMaxOK_10>
-<DeltaCMaxWarning_10>1.330000</DeltaCMaxWarning_10>
-<DeltaCMaxOK_10>2.000000</DeltaCMaxOK_10>
-<DeltaEabMaxWarning_10>2.500000</DeltaEabMaxWarning_10>
-<DeltaEabMaxOK_10>3.000000</DeltaEabMaxOK_10>
-<DeltaEMaxWarning_10>1.890000</DeltaEMaxWarning_10>
-<DeltaEMaxOK_10>2.830000</DeltaEMaxOK_10>
-<MinWarning_10>-4.000000</MinWarning_10>
-<MinOK_10>-5.000000</MinOK_10>
-<TargetValue_10>0.000000</TargetValue_10>
-<MaxWarning_10>4.000000</MaxWarning_10>
-<MaxOK_10>5.000000</MaxOK_10>
-<GainModulationMinWarning_9>0.730000</GainModulationMinWarning_9>
-<GainModulationMaxWarning_9>1.270000</GainModulationMaxWarning_9>
-<GainModulationMinOK_9>0.600000</GainModulationMinOK_9>
-<GainModulationMaxOK_9>1.400000</GainModulationMaxOK_9>
-<DeltaCMaxWarning_9>1.330000</DeltaCMaxWarning_9>
-<DeltaCMaxOK_9>2.000000</DeltaCMaxOK_9>
-<DeltaEabMaxWarning_9>2.500000</DeltaEabMaxWarning_9>
-<DeltaEabMaxOK_9>3.000000</DeltaEabMaxOK_9>
-<DeltaEMaxWarning_9>1.890000</DeltaEMaxWarning_9>
-<DeltaEMaxOK_9>2.830000</DeltaEMaxOK_9>
-<MinWarning_9>-4.000000</MinWarning_9>
-<MinOK_9>-5.000000</MinOK_9>
-<TargetValue_9>0.000000</TargetValue_9>
-<MaxWarning_9>4.000000</MaxWarning_9>
-<MaxOK_9>5.000000</MaxOK_9>
-<GainModulationMinWarning_8>0.730000</GainModulationMinWarning_8>
-<GainModulationMaxWarning_8>1.270000</GainModulationMaxWarning_8>
-<GainModulationMinOK_8>0.600000</GainModulationMinOK_8>
-<GainModulationMaxOK_8>1.400000</GainModulationMaxOK_8>
-<DeltaCMaxWarning_8>1.330000</DeltaCMaxWarning_8>
-<DeltaCMaxOK_8>2.000000</DeltaCMaxOK_8>
-<DeltaEabMaxWarning_8>2.500000</DeltaEabMaxWarning_8>
-<DeltaEabMaxOK_8>3.000000</DeltaEabMaxOK_8>
-<DeltaEMaxWarning_8>1.890000</DeltaEMaxWarning_8>
-<DeltaEMaxOK_8>2.830000</DeltaEMaxOK_8>
-<MinWarning_8>-4.000000</MinWarning_8>
-<MinOK_8>-5.000000</MinOK_8>
-<TargetValue_8>0.000000</TargetValue_8>
-<MaxWarning_8>4.000000</MaxWarning_8>
-<MaxOK_8>5.000000</MaxOK_8>
-<GainModulationMinWarning_7>0.730000</GainModulationMinWarning_7>
-<GainModulationMaxWarning_7>1.270000</GainModulationMaxWarning_7>
-<GainModulationMinOK_7>0.600000</GainModulationMinOK_7>
-<GainModulationMaxOK_7>1.400000</GainModulationMaxOK_7>
-<DeltaCMaxWarning_7>1.330000</DeltaCMaxWarning_7>
-<DeltaCMaxOK_7>2.000000</DeltaCMaxOK_7>
-<DeltaEabMaxWarning_7>2.500000</DeltaEabMaxWarning_7>
-<DeltaEabMaxOK_7>3.000000</DeltaEabMaxOK_7>
-<DeltaEMaxWarning_7>1.890000</DeltaEMaxWarning_7>
-<DeltaEMaxOK_7>2.830000</DeltaEMaxOK_7>
-<MinWarning_7>-4.000000</MinWarning_7>
-<MinOK_7>-5.000000</MinOK_7>
-<TargetValue_7>0.000000</TargetValue_7>
-<MaxWarning_7>4.000000</MaxWarning_7>
-<MaxOK_7>5.000000</MaxOK_7>
-<GainModulationMinWarning_6>0.730000</GainModulationMinWarning_6>
-<GainModulationMaxWarning_6>1.270000</GainModulationMaxWarning_6>
-<GainModulationMinOK_6>0.600000</GainModulationMinOK_6>
-<GainModulationMaxOK_6>1.400000</GainModulationMaxOK_6>
-<DeltaCMaxWarning_6>1.330000</DeltaCMaxWarning_6>
-<DeltaCMaxOK_6>2.000000</DeltaCMaxOK_6>
-<DeltaEabMaxWarning_6>2.500000</DeltaEabMaxWarning_6>
-<DeltaEabMaxOK_6>3.000000</DeltaEabMaxOK_6>
-<DeltaEMaxWarning_6>1.890000</DeltaEMaxWarning_6>
-<DeltaEMaxOK_6>2.830000</DeltaEMaxOK_6>
-<MinWarning_6>-4.000000</MinWarning_6>
-<MinOK_6>-5.000000</MinOK_6>
-<TargetValue_6>0.000000</TargetValue_6>
-<MaxWarning_6>4.000000</MaxWarning_6>
-<MaxOK_6>5.000000</MaxOK_6>
-<GainModulationMinWarning_5>0.730000</GainModulationMinWarning_5>
-<GainModulationMaxWarning_5>1.270000</GainModulationMaxWarning_5>
-<GainModulationMinOK_5>0.600000</GainModulationMinOK_5>
-<GainModulationMaxOK_5>1.400000</GainModulationMaxOK_5>
-<DeltaCMaxWarning_5>1.330000</DeltaCMaxWarning_5>
-<DeltaCMaxOK_5>2.000000</DeltaCMaxOK_5>
-<DeltaEabMaxWarning_5>2.500000</DeltaEabMaxWarning_5>
-<DeltaEabMaxOK_5>3.000000</DeltaEabMaxOK_5>
-<DeltaEMaxWarning_5>1.890000</DeltaEMaxWarning_5>
-<DeltaEMaxOK_5>2.830000</DeltaEMaxOK_5>
-<MinWarning_5>-4.000000</MinWarning_5>
-<MinOK_5>-5.000000</MinOK_5>
-<TargetValue_5>0.000000</TargetValue_5>
-<MaxWarning_5>4.000000</MaxWarning_5>
-<MaxOK_5>5.000000</MaxOK_5>
-<GainModulationMinWarning_4>0.730000</GainModulationMinWarning_4>
-<GainModulationMaxWarning_4>1.270000</GainModulationMaxWarning_4>
-<GainModulationMinOK_4>0.600000</GainModulationMinOK_4>
-<GainModulationMaxOK_4>1.400000</GainModulationMaxOK_4>
-<DeltaCMaxWarning_4>1.330000</DeltaCMaxWarning_4>
-<DeltaCMaxOK_4>2.000000</DeltaCMaxOK_4>
-<DeltaEabMaxWarning_4>2.500000</DeltaEabMaxWarning_4>
-<DeltaEabMaxOK_4>3.000000</DeltaEabMaxOK_4>
-<DeltaEMaxWarning_4>1.890000</DeltaEMaxWarning_4>
-<DeltaEMaxOK_4>2.830000</DeltaEMaxOK_4>
-<MinWarning_4>-4.000000</MinWarning_4>
-<MinOK_4>-5.000000</MinOK_4>
-<TargetValue_4>0.000000</TargetValue_4>
-<MaxWarning_4>4.000000</MaxWarning_4>
-<MaxOK_4>5.000000</MaxOK_4>
-<GainModulationMinWarning_3>0.730000</GainModulationMinWarning_3>
-<GainModulationMaxWarning_3>1.270000</GainModulationMaxWarning_3>
-<GainModulationMinOK_3>0.600000</GainModulationMinOK_3>
-<GainModulationMaxOK_3>1.400000</GainModulationMaxOK_3>
-<DeltaCMaxWarning_3>1.330000</DeltaCMaxWarning_3>
-<DeltaCMaxOK_3>2.000000</DeltaCMaxOK_3>
-<DeltaEabMaxWarning_3>2.500000</DeltaEabMaxWarning_3>
-<DeltaEabMaxOK_3>3.000000</DeltaEabMaxOK_3>
-<DeltaEMaxWarning_3>1.890000</DeltaEMaxWarning_3>
-<DeltaEMaxOK_3>2.830000</DeltaEMaxOK_3>
-<MinWarning_3>-4.000000</MinWarning_3>
-<MinOK_3>-5.000000</MinOK_3>
-<TargetValue_3>0.000000</TargetValue_3>
-<MaxWarning_3>4.000000</MaxWarning_3>
-<MaxOK_3>5.000000</MaxOK_3>
-<GainModulationMinWarning_2>0.730000</GainModulationMinWarning_2>
-<GainModulationMaxWarning_2>1.270000</GainModulationMaxWarning_2>
-<GainModulationMinOK_2>0.600000</GainModulationMinOK_2>
-<GainModulationMaxOK_2>1.400000</GainModulationMaxOK_2>
-<DeltaCMaxWarning_2>1.330000</DeltaCMaxWarning_2>
-<DeltaCMaxOK_2>2.000000</DeltaCMaxOK_2>
-<DeltaEabMaxWarning_2>2.500000</DeltaEabMaxWarning_2>
-<DeltaEabMaxOK_2>3.000000</DeltaEabMaxOK_2>
-<DeltaEMaxWarning_2>1.890000</DeltaEMaxWarning_2>
-<DeltaEMaxOK_2>2.830000</DeltaEMaxOK_2>
-<MinWarning_2>-4.000000</MinWarning_2>
-<MinOK_2>-5.000000</MinOK_2>
-<TargetValue_2>0.000000</TargetValue_2>
-<MaxWarning_2>4.000000</MaxWarning_2>
-<MaxOK_2>5.000000</MaxOK_2>
-<GainModulationMinWarning_1>0.830000</GainModulationMinWarning_1>
-<GainModulationMaxWarning_1>1.070000</GainModulationMaxWarning_1>
-<GainModulationMinOK_1>0.800000</GainModulationMinOK_1>
-<GainModulationMaxOK_1>1.080000</GainModulationMaxOK_1>
-<DeltaCMaxWarning_1>1.330000</DeltaCMaxWarning_1>
-<DeltaCMaxOK_1>2.000000</DeltaCMaxOK_1>
-<DeltaEabMaxWarning_1>2.500000</DeltaEabMaxWarning_1>
-<DeltaEabMaxOK_1>3.000000</DeltaEabMaxOK_1>
-<DeltaEMaxWarning_1>1.890000</DeltaEMaxWarning_1>
-<DeltaEMaxOK_1>2.830000</DeltaEMaxOK_1>
-<MinWarning_1>-4.000000</MinWarning_1>
-<MinOK_1>-5.000000</MinOK_1>
-<TargetValue_1>0.000000</TargetValue_1>
-<MaxWarning_1>4.000000</MaxWarning_1>
-<MaxOK_1>5.000000</MaxOK_1>
-<GainModulationMinWarning_0>0.830000</GainModulationMinWarning_0>
-<GainModulationMaxWarning_0>1.070000</GainModulationMaxWarning_0>
-<GainModulationMinOK_0>0.800000</GainModulationMinOK_0>
-<GainModulationMaxOK_0>1.080000</GainModulationMaxOK_0>
-<DeltaCMaxWarning_0>1.330000</DeltaCMaxWarning_0>
-<DeltaCMaxOK_0>2.000000</DeltaCMaxOK_0>
-<DeltaEabMaxWarning_0>2.500000</DeltaEabMaxWarning_0>
-<DeltaEabMaxOK_0>3.000000</DeltaEabMaxOK_0>
-<DeltaEMaxWarning_0>1.890000</DeltaEMaxWarning_0>
-<DeltaEMaxOK_0>2.830000</DeltaEMaxOK_0>
-<MinWarning_0>-4.000000</MinWarning_0>
-<MinOK_0>-5.000000</MinOK_0>
-<TargetValue_0>0.000000</TargetValue_0>
-<MaxWarning_0>4.000000</MaxWarning_0>
-<MaxOK_0>5.000000</MaxOK_0>
-<GainModShadowsToleranceVariable>0</GainModShadowsToleranceVariable>
-<GainModHighlightsToleranceVariable>0</GainModHighlightsToleranceVariable>
-<DeltaCToleranceVariable>0</DeltaCToleranceVariable>
-<DeltaEToleranceVariable>0</DeltaEToleranceVariable>
-<GSToleranceAsymetric>0</GSToleranceAsymetric>
-<GSToleranceVariable>0</GSToleranceVariable>
-</AimValues_2>
-<AimValues_1><MinWarning_11>-4.000000</MinWarning_11>
-<MinOK_11>-5.000000</MinOK_11>
-<TargetValue_11>0.000000</TargetValue_11>
-<MaxWarning_11>4.000000</MaxWarning_11>
-<MaxOK_11>5.000000</MaxOK_11>
-<MinWarning_10>-4.000000</MinWarning_10>
-<MinOK_10>-5.000000</MinOK_10>
-<TargetValue_10>0.000000</TargetValue_10>
-<MaxWarning_10>4.000000</MaxWarning_10>
-<MaxOK_10>5.000000</MaxOK_10>
-<MinWarning_9>-4.000000</MinWarning_9>
-<MinOK_9>-5.000000</MinOK_9>
-<TargetValue_9>0.000000</TargetValue_9>
-<MaxWarning_9>4.000000</MaxWarning_9>
-<MaxOK_9>5.000000</MaxOK_9>
-<MinWarning_8>-4.000000</MinWarning_8>
-<MinOK_8>-5.000000</MinOK_8>
-<TargetValue_8>0.000000</TargetValue_8>
-<MaxWarning_8>4.000000</MaxWarning_8>
-<MaxOK_8>5.000000</MaxOK_8>
-<MinWarning_7>-4.000000</MinWarning_7>
-<MinOK_7>-5.000000</MinOK_7>
-<TargetValue_7>0.000000</TargetValue_7>
-<MaxWarning_7>4.000000</MaxWarning_7>
-<MaxOK_7>5.000000</MaxOK_7>
-<MinWarning_6>-4.000000</MinWarning_6>
-<MinOK_6>-5.000000</MinOK_6>
-<TargetValue_6>0.000000</TargetValue_6>
-<MaxWarning_6>4.000000</MaxWarning_6>
-<MaxOK_6>5.000000</MaxOK_6>
-<MinWarning_5>-4.000000</MinWarning_5>
-<MinOK_5>-5.000000</MinOK_5>
-<TargetValue_5>0.000000</TargetValue_5>
-<MaxWarning_5>4.000000</MaxWarning_5>
-<MaxOK_5>5.000000</MaxOK_5>
-<MinWarning_4>-4.000000</MinWarning_4>
-<MinOK_4>-5.000000</MinOK_4>
-<TargetValue_4>0.000000</TargetValue_4>
-<MaxWarning_4>4.000000</MaxWarning_4>
-<MaxOK_4>5.000000</MaxOK_4>
-<MinWarning_3>-4.000000</MinWarning_3>
-<MinOK_3>-5.000000</MinOK_3>
-<TargetValue_3>0.000000</TargetValue_3>
-<MaxWarning_3>4.000000</MaxWarning_3>
-<MaxOK_3>5.000000</MaxOK_3>
-<MinWarning_2>-4.000000</MinWarning_2>
-<MinOK_2>-5.000000</MinOK_2>
-<TargetValue_2>0.000000</TargetValue_2>
-<MaxWarning_2>4.000000</MaxWarning_2>
-<MaxOK_2>5.000000</MaxOK_2>
-<MinWarning_1>-4.000000</MinWarning_1>
-<MinOK_1>-5.000000</MinOK_1>
-<TargetValue_1>0.000000</TargetValue_1>
-<MaxWarning_1>4.000000</MaxWarning_1>
-<MaxOK_1>5.000000</MaxOK_1>
-<MinWarning_0>-4.000000</MinWarning_0>
-<MinOK_0>-5.000000</MinOK_0>
-<TargetValue_0>0.000000</TargetValue_0>
-<MaxWarning_0>4.000000</MaxWarning_0>
-<MaxOK_0>5.000000</MaxOK_0>
-<GSToleranceAsymetric>0</GSToleranceAsymetric>
-<GSToleranceVariable>0</GSToleranceVariable>
-</AimValues_1>
-<AimValues_0><MinWarning_11>0.000000</MinWarning_11>
-<MinOK_11>0.000000</MinOK_11>
-<TargetValue_11>0.000000</TargetValue_11>
-<MaxWarning_11>0.000000</MaxWarning_11>
-<MaxOK_11>0.000000</MaxOK_11>
-<MinWarning_10>0.000000</MinWarning_10>
-<MinOK_10>0.000000</MinOK_10>
-<TargetValue_10>0.000000</TargetValue_10>
-<MaxWarning_10>0.000000</MaxWarning_10>
-<MaxOK_10>0.000000</MaxOK_10>
-<MinWarning_9>0.000000</MinWarning_9>
-<MinOK_9>0.000000</MinOK_9>
-<TargetValue_9>0.000000</TargetValue_9>
-<MaxWarning_9>0.000000</MaxWarning_9>
-<MaxOK_9>0.000000</MaxOK_9>
-<MinWarning_8>0.000000</MinWarning_8>
-<MinOK_8>0.000000</MinOK_8>
-<TargetValue_8>0.000000</TargetValue_8>
-<MaxWarning_8>0.000000</MaxWarning_8>
-<MaxOK_8>0.000000</MaxOK_8>
-<MinWarning_7>0.000000</MinWarning_7>
-<MinOK_7>0.000000</MinOK_7>
-<TargetValue_7>0.000000</TargetValue_7>
-<MaxWarning_7>0.000000</MaxWarning_7>
-<MaxOK_7>0.000000</MaxOK_7>
-<MinWarning_6>0.000000</MinWarning_6>
-<MinOK_6>0.000000</MinOK_6>
-<TargetValue_6>0.000000</TargetValue_6>
-<MaxWarning_6>0.000000</MaxWarning_6>
-<MaxOK_6>0.000000</MaxOK_6>
-<MinWarning_5>0.000000</MinWarning_5>
-<MinOK_5>0.000000</MinOK_5>
-<TargetValue_5>0.000000</TargetValue_5>
-<MaxWarning_5>0.000000</MaxWarning_5>
-<MaxOK_5>0.000000</MaxOK_5>
-<MinWarning_4>0.000000</MinWarning_4>
-<MinOK_4>0.000000</MinOK_4>
-<TargetValue_4>0.000000</TargetValue_4>
-<MaxWarning_4>0.000000</MaxWarning_4>
-<MaxOK_4>0.000000</MaxOK_4>
-<MinWarning_3>0.000000</MinWarning_3>
-<MinOK_3>0.000000</MinOK_3>
-<TargetValue_3>0.000000</TargetValue_3>
-<MaxWarning_3>0.000000</MaxWarning_3>
-<MaxOK_3>0.000000</MaxOK_3>
-<MinWarning_2>0.000000</MinWarning_2>
-<MinOK_2>0.000000</MinOK_2>
-<TargetValue_2>0.000000</TargetValue_2>
-<MaxWarning_2>0.000000</MaxWarning_2>
-<MaxOK_2>0.000000</MaxOK_2>
-<MinWarning_1>0.000000</MinWarning_1>
-<MinOK_1>0.000000</MinOK_1>
-<TargetValue_1>0.000000</TargetValue_1>
-<MaxWarning_1>0.000000</MaxWarning_1>
-<MaxOK_1>0.000000</MaxOK_1>
-<MinWarning_0>0.000000</MinWarning_0>
-<MinOK_0>0.000000</MinOK_0>
-<TargetValue_0>0.000000</TargetValue_0>
-<MaxWarning_0>0.000000</MaxWarning_0>
-<MaxOK_0>0.000000</MaxOK_0>
-<GSToleranceAsymetric>0</GSToleranceAsymetric>
-<GSToleranceVariable>0</GSToleranceVariable>
-</AimValues_0>
-<Settings><Flags>514</Flags>
-<ColorSpace>2</ColorSpace>
-<CheckType>1</CheckType>
-<FieldAnzNotUsed>0</FieldAnzNotUsed>
-<RelativeFieldSize>20</RelativeFieldSize>
-<FixedFieldSize>20</FixedFieldSize>
-<RelativeSearchFieldSize>60</RelativeSearchFieldSize>
-<FixedSearchFieldSize>60</FixedSearchFieldSize>
-<FieldVariant>0</FieldVariant>
-<AmountOfFields>12</AmountOfFields>
-</Settings>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-</GrayScale>
-<FilenameTE263>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\TE263_Lab__default.txt</FilenameTE263>
-<FilenameGOLT>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\GOLT_Lab__default.txt</FilenameGOLT>
-<FilenameDICE>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\DICE_Lab__default.txt</FilenameDICE>
-<FilenameMunsell>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\Munsell_Lab__default.txt</FilenameMunsell>
-<FilenameQA62>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\QA62_Lab__default.txt</FilenameQA62>
-<FilenameQ13>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\Q13_Lab__default.txt</FilenameQ13>
-<FilenameIT8>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\IT8_Lab__default.txt</FilenameIT8>
-<FilenameCCC>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCC_Lab__default.txt</FilenameCCC>
-<FilenameCCSG>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCSG_Lab__default.txt</FilenameCCSG>
-<FilenameA0>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA0>
-<FilenameA1>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA1>
-<FilenameA2>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA2>
-<Filename>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</Filename>
-<UseVariableData>0</UseVariableData>
-<OECFCentralMeasurement>0</OECFCentralMeasurement>
-<UseRefFileData>1</UseRefFileData>
-<DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
-</OECF>
-<DeltaE><Warning_3_7_Mean>8.000000</Warning_3_7_Mean>
-<Error_3_7_Mean>12.000000</Error_3_7_Mean>
-<Warning_3_7>15.000000</Warning_3_7>
-<Error_3_7>25.000000</Error_3_7>
-<Warning_3_6_Mean>8.000000</Warning_3_6_Mean>
-<Error_3_6_Mean>12.000000</Error_3_6_Mean>
-<Warning_3_6>15.000000</Warning_3_6>
-<Error_3_6>25.000000</Error_3_6>
-<Warning_3_5_Mean>8.000000</Warning_3_5_Mean>
-<Error_3_5_Mean>12.000000</Error_3_5_Mean>
-<Warning_3_5>15.000000</Warning_3_5>
-<Error_3_5>25.000000</Error_3_5>
-<Warning_3_4_Mean>8.000000</Warning_3_4_Mean>
-<Error_3_4_Mean>12.000000</Error_3_4_Mean>
-<Warning_3_4>15.000000</Warning_3_4>
-<Error_3_4>25.000000</Error_3_4>
-<Warning_3_3_Mean>8.000000</Warning_3_3_Mean>
-<Error_3_3_Mean>12.000000</Error_3_3_Mean>
-<Warning_3_3>15.000000</Warning_3_3>
-<Error_3_3>25.000000</Error_3_3>
-<Warning_3_2_Mean>8.000000</Warning_3_2_Mean>
-<Error_3_2_Mean>12.000000</Error_3_2_Mean>
-<Warning_3_2>15.000000</Warning_3_2>
-<Error_3_2>25.000000</Error_3_2>
-<Warning_3_1_Mean>8.000000</Warning_3_1_Mean>
-<Error_3_1_Mean>12.000000</Error_3_1_Mean>
-<Warning_3_1>15.000000</Warning_3_1>
-<Error_3_1>25.000000</Error_3_1>
-<Warning_3_0_Mean>8.000000</Warning_3_0_Mean>
-<Error_3_0_Mean>12.000000</Error_3_0_Mean>
-<Warning_3_0>15.000000</Warning_3_0>
-<Error_3_0>25.000000</Error_3_0>
-<Percentage_3>20.000000</Percentage_3>
-<Flags_3>3</Flags_3>
-<Warning_2_7_Mean>8.000000</Warning_2_7_Mean>
-<Error_2_7_Mean>12.000000</Error_2_7_Mean>
-<Warning_2_7>15.000000</Warning_2_7>
-<Error_2_7>25.000000</Error_2_7>
-<Warning_2_6_Mean>8.000000</Warning_2_6_Mean>
-<Error_2_6_Mean>12.000000</Error_2_6_Mean>
-<Warning_2_6>15.000000</Warning_2_6>
-<Error_2_6>25.000000</Error_2_6>
-<Warning_2_5_Mean>8.000000</Warning_2_5_Mean>
-<Error_2_5_Mean>12.000000</Error_2_5_Mean>
-<Warning_2_5>15.000000</Warning_2_5>
-<Error_2_5>25.000000</Error_2_5>
-<Warning_2_4_Mean>8.000000</Warning_2_4_Mean>
-<Error_2_4_Mean>12.000000</Error_2_4_Mean>
-<Warning_2_4>15.000000</Warning_2_4>
-<Error_2_4>25.000000</Error_2_4>
-<Warning_2_3_Mean>8.000000</Warning_2_3_Mean>
-<Error_2_3_Mean>12.000000</Error_2_3_Mean>
-<Warning_2_3>15.000000</Warning_2_3>
-<Error_2_3>25.000000</Error_2_3>
-<Warning_2_2_Mean>8.000000</Warning_2_2_Mean>
-<Error_2_2_Mean>12.000000</Error_2_2_Mean>
-<Warning_2_2>15.000000</Warning_2_2>
-<Error_2_2>25.000000</Error_2_2>
-<Warning_2_1_Mean>8.000000</Warning_2_1_Mean>
-<Error_2_1_Mean>12.000000</Error_2_1_Mean>
-<Warning_2_1>15.000000</Warning_2_1>
-<Error_2_1>25.000000</Error_2_1>
-<Warning_2_0_Mean>8.000000</Warning_2_0_Mean>
-<Error_2_0_Mean>12.000000</Error_2_0_Mean>
-<Warning_2_0>15.000000</Warning_2_0>
-<Error_2_0>25.000000</Error_2_0>
-<Percentage_2>20.000000</Percentage_2>
-<Flags_2>3</Flags_2>
-<Warning_1_7_Mean>8.000000</Warning_1_7_Mean>
-<Error_1_7_Mean>12.000000</Error_1_7_Mean>
-<Warning_1_7>15.000000</Warning_1_7>
-<Error_1_7>25.000000</Error_1_7>
-<Warning_1_6_Mean>8.000000</Warning_1_6_Mean>
-<Error_1_6_Mean>12.000000</Error_1_6_Mean>
-<Warning_1_6>15.000000</Warning_1_6>
-<Error_1_6>25.000000</Error_1_6>
-<Warning_1_5_Mean>8.000000</Warning_1_5_Mean>
-<Error_1_5_Mean>12.000000</Error_1_5_Mean>
-<Warning_1_5>15.000000</Warning_1_5>
-<Error_1_5>25.000000</Error_1_5>
-<Warning_1_4_Mean>8.000000</Warning_1_4_Mean>
-<Error_1_4_Mean>12.000000</Error_1_4_Mean>
-<Warning_1_4>15.000000</Warning_1_4>
-<Error_1_4>25.000000</Error_1_4>
-<Warning_1_3_Mean>8.000000</Warning_1_3_Mean>
-<Error_1_3_Mean>12.000000</Error_1_3_Mean>
-<Warning_1_3>15.000000</Warning_1_3>
-<Error_1_3>25.000000</Error_1_3>
-<Warning_1_2_Mean>8.000000</Warning_1_2_Mean>
-<Error_1_2_Mean>12.000000</Error_1_2_Mean>
-<Warning_1_2>15.000000</Warning_1_2>
-<Error_1_2>25.000000</Error_1_2>
-<Warning_1_1_Mean>8.000000</Warning_1_1_Mean>
-<Error_1_1_Mean>12.000000</Error_1_1_Mean>
-<Warning_1_1>15.000000</Warning_1_1>
-<Error_1_1>25.000000</Error_1_1>
-<Warning_1_0_Mean>8.000000</Warning_1_0_Mean>
-<Error_1_0_Mean>12.000000</Error_1_0_Mean>
-<Warning_1_0>15.000000</Warning_1_0>
-<Error_1_0>25.000000</Error_1_0>
-<Percentage_1>20.000000</Percentage_1>
-<Flags_1>3</Flags_1>
-<Warning_0_7_Mean>8.000000</Warning_0_7_Mean>
-<Error_0_7_Mean>12.000000</Error_0_7_Mean>
-<Warning_0_7>15.000000</Warning_0_7>
-<Error_0_7>25.000000</Error_0_7>
-<Warning_0_6_Mean>8.000000</Warning_0_6_Mean>
-<Error_0_6_Mean>12.000000</Error_0_6_Mean>
-<Warning_0_6>15.000000</Warning_0_6>
-<Error_0_6>25.000000</Error_0_6>
-<Warning_0_5_Mean>8.000000</Warning_0_5_Mean>
-<Error_0_5_Mean>12.000000</Error_0_5_Mean>
-<Warning_0_5>15.000000</Warning_0_5>
-<Error_0_5>25.000000</Error_0_5>
-<Warning_0_4_Mean>8.000000</Warning_0_4_Mean>
-<Error_0_4_Mean>12.000000</Error_0_4_Mean>
-<Warning_0_4>15.000000</Warning_0_4>
-<Error_0_4>25.000000</Error_0_4>
-<Warning_0_3_Mean>8.000000</Warning_0_3_Mean>
-<Error_0_3_Mean>12.000000</Error_0_3_Mean>
-<Warning_0_3>15.000000</Warning_0_3>
-<Error_0_3>25.000000</Error_0_3>
-<Warning_0_2_Mean>8.000000</Warning_0_2_Mean>
-<Error_0_2_Mean>12.000000</Error_0_2_Mean>
-<Warning_0_2>15.000000</Warning_0_2>
-<Error_0_2>25.000000</Error_0_2>
-<Warning_0_1_Mean>8.000000</Warning_0_1_Mean>
-<Error_0_1_Mean>12.000000</Error_0_1_Mean>
-<Warning_0_1>15.000000</Warning_0_1>
-<Error_0_1>25.000000</Error_0_1>
-<Warning_0_0_Mean>8.000000</Warning_0_0_Mean>
-<Error_0_0_Mean>12.000000</Error_0_0_Mean>
-<Warning_0_0>15.000000</Warning_0_0>
-<Error_0_0>25.000000</Error_0_0>
-<Percentage_0>20.000000</Percentage_0>
-<Flags_0>3</Flags_0>
-<FilenameTE263>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\TE263_Lab__default.txt</FilenameTE263>
-<FilenameGOLT>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\GOLT_Lab__default.txt</FilenameGOLT>
-<FilenameDICE>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\DICE_Lab__default.txt</FilenameDICE>
-<FilenameIT8>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\IT8_Lab__default.txt</FilenameIT8>
-<FilenameCCC>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCC_Lab__default.txt</FilenameCCC>
-<FilenameCCSG>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCSG_Lab__default.txt</FilenameCCSG>
-<FilenameA0>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA0>
-<FilenameA1>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA1>
-<FilenameA2>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA2>
-<Filename>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</Filename>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-<DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
-<UseVariableDataA0>0</UseVariableDataA0>
-<UseVariableDataA1>0</UseVariableDataA1>
-<UseVariableDataA2>0</UseVariableDataA2>
-<UseVariableData>0</UseVariableData>
-</DeltaE>
-<Geometry><ResolutionHorVerRatioWarning>1.500000</ResolutionHorVerRatioWarning>
-<ResolutionHorVerRatioError>2.500000</ResolutionHorVerRatioError>
-<ResolutionWarning>2.000000</ResolutionWarning>
-<ResolutionError>3.000000</ResolutionError>
-</Geometry>
-<Homogeneity><Flags>4</Flags>
-<TargetValueWhite>95.000000</TargetValueWhite>
-<TargetValueGray>50.000000</TargetValueGray>
-<HomogeneityDeltaEabWarning>1.330000</HomogeneityDeltaEabWarning>
-<HomogeneityDeltaEabError>2.000000</HomogeneityDeltaEabError>
-<MaxWhiteMeanLab>98.040000</MaxWhiteMeanLab>
-<MinWhiteMeanLab>88.240000</MinWhiteMeanLab>
-<MaxInhomogeneityErrorLab>5.000000</MaxInhomogeneityErrorLab>
-<MaxInhomogeneityWarningLab>4.000000</MaxInhomogeneityWarningLab>
-<MaxWhiteMean>250.000000</MaxWhiteMean>
-<MinWhiteMean>200.000000</MinWhiteMean>
-<MaxInhomogeneityError>15.000000</MaxInhomogeneityError>
-<MaxInhomogeneityWarning>10.000000</MaxInhomogeneityWarning>
-<ColorChannel>0</ColorChannel>
-</Homogeneity>
-<MTF><DoVerticalHorizontalSeparate>false</DoVerticalHorizontalSeparate>
-<ErrorChannelRegistration>0.350000</ErrorChannelRegistration>
-<WarningChannelRegistration>0.300000</WarningChannelRegistration>
-<MinCyclesPerMMErrorMTF50>2.000000</MinCyclesPerMMErrorMTF50>
-<MinCyclesPerMMWarningMTF50>2.500000</MinCyclesPerMMWarningMTF50>
-<MinCyclesPerMMErrorMTF10>4.000000</MinCyclesPerMMErrorMTF10>
-<MinCyclesPerMMWarningMTF10>4.500000</MinCyclesPerMMWarningMTF10>
-<ModulationLimit>105.000000</ModulationLimit>
-<SamplingEfficiencyLimit>85.000000</SamplingEfficiencyLimit>
-<DoSamplingEfficiency>true</DoSamplingEfficiency>
-<Flags>1</Flags>
-<MinCyclesPerMMError>4.000000</MinCyclesPerMMError>
-<MinCyclesPerMMWarning>4.500000</MinCyclesPerMMWarning>
-<MinMTF>0.100000</MinMTF>
-<ColorChannel>0</ColorChannel>
-</MTF>
-<ActiveChecks><DoGeometry>false</DoGeometry>
-<DoHomogeneity>false</DoHomogeneity>
-<DoOECFGrayScale>true</DoOECFGrayScale>
-<DoOECFGrayBar>false</DoOECFGrayBar>
-<DoOECF>true</DoOECF>
-<DoNoiseAlternativeMode>false</DoNoiseAlternativeMode>
-<DoNoiseGrayScale>true</DoNoiseGrayScale>
-<DoNoiseGrayBar>false</DoNoiseGrayBar>
-<DoNoise>true</DoNoise>
-<DoMTF>true</DoMTF>
-<DoDeltaE>true</DoDeltaE>
-</ActiveChecks>
-<CommonSettings><SerialNumberUTT></SerialNumberUTT>
-<UseImageColorSpaceAsWorkingColorSpace>1</UseImageColorSpaceAsWorkingColorSpace>
-<WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
-<DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
-<UsedTarget>8</UsedTarget>
-<MeasurementTitle></MeasurementTitle>
-</CommonSettings>
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<OS-QMTool>
+    <Noise>
+        <AlternativeMode>
+            <AimValues>
+                <MaxWarning_3>3.000000</MaxWarning_3>
+                <MaxOK_3>5.000000</MaxOK_3>
+                <MaxWarning_2>3.000000</MaxWarning_2>
+                <MaxOK_2>5.000000</MaxOK_2>
+                <MaxWarning_1>3.000000</MaxWarning_1>
+                <MaxOK_1>5.000000</MaxOK_1>
+                <MaxWarning_0>3.000000</MaxWarning_0>
+                <MaxOK_0>5.000000</MaxOK_0>
+                <AMToleranceVariable>0</AMToleranceVariable>
+            </AimValues>
+            <Settings>
+                <ColorSpace>2</ColorSpace>
+                <CheckType>1</CheckType>
+            </Settings>
+            <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        </AlternativeMode>
+        <GrayBar>
+            <AimValues>
+                <MaxWarning_2>3.000000</MaxWarning_2>
+                <MaxOK_2>5.000000</MaxOK_2>
+                <MaxWarning_1>3.000000</MaxWarning_1>
+                <MaxOK_1>5.000000</MaxOK_1>
+                <MaxWarning_0>3.000000</MaxWarning_0>
+                <MaxOK_0>5.000000</MaxOK_0>
+                <GBToleranceVariable>0</GBToleranceVariable>
+            </AimValues>
+            <Settings>
+                <ColorSpace>2</ColorSpace>
+                <CheckType>1</CheckType>
+                <Offset>256</Offset>
+                <GrayBarLines>3</GrayBarLines>
+                <FieldWidth>256</FieldWidth>
+            </Settings>
+            <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        </GrayBar>
+        <GrayScale>
+            <AimValues>
+                <MaxWarning_19>1.800000</MaxWarning_19>
+                <MaxOK_19>2.000000</MaxOK_19>
+                <MaxWarning_18>1.800000</MaxWarning_18>
+                <MaxOK_18>2.000000</MaxOK_18>
+                <MaxWarning_17>1.800000</MaxWarning_17>
+                <MaxOK_17>2.000000</MaxOK_17>
+                <MaxWarning_16>1.800000</MaxWarning_16>
+                <MaxOK_16>2.000000</MaxOK_16>
+                <MaxWarning_15>1.800000</MaxWarning_15>
+                <MaxOK_15>2.000000</MaxOK_15>
+                <MaxWarning_14>1.800000</MaxWarning_14>
+                <MaxOK_14>2.000000</MaxOK_14>
+                <MaxWarning_13>1.800000</MaxWarning_13>
+                <MaxOK_13>2.000000</MaxOK_13>
+                <MaxWarning_12>1.800000</MaxWarning_12>
+                <MaxOK_12>2.000000</MaxOK_12>
+                <MaxWarning_11>1.800000</MaxWarning_11>
+                <MaxOK_11>2.000000</MaxOK_11>
+                <MaxWarning_10>1.800000</MaxWarning_10>
+                <MaxOK_10>2.000000</MaxOK_10>
+                <MaxWarning_9>1.800000</MaxWarning_9>
+                <MaxOK_9>2.000000</MaxOK_9>
+                <MaxWarning_8>1.800000</MaxWarning_8>
+                <MaxOK_8>2.000000</MaxOK_8>
+                <MaxWarning_7>1.800000</MaxWarning_7>
+                <MaxOK_7>2.000000</MaxOK_7>
+                <MaxWarning_6>1.800000</MaxWarning_6>
+                <MaxOK_6>2.000000</MaxOK_6>
+                <MaxWarning_5>1.800000</MaxWarning_5>
+                <MaxOK_5>2.000000</MaxOK_5>
+                <MaxWarning_4>1.800000</MaxWarning_4>
+                <MaxOK_4>2.000000</MaxOK_4>
+                <MaxWarning_3>1.800000</MaxWarning_3>
+                <MaxOK_3>2.000000</MaxOK_3>
+                <MaxWarning_2>1.800000</MaxWarning_2>
+                <MaxOK_2>2.000000</MaxOK_2>
+                <MaxWarning_1>1.800000</MaxWarning_1>
+                <MaxOK_1>2.000000</MaxOK_1>
+                <MaxWarning_0>1.800000</MaxWarning_0>
+                <MaxOK_0>2.000000</MaxOK_0>
+                <GSToleranceVariable>0</GSToleranceVariable>
+            </AimValues>
+            <Settings>
+                <ColorSpace>2</ColorSpace>
+                <CheckType>1</CheckType>
+                <FieldAnzNotUsed>0</FieldAnzNotUsed>
+                <RelativeFieldSize>20</RelativeFieldSize>
+                <FixedFieldSize>20</FixedFieldSize>
+                <RelativeSearchFieldSize>60</RelativeSearchFieldSize>
+                <FixedSearchFieldSize>60</FixedSearchFieldSize>
+                <FieldVariant>0</FieldVariant>
+                <AmountOfFields>12</AmountOfFields>
+            </Settings>
+            <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        </GrayScale>
+        <DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
+    </Noise>
+    <OECF>
+        <GrayBar>
+            <AimValues_2>
+                <MinWarning_2>1.000000</MinWarning_2>
+                <MinOK_2>0.000000</MinOK_2>
+                <TargetValue_2>5.000000</TargetValue_2>
+                <MaxWarning_2>9.000000</MaxWarning_2>
+                <MaxOK_2>10.000000</MaxOK_2>
+                <MinWarning_1>91.000000</MinWarning_1>
+                <MinOK_1>90.000000</MinOK_1>
+                <TargetValue_1>95.000000</TargetValue_1>
+                <MaxWarning_1>99.000000</MaxWarning_1>
+                <MaxOK_1>100.000000</MaxOK_1>
+                <MinWarning_0>46.000000</MinWarning_0>
+                <MinOK_0>45.000000</MinOK_0>
+                <TargetValue_0>50.000000</TargetValue_0>
+                <MaxWarning_0>54.000000</MaxWarning_0>
+                <MaxOK_0>55.000000</MaxOK_0>
+                <GBToleranceAsymetric>0</GBToleranceAsymetric>
+                <GBToleranceVariable>0</GBToleranceVariable>
+            </AimValues_2>
+            <AimValues_1>
+                <MinWarning_2>31.000000</MinWarning_2>
+                <MinOK_2>30.000000</MinOK_2>
+                <TargetValue_2>35.000000</TargetValue_2>
+                <MaxWarning_2>39.000000</MaxWarning_2>
+                <MaxOK_2>40.000000</MaxOK_2>
+                <MinWarning_1>233.000000</MinWarning_1>
+                <MinOK_1>232.000000</MinOK_1>
+                <TargetValue_1>237.000000</TargetValue_1>
+                <MaxWarning_1>241.000000</MaxWarning_1>
+                <MaxOK_1>242.000000</MaxOK_1>
+                <MinWarning_0>133.000000</MinWarning_0>
+                <MinOK_0>132.000000</MinOK_0>
+                <TargetValue_0>137.000000</TargetValue_0>
+                <MaxWarning_0>141.000000</MaxWarning_0>
+                <MaxOK_0>142.000000</MaxOK_0>
+                <GBToleranceAsymetric>0</GBToleranceAsymetric>
+                <GBToleranceVariable>0</GBToleranceVariable>
+            </AimValues_1>
+            <Settings>
+                <ColorSpace>2</ColorSpace>
+                <CheckType>1</CheckType>
+                <Offset>256</Offset>
+                <GrayBarLines>3</GrayBarLines>
+                <FieldWidth>256</FieldWidth>
+            </Settings>
+            <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        </GrayBar>
+        <GrayScale>
+            <AimValues_2>
+                <GainModulationMinWarning_19>0.000000</GainModulationMinWarning_19>
+                <GainModulationMaxWarning_19>0.000000</GainModulationMaxWarning_19>
+                <GainModulationMinOK_19>0.000000</GainModulationMinOK_19>
+                <GainModulationMaxOK_19>0.000000</GainModulationMaxOK_19>
+                <DeltaCMaxWarning_19>1.800000</DeltaCMaxWarning_19>
+                <DeltaCMaxOK_19>2.000000</DeltaCMaxOK_19>
+                <DeltaEabMaxWarning_19>3.000000</DeltaEabMaxWarning_19>
+                <DeltaEabMaxOK_19>4.000000</DeltaEabMaxOK_19>
+                <DeltaEMaxWarning_19>2.980000</DeltaEMaxWarning_19>
+                <DeltaEMaxOK_19>3.000000</DeltaEMaxOK_19>
+                <MinWarning_19>0.500000</MinWarning_19>
+                <MinOK_19>0.000000</MinOK_19>
+                <TargetValue_19>3.000000</TargetValue_19>
+                <MaxWarning_19>5.500000</MaxWarning_19>
+                <MaxOK_19>6.000000</MaxOK_19>
+                <GainModulationMinWarning_18>0.650000</GainModulationMinWarning_18>
+                <GainModulationMaxWarning_18>1.350000</GainModulationMaxWarning_18>
+                <GainModulationMinOK_18>0.600000</GainModulationMinOK_18>
+                <GainModulationMaxOK_18>1.400000</GainModulationMaxOK_18>
+                <DeltaCMaxWarning_18>1.800000</DeltaCMaxWarning_18>
+                <DeltaCMaxOK_18>2.000000</DeltaCMaxOK_18>
+                <DeltaEabMaxWarning_18>3.000000</DeltaEabMaxWarning_18>
+                <DeltaEabMaxOK_18>4.000000</DeltaEabMaxOK_18>
+                <DeltaEMaxWarning_18>2.980000</DeltaEMaxWarning_18>
+                <DeltaEMaxOK_18>3.000000</DeltaEMaxOK_18>
+                <MinWarning_18>2.500000</MinWarning_18>
+                <MinOK_18>2.000000</MinOK_18>
+                <TargetValue_18>5.000000</TargetValue_18>
+                <MaxWarning_18>7.500000</MaxWarning_18>
+                <MaxOK_18>8.000000</MaxOK_18>
+                <GainModulationMinWarning_17>0.650000</GainModulationMinWarning_17>
+                <GainModulationMaxWarning_17>1.350000</GainModulationMaxWarning_17>
+                <GainModulationMinOK_17>0.600000</GainModulationMinOK_17>
+                <GainModulationMaxOK_17>1.400000</GainModulationMaxOK_17>
+                <DeltaCMaxWarning_17>1.800000</DeltaCMaxWarning_17>
+                <DeltaCMaxOK_17>2.000000</DeltaCMaxOK_17>
+                <DeltaEabMaxWarning_17>3.000000</DeltaEabMaxWarning_17>
+                <DeltaEabMaxOK_17>4.000000</DeltaEabMaxOK_17>
+                <DeltaEMaxWarning_17>2.980000</DeltaEMaxWarning_17>
+                <DeltaEMaxOK_17>3.000000</DeltaEMaxOK_17>
+                <MinWarning_17>7.500000</MinWarning_17>
+                <MinOK_17>7.000000</MinOK_17>
+                <TargetValue_17>10.000000</TargetValue_17>
+                <MaxWarning_17>12.500000</MaxWarning_17>
+                <MaxOK_17>13.000000</MaxOK_17>
+                <GainModulationMinWarning_16>0.650000</GainModulationMinWarning_16>
+                <GainModulationMaxWarning_16>1.350000</GainModulationMaxWarning_16>
+                <GainModulationMinOK_16>0.600000</GainModulationMinOK_16>
+                <GainModulationMaxOK_16>1.400000</GainModulationMaxOK_16>
+                <DeltaCMaxWarning_16>1.800000</DeltaCMaxWarning_16>
+                <DeltaCMaxOK_16>2.000000</DeltaCMaxOK_16>
+                <DeltaEabMaxWarning_16>3.000000</DeltaEabMaxWarning_16>
+                <DeltaEabMaxOK_16>4.000000</DeltaEabMaxOK_16>
+                <DeltaEMaxWarning_16>2.980000</DeltaEMaxWarning_16>
+                <DeltaEMaxOK_16>3.000000</DeltaEMaxOK_16>
+                <MinWarning_16>12.500000</MinWarning_16>
+                <MinOK_16>12.000000</MinOK_16>
+                <TargetValue_16>15.000000</TargetValue_16>
+                <MaxWarning_16>17.500000</MaxWarning_16>
+                <MaxOK_16>18.000000</MaxOK_16>
+                <GainModulationMinWarning_15>0.650000</GainModulationMinWarning_15>
+                <GainModulationMaxWarning_15>1.350000</GainModulationMaxWarning_15>
+                <GainModulationMinOK_15>0.600000</GainModulationMinOK_15>
+                <GainModulationMaxOK_15>1.400000</GainModulationMaxOK_15>
+                <DeltaCMaxWarning_15>1.800000</DeltaCMaxWarning_15>
+                <DeltaCMaxOK_15>2.000000</DeltaCMaxOK_15>
+                <DeltaEabMaxWarning_15>3.000000</DeltaEabMaxWarning_15>
+                <DeltaEabMaxOK_15>4.000000</DeltaEabMaxOK_15>
+                <DeltaEMaxWarning_15>2.980000</DeltaEMaxWarning_15>
+                <DeltaEMaxOK_15>3.000000</DeltaEMaxOK_15>
+                <MinWarning_15>17.500000</MinWarning_15>
+                <MinOK_15>17.000000</MinOK_15>
+                <TargetValue_15>20.000000</TargetValue_15>
+                <MaxWarning_15>22.500000</MaxWarning_15>
+                <MaxOK_15>23.000000</MaxOK_15>
+                <GainModulationMinWarning_14>0.650000</GainModulationMinWarning_14>
+                <GainModulationMaxWarning_14>1.350000</GainModulationMaxWarning_14>
+                <GainModulationMinOK_14>0.600000</GainModulationMinOK_14>
+                <GainModulationMaxOK_14>1.400000</GainModulationMaxOK_14>
+                <DeltaCMaxWarning_14>1.800000</DeltaCMaxWarning_14>
+                <DeltaCMaxOK_14>2.000000</DeltaCMaxOK_14>
+                <DeltaEabMaxWarning_14>3.000000</DeltaEabMaxWarning_14>
+                <DeltaEabMaxOK_14>4.000000</DeltaEabMaxOK_14>
+                <DeltaEMaxWarning_14>2.980000</DeltaEMaxWarning_14>
+                <DeltaEMaxOK_14>3.000000</DeltaEMaxOK_14>
+                <MinWarning_14>22.500000</MinWarning_14>
+                <MinOK_14>22.000000</MinOK_14>
+                <TargetValue_14>25.000000</TargetValue_14>
+                <MaxWarning_14>27.500000</MaxWarning_14>
+                <MaxOK_14>28.000000</MaxOK_14>
+                <GainModulationMinWarning_13>0.650000</GainModulationMinWarning_13>
+                <GainModulationMaxWarning_13>1.350000</GainModulationMaxWarning_13>
+                <GainModulationMinOK_13>0.600000</GainModulationMinOK_13>
+                <GainModulationMaxOK_13>1.400000</GainModulationMaxOK_13>
+                <DeltaCMaxWarning_13>1.800000</DeltaCMaxWarning_13>
+                <DeltaCMaxOK_13>2.000000</DeltaCMaxOK_13>
+                <DeltaEabMaxWarning_13>3.000000</DeltaEabMaxWarning_13>
+                <DeltaEabMaxOK_13>4.000000</DeltaEabMaxOK_13>
+                <DeltaEMaxWarning_13>2.980000</DeltaEMaxWarning_13>
+                <DeltaEMaxOK_13>3.000000</DeltaEMaxOK_13>
+                <MinWarning_13>27.500000</MinWarning_13>
+                <MinOK_13>27.000000</MinOK_13>
+                <TargetValue_13>30.000000</TargetValue_13>
+                <MaxWarning_13>32.500000</MaxWarning_13>
+                <MaxOK_13>33.000000</MaxOK_13>
+                <GainModulationMinWarning_12>0.650000</GainModulationMinWarning_12>
+                <GainModulationMaxWarning_12>1.350000</GainModulationMaxWarning_12>
+                <GainModulationMinOK_12>0.600000</GainModulationMinOK_12>
+                <GainModulationMaxOK_12>1.400000</GainModulationMaxOK_12>
+                <DeltaCMaxWarning_12>1.800000</DeltaCMaxWarning_12>
+                <DeltaCMaxOK_12>2.000000</DeltaCMaxOK_12>
+                <DeltaEabMaxWarning_12>3.000000</DeltaEabMaxWarning_12>
+                <DeltaEabMaxOK_12>4.000000</DeltaEabMaxOK_12>
+                <DeltaEMaxWarning_12>2.980000</DeltaEMaxWarning_12>
+                <DeltaEMaxOK_12>3.000000</DeltaEMaxOK_12>
+                <MinWarning_12>32.500000</MinWarning_12>
+                <MinOK_12>32.000000</MinOK_12>
+                <TargetValue_12>35.000000</TargetValue_12>
+                <MaxWarning_12>37.500000</MaxWarning_12>
+                <MaxOK_12>38.000000</MaxOK_12>
+                <GainModulationMinWarning_11>0.650000</GainModulationMinWarning_11>
+                <GainModulationMaxWarning_11>1.350000</GainModulationMaxWarning_11>
+                <GainModulationMinOK_11>0.600000</GainModulationMinOK_11>
+                <GainModulationMaxOK_11>1.400000</GainModulationMaxOK_11>
+                <DeltaCMaxWarning_11>1.800000</DeltaCMaxWarning_11>
+                <DeltaCMaxOK_11>2.000000</DeltaCMaxOK_11>
+                <DeltaEabMaxWarning_11>3.000000</DeltaEabMaxWarning_11>
+                <DeltaEabMaxOK_11>4.000000</DeltaEabMaxOK_11>
+                <DeltaEMaxWarning_11>2.980000</DeltaEMaxWarning_11>
+                <DeltaEMaxOK_11>3.000000</DeltaEMaxOK_11>
+                <MinWarning_11>37.500000</MinWarning_11>
+                <MinOK_11>37.000000</MinOK_11>
+                <TargetValue_11>40.000000</TargetValue_11>
+                <MaxWarning_11>42.500000</MaxWarning_11>
+                <MaxOK_11>43.000000</MaxOK_11>
+                <GainModulationMinWarning_10>0.650000</GainModulationMinWarning_10>
+                <GainModulationMaxWarning_10>1.350000</GainModulationMaxWarning_10>
+                <GainModulationMinOK_10>0.600000</GainModulationMinOK_10>
+                <GainModulationMaxOK_10>1.400000</GainModulationMaxOK_10>
+                <DeltaCMaxWarning_10>1.800000</DeltaCMaxWarning_10>
+                <DeltaCMaxOK_10>2.000000</DeltaCMaxOK_10>
+                <DeltaEabMaxWarning_10>3.000000</DeltaEabMaxWarning_10>
+                <DeltaEabMaxOK_10>4.000000</DeltaEabMaxOK_10>
+                <DeltaEMaxWarning_10>2.980000</DeltaEMaxWarning_10>
+                <DeltaEMaxOK_10>3.000000</DeltaEMaxOK_10>
+                <MinWarning_10>42.500000</MinWarning_10>
+                <MinOK_10>42.000000</MinOK_10>
+                <TargetValue_10>45.000000</TargetValue_10>
+                <MaxWarning_10>47.500000</MaxWarning_10>
+                <MaxOK_10>48.000000</MaxOK_10>
+                <GainModulationMinWarning_9>0.650000</GainModulationMinWarning_9>
+                <GainModulationMaxWarning_9>1.350000</GainModulationMaxWarning_9>
+                <GainModulationMinOK_9>0.600000</GainModulationMinOK_9>
+                <GainModulationMaxOK_9>1.400000</GainModulationMaxOK_9>
+                <DeltaCMaxWarning_9>1.800000</DeltaCMaxWarning_9>
+                <DeltaCMaxOK_9>2.000000</DeltaCMaxOK_9>
+                <DeltaEabMaxWarning_9>3.000000</DeltaEabMaxWarning_9>
+                <DeltaEabMaxOK_9>4.000000</DeltaEabMaxOK_9>
+                <DeltaEMaxWarning_9>2.980000</DeltaEMaxWarning_9>
+                <DeltaEMaxOK_9>3.000000</DeltaEMaxOK_9>
+                <MinWarning_9>47.500000</MinWarning_9>
+                <MinOK_9>47.000000</MinOK_9>
+                <TargetValue_9>50.000000</TargetValue_9>
+                <MaxWarning_9>52.500000</MaxWarning_9>
+                <MaxOK_9>53.000000</MaxOK_9>
+                <GainModulationMinWarning_8>0.650000</GainModulationMinWarning_8>
+                <GainModulationMaxWarning_8>1.350000</GainModulationMaxWarning_8>
+                <GainModulationMinOK_8>0.600000</GainModulationMinOK_8>
+                <GainModulationMaxOK_8>1.400000</GainModulationMaxOK_8>
+                <DeltaCMaxWarning_8>1.800000</DeltaCMaxWarning_8>
+                <DeltaCMaxOK_8>2.000000</DeltaCMaxOK_8>
+                <DeltaEabMaxWarning_8>3.000000</DeltaEabMaxWarning_8>
+                <DeltaEabMaxOK_8>4.000000</DeltaEabMaxOK_8>
+                <DeltaEMaxWarning_8>2.980000</DeltaEMaxWarning_8>
+                <DeltaEMaxOK_8>3.000000</DeltaEMaxOK_8>
+                <MinWarning_8>52.500000</MinWarning_8>
+                <MinOK_8>52.000000</MinOK_8>
+                <TargetValue_8>55.000000</TargetValue_8>
+                <MaxWarning_8>57.500000</MaxWarning_8>
+                <MaxOK_8>58.000000</MaxOK_8>
+                <GainModulationMinWarning_7>0.650000</GainModulationMinWarning_7>
+                <GainModulationMaxWarning_7>1.350000</GainModulationMaxWarning_7>
+                <GainModulationMinOK_7>0.600000</GainModulationMinOK_7>
+                <GainModulationMaxOK_7>1.400000</GainModulationMaxOK_7>
+                <DeltaCMaxWarning_7>1.800000</DeltaCMaxWarning_7>
+                <DeltaCMaxOK_7>2.000000</DeltaCMaxOK_7>
+                <DeltaEabMaxWarning_7>3.000000</DeltaEabMaxWarning_7>
+                <DeltaEabMaxOK_7>4.000000</DeltaEabMaxOK_7>
+                <DeltaEMaxWarning_7>2.980000</DeltaEMaxWarning_7>
+                <DeltaEMaxOK_7>3.000000</DeltaEMaxOK_7>
+                <MinWarning_7>57.500000</MinWarning_7>
+                <MinOK_7>57.000000</MinOK_7>
+                <TargetValue_7>60.000000</TargetValue_7>
+                <MaxWarning_7>62.500000</MaxWarning_7>
+                <MaxOK_7>63.000000</MaxOK_7>
+                <GainModulationMinWarning_6>0.650000</GainModulationMinWarning_6>
+                <GainModulationMaxWarning_6>1.350000</GainModulationMaxWarning_6>
+                <GainModulationMinOK_6>0.600000</GainModulationMinOK_6>
+                <GainModulationMaxOK_6>1.400000</GainModulationMaxOK_6>
+                <DeltaCMaxWarning_6>1.800000</DeltaCMaxWarning_6>
+                <DeltaCMaxOK_6>2.000000</DeltaCMaxOK_6>
+                <DeltaEabMaxWarning_6>3.000000</DeltaEabMaxWarning_6>
+                <DeltaEabMaxOK_6>4.000000</DeltaEabMaxOK_6>
+                <DeltaEMaxWarning_6>2.980000</DeltaEMaxWarning_6>
+                <DeltaEMaxOK_6>3.000000</DeltaEMaxOK_6>
+                <MinWarning_6>62.500000</MinWarning_6>
+                <MinOK_6>62.000000</MinOK_6>
+                <TargetValue_6>65.000000</TargetValue_6>
+                <MaxWarning_6>67.500000</MaxWarning_6>
+                <MaxOK_6>68.000000</MaxOK_6>
+                <GainModulationMinWarning_5>0.650000</GainModulationMinWarning_5>
+                <GainModulationMaxWarning_5>1.350000</GainModulationMaxWarning_5>
+                <GainModulationMinOK_5>0.600000</GainModulationMinOK_5>
+                <GainModulationMaxOK_5>1.400000</GainModulationMaxOK_5>
+                <DeltaCMaxWarning_5>1.800000</DeltaCMaxWarning_5>
+                <DeltaCMaxOK_5>2.000000</DeltaCMaxOK_5>
+                <DeltaEabMaxWarning_5>3.000000</DeltaEabMaxWarning_5>
+                <DeltaEabMaxOK_5>4.000000</DeltaEabMaxOK_5>
+                <DeltaEMaxWarning_5>2.980000</DeltaEMaxWarning_5>
+                <DeltaEMaxOK_5>3.000000</DeltaEMaxOK_5>
+                <MinWarning_5>67.500000</MinWarning_5>
+                <MinOK_5>67.000000</MinOK_5>
+                <TargetValue_5>70.000000</TargetValue_5>
+                <MaxWarning_5>72.500000</MaxWarning_5>
+                <MaxOK_5>73.000000</MaxOK_5>
+                <GainModulationMinWarning_4>0.650000</GainModulationMinWarning_4>
+                <GainModulationMaxWarning_4>1.350000</GainModulationMaxWarning_4>
+                <GainModulationMinOK_4>0.600000</GainModulationMinOK_4>
+                <GainModulationMaxOK_4>1.400000</GainModulationMaxOK_4>
+                <DeltaCMaxWarning_4>1.800000</DeltaCMaxWarning_4>
+                <DeltaCMaxOK_4>2.000000</DeltaCMaxOK_4>
+                <DeltaEabMaxWarning_4>3.000000</DeltaEabMaxWarning_4>
+                <DeltaEabMaxOK_4>4.000000</DeltaEabMaxOK_4>
+                <DeltaEMaxWarning_4>2.980000</DeltaEMaxWarning_4>
+                <DeltaEMaxOK_4>3.000000</DeltaEMaxOK_4>
+                <MinWarning_4>72.500000</MinWarning_4>
+                <MinOK_4>72.000000</MinOK_4>
+                <TargetValue_4>75.000000</TargetValue_4>
+                <MaxWarning_4>77.500000</MaxWarning_4>
+                <MaxOK_4>78.000000</MaxOK_4>
+                <GainModulationMinWarning_3>0.650000</GainModulationMinWarning_3>
+                <GainModulationMaxWarning_3>1.350000</GainModulationMaxWarning_3>
+                <GainModulationMinOK_3>0.600000</GainModulationMinOK_3>
+                <GainModulationMaxOK_3>1.400000</GainModulationMaxOK_3>
+                <DeltaCMaxWarning_3>1.800000</DeltaCMaxWarning_3>
+                <DeltaCMaxOK_3>2.000000</DeltaCMaxOK_3>
+                <DeltaEabMaxWarning_3>3.000000</DeltaEabMaxWarning_3>
+                <DeltaEabMaxOK_3>4.000000</DeltaEabMaxOK_3>
+                <DeltaEMaxWarning_3>2.980000</DeltaEMaxWarning_3>
+                <DeltaEMaxOK_3>3.000000</DeltaEMaxOK_3>
+                <MinWarning_3>77.500000</MinWarning_3>
+                <MinOK_3>77.000000</MinOK_3>
+                <TargetValue_3>80.000000</TargetValue_3>
+                <MaxWarning_3>82.500000</MaxWarning_3>
+                <MaxOK_3>83.000000</MaxOK_3>
+                <GainModulationMinWarning_2>0.650000</GainModulationMinWarning_2>
+                <GainModulationMaxWarning_2>1.350000</GainModulationMaxWarning_2>
+                <GainModulationMinOK_2>0.600000</GainModulationMinOK_2>
+                <GainModulationMaxOK_2>1.400000</GainModulationMaxOK_2>
+                <DeltaCMaxWarning_2>1.800000</DeltaCMaxWarning_2>
+                <DeltaCMaxOK_2>2.000000</DeltaCMaxOK_2>
+                <DeltaEabMaxWarning_2>3.000000</DeltaEabMaxWarning_2>
+                <DeltaEabMaxOK_2>4.000000</DeltaEabMaxOK_2>
+                <DeltaEMaxWarning_2>2.980000</DeltaEMaxWarning_2>
+                <DeltaEMaxOK_2>3.000000</DeltaEMaxOK_2>
+                <MinWarning_2>82.500000</MinWarning_2>
+                <MinOK_2>82.000000</MinOK_2>
+                <TargetValue_2>85.000000</TargetValue_2>
+                <MaxWarning_2>87.500000</MaxWarning_2>
+                <MaxOK_2>88.000000</MaxOK_2>
+                <GainModulationMinWarning_1>0.750000</GainModulationMinWarning_1>
+                <GainModulationMaxWarning_1>1.150000</GainModulationMaxWarning_1>
+                <GainModulationMinOK_1>0.700000</GainModulationMinOK_1>
+                <GainModulationMaxOK_1>1.200000</GainModulationMaxOK_1>
+                <DeltaCMaxWarning_1>1.800000</DeltaCMaxWarning_1>
+                <DeltaCMaxOK_1>2.000000</DeltaCMaxOK_1>
+                <DeltaEabMaxWarning_1>3.000000</DeltaEabMaxWarning_1>
+                <DeltaEabMaxOK_1>4.000000</DeltaEabMaxOK_1>
+                <DeltaEMaxWarning_1>2.980000</DeltaEMaxWarning_1>
+                <DeltaEMaxOK_1>3.000000</DeltaEMaxOK_1>
+                <MinWarning_1>87.500000</MinWarning_1>
+                <MinOK_1>87.000000</MinOK_1>
+                <TargetValue_1>90.000000</TargetValue_1>
+                <MaxWarning_1>92.500000</MaxWarning_1>
+                <MaxOK_1>93.000000</MaxOK_1>
+                <GainModulationMinWarning_0>0.750000</GainModulationMinWarning_0>
+                <GainModulationMaxWarning_0>1.150000</GainModulationMaxWarning_0>
+                <GainModulationMinOK_0>0.700000</GainModulationMinOK_0>
+                <GainModulationMaxOK_0>1.200000</GainModulationMaxOK_0>
+                <DeltaCMaxWarning_0>1.800000</DeltaCMaxWarning_0>
+                <DeltaCMaxOK_0>2.000000</DeltaCMaxOK_0>
+                <DeltaEabMaxWarning_0>3.000000</DeltaEabMaxWarning_0>
+                <DeltaEabMaxOK_0>4.000000</DeltaEabMaxOK_0>
+                <DeltaEMaxWarning_0>2.980000</DeltaEMaxWarning_0>
+                <DeltaEMaxOK_0>3.000000</DeltaEMaxOK_0>
+                <MinWarning_0>92.500000</MinWarning_0>
+                <MinOK_0>92.000000</MinOK_0>
+                <TargetValue_0>95.000000</TargetValue_0>
+                <MaxWarning_0>97.500000</MaxWarning_0>
+                <MaxOK_0>98.000000</MaxOK_0>
+                <GainModShadowsToleranceVariable>0</GainModShadowsToleranceVariable>
+                <GainModHighlightsToleranceVariable>0</GainModHighlightsToleranceVariable>
+                <DeltaCToleranceVariable>0</DeltaCToleranceVariable>
+                <DeltaEToleranceVariable>0</DeltaEToleranceVariable>
+                <GSToleranceAsymetric>0</GSToleranceAsymetric>
+                <GSToleranceVariable>0</GSToleranceVariable>
+            </AimValues_2>
+            <AimValues_1>
+                <MinWarning_19>4.000000</MinWarning_19>
+                <MinOK_19>3.000000</MinOK_19>
+                <TargetValue_19>8.000000</TargetValue_19>
+                <MaxWarning_19>12.000000</MaxWarning_19>
+                <MaxOK_19>13.000000</MaxOK_19>
+                <MinWarning_18>20.000000</MinWarning_18>
+                <MinOK_18>19.000000</MinOK_18>
+                <TargetValue_18>24.000000</TargetValue_18>
+                <MaxWarning_18>28.000000</MaxWarning_18>
+                <MaxOK_18>29.000000</MaxOK_18>
+                <MinWarning_17>29.000000</MinWarning_17>
+                <MinOK_17>28.000000</MinOK_17>
+                <TargetValue_17>33.000000</TargetValue_17>
+                <MaxWarning_17>37.000000</MaxWarning_17>
+                <MaxOK_17>38.000000</MaxOK_17>
+                <MinWarning_16>38.000000</MinWarning_16>
+                <MinOK_16>37.000000</MinOK_16>
+                <TargetValue_16>42.000000</TargetValue_16>
+                <MaxWarning_16>46.000000</MaxWarning_16>
+                <MaxOK_16>47.000000</MaxOK_16>
+                <MinWarning_15>48.000000</MinWarning_15>
+                <MinOK_15>47.000000</MinOK_15>
+                <TargetValue_15>52.000000</TargetValue_15>
+                <MaxWarning_15>56.000000</MaxWarning_15>
+                <MaxOK_15>57.000000</MaxOK_15>
+                <MinWarning_14>58.000000</MinWarning_14>
+                <MinOK_14>57.000000</MinOK_14>
+                <TargetValue_14>62.000000</TargetValue_14>
+                <MaxWarning_14>66.000000</MaxWarning_14>
+                <MaxOK_14>67.000000</MaxOK_14>
+                <MinWarning_13>68.000000</MinWarning_13>
+                <MinOK_13>67.000000</MinOK_13>
+                <TargetValue_13>72.000000</TargetValue_13>
+                <MaxWarning_13>76.000000</MaxWarning_13>
+                <MaxOK_13>77.000000</MaxOK_13>
+                <MinWarning_12>79.000000</MinWarning_12>
+                <MinOK_12>78.000000</MinOK_12>
+                <TargetValue_12>83.000000</TargetValue_12>
+                <MaxWarning_12>87.000000</MaxWarning_12>
+                <MaxOK_12>88.000000</MaxOK_12>
+                <MinWarning_11>90.000000</MinWarning_11>
+                <MinOK_11>89.000000</MinOK_11>
+                <TargetValue_11>94.000000</TargetValue_11>
+                <MaxWarning_11>98.000000</MaxWarning_11>
+                <MaxOK_11>99.000000</MaxOK_11>
+                <MinWarning_10>102.000000</MinWarning_10>
+                <MinOK_10>101.000000</MinOK_10>
+                <TargetValue_10>106.000000</TargetValue_10>
+                <MaxWarning_10>110.000000</MaxWarning_10>
+                <MaxOK_10>111.000000</MaxOK_10>
+                <MinWarning_9>114.000000</MinWarning_9>
+                <MinOK_9>113.000000</MinOK_9>
+                <TargetValue_9>118.000000</TargetValue_9>
+                <MaxWarning_9>122.000000</MaxWarning_9>
+                <MaxOK_9>123.000000</MaxOK_9>
+                <MinWarning_8>127.000000</MinWarning_8>
+                <MinOK_8>126.000000</MinOK_8>
+                <TargetValue_8>131.000000</TargetValue_8>
+                <MaxWarning_8>135.000000</MaxWarning_8>
+                <MaxOK_8>136.000000</MaxOK_8>
+                <MinWarning_7>139.000000</MinWarning_7>
+                <MinOK_7>138.000000</MinOK_7>
+                <TargetValue_7>143.000000</TargetValue_7>
+                <MaxWarning_7>147.000000</MaxWarning_7>
+                <MaxOK_7>148.000000</MaxOK_7>
+                <MinWarning_6>152.000000</MinWarning_6>
+                <MinOK_6>151.000000</MinOK_6>
+                <TargetValue_6>156.000000</TargetValue_6>
+                <MaxWarning_6>160.000000</MaxWarning_6>
+                <MaxOK_6>161.000000</MaxOK_6>
+                <MinWarning_5>166.000000</MinWarning_5>
+                <MinOK_5>165.000000</MinOK_5>
+                <TargetValue_5>170.000000</TargetValue_5>
+                <MaxWarning_5>174.000000</MaxWarning_5>
+                <MaxOK_5>175.000000</MaxOK_5>
+                <MinWarning_4>179.000000</MinWarning_4>
+                <MinOK_4>178.000000</MinOK_4>
+                <TargetValue_4>183.000000</TargetValue_4>
+                <MaxWarning_4>187.000000</MaxWarning_4>
+                <MaxOK_4>188.000000</MaxOK_4>
+                <MinWarning_3>193.000000</MinWarning_3>
+                <MinOK_3>192.000000</MinOK_3>
+                <TargetValue_3>197.000000</TargetValue_3>
+                <MaxWarning_3>201.000000</MaxWarning_3>
+                <MaxOK_3>202.000000</MaxOK_3>
+                <MinWarning_2>207.000000</MinWarning_2>
+                <MinOK_2>206.000000</MinOK_2>
+                <TargetValue_2>211.000000</TargetValue_2>
+                <MaxWarning_2>215.000000</MaxWarning_2>
+                <MaxOK_2>216.000000</MaxOK_2>
+                <MinWarning_1>222.000000</MinWarning_1>
+                <MinOK_1>221.000000</MinOK_1>
+                <TargetValue_1>226.000000</TargetValue_1>
+                <MaxWarning_1>230.000000</MaxWarning_1>
+                <MaxOK_1>231.000000</MaxOK_1>
+                <MinWarning_0>236.000000</MinWarning_0>
+                <MinOK_0>235.000000</MinOK_0>
+                <TargetValue_0>240.000000</TargetValue_0>
+                <MaxWarning_0>244.000000</MaxWarning_0>
+                <MaxOK_0>245.000000</MaxOK_0>
+                <GSToleranceAsymetric>0</GSToleranceAsymetric>
+                <GSToleranceVariable>0</GSToleranceVariable>
+            </AimValues_1>
+            <Settings>
+                <Flags>514</Flags>
+                <ColorSpace>2</ColorSpace>
+                <CheckType>1</CheckType>
+                <FieldAnzNotUsed>0</FieldAnzNotUsed>
+                <RelativeFieldSize>20</RelativeFieldSize>
+                <FixedFieldSize>20</FixedFieldSize>
+                <RelativeSearchFieldSize>60</RelativeSearchFieldSize>
+                <FixedSearchFieldSize>60</FixedSearchFieldSize>
+                <FieldVariant>0</FieldVariant>
+                <AmountOfFields>12</AmountOfFields>
+            </Settings>
+            <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        </GrayScale>
+        <FilenameTE263>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\TE263_Lab__default.txt</FilenameTE263>
+        <FilenameGOLT>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\GOLT_Lab__default.txt</FilenameGOLT>
+        <FilenameDICE>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\DICE_Lab__default.txt</FilenameDICE>
+        <FilenameMunsell>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\Munsell_Lab__default.txt</FilenameMunsell>
+        <FilenameQA62>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\QA62_Lab__default.txt</FilenameQA62>
+        <FilenameQ13>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\Q13_Lab__default.txt</FilenameQ13>
+        <FilenameIT8>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\IT8_Lab__default.txt</FilenameIT8>
+        <FilenameCCC>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCC_Lab__default.txt</FilenameCCC>
+        <FilenameCCSG>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCSG_Lab__default.txt</FilenameCCSG>
+        <FilenameA0>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA0>
+        <FilenameA1>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA1>
+        <FilenameA2>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA2>
+        <Filename>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</Filename>
+        <UseVariableData>0</UseVariableData>
+        <OECFCentralMeasurement>0</OECFCentralMeasurement>
+        <UseRefFileData>1</UseRefFileData>
+        <DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
+    </OECF>
+    <DeltaE>
+        <Warning_3_7_Mean>3.900000</Warning_3_7_Mean>
+        <Error_3_7_Mean>4.000000</Error_3_7_Mean>
+        <Warning_3_7>8.000000</Warning_3_7>
+        <Error_3_7>10.000000</Error_3_7>
+        <Warning_3_6_Mean>3.900000</Warning_3_6_Mean>
+        <Error_3_6_Mean>4.000000</Error_3_6_Mean>
+        <Warning_3_6>8.000000</Warning_3_6>
+        <Error_3_6>10.000000</Error_3_6>
+        <Warning_3_5_Mean>3.900000</Warning_3_5_Mean>
+        <Error_3_5_Mean>4.000000</Error_3_5_Mean>
+        <Warning_3_5>8.000000</Warning_3_5>
+        <Error_3_5>10.000000</Error_3_5>
+        <Warning_3_4_Mean>3.900000</Warning_3_4_Mean>
+        <Error_3_4_Mean>4.000000</Error_3_4_Mean>
+        <Warning_3_4>8.000000</Warning_3_4>
+        <Error_3_4>10.000000</Error_3_4>
+        <Warning_3_3_Mean>3.900000</Warning_3_3_Mean>
+        <Error_3_3_Mean>4.000000</Error_3_3_Mean>
+        <Warning_3_3>8.000000</Warning_3_3>
+        <Error_3_3>10.000000</Error_3_3>
+        <Warning_3_2_Mean>3.900000</Warning_3_2_Mean>
+        <Error_3_2_Mean>4.000000</Error_3_2_Mean>
+        <Warning_3_2>8.000000</Warning_3_2>
+        <Error_3_2>10.000000</Error_3_2>
+        <Warning_3_1_Mean>3.900000</Warning_3_1_Mean>
+        <Error_3_1_Mean>4.000000</Error_3_1_Mean>
+        <Warning_3_1>8.000000</Warning_3_1>
+        <Error_3_1>10.000000</Error_3_1>
+        <Warning_3_0_Mean>3.900000</Warning_3_0_Mean>
+        <Error_3_0_Mean>4.000000</Error_3_0_Mean>
+        <Warning_3_0>8.000000</Warning_3_0>
+        <Error_3_0>10.000000</Error_3_0>
+        <Percentage_3>20.000000</Percentage_3>
+        <Warning_2_7_Mean>3.900000</Warning_2_7_Mean>
+        <Error_2_7_Mean>4.000000</Error_2_7_Mean>
+        <Warning_2_7>8.000000</Warning_2_7>
+        <Error_2_7>10.000000</Error_2_7>
+        <Warning_2_6_Mean>3.900000</Warning_2_6_Mean>
+        <Error_2_6_Mean>4.000000</Error_2_6_Mean>
+        <Warning_2_6>8.000000</Warning_2_6>
+        <Error_2_6>10.000000</Error_2_6>
+        <Warning_2_5_Mean>3.900000</Warning_2_5_Mean>
+        <Error_2_5_Mean>4.000000</Error_2_5_Mean>
+        <Warning_2_5>8.000000</Warning_2_5>
+        <Error_2_5>10.000000</Error_2_5>
+        <Warning_2_4_Mean>3.900000</Warning_2_4_Mean>
+        <Error_2_4_Mean>4.000000</Error_2_4_Mean>
+        <Warning_2_4>8.000000</Warning_2_4>
+        <Error_2_4>10.000000</Error_2_4>
+        <Warning_2_3_Mean>3.900000</Warning_2_3_Mean>
+        <Error_2_3_Mean>4.000000</Error_2_3_Mean>
+        <Warning_2_3>8.000000</Warning_2_3>
+        <Error_2_3>10.000000</Error_2_3>
+        <Warning_2_2_Mean>3.900000</Warning_2_2_Mean>
+        <Error_2_2_Mean>4.000000</Error_2_2_Mean>
+        <Warning_2_2>8.000000</Warning_2_2>
+        <Error_2_2>10.000000</Error_2_2>
+        <Warning_2_1_Mean>3.900000</Warning_2_1_Mean>
+        <Error_2_1_Mean>4.000000</Error_2_1_Mean>
+        <Warning_2_1>8.000000</Warning_2_1>
+        <Error_2_1>10.000000</Error_2_1>
+        <Warning_2_0_Mean>3.900000</Warning_2_0_Mean>
+        <Error_2_0_Mean>4.000000</Error_2_0_Mean>
+        <Warning_2_0>8.000000</Warning_2_0>
+        <Error_2_0>10.000000</Error_2_0>
+        <Percentage_2>20.000000</Percentage_2>
+        <Warning_1_7_Mean>3.900000</Warning_1_7_Mean>
+        <Error_1_7_Mean>4.000000</Error_1_7_Mean>
+        <Warning_1_7>8.000000</Warning_1_7>
+        <Error_1_7>10.000000</Error_1_7>
+        <Warning_1_6_Mean>3.900000</Warning_1_6_Mean>
+        <Error_1_6_Mean>4.000000</Error_1_6_Mean>
+        <Warning_1_6>8.000000</Warning_1_6>
+        <Error_1_6>10.000000</Error_1_6>
+        <Warning_1_5_Mean>3.900000</Warning_1_5_Mean>
+        <Error_1_5_Mean>4.000000</Error_1_5_Mean>
+        <Warning_1_5>8.000000</Warning_1_5>
+        <Error_1_5>10.000000</Error_1_5>
+        <Warning_1_4_Mean>3.900000</Warning_1_4_Mean>
+        <Error_1_4_Mean>4.000000</Error_1_4_Mean>
+        <Warning_1_4>8.000000</Warning_1_4>
+        <Error_1_4>10.000000</Error_1_4>
+        <Warning_1_3_Mean>3.900000</Warning_1_3_Mean>
+        <Error_1_3_Mean>4.000000</Error_1_3_Mean>
+        <Warning_1_3>8.000000</Warning_1_3>
+        <Error_1_3>10.000000</Error_1_3>
+        <Warning_1_2_Mean>3.900000</Warning_1_2_Mean>
+        <Error_1_2_Mean>4.000000</Error_1_2_Mean>
+        <Warning_1_2>8.000000</Warning_1_2>
+        <Error_1_2>10.000000</Error_1_2>
+        <Warning_1_1_Mean>3.900000</Warning_1_1_Mean>
+        <Error_1_1_Mean>4.000000</Error_1_1_Mean>
+        <Warning_1_1>8.000000</Warning_1_1>
+        <Error_1_1>10.000000</Error_1_1>
+        <Warning_1_0_Mean>3.900000</Warning_1_0_Mean>
+        <Error_1_0_Mean>4.000000</Error_1_0_Mean>
+        <Warning_1_0>8.000000</Warning_1_0>
+        <Error_1_0>10.000000</Error_1_0>
+        <Percentage_1>20.000000</Percentage_1>
+        <Warning_0_7_Mean>3.900000</Warning_0_7_Mean>
+        <Error_0_7_Mean>4.000000</Error_0_7_Mean>
+        <Warning_0_7>8.000000</Warning_0_7>
+        <Error_0_7>10.000000</Error_0_7>
+        <Warning_0_6_Mean>3.900000</Warning_0_6_Mean>
+        <Error_0_6_Mean>4.000000</Error_0_6_Mean>
+        <Warning_0_6>8.000000</Warning_0_6>
+        <Error_0_6>10.000000</Error_0_6>
+        <Warning_0_5_Mean>3.900000</Warning_0_5_Mean>
+        <Error_0_5_Mean>4.000000</Error_0_5_Mean>
+        <Warning_0_5>8.000000</Warning_0_5>
+        <Error_0_5>10.000000</Error_0_5>
+        <Warning_0_4_Mean>3.900000</Warning_0_4_Mean>
+        <Error_0_4_Mean>4.000000</Error_0_4_Mean>
+        <Warning_0_4>8.000000</Warning_0_4>
+        <Error_0_4>10.000000</Error_0_4>
+        <Warning_0_3_Mean>3.900000</Warning_0_3_Mean>
+        <Error_0_3_Mean>4.000000</Error_0_3_Mean>
+        <Warning_0_3>8.000000</Warning_0_3>
+        <Error_0_3>10.000000</Error_0_3>
+        <Warning_0_2_Mean>3.900000</Warning_0_2_Mean>
+        <Error_0_2_Mean>4.000000</Error_0_2_Mean>
+        <Warning_0_2>8.000000</Warning_0_2>
+        <Error_0_2>10.000000</Error_0_2>
+        <Warning_0_1_Mean>3.900000</Warning_0_1_Mean>
+        <Error_0_1_Mean>4.000000</Error_0_1_Mean>
+        <Warning_0_1>8.000000</Warning_0_1>
+        <Error_0_1>10.000000</Error_0_1>
+        <Warning_0_0_Mean>3.900000</Warning_0_0_Mean>
+        <Error_0_0_Mean>4.000000</Error_0_0_Mean>
+        <Warning_0_0>8.000000</Warning_0_0>
+        <Error_0_0>10.000000</Error_0_0>
+        <Percentage_0>20.000000</Percentage_0>
+        <Flags_0>3</Flags_0>
+        <Flags_1>3</Flags_1>
+        <Flags_2>3</Flags_2>
+        <Flags_3>3</Flags_3>
+        <FilenameTE263>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\TE263_Lab__default.txt</FilenameTE263>
+        <FilenameGOLT>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\GOLT_Lab__default.txt</FilenameGOLT>
+        <FilenameDICE>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\DICE_Lab__default.txt</FilenameDICE>
+        <FilenameIT8>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\IT8_Lab__default.txt</FilenameIT8>
+        <FilenameCCC>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCC_Lab__default.txt</FilenameCCC>
+        <FilenameCCSG>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\CCSG_Lab__default.txt</FilenameCCSG>
+        <FilenameA0>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA0>
+        <FilenameA1>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA1>
+        <FilenameA2>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</FilenameA2>
+        <Filename>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\UTT_Lab_DIN_A3__default.txt</Filename>
+        <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        <DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
+        <UseVariableDataA0>0</UseVariableDataA0>
+        <UseVariableDataA1>0</UseVariableDataA1>
+        <UseVariableDataA2>0</UseVariableDataA2>
+        <UseVariableData>0</UseVariableData>
+    </DeltaE>
+    <Geometry>
+        <ResolutionHorVerRatioWarning>1.500000</ResolutionHorVerRatioWarning>
+        <ResolutionHorVerRatioError>2.000000</ResolutionHorVerRatioError>
+        <ResolutionWarning>2.500000</ResolutionWarning>
+        <ResolutionError>3.000000</ResolutionError>
+    </Geometry>
+    <Homogeneity>
+        <Flags>4</Flags>
+        <TargetValueWhite>0.000000</TargetValueWhite>
+        <TargetValueGray>0.000000</TargetValueGray>
+        <HomogeneityDeltaEabWarning>0.000000</HomogeneityDeltaEabWarning>
+        <HomogeneityDeltaEabError>0.000000</HomogeneityDeltaEabError>
+        <MaxWhiteMeanLab>98.040000</MaxWhiteMeanLab>
+        <MinWhiteMeanLab>88.240000</MinWhiteMeanLab>
+        <MaxInhomogeneityErrorLab>3.000000</MaxInhomogeneityErrorLab>
+        <MaxInhomogeneityWarningLab>2.500000</MaxInhomogeneityWarningLab>
+        <MaxWhiteMean>250.000000</MaxWhiteMean>
+        <MinWhiteMean>200.000000</MinWhiteMean>
+        <MaxInhomogeneityError>19.000000</MaxInhomogeneityError>
+        <MaxInhomogeneityWarning>18.000000</MaxInhomogeneityWarning>
+        <ColorChannel>0</ColorChannel>
+    </Homogeneity>
+    <MTF>
+        <DoVerticalHorizontalSeparate>false</DoVerticalHorizontalSeparate>
+        <ErrorChannelRegistration>0.700000</ErrorChannelRegistration>
+        <WarningChannelRegistration>0.500000</WarningChannelRegistration>
+        <MinCyclesPerMMErrorMTF50>2.100000</MinCyclesPerMMErrorMTF50>
+        <MinCyclesPerMMWarningMTF50>2.250000</MinCyclesPerMMWarningMTF50>
+        <MinCyclesPerMMErrorMTF10>4.700000</MinCyclesPerMMErrorMTF10>
+        <MinCyclesPerMMWarningMTF10>5.000000</MinCyclesPerMMWarningMTF10>
+        <ModulationLimit>110.000000</ModulationLimit>
+        <SamplingEfficiencyLimit>80.000000</SamplingEfficiencyLimit>
+        <DoSamplingEfficiency>true</DoSamplingEfficiency>
+        <Flags>1</Flags>
+        <MinCyclesPerMMError>4.000000</MinCyclesPerMMError>
+        <MinCyclesPerMMWarning>4.500000</MinCyclesPerMMWarning>
+        <MinMTF>0.100000</MinMTF>
+        <ColorChannel>0</ColorChannel>
+    </MTF>
+    <ActiveChecks>
+        <DoGeometry>false</DoGeometry>
+        <DoHomogeneity>false</DoHomogeneity>
+        <DoOECFGrayScale>true</DoOECFGrayScale>
+        <DoOECFGrayBar>false</DoOECFGrayBar>
+        <DoOECF>true</DoOECF>
+        <DoNoiseAlternativeMode>false</DoNoiseAlternativeMode>
+        <DoNoiseGrayScale>true</DoNoiseGrayScale>
+        <DoNoiseGrayBar>false</DoNoiseGrayBar>
+        <DoNoise>true</DoNoise>
+        <DoMTF>true</DoMTF>
+        <DoDeltaE>true</DoDeltaE>
+    </ActiveChecks>
+    <CommonSettings>
+        <SerialNumberUTT></SerialNumberUTT>
+        <UseImageColorSpaceAsWorkingColorSpace>1</UseImageColorSpaceAsWorkingColorSpace>
+        <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
+        <DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
+        <UsedTarget>8</UsedTarget>
+        <MeasurementTitle></MeasurementTitle>
+    </CommonSettings>
 </OS-QMTool>

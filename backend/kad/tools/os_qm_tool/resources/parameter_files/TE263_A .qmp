@@ -91,7 +91,7 @@
                 <RelativeSearchFieldSize>60</RelativeSearchFieldSize>
                 <FixedSearchFieldSize>60</FixedSearchFieldSize>
                 <FieldVariant>0</FieldVariant>
-                <AmountOfFields>12</AmountOfFields>
+                <AmountOfFields>10</AmountOfFields>
             </Settings>
             <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
         </GrayScale>
@@ -569,7 +569,7 @@
                 <RelativeSearchFieldSize>60</RelativeSearchFieldSize>
                 <FixedSearchFieldSize>60</FixedSearchFieldSize>
                 <FieldVariant>0</FieldVariant>
-                <AmountOfFields>12</AmountOfFields>
+                <AmountOfFields>10</AmountOfFields>
             </Settings>
             <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
         </GrayScale>
@@ -802,7 +802,7 @@
         <UseImageColorSpaceAsWorkingColorSpace>1</UseImageColorSpaceAsWorkingColorSpace>
         <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
         <DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
-        <UsedTarget>8</UsedTarget>
+        <UsedTarget>9</UsedTarget>
         <MeasurementTitle></MeasurementTitle>
     </CommonSettings>
 </OS-QMTool>
