@@ -1,5 +1,6 @@
 """Parser for the summary output from OS QM Tool
 """
+import logging
 import typing
 from dataclasses import asdict, dataclass, field, fields
 
@@ -57,6 +58,8 @@ def result_summary_parser(url):
         dataclass: Structured results extracted from the summary output
     """
 
+    logging.getLogger().info("Parsing file %s", url)
+
     # Variables
     data = Results()
     section = Check()
@@ -99,8 +102,8 @@ def result_summary_parser(url):
             line = line.lower().strip()
             try:
                 section_handler(section, section_name, line, prev_line)
-            except Exception as exception:
-                print("Error while parsing " + section_name + ": " + str(exception))
+            except Exception:
+                pass
 
             # Store line
             prev_line = line

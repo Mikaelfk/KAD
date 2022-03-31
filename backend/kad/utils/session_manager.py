@@ -2,13 +2,11 @@
 
 Contains several methods for creating, updating and modifying sessions.
 """
+import logging
 import os
 import uuid
 
-from kad.utils.json_helpers import (
-    read_from_json_file,
-    write_to_json_file,
-)
+from kad.utils.json_helpers import read_from_json_file, write_to_json_file
 from kad.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_session_dir,
@@ -40,6 +38,8 @@ def create_session():
     os.mkdir(get_session_outputs_dir(session_id))
 
     update_session_status(session_id, "created")
+
+    logging.getLogger().info("Created session %s", session_id)
 
     return session_id
 
@@ -88,6 +88,9 @@ def update_session_status(session_id, status):
         session_id (str): the unique id of the session
         status (str): the new status to update to
     """
+
+    logging.getLogger().info("Status of session %s updated to %s", session_id, status)
+
     data = read_from_json_file(get_session_state_file(session_id))
     data["status"] = status
     write_to_json_file(get_session_state_file(session_id), data)

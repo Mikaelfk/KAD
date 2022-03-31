@@ -1,9 +1,10 @@
 """Module for zipping all images in a session
 """
+import logging
 from shutil import make_archive
-from kad.utils.path_helpers import get_session_dir
+
+from kad.utils.path_helpers import get_session_dir, get_session_images_dir
 from kad.utils.session_manager import update_session_status
-from kad.utils.path_helpers import get_session_images_dir
 
 
 def zip_all_images_in_session(session_id):
@@ -12,6 +13,11 @@ def zip_all_images_in_session(session_id):
     Args:
         session_id (str): The id of a session
     """
+
+    logging.getLogger().info(
+        "Creating zip file of all files in session %s",
+        session_id,
+    )
 
     # Sets the session status to zipping
     update_session_status(session_id, "zipping")

@@ -1,17 +1,13 @@
 """Simple main class for running.
 
 """
+import logging
 import os
 
 from flask import Flask
 from flask_cors import CORS
 
-from kad.api import (
-    iqx_endpoint,
-    oqt_endpoint,
-    results_endpoint,
-    download_endpoint,
-)
+from kad.api import download_endpoint, iqx_endpoint, oqt_endpoint, results_endpoint
 from kad.config import Config
 
 
@@ -20,6 +16,12 @@ def start():
 
     This method initializes the flask app, registers endpoints and starts the listening.
     """
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
 
     app = Flask(__name__)
     app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 1024  # 1GB

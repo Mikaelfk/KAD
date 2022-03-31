@@ -1,5 +1,6 @@
 """Parser for IQ-Analyzer X
 """
+import logging
 import xml.etree.ElementTree as ET
 
 
@@ -12,6 +13,9 @@ def result_summary_parser(uri):
     Returns:
         dict: Overview results of analysis
     """
+
+    logging.getLogger().info("Parsing file %s", uri)
+
     # fix xml
     fixed_xml = fix_xml(uri)
 
