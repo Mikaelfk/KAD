@@ -46,7 +46,7 @@ const ResultPage = () => {
             return (
                 <div>
                     <Typography variant="h3">
-                        No results :(
+                        No results
                     </Typography>
                 </div>
             )
@@ -120,7 +120,10 @@ const ResultPage = () => {
                                         {
                                             detailed_result +
                                             ": " +
-                                            resultData[result_category][detailed_result]
+                                            JSON.stringify(resultData[result_category][detailed_result])
+                                                .replaceAll("{", "")
+                                                .replaceAll("}", "")
+                                                .replaceAll("\"", " ")
                                         }
                                     </Typography>
                                 )
