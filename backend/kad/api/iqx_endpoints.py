@@ -18,7 +18,7 @@ from kad.utils.session_manager import (
     create_session,
 )
 from kad.utils.filename_handler import save_uploaded_files
-from kad.utils.file_helpers import is_file_empty
+from kad.utils.file_helpers import are_files_valid, is_file_empty
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
@@ -71,6 +71,20 @@ def analyze():
                     ),
                     status=400,
                 )
+
+            all_files = files 
+            all_files.append(before_target)
+            all_files.append(after_target)
+            
+            # Checks if the file types are valid
+            files_valid, file_name = are_files_valid(all_files)
+            if not files_valid:
+                return Response(
+                        json.dumps(
+                            {"error": "File extension not supported for file: " + str(file_name)},
+                        ),
+                        status=400,
+                    )
 
             # Save before target
             before_target_filename = save_uploaded_files(
