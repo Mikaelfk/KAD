@@ -9,15 +9,15 @@ import multiprocessing.pool as ThreadPool
 from flask import Blueprint, request
 from flask.wrappers import Response
 
-from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.tools.os_qm_tool.oqt import (
+from kad.config import Config
+from kad.tools.os_qm_tool.oqt import (
     run_analyses_all_images,
 )
-from kvalitetssikring_av_digitisering.utils.session_manager import (
+from kad.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
-from kvalitetssikring_av_digitisering.utils.filename_handler import save_uploaded_files
+from kad.utils.filename_handler import save_uploaded_files
 
 oqt_endpoint = Blueprint("oqt_endpoint", __name__)
 

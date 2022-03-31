@@ -3,8 +3,8 @@
 import os
 
 import pyexiv2
-from kvalitetssikring_av_digitisering.utils.json_helpers import read_from_json_file
-from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
+from kad.utils.json_helpers import read_from_json_file
+from kad.utils.metadata_add import add_metadata_to_file
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 

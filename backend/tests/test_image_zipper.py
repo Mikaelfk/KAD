@@ -2,11 +2,11 @@
 """
 import os.path
 
-from kvalitetssikring_av_digitisering.utils.image_zipper import (
+from kad.utils.image_zipper import (
     zip_all_images_in_session,
 )
-from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_dir
-from kvalitetssikring_av_digitisering.utils.session_manager import create_session
+from kad.utils.path_helpers import get_session_dir
+from kad.utils.session_manager import create_session
 
 
 def test_zip_all_images_in_session():

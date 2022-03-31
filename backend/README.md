@@ -62,7 +62,7 @@ The module will look for the config file in the working directory. Most of the t
 
 ### Running
 
-To run this module, a simple [`run.py`](run.py) script has been included. This script simply calls the `start()` method in [`main.py`](kvalitetssikring_av_digitisering/main.py), which will start the flask server and listen for incoming connections.
+To run this module, a simple [`run.py`](run.py) script has been included. This script simply calls the `start()` method in [`main.py`](kad/main.py), which will start the flask server and listen for incoming connections.
 
 ### Connect
 

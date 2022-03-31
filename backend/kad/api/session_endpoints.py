@@ -9,7 +9,7 @@ import json
 
 from flask import Blueprint, request
 from flask.wrappers import Response
-from kvalitetssikring_av_digitisering.utils.session_manager import (
+from kad.utils.session_manager import (
     check_session_exists,
     create_analysis_folders,
     create_session,

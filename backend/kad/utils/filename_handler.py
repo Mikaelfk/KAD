@@ -3,10 +3,10 @@
 import uuid
 import pathlib
 from werkzeug.utils import secure_filename
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.utils.path_helpers import (
     get_session_image_file,
 )
-from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
+from kad.utils.file_helpers import is_file_empty
 
 
 def save_uploaded_files(session_id: str, files, file_names=None):

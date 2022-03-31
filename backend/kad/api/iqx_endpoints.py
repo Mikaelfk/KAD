@@ -9,16 +9,16 @@ import multiprocessing.pool as ThreadPool
 
 from flask import Blueprint, request
 from flask.wrappers import Response
-from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.tools.iq_analyzer_x.iqx import (
+from kad.config import Config
+from kad.tools.iq_analyzer_x.iqx import (
     run_before_after_target_analysis,
 )
-from kvalitetssikring_av_digitisering.utils.session_manager import (
+from kad.utils.session_manager import (
     create_analysis_folders,
     create_session,
 )
-from kvalitetssikring_av_digitisering.utils.filename_handler import save_uploaded_files
-from kvalitetssikring_av_digitisering.utils.file_helpers import is_file_empty
+from kad.utils.filename_handler import save_uploaded_files
+from kad.utils.file_helpers import is_file_empty
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
@@ -42,8 +42,16 @@ def analyze():
         case "UTT":
             print("Target which is used: UTT")
             session_id = create_session()
-            if(not "before_target" in request.files or not "after_target" in request.files):
-                return Response(json.dumps({"error": "before_target or after_target not specified"}), status=400)
+            if (
+                not "before_target" in request.files
+                or not "after_target" in request.files
+            ):
+                return Response(
+                    json.dumps(
+                        {"error": "before_target or after_target not specified"}
+                    ),
+                    status=400,
+                )
             before_target = request.files["before_target"]
             after_target = request.files["after_target"]
             files = request.files.getlist("files")

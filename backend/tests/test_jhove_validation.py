@@ -2,7 +2,7 @@
 """
 import os
 
-from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
+from kad.utils.file_validation import jhove_validation
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 

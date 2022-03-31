@@ -9,8 +9,8 @@ import os
 
 from flask import Blueprint
 from flask.wrappers import Response
-from kvalitetssikring_av_digitisering.utils.path_helpers import get_session_results_file
-from kvalitetssikring_av_digitisering.utils.session_manager import check_session_exists
+from kad.utils.path_helpers import get_session_results_file
+from kad.utils.session_manager import check_session_exists
 
 results_endpoint = Blueprint("results_endpoint", __name__)
 

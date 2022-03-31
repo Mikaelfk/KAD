@@ -5,21 +5,21 @@ Contains methods for running multiple or single analyses
 import os
 import subprocess
 
-from kvalitetssikring_av_digitisering.utils.image_zipper import (
+from kad.utils.image_zipper import (
     zip_all_images_in_session,
 )
 
-from kvalitetssikring_av_digitisering.tools.os_qm_tool.parser import (
+from kad.tools.os_qm_tool.parser import (
     result_summary_parser,
 )
-from kvalitetssikring_av_digitisering.config import Config
-from kvalitetssikring_av_digitisering.utils.json_helpers import (
+from kad.config import Config
+from kad.utils.json_helpers import (
     json_iqx_set_analysis_failed,
     read_from_json_file,
     json_set_validation,
 )
-from kvalitetssikring_av_digitisering.utils.metadata_add import add_metadata_to_file
-from kvalitetssikring_av_digitisering.utils.path_helpers import (
+from kad.utils.metadata_add import add_metadata_to_file
+from kad.utils.path_helpers import (
     get_analysis_dir,
     get_analysis_dir_image_file,
     get_session_image_file,
@@ -27,12 +27,12 @@ from kvalitetssikring_av_digitisering.utils.path_helpers import (
     get_session_results_file,
     get_analysis_dir_image_oqt_result_file,
 )
-from kvalitetssikring_av_digitisering.utils.json_helpers import (
+from kad.utils.json_helpers import (
     json_iqx_add_result,
     write_to_json_file,
 )
-from kvalitetssikring_av_digitisering.utils.session_manager import update_session_status
-from kvalitetssikring_av_digitisering.utils.file_validation import jhove_validation
+from kad.utils.session_manager import update_session_status
+from kad.utils.file_validation import jhove_validation
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 
