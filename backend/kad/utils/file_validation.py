@@ -3,12 +3,12 @@
 Requires a valid JHOVE installation to work.
 """
 
+import logging
 import os
 
 from kad.config import Config
 
 jhove_path = Config.config().get(section="JHOVE", option="JhoveInstallPath")
-print(jhove_path)
 
 
 def jhove_validation(url):
@@ -33,10 +33,16 @@ def jhove_validation(url):
 
     # Runs the file validation and saves the output to a variable
     if url.lower().endswith(".jpg") or url.lower().endswith(".jpeg"):
+        logging.getLogger().info("Validating JPEG file %s with JHOVE", url)
+
         stream = os.popen(jhove_command + " -m JPEG-hul -kr " + '"' + url + '"')
     elif url.lower().endswith(".tiff") or url.lower().endswith(".tif"):
+        logging.getLogger().info("Validating TIFF file %s with JHOVE", url)
+
         stream = os.popen(jhove_command + " -m TIFF-hul -kr " + '"' + url + '"')
     else:
+        logging.getLogger().warning("File %s can not be validated with JHOVE", url)
+
         return "Filetype not valid", False
     output = stream.read()
 

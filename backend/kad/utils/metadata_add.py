@@ -1,5 +1,7 @@
 """Module for adding metadata to a file
 """
+import logging
+
 import pyexiv2
 
 
@@ -18,8 +20,11 @@ def add_metadata_to_file(file_path, result_dict: dict):
         get_xmp_metadata(tags, data, metadata)
         img.modify_xmp(metadata)
         img.close()
-    except Exception as err:
-        print(err)
+
+        logging.getLogger().info("Added metadata to file %s", file_path)
+
+    except Exception:
+        logging.getLogger().warning("Unable to add metadata to file %s", file_path)
 
 
 def get_xmp_metadata(tags, result_data, metadata: dict):

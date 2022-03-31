@@ -1,12 +1,12 @@
 """Function that modify uploaded files, but stores the original filename in the session root
 """
-import uuid
+import logging
 import pathlib
-from werkzeug.utils import secure_filename
-from kad.utils.path_helpers import (
-    get_session_image_file,
-)
+import uuid
+
 from kad.utils.file_helpers import is_file_empty
+from kad.utils.path_helpers import get_session_image_file
+from werkzeug.utils import secure_filename
 
 
 def save_uploaded_files(session_id: str, files, file_names=None):
@@ -48,6 +48,13 @@ def save_uploaded_files(session_id: str, files, file_names=None):
             file_name_path = pathlib.Path(file_name)
             new_file_name = f"{file_name_path.stem}_{i}{file_name_path.suffix}"
             i += 1
+
+        if file_name is not new_file_name:
+            logging.getLogger().info(
+                "File %s has duplicate filename. Renaming to %s",
+                file_name,
+                new_file_name,
+            )
 
         # Save file
         file.save(get_session_image_file(session_id, new_file_name))

@@ -3,22 +3,17 @@
 This module is for use with Flask, and the methods should therefore never be called directly.
 It defines endpoints for performing analysis with IQ Analyzer X.
 """
-
 import json
+import logging
 import multiprocessing.pool as ThreadPool
 
 from flask import Blueprint, request
 from flask.wrappers import Response
 from kad.config import Config
-from kad.tools.iq_analyzer_x.iqx import (
-    run_before_after_target_analysis,
-)
-from kad.utils.session_manager import (
-    create_analysis_folders,
-    create_session,
-)
-from kad.utils.filename_handler import save_uploaded_files
+from kad.tools.iq_analyzer_x.iqx import run_before_after_target_analysis
 from kad.utils.file_helpers import are_files_valid, is_file_empty
+from kad.utils.filename_handler import save_uploaded_files
+from kad.utils.session_manager import create_analysis_folders, create_session
 
 iqx_endpoint = Blueprint("iqx_endpoint", __name__)
 
@@ -35,12 +30,17 @@ def analyze():
     Returns:
         Response: a JSON response which contains the session id.
     """
+    logging.getLogger().info("uwu")
+
     target = request.args.get("target")
 
     # make sure it's a valid target
     match target:
         case "UTT":
-            print("Target which is used: UTT")
+            logging.getLogger().info(
+                "Creating IQX analysis session with target %s", target
+            )
+
             session_id = create_session()
             if (
                 not "before_target" in request.files
@@ -72,19 +72,22 @@ def analyze():
                     status=400,
                 )
 
-            all_files = files 
+            all_files = files
             all_files.append(before_target)
             all_files.append(after_target)
-            
+
             # Checks if the file types are valid
             files_valid, file_name = are_files_valid(all_files)
             if not files_valid:
                 return Response(
-                        json.dumps(
-                            {"error": "File extension not supported for file: " + str(file_name)},
-                        ),
-                        status=400,
-                    )
+                    json.dumps(
+                        {
+                            "error": "File extension not supported for file: "
+                            + str(file_name)
+                        },
+                    ),
+                    status=400,
+                )
 
             # Save before target
             before_target_filename = save_uploaded_files(

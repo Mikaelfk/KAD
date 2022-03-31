@@ -3,26 +3,25 @@
 Contains methods for performing single or multiple analyses,
 parsing results and saving them in a session
 """
+import logging
 import os
 import subprocess
 
 from kad.config import Config
-from kad.tools.iq_analyzer_x.parser import (
-    result_summary_parser,
-)
-from kad.utils.image_zipper import (
-    zip_all_images_in_session,
-)
+from kad.tools.iq_analyzer_x.parser import result_summary_parser
+from kad.utils.file_validation import jhove_validation
+from kad.utils.image_zipper import zip_all_images_in_session
 from kad.utils.json_helpers import (
+    json_get_best_passing_iso_score,
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
     json_iqx_set_image_tag,
     json_iqx_set_overall_score,
+    json_set_validation,
     read_from_json_file,
     write_to_json_file,
-    json_get_best_passing_iso_score,
-    json_set_validation,
 )
+from kad.utils.metadata_add import add_metadata_to_file
 from kad.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_analysis_dir_image_iqx_result_file,
@@ -30,9 +29,7 @@ from kad.utils.path_helpers import (
     get_session_images_dir,
     get_session_results_file,
 )
-from kad.utils.metadata_add import add_metadata_to_file
 from kad.utils.session_manager import update_session_status
-from kad.utils.file_validation import jhove_validation
 
 
 def run_analysis(image_file_path: str, specification_level: str):
@@ -55,6 +52,12 @@ def run_analysis(image_file_path: str, specification_level: str):
             specification_number = 3
         case _:
             return False
+
+    logging.getLogger().info(
+        "Running analysis on file %s with specification level %s",
+        image_file_path,
+        specification_level,
+    )
 
     # static args
     iqx_executable = os.path.join(
@@ -88,6 +91,11 @@ def run_analysis(image_file_path: str, specification_level: str):
             check=True,
         )
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        logging.getLogger().warning(
+            "Failed to run analysis on %s with specification level %s",
+            image_file_path,
+            specification_level,
+        )
         return False
 
     return True
@@ -101,6 +109,10 @@ def run_iso_analysis(file_name: str, session_id: str):
         session_id (str): The session id of the current session
     """
 
+    logging.getLogger().info(
+        "Starting iso analysis of file %s in session %s", file_name, session_id
+    )
+
     for specification_level in ["C", "B", "A"]:
         result_data = read_from_json_file(get_session_results_file(session_id))
 
@@ -112,7 +124,13 @@ def run_iso_analysis(file_name: str, session_id: str):
 
         # if iqx fails, set result to failed and move on
         if result is False:
-            print("uwu iqx machine broke")
+            logging.getLogger().warning(
+                """IQX failed while analyzing file %s in session %s.
+                Setting analysis result to failed""",
+                file_name,
+                session_id,
+            )
+
             result_data = json_iqx_set_analysis_failed(
                 result_data, file_name, specification_level
             )
@@ -129,7 +147,13 @@ def run_iso_analysis(file_name: str, session_id: str):
         # if parsing fails, iqx probably also fails,
         # so set result to failed and move on
         if analysis_results is None:
-            print("uwu parser machine broke")
+            logging.getLogger().warning(
+                """Parser failed to parse data from analysis on file %s in session %s.
+                Setting analysis result to failed!""",
+                file_name,
+                session_id,
+            )
+
             result_data = json_iqx_set_analysis_failed(
                 result_data, file_name, specification_level
             )
@@ -154,7 +178,6 @@ def run_before_after_target_analysis(
         after_target_filename (str): filename of the second target
         session_id (str): the session id of the current session
     """
-
     update_session_status(session_id, "running")
 
     # find name of all image files in session
@@ -164,6 +187,11 @@ def run_before_after_target_analysis(
         for f in os.listdir(session_image_folder)
         if os.path.isfile(os.path.join(session_image_folder, f))
     ]
+
+    logging.getLogger().info(
+        "Starting file validation on files in session %s",
+        session_id,
+    )
 
     # file validation
     result_data = {}
@@ -175,9 +203,21 @@ def run_before_after_target_analysis(
 
     # TODO: Only run analysis on target that is not currupt
 
+    logging.getLogger().info(
+        "Starting before/after target analysis on files %s and %s respectively in session %s.",
+        before_target_filename,
+        after_target_filename,
+        session_id,
+    )
+
     # run analysis
     run_iso_analysis(before_target_filename, session_id)
     run_iso_analysis(after_target_filename, session_id)
+
+    logging.getLogger().info(
+        "Setting tags targets in session %s",
+        session_id,
+    )
 
     # set image tags
     result_data = read_from_json_file(get_session_results_file(session_id))
@@ -186,6 +226,11 @@ def run_before_after_target_analysis(
     )
     result_data = json_iqx_set_image_tag(
         result_data, after_target_filename, "after_target"
+    )
+
+    logging.getLogger().info(
+        "Setting the overall score of targets in session %s",
+        session_id,
     )
 
     # set the overall score of the targets
@@ -201,6 +246,11 @@ def run_before_after_target_analysis(
     )
 
     write_to_json_file(get_session_results_file(session_id), result_data)
+
+    logging.getLogger().info(
+        "Adding metadata to all files in session %s",
+        session_id,
+    )
 
     for file_name in image_files:
         add_metadata_to_file(
@@ -233,6 +283,9 @@ def parse_results(result_file_path: str):
         parsed_result = result_summary_parser(result_file_path)
 
         return parsed_result
-    except FileNotFoundError as exception:
-        print(exception)
+    except FileNotFoundError:
+        logging.getLogger().warning(
+            "Parses was not able to find file %s", result_file_path
+        )
+
         return None

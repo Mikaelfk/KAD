@@ -4,21 +4,16 @@ This module is for use with Flask, and the methods should therefore never be cal
 It defines endpoints for performing analysis with OS QM-Tool.
 """
 import json
+import logging
 import multiprocessing.pool as ThreadPool
 
 from flask import Blueprint, request
 from flask.wrappers import Response
-
 from kad.config import Config
-from kad.tools.os_qm_tool.oqt import (
-    run_analyses_all_images,
-)
-from kad.utils.session_manager import (
-    create_analysis_folders,
-    create_session,
-)
-from kad.utils.filename_handler import save_uploaded_files
+from kad.tools.os_qm_tool.oqt import run_analyses_all_images
 from kad.utils.file_helpers import are_files_valid
+from kad.utils.filename_handler import save_uploaded_files
+from kad.utils.session_manager import create_analysis_folders, create_session
 
 oqt_endpoint = Blueprint("oqt_endpoint", __name__)
 
@@ -40,22 +35,28 @@ def analyze():
 
     match target:
         case "UTT" | "TE263" | "GTObject" | "GTDevice":
-            print("Target which is used: " + target)
+            logging.getLogger().info(
+                "Creating OQT analysis session with target %s", target
+            )
+
             files = request.files.getlist("files")
             session_id = create_session()
 
             if len(files) == 0:
                 return Response(json.dumps({"error": "no files uploaded"}), status=400)
-            
+
             # Checks if the filetypes are valid
             files_valid, file_name = are_files_valid(files)
             if not files_valid:
                 return Response(
-                        json.dumps(
-                            {"error": "File extension not supported for file: " + str(file_name)},
-                        ),
-                        status=400,
-                    )
+                    json.dumps(
+                        {
+                            "error": "File extension not supported for file: "
+                            + str(file_name)
+                        },
+                    ),
+                    status=400,
+                )
 
             save_uploaded_files(session_id, files)
             create_analysis_folders(session_id)
