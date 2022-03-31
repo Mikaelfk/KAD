@@ -71,6 +71,7 @@ def run_analyses_all_images(session_id: str, target_name: str):
     logging.getLogger().info("Starting analysis on all images in %s", session_id)
 
     # performs analysis on all images
+    result_data = read_from_json_file(get_session_results_file(session_id))
     for file_name in image_files:
         run_iso_analysis(file_name, target_name, session_id)
 
@@ -81,6 +82,7 @@ def run_analyses_all_images(session_id: str, target_name: str):
             file_name,
             str(json_get_best_passing_iso_score(result_data, file_name)),
         )
+    write_to_json_file(get_session_results_file(session_id), result_data)
 
     logging.getLogger().info(
         "Adding metadata to all files in session %s",
