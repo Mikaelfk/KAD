@@ -41,16 +41,17 @@ def save_uploaded_files(session_id: str, files, file_names=None):
 
         # Check for dupliates
         i = 1
-        while file_name in file_names:
+        new_file_name = file_name
+        while new_file_name in file_names:
             # Add _n to file if duplicate
             # file.jpeg -> file_n.jpeg
             file_name_path = pathlib.Path(file_name)
-            file_name = f"{file_name_path.stem}_{i}{file_name_path.suffix}"
+            new_file_name = f"{file_name_path.stem}_{i}{file_name_path.suffix}"
             i += 1
 
         # Save file
-        file.save(get_session_image_file(session_id, file_name))
-        file_names.append(file_name)
+        file.save(get_session_image_file(session_id, new_file_name))
+        file_names.append(new_file_name)
 
     # Store mapped names
     if len(file_names) > 0:
