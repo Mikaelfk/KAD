@@ -38,10 +38,3 @@ test('Navigate to Device Level Target page and back to main page', () => {
     userEvent.click(screen.getByText(/Cancel/i), leftClick)
     expect(screen.getByText(/Kvalitetssikring/)).toBeInTheDocument();
 })
-
-test('Navigate to Result page', () => {
-    setup();
-    const leftClick = { button: 0 };
-    userEvent.click(screen.getByText(/Object Level Target/i), leftClick)
-    userEvent.click(screen.getByText(/Submit/i), leftClick)
-})
