@@ -66,6 +66,10 @@ sonarqube-check:
         paths:
             - .sonar/cache
     script:
+        - pip3 install coverage
+        - python3 -m coverage erase
+        - python3 -m coverage run --branch --source=kad run.py
+        - python3 -m coverage xml -i
         - sonar-scanner
     allow_failure: true
     only:
