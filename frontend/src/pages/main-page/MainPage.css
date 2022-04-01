@@ -3,14 +3,11 @@
     .image-target-menu {
         flex-direction: column;
         gap: 15px;
+        width: auto;
     }
 
     .MuiCardMedia-root {
         width: 200px !important;
-    }
-
-    .image-target-menu {
-        width: auto;
     }
 }
 
@@ -19,14 +16,11 @@
     .image-target-menu {
         flex-direction: row;
         justify-content: space-around;
+        width: 100%;
     }
 
     .MuiCardMedia-root {
         width: 300px !important;
-    }
-
-    .image-target-menu {
-        width: 100%;
     }
 }
 

@@ -14,11 +14,55 @@
     gap: 10px;
 }
 
+.upload-options {
+    flex-direction: column;
+    gap: 15px;
+    width: auto;
+}
+
 .action-menu {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 }
+
+.upload-images-button-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-icon {
+    position: relative;
+    display: flex;
+    margin-top: 20%;
+    align-items: center;
+}
+
+/* Tooltip text */
+.help-icon .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    top: 100%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.help-icon:hover .tooltiptext {
+    visibility: visible;
+}
+
 
 .loader-container {
     visibility: hidden;
@@ -40,5 +84,37 @@
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .upload-images-button-menu {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: min-content;
+    }
+
+    .upload-images-button {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .help-icon {
+        position: relative;
+        margin: 20%;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        align-items: center;
+    }
+
+    .help-icon .tooltiptext {
+        width: 250px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        left: 120%;
+        margin-left: 0%;
+        top: -80%;
     }
 }
