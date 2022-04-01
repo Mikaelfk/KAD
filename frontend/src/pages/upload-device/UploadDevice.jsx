@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
+import HelpIcon from '@mui/icons-material/Help';
 import PropTypes from 'prop-types';
 import { React, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -36,11 +37,24 @@ const UploadDevice = (props) => {
                     <Typography sx={{ visibility: "hidden" }} id="end-target-text">Selected end target: {props.endTarget.name}</Typography>
                 </div>
                 <div>
-                    <UploadButton
-                        buttonText="Select images"
-                        onUpload={props.onUpload}
-                        buttonId={3}
-                        title="Upload the scanned images" />
+                    <div className="upload-images-button-menu">
+                        <div className="upload-images-button">
+                            <UploadButton className="upload-images-button"
+                                buttonText="Select images"
+                                onUpload={props.onUpload}
+                                buttonId={3}
+                                title="Upload the scanned images" />
+                        </div>
+                        <div className="help-icon">
+                            <IconButton sx={{ color: "#1976d2" }}>
+                                <HelpIcon />
+                            </IconButton>
+                            <Typography className="tooltiptext">
+                                This is where you upload all images scanned between the two targets uploaded.
+                                This upload is optional and is not needed
+                            </Typography>
+                        </div>
+                    </div>
                     <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
                 </div>
             </div >
