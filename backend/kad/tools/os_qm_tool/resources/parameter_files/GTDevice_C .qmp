@@ -40,46 +40,46 @@
         </GrayBar>
         <GrayScale>
             <AimValues>
-                <MaxWarning_19>1.400000</MaxWarning_19>
-                <MaxOK_19>1.600000</MaxOK_19>
-                <MaxWarning_18>1.400000</MaxWarning_18>
-                <MaxOK_18>1.600000</MaxOK_18>
-                <MaxWarning_17>1.400000</MaxWarning_17>
-                <MaxOK_17>1.600000</MaxOK_17>
-                <MaxWarning_16>1.400000</MaxWarning_16>
-                <MaxOK_16>1.600000</MaxOK_16>
-                <MaxWarning_15>1.400000</MaxWarning_15>
-                <MaxOK_15>1.600000</MaxOK_15>
-                <MaxWarning_14>1.400000</MaxWarning_14>
-                <MaxOK_14>1.600000</MaxOK_14>
-                <MaxWarning_13>1.400000</MaxWarning_13>
-                <MaxOK_13>1.600000</MaxOK_13>
-                <MaxWarning_12>1.400000</MaxWarning_12>
-                <MaxOK_12>1.600000</MaxOK_12>
-                <MaxWarning_11>1.400000</MaxWarning_11>
-                <MaxOK_11>1.600000</MaxOK_11>
-                <MaxWarning_10>1.400000</MaxWarning_10>
-                <MaxOK_10>1.600000</MaxOK_10>
-                <MaxWarning_9>1.400000</MaxWarning_9>
-                <MaxOK_9>1.600000</MaxOK_9>
-                <MaxWarning_8>1.400000</MaxWarning_8>
-                <MaxOK_8>1.600000</MaxOK_8>
-                <MaxWarning_7>1.400000</MaxWarning_7>
-                <MaxOK_7>1.600000</MaxOK_7>
-                <MaxWarning_6>1.400000</MaxWarning_6>
-                <MaxOK_6>1.600000</MaxOK_6>
-                <MaxWarning_5>1.400000</MaxWarning_5>
-                <MaxOK_5>1.600000</MaxOK_5>
-                <MaxWarning_4>1.400000</MaxWarning_4>
-                <MaxOK_4>1.600000</MaxOK_4>
-                <MaxWarning_3>1.400000</MaxWarning_3>
-                <MaxOK_3>1.600000</MaxOK_3>
-                <MaxWarning_2>1.400000</MaxWarning_2>
-                <MaxOK_2>1.600000</MaxOK_2>
-                <MaxWarning_1>1.400000</MaxWarning_1>
-                <MaxOK_1>1.600000</MaxOK_1>
-                <MaxWarning_0>1.400000</MaxWarning_0>
-                <MaxOK_0>1.600000</MaxOK_0>
+                <MaxWarning_19>1.800000</MaxWarning_19>
+                <MaxOK_19>2.000000</MaxOK_19>
+                <MaxWarning_18>1.800000</MaxWarning_18>
+                <MaxOK_18>2.000000</MaxOK_18>
+                <MaxWarning_17>1.800000</MaxWarning_17>
+                <MaxOK_17>2.000000</MaxOK_17>
+                <MaxWarning_16>1.800000</MaxWarning_16>
+                <MaxOK_16>2.000000</MaxOK_16>
+                <MaxWarning_15>1.800000</MaxWarning_15>
+                <MaxOK_15>2.000000</MaxOK_15>
+                <MaxWarning_14>1.800000</MaxWarning_14>
+                <MaxOK_14>2.000000</MaxOK_14>
+                <MaxWarning_13>1.800000</MaxWarning_13>
+                <MaxOK_13>2.000000</MaxOK_13>
+                <MaxWarning_12>1.800000</MaxWarning_12>
+                <MaxOK_12>2.000000</MaxOK_12>
+                <MaxWarning_11>1.800000</MaxWarning_11>
+                <MaxOK_11>2.000000</MaxOK_11>
+                <MaxWarning_10>1.800000</MaxWarning_10>
+                <MaxOK_10>2.000000</MaxOK_10>
+                <MaxWarning_9>1.800000</MaxWarning_9>
+                <MaxOK_9>2.000000</MaxOK_9>
+                <MaxWarning_8>1.800000</MaxWarning_8>
+                <MaxOK_8>2.000000</MaxOK_8>
+                <MaxWarning_7>1.800000</MaxWarning_7>
+                <MaxOK_7>2.000000</MaxOK_7>
+                <MaxWarning_6>1.800000</MaxWarning_6>
+                <MaxOK_6>2.000000</MaxOK_6>
+                <MaxWarning_5>1.800000</MaxWarning_5>
+                <MaxOK_5>2.000000</MaxOK_5>
+                <MaxWarning_4>1.800000</MaxWarning_4>
+                <MaxOK_4>2.000000</MaxOK_4>
+                <MaxWarning_3>1.800000</MaxWarning_3>
+                <MaxOK_3>2.000000</MaxOK_3>
+                <MaxWarning_2>1.800000</MaxWarning_2>
+                <MaxOK_2>2.000000</MaxOK_2>
+                <MaxWarning_1>1.800000</MaxWarning_1>
+                <MaxOK_1>2.000000</MaxOK_1>
+                <MaxWarning_0>1.800000</MaxWarning_0>
+                <MaxOK_0>2.000000</MaxOK_0>
                 <GSToleranceVariable>0</GSToleranceVariable>
             </AimValues>
             <Settings>
@@ -154,300 +154,300 @@
                 <GainModulationMaxOK_19>0.000000</GainModulationMaxOK_19>
                 <DeltaCMaxWarning_19>1.800000</DeltaCMaxWarning_19>
                 <DeltaCMaxOK_19>2.000000</DeltaCMaxOK_19>
-                <DeltaEabMaxWarning_19>2.500000</DeltaEabMaxWarning_19>
-                <DeltaEabMaxOK_19>3.000000</DeltaEabMaxOK_19>
+                <DeltaEabMaxWarning_19>4.000000</DeltaEabMaxWarning_19>
+                <DeltaEabMaxOK_19>5.000000</DeltaEabMaxOK_19>
                 <DeltaEMaxWarning_19>2.980000</DeltaEMaxWarning_19>
                 <DeltaEMaxOK_19>3.000000</DeltaEMaxOK_19>
-                <MinWarning_19>1.200000</MinWarning_19>
-                <MinOK_19>1.000000</MinOK_19>
+                <MinWarning_19>0.000000</MinWarning_19>
+                <MinOK_19>-1.000000</MinOK_19>
                 <TargetValue_19>3.000000</TargetValue_19>
-                <MaxWarning_19>4.800000</MaxWarning_19>
-                <MaxOK_19>5.000000</MaxOK_19>
+                <MaxWarning_19>6.000000</MaxWarning_19>
+                <MaxOK_19>7.000000</MaxOK_19>
                 <GainModulationMinWarning_18>0.650000</GainModulationMinWarning_18>
                 <GainModulationMaxWarning_18>1.350000</GainModulationMaxWarning_18>
                 <GainModulationMinOK_18>0.600000</GainModulationMinOK_18>
                 <GainModulationMaxOK_18>1.400000</GainModulationMaxOK_18>
                 <DeltaCMaxWarning_18>1.800000</DeltaCMaxWarning_18>
                 <DeltaCMaxOK_18>2.000000</DeltaCMaxOK_18>
-                <DeltaEabMaxWarning_18>2.500000</DeltaEabMaxWarning_18>
-                <DeltaEabMaxOK_18>3.000000</DeltaEabMaxOK_18>
+                <DeltaEabMaxWarning_18>4.000000</DeltaEabMaxWarning_18>
+                <DeltaEabMaxOK_18>5.000000</DeltaEabMaxOK_18>
                 <DeltaEMaxWarning_18>2.980000</DeltaEMaxWarning_18>
                 <DeltaEMaxOK_18>3.000000</DeltaEMaxOK_18>
-                <MinWarning_18>3.200000</MinWarning_18>
-                <MinOK_18>3.000000</MinOK_18>
+                <MinWarning_18>2.000000</MinWarning_18>
+                <MinOK_18>1.000000</MinOK_18>
                 <TargetValue_18>5.000000</TargetValue_18>
-                <MaxWarning_18>6.800000</MaxWarning_18>
-                <MaxOK_18>7.000000</MaxOK_18>
+                <MaxWarning_18>8.000000</MaxWarning_18>
+                <MaxOK_18>9.000000</MaxOK_18>
                 <GainModulationMinWarning_17>0.650000</GainModulationMinWarning_17>
                 <GainModulationMaxWarning_17>1.350000</GainModulationMaxWarning_17>
                 <GainModulationMinOK_17>0.600000</GainModulationMinOK_17>
                 <GainModulationMaxOK_17>1.400000</GainModulationMaxOK_17>
                 <DeltaCMaxWarning_17>1.800000</DeltaCMaxWarning_17>
                 <DeltaCMaxOK_17>2.000000</DeltaCMaxOK_17>
-                <DeltaEabMaxWarning_17>2.500000</DeltaEabMaxWarning_17>
-                <DeltaEabMaxOK_17>3.000000</DeltaEabMaxOK_17>
+                <DeltaEabMaxWarning_17>4.000000</DeltaEabMaxWarning_17>
+                <DeltaEabMaxOK_17>5.000000</DeltaEabMaxOK_17>
                 <DeltaEMaxWarning_17>2.980000</DeltaEMaxWarning_17>
                 <DeltaEMaxOK_17>3.000000</DeltaEMaxOK_17>
-                <MinWarning_17>8.200000</MinWarning_17>
-                <MinOK_17>8.000000</MinOK_17>
+                <MinWarning_17>7.000000</MinWarning_17>
+                <MinOK_17>6.000000</MinOK_17>
                 <TargetValue_17>10.000000</TargetValue_17>
-                <MaxWarning_17>11.800000</MaxWarning_17>
-                <MaxOK_17>12.000000</MaxOK_17>
+                <MaxWarning_17>13.000000</MaxWarning_17>
+                <MaxOK_17>14.000000</MaxOK_17>
                 <GainModulationMinWarning_16>0.650000</GainModulationMinWarning_16>
                 <GainModulationMaxWarning_16>1.350000</GainModulationMaxWarning_16>
                 <GainModulationMinOK_16>0.600000</GainModulationMinOK_16>
                 <GainModulationMaxOK_16>1.400000</GainModulationMaxOK_16>
                 <DeltaCMaxWarning_16>1.800000</DeltaCMaxWarning_16>
                 <DeltaCMaxOK_16>2.000000</DeltaCMaxOK_16>
-                <DeltaEabMaxWarning_16>2.500000</DeltaEabMaxWarning_16>
-                <DeltaEabMaxOK_16>3.000000</DeltaEabMaxOK_16>
+                <DeltaEabMaxWarning_16>4.000000</DeltaEabMaxWarning_16>
+                <DeltaEabMaxOK_16>5.000000</DeltaEabMaxOK_16>
                 <DeltaEMaxWarning_16>2.980000</DeltaEMaxWarning_16>
                 <DeltaEMaxOK_16>3.000000</DeltaEMaxOK_16>
-                <MinWarning_16>13.200000</MinWarning_16>
-                <MinOK_16>13.000000</MinOK_16>
+                <MinWarning_16>12.000000</MinWarning_16>
+                <MinOK_16>11.000000</MinOK_16>
                 <TargetValue_16>15.000000</TargetValue_16>
-                <MaxWarning_16>16.800000</MaxWarning_16>
-                <MaxOK_16>17.000000</MaxOK_16>
+                <MaxWarning_16>18.000000</MaxWarning_16>
+                <MaxOK_16>19.000000</MaxOK_16>
                 <GainModulationMinWarning_15>0.650000</GainModulationMinWarning_15>
                 <GainModulationMaxWarning_15>1.350000</GainModulationMaxWarning_15>
                 <GainModulationMinOK_15>0.600000</GainModulationMinOK_15>
                 <GainModulationMaxOK_15>1.400000</GainModulationMaxOK_15>
                 <DeltaCMaxWarning_15>1.800000</DeltaCMaxWarning_15>
                 <DeltaCMaxOK_15>2.000000</DeltaCMaxOK_15>
-                <DeltaEabMaxWarning_15>2.500000</DeltaEabMaxWarning_15>
-                <DeltaEabMaxOK_15>3.000000</DeltaEabMaxOK_15>
+                <DeltaEabMaxWarning_15>4.000000</DeltaEabMaxWarning_15>
+                <DeltaEabMaxOK_15>5.000000</DeltaEabMaxOK_15>
                 <DeltaEMaxWarning_15>2.980000</DeltaEMaxWarning_15>
                 <DeltaEMaxOK_15>3.000000</DeltaEMaxOK_15>
-                <MinWarning_15>18.200000</MinWarning_15>
-                <MinOK_15>18.000000</MinOK_15>
+                <MinWarning_15>17.000000</MinWarning_15>
+                <MinOK_15>16.000000</MinOK_15>
                 <TargetValue_15>20.000000</TargetValue_15>
-                <MaxWarning_15>21.800000</MaxWarning_15>
-                <MaxOK_15>22.000000</MaxOK_15>
+                <MaxWarning_15>23.000000</MaxWarning_15>
+                <MaxOK_15>24.000000</MaxOK_15>
                 <GainModulationMinWarning_14>0.650000</GainModulationMinWarning_14>
                 <GainModulationMaxWarning_14>1.350000</GainModulationMaxWarning_14>
                 <GainModulationMinOK_14>0.600000</GainModulationMinOK_14>
                 <GainModulationMaxOK_14>1.400000</GainModulationMaxOK_14>
                 <DeltaCMaxWarning_14>1.800000</DeltaCMaxWarning_14>
                 <DeltaCMaxOK_14>2.000000</DeltaCMaxOK_14>
-                <DeltaEabMaxWarning_14>2.500000</DeltaEabMaxWarning_14>
-                <DeltaEabMaxOK_14>3.000000</DeltaEabMaxOK_14>
+                <DeltaEabMaxWarning_14>4.000000</DeltaEabMaxWarning_14>
+                <DeltaEabMaxOK_14>5.000000</DeltaEabMaxOK_14>
                 <DeltaEMaxWarning_14>2.980000</DeltaEMaxWarning_14>
                 <DeltaEMaxOK_14>3.000000</DeltaEMaxOK_14>
-                <MinWarning_14>23.200000</MinWarning_14>
-                <MinOK_14>23.000000</MinOK_14>
+                <MinWarning_14>22.000000</MinWarning_14>
+                <MinOK_14>21.000000</MinOK_14>
                 <TargetValue_14>25.000000</TargetValue_14>
-                <MaxWarning_14>26.800000</MaxWarning_14>
-                <MaxOK_14>27.000000</MaxOK_14>
+                <MaxWarning_14>28.000000</MaxWarning_14>
+                <MaxOK_14>29.000000</MaxOK_14>
                 <GainModulationMinWarning_13>0.650000</GainModulationMinWarning_13>
                 <GainModulationMaxWarning_13>1.350000</GainModulationMaxWarning_13>
                 <GainModulationMinOK_13>0.600000</GainModulationMinOK_13>
                 <GainModulationMaxOK_13>1.400000</GainModulationMaxOK_13>
                 <DeltaCMaxWarning_13>1.800000</DeltaCMaxWarning_13>
                 <DeltaCMaxOK_13>2.000000</DeltaCMaxOK_13>
-                <DeltaEabMaxWarning_13>2.500000</DeltaEabMaxWarning_13>
-                <DeltaEabMaxOK_13>3.000000</DeltaEabMaxOK_13>
+                <DeltaEabMaxWarning_13>4.000000</DeltaEabMaxWarning_13>
+                <DeltaEabMaxOK_13>5.000000</DeltaEabMaxOK_13>
                 <DeltaEMaxWarning_13>2.980000</DeltaEMaxWarning_13>
                 <DeltaEMaxOK_13>3.000000</DeltaEMaxOK_13>
-                <MinWarning_13>28.200000</MinWarning_13>
-                <MinOK_13>28.000000</MinOK_13>
+                <MinWarning_13>27.000000</MinWarning_13>
+                <MinOK_13>26.000000</MinOK_13>
                 <TargetValue_13>30.000000</TargetValue_13>
-                <MaxWarning_13>31.800000</MaxWarning_13>
-                <MaxOK_13>32.000000</MaxOK_13>
+                <MaxWarning_13>33.000000</MaxWarning_13>
+                <MaxOK_13>34.000000</MaxOK_13>
                 <GainModulationMinWarning_12>0.650000</GainModulationMinWarning_12>
                 <GainModulationMaxWarning_12>1.350000</GainModulationMaxWarning_12>
                 <GainModulationMinOK_12>0.600000</GainModulationMinOK_12>
                 <GainModulationMaxOK_12>1.400000</GainModulationMaxOK_12>
                 <DeltaCMaxWarning_12>1.800000</DeltaCMaxWarning_12>
                 <DeltaCMaxOK_12>2.000000</DeltaCMaxOK_12>
-                <DeltaEabMaxWarning_12>2.500000</DeltaEabMaxWarning_12>
-                <DeltaEabMaxOK_12>3.000000</DeltaEabMaxOK_12>
+                <DeltaEabMaxWarning_12>4.000000</DeltaEabMaxWarning_12>
+                <DeltaEabMaxOK_12>5.000000</DeltaEabMaxOK_12>
                 <DeltaEMaxWarning_12>2.980000</DeltaEMaxWarning_12>
                 <DeltaEMaxOK_12>3.000000</DeltaEMaxOK_12>
-                <MinWarning_12>33.200000</MinWarning_12>
-                <MinOK_12>33.000000</MinOK_12>
+                <MinWarning_12>32.000000</MinWarning_12>
+                <MinOK_12>31.000000</MinOK_12>
                 <TargetValue_12>35.000000</TargetValue_12>
-                <MaxWarning_12>36.800000</MaxWarning_12>
-                <MaxOK_12>37.000000</MaxOK_12>
+                <MaxWarning_12>38.000000</MaxWarning_12>
+                <MaxOK_12>39.000000</MaxOK_12>
                 <GainModulationMinWarning_11>0.650000</GainModulationMinWarning_11>
                 <GainModulationMaxWarning_11>1.350000</GainModulationMaxWarning_11>
                 <GainModulationMinOK_11>0.600000</GainModulationMinOK_11>
                 <GainModulationMaxOK_11>1.400000</GainModulationMaxOK_11>
                 <DeltaCMaxWarning_11>1.800000</DeltaCMaxWarning_11>
                 <DeltaCMaxOK_11>2.000000</DeltaCMaxOK_11>
-                <DeltaEabMaxWarning_11>2.500000</DeltaEabMaxWarning_11>
-                <DeltaEabMaxOK_11>3.000000</DeltaEabMaxOK_11>
+                <DeltaEabMaxWarning_11>4.000000</DeltaEabMaxWarning_11>
+                <DeltaEabMaxOK_11>5.000000</DeltaEabMaxOK_11>
                 <DeltaEMaxWarning_11>2.980000</DeltaEMaxWarning_11>
                 <DeltaEMaxOK_11>3.000000</DeltaEMaxOK_11>
-                <MinWarning_11>38.200000</MinWarning_11>
-                <MinOK_11>38.000000</MinOK_11>
+                <MinWarning_11>37.000000</MinWarning_11>
+                <MinOK_11>36.000000</MinOK_11>
                 <TargetValue_11>40.000000</TargetValue_11>
-                <MaxWarning_11>41.800000</MaxWarning_11>
-                <MaxOK_11>42.000000</MaxOK_11>
+                <MaxWarning_11>43.000000</MaxWarning_11>
+                <MaxOK_11>44.000000</MaxOK_11>
                 <GainModulationMinWarning_10>0.650000</GainModulationMinWarning_10>
                 <GainModulationMaxWarning_10>1.350000</GainModulationMaxWarning_10>
                 <GainModulationMinOK_10>0.600000</GainModulationMinOK_10>
                 <GainModulationMaxOK_10>1.400000</GainModulationMaxOK_10>
                 <DeltaCMaxWarning_10>1.800000</DeltaCMaxWarning_10>
                 <DeltaCMaxOK_10>2.000000</DeltaCMaxOK_10>
-                <DeltaEabMaxWarning_10>2.500000</DeltaEabMaxWarning_10>
-                <DeltaEabMaxOK_10>3.000000</DeltaEabMaxOK_10>
+                <DeltaEabMaxWarning_10>4.000000</DeltaEabMaxWarning_10>
+                <DeltaEabMaxOK_10>5.000000</DeltaEabMaxOK_10>
                 <DeltaEMaxWarning_10>2.980000</DeltaEMaxWarning_10>
                 <DeltaEMaxOK_10>3.000000</DeltaEMaxOK_10>
-                <MinWarning_10>43.200000</MinWarning_10>
-                <MinOK_10>43.000000</MinOK_10>
+                <MinWarning_10>42.000000</MinWarning_10>
+                <MinOK_10>41.000000</MinOK_10>
                 <TargetValue_10>45.000000</TargetValue_10>
-                <MaxWarning_10>46.800000</MaxWarning_10>
-                <MaxOK_10>47.000000</MaxOK_10>
+                <MaxWarning_10>48.000000</MaxWarning_10>
+                <MaxOK_10>49.000000</MaxOK_10>
                 <GainModulationMinWarning_9>0.650000</GainModulationMinWarning_9>
                 <GainModulationMaxWarning_9>1.350000</GainModulationMaxWarning_9>
                 <GainModulationMinOK_9>0.600000</GainModulationMinOK_9>
                 <GainModulationMaxOK_9>1.400000</GainModulationMaxOK_9>
                 <DeltaCMaxWarning_9>1.800000</DeltaCMaxWarning_9>
                 <DeltaCMaxOK_9>2.000000</DeltaCMaxOK_9>
-                <DeltaEabMaxWarning_9>2.500000</DeltaEabMaxWarning_9>
-                <DeltaEabMaxOK_9>3.000000</DeltaEabMaxOK_9>
+                <DeltaEabMaxWarning_9>4.000000</DeltaEabMaxWarning_9>
+                <DeltaEabMaxOK_9>5.000000</DeltaEabMaxOK_9>
                 <DeltaEMaxWarning_9>2.980000</DeltaEMaxWarning_9>
                 <DeltaEMaxOK_9>3.000000</DeltaEMaxOK_9>
-                <MinWarning_9>48.200000</MinWarning_9>
-                <MinOK_9>48.000000</MinOK_9>
+                <MinWarning_9>47.000000</MinWarning_9>
+                <MinOK_9>46.000000</MinOK_9>
                 <TargetValue_9>50.000000</TargetValue_9>
-                <MaxWarning_9>51.800000</MaxWarning_9>
-                <MaxOK_9>52.000000</MaxOK_9>
+                <MaxWarning_9>53.000000</MaxWarning_9>
+                <MaxOK_9>54.000000</MaxOK_9>
                 <GainModulationMinWarning_8>0.650000</GainModulationMinWarning_8>
                 <GainModulationMaxWarning_8>1.350000</GainModulationMaxWarning_8>
                 <GainModulationMinOK_8>0.600000</GainModulationMinOK_8>
                 <GainModulationMaxOK_8>1.400000</GainModulationMaxOK_8>
                 <DeltaCMaxWarning_8>1.800000</DeltaCMaxWarning_8>
                 <DeltaCMaxOK_8>2.000000</DeltaCMaxOK_8>
-                <DeltaEabMaxWarning_8>2.500000</DeltaEabMaxWarning_8>
-                <DeltaEabMaxOK_8>3.000000</DeltaEabMaxOK_8>
+                <DeltaEabMaxWarning_8>4.000000</DeltaEabMaxWarning_8>
+                <DeltaEabMaxOK_8>5.000000</DeltaEabMaxOK_8>
                 <DeltaEMaxWarning_8>2.980000</DeltaEMaxWarning_8>
                 <DeltaEMaxOK_8>3.000000</DeltaEMaxOK_8>
-                <MinWarning_8>53.200000</MinWarning_8>
-                <MinOK_8>53.000000</MinOK_8>
+                <MinWarning_8>52.000000</MinWarning_8>
+                <MinOK_8>51.000000</MinOK_8>
                 <TargetValue_8>55.000000</TargetValue_8>
-                <MaxWarning_8>56.800000</MaxWarning_8>
-                <MaxOK_8>57.000000</MaxOK_8>
+                <MaxWarning_8>58.000000</MaxWarning_8>
+                <MaxOK_8>59.000000</MaxOK_8>
                 <GainModulationMinWarning_7>0.650000</GainModulationMinWarning_7>
                 <GainModulationMaxWarning_7>1.350000</GainModulationMaxWarning_7>
                 <GainModulationMinOK_7>0.600000</GainModulationMinOK_7>
                 <GainModulationMaxOK_7>1.400000</GainModulationMaxOK_7>
                 <DeltaCMaxWarning_7>1.800000</DeltaCMaxWarning_7>
                 <DeltaCMaxOK_7>2.000000</DeltaCMaxOK_7>
-                <DeltaEabMaxWarning_7>2.500000</DeltaEabMaxWarning_7>
-                <DeltaEabMaxOK_7>3.000000</DeltaEabMaxOK_7>
+                <DeltaEabMaxWarning_7>4.000000</DeltaEabMaxWarning_7>
+                <DeltaEabMaxOK_7>5.000000</DeltaEabMaxOK_7>
                 <DeltaEMaxWarning_7>2.980000</DeltaEMaxWarning_7>
                 <DeltaEMaxOK_7>3.000000</DeltaEMaxOK_7>
-                <MinWarning_7>58.200000</MinWarning_7>
-                <MinOK_7>58.000000</MinOK_7>
+                <MinWarning_7>57.000000</MinWarning_7>
+                <MinOK_7>56.000000</MinOK_7>
                 <TargetValue_7>60.000000</TargetValue_7>
-                <MaxWarning_7>61.800000</MaxWarning_7>
-                <MaxOK_7>62.000000</MaxOK_7>
+                <MaxWarning_7>63.000000</MaxWarning_7>
+                <MaxOK_7>64.000000</MaxOK_7>
                 <GainModulationMinWarning_6>0.650000</GainModulationMinWarning_6>
                 <GainModulationMaxWarning_6>1.350000</GainModulationMaxWarning_6>
                 <GainModulationMinOK_6>0.600000</GainModulationMinOK_6>
                 <GainModulationMaxOK_6>1.400000</GainModulationMaxOK_6>
                 <DeltaCMaxWarning_6>1.800000</DeltaCMaxWarning_6>
                 <DeltaCMaxOK_6>2.000000</DeltaCMaxOK_6>
-                <DeltaEabMaxWarning_6>2.500000</DeltaEabMaxWarning_6>
-                <DeltaEabMaxOK_6>3.000000</DeltaEabMaxOK_6>
+                <DeltaEabMaxWarning_6>4.000000</DeltaEabMaxWarning_6>
+                <DeltaEabMaxOK_6>5.000000</DeltaEabMaxOK_6>
                 <DeltaEMaxWarning_6>2.980000</DeltaEMaxWarning_6>
                 <DeltaEMaxOK_6>3.000000</DeltaEMaxOK_6>
-                <MinWarning_6>63.200000</MinWarning_6>
-                <MinOK_6>63.000000</MinOK_6>
+                <MinWarning_6>62.000000</MinWarning_6>
+                <MinOK_6>61.000000</MinOK_6>
                 <TargetValue_6>65.000000</TargetValue_6>
-                <MaxWarning_6>66.800000</MaxWarning_6>
-                <MaxOK_6>67.000000</MaxOK_6>
+                <MaxWarning_6>68.000000</MaxWarning_6>
+                <MaxOK_6>69.000000</MaxOK_6>
                 <GainModulationMinWarning_5>0.650000</GainModulationMinWarning_5>
                 <GainModulationMaxWarning_5>1.350000</GainModulationMaxWarning_5>
                 <GainModulationMinOK_5>0.600000</GainModulationMinOK_5>
                 <GainModulationMaxOK_5>1.400000</GainModulationMaxOK_5>
                 <DeltaCMaxWarning_5>1.800000</DeltaCMaxWarning_5>
                 <DeltaCMaxOK_5>2.000000</DeltaCMaxOK_5>
-                <DeltaEabMaxWarning_5>2.500000</DeltaEabMaxWarning_5>
-                <DeltaEabMaxOK_5>3.000000</DeltaEabMaxOK_5>
+                <DeltaEabMaxWarning_5>4.000000</DeltaEabMaxWarning_5>
+                <DeltaEabMaxOK_5>5.000000</DeltaEabMaxOK_5>
                 <DeltaEMaxWarning_5>2.980000</DeltaEMaxWarning_5>
                 <DeltaEMaxOK_5>3.000000</DeltaEMaxOK_5>
-                <MinWarning_5>68.200000</MinWarning_5>
-                <MinOK_5>68.000000</MinOK_5>
+                <MinWarning_5>67.000000</MinWarning_5>
+                <MinOK_5>66.000000</MinOK_5>
                 <TargetValue_5>70.000000</TargetValue_5>
-                <MaxWarning_5>71.800000</MaxWarning_5>
-                <MaxOK_5>72.000000</MaxOK_5>
+                <MaxWarning_5>73.000000</MaxWarning_5>
+                <MaxOK_5>74.000000</MaxOK_5>
                 <GainModulationMinWarning_4>0.650000</GainModulationMinWarning_4>
                 <GainModulationMaxWarning_4>1.350000</GainModulationMaxWarning_4>
                 <GainModulationMinOK_4>0.600000</GainModulationMinOK_4>
                 <GainModulationMaxOK_4>1.400000</GainModulationMaxOK_4>
                 <DeltaCMaxWarning_4>1.800000</DeltaCMaxWarning_4>
                 <DeltaCMaxOK_4>2.000000</DeltaCMaxOK_4>
-                <DeltaEabMaxWarning_4>2.500000</DeltaEabMaxWarning_4>
-                <DeltaEabMaxOK_4>3.000000</DeltaEabMaxOK_4>
+                <DeltaEabMaxWarning_4>4.000000</DeltaEabMaxWarning_4>
+                <DeltaEabMaxOK_4>5.000000</DeltaEabMaxOK_4>
                 <DeltaEMaxWarning_4>2.980000</DeltaEMaxWarning_4>
                 <DeltaEMaxOK_4>3.000000</DeltaEMaxOK_4>
-                <MinWarning_4>73.200000</MinWarning_4>
-                <MinOK_4>73.000000</MinOK_4>
+                <MinWarning_4>72.000000</MinWarning_4>
+                <MinOK_4>71.000000</MinOK_4>
                 <TargetValue_4>75.000000</TargetValue_4>
-                <MaxWarning_4>76.800000</MaxWarning_4>
-                <MaxOK_4>77.000000</MaxOK_4>
+                <MaxWarning_4>78.000000</MaxWarning_4>
+                <MaxOK_4>79.000000</MaxOK_4>
                 <GainModulationMinWarning_3>0.650000</GainModulationMinWarning_3>
                 <GainModulationMaxWarning_3>1.350000</GainModulationMaxWarning_3>
                 <GainModulationMinOK_3>0.600000</GainModulationMinOK_3>
                 <GainModulationMaxOK_3>1.400000</GainModulationMaxOK_3>
                 <DeltaCMaxWarning_3>1.800000</DeltaCMaxWarning_3>
                 <DeltaCMaxOK_3>2.000000</DeltaCMaxOK_3>
-                <DeltaEabMaxWarning_3>2.500000</DeltaEabMaxWarning_3>
-                <DeltaEabMaxOK_3>3.000000</DeltaEabMaxOK_3>
+                <DeltaEabMaxWarning_3>4.000000</DeltaEabMaxWarning_3>
+                <DeltaEabMaxOK_3>5.000000</DeltaEabMaxOK_3>
                 <DeltaEMaxWarning_3>2.980000</DeltaEMaxWarning_3>
                 <DeltaEMaxOK_3>3.000000</DeltaEMaxOK_3>
-                <MinWarning_3>78.200000</MinWarning_3>
-                <MinOK_3>78.000000</MinOK_3>
+                <MinWarning_3>77.000000</MinWarning_3>
+                <MinOK_3>76.000000</MinOK_3>
                 <TargetValue_3>80.000000</TargetValue_3>
-                <MaxWarning_3>81.800000</MaxWarning_3>
-                <MaxOK_3>82.000000</MaxOK_3>
+                <MaxWarning_3>83.000000</MaxWarning_3>
+                <MaxOK_3>84.000000</MaxOK_3>
                 <GainModulationMinWarning_2>0.650000</GainModulationMinWarning_2>
                 <GainModulationMaxWarning_2>1.350000</GainModulationMaxWarning_2>
                 <GainModulationMinOK_2>0.600000</GainModulationMinOK_2>
                 <GainModulationMaxOK_2>1.400000</GainModulationMaxOK_2>
                 <DeltaCMaxWarning_2>1.800000</DeltaCMaxWarning_2>
                 <DeltaCMaxOK_2>2.000000</DeltaCMaxOK_2>
-                <DeltaEabMaxWarning_2>2.500000</DeltaEabMaxWarning_2>
-                <DeltaEabMaxOK_2>3.000000</DeltaEabMaxOK_2>
+                <DeltaEabMaxWarning_2>4.000000</DeltaEabMaxWarning_2>
+                <DeltaEabMaxOK_2>5.000000</DeltaEabMaxOK_2>
                 <DeltaEMaxWarning_2>2.980000</DeltaEMaxWarning_2>
                 <DeltaEMaxOK_2>3.000000</DeltaEMaxOK_2>
-                <MinWarning_2>83.200000</MinWarning_2>
-                <MinOK_2>83.000000</MinOK_2>
+                <MinWarning_2>82.000000</MinWarning_2>
+                <MinOK_2>81.000000</MinOK_2>
                 <TargetValue_2>85.000000</TargetValue_2>
-                <MaxWarning_2>86.800000</MaxWarning_2>
-                <MaxOK_2>87.000000</MaxOK_2>
-                <GainModulationMinWarning_1>0.850000</GainModulationMinWarning_1>
-                <GainModulationMaxWarning_1>1.080000</GainModulationMaxWarning_1>
-                <GainModulationMinOK_1>0.800000</GainModulationMinOK_1>
-                <GainModulationMaxOK_1>1.100000</GainModulationMaxOK_1>
+                <MaxWarning_2>88.000000</MaxWarning_2>
+                <MaxOK_2>89.000000</MaxOK_2>
+                <GainModulationMinWarning_1>0.700000</GainModulationMinWarning_1>
+                <GainModulationMaxWarning_1>1.200000</GainModulationMaxWarning_1>
+                <GainModulationMinOK_1>0.600000</GainModulationMinOK_1>
+                <GainModulationMaxOK_1>1.300000</GainModulationMaxOK_1>
                 <DeltaCMaxWarning_1>1.800000</DeltaCMaxWarning_1>
                 <DeltaCMaxOK_1>2.000000</DeltaCMaxOK_1>
-                <DeltaEabMaxWarning_1>2.500000</DeltaEabMaxWarning_1>
-                <DeltaEabMaxOK_1>3.000000</DeltaEabMaxOK_1>
+                <DeltaEabMaxWarning_1>4.000000</DeltaEabMaxWarning_1>
+                <DeltaEabMaxOK_1>5.000000</DeltaEabMaxOK_1>
                 <DeltaEMaxWarning_1>2.980000</DeltaEMaxWarning_1>
                 <DeltaEMaxOK_1>3.000000</DeltaEMaxOK_1>
-                <MinWarning_1>88.200000</MinWarning_1>
-                <MinOK_1>88.000000</MinOK_1>
+                <MinWarning_1>87.000000</MinWarning_1>
+                <MinOK_1>86.000000</MinOK_1>
                 <TargetValue_1>90.000000</TargetValue_1>
-                <MaxWarning_1>91.800000</MaxWarning_1>
-                <MaxOK_1>92.000000</MaxOK_1>
-                <GainModulationMinWarning_0>0.850000</GainModulationMinWarning_0>
-                <GainModulationMaxWarning_0>1.080000</GainModulationMaxWarning_0>
-                <GainModulationMinOK_0>0.800000</GainModulationMinOK_0>
-                <GainModulationMaxOK_0>1.100000</GainModulationMaxOK_0>
+                <MaxWarning_1>93.000000</MaxWarning_1>
+                <MaxOK_1>94.000000</MaxOK_1>
+                <GainModulationMinWarning_0>0.700000</GainModulationMinWarning_0>
+                <GainModulationMaxWarning_0>1.200000</GainModulationMaxWarning_0>
+                <GainModulationMinOK_0>0.600000</GainModulationMinOK_0>
+                <GainModulationMaxOK_0>1.300000</GainModulationMaxOK_0>
                 <DeltaCMaxWarning_0>1.800000</DeltaCMaxWarning_0>
                 <DeltaCMaxOK_0>2.000000</DeltaCMaxOK_0>
-                <DeltaEabMaxWarning_0>2.500000</DeltaEabMaxWarning_0>
-                <DeltaEabMaxOK_0>3.000000</DeltaEabMaxOK_0>
+                <DeltaEabMaxWarning_0>4.000000</DeltaEabMaxWarning_0>
+                <DeltaEabMaxOK_0>5.000000</DeltaEabMaxOK_0>
                 <DeltaEMaxWarning_0>2.980000</DeltaEMaxWarning_0>
                 <DeltaEMaxOK_0>3.000000</DeltaEMaxOK_0>
-                <MinWarning_0>93.200000</MinWarning_0>
-                <MinOK_0>93.000000</MinOK_0>
+                <MinWarning_0>92.000000</MinWarning_0>
+                <MinOK_0>91.000000</MinOK_0>
                 <TargetValue_0>95.000000</TargetValue_0>
-                <MaxWarning_0>96.800000</MaxWarning_0>
-                <MaxOK_0>97.000000</MaxOK_0>
+                <MaxWarning_0>98.000000</MaxWarning_0>
+                <MaxOK_0>99.000000</MaxOK_0>
                 <GainModShadowsToleranceVariable>0</GainModShadowsToleranceVariable>
                 <GainModHighlightsToleranceVariable>0</GainModHighlightsToleranceVariable>
                 <DeltaCToleranceVariable>0</DeltaCToleranceVariable>
@@ -724,10 +724,10 @@
         <Warning_0_0>8.000000</Warning_0_0>
         <Error_0_0>10.000000</Error_0_0>
         <Percentage_0>20.000000</Percentage_0>
-        <Flags_3>3</Flags_3>
-        <Flags_2>3</Flags_2>
-        <Flags_1>3</Flags_1>
         <Flags_0>3</Flags_0>
+        <Flags_3>3</Flags_3>
+        <Flags_1>3</Flags_1>
+        <Flags_2>3</Flags_2>
         <FilenameTE263>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\TE263_Lab__default.txt</FilenameTE263>
         <FilenameGOLT>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\GOLT_Lab__default.txt</FilenameGOLT>
         <FilenameDICE>C:\ProgramData\Zeutschel\OS QM-Tool\TargetData\DICE_Lab__default.txt</FilenameDICE>
@@ -746,10 +746,10 @@
         <UseVariableData>0</UseVariableData>
     </DeltaE>
     <Geometry>
-        <ResolutionHorVerRatioWarning>1.300000</ResolutionHorVerRatioWarning>
-        <ResolutionHorVerRatioError>1.500000</ResolutionHorVerRatioError>
-        <ResolutionWarning>1.800000</ResolutionWarning>
-        <ResolutionError>2.000000</ResolutionError>
+        <ResolutionHorVerRatioWarning>4.000000</ResolutionHorVerRatioWarning>
+        <ResolutionHorVerRatioError>5.000000</ResolutionHorVerRatioError>
+        <ResolutionWarning>3.000000</ResolutionWarning>
+        <ResolutionError>4.000000</ResolutionError>
     </Geometry>
     <Homogeneity>
         <Flags>4</Flags>
@@ -769,14 +769,14 @@
     </Homogeneity>
     <MTF>
         <DoVerticalHorizontalSeparate>false</DoVerticalHorizontalSeparate>
-        <ErrorChannelRegistration>0.400000</ErrorChannelRegistration>
-        <WarningChannelRegistration>0.390000</WarningChannelRegistration>
-        <MinCyclesPerMMErrorMTF50>2.500000</MinCyclesPerMMErrorMTF50>
-        <MinCyclesPerMMWarningMTF50>2.800000</MinCyclesPerMMWarningMTF50>
-        <MinCyclesPerMMErrorMTF10>5.000000</MinCyclesPerMMErrorMTF10>
-        <MinCyclesPerMMWarningMTF10>5.500000</MinCyclesPerMMWarningMTF10>
-        <ModulationLimit>105.000000</ModulationLimit>
-        <SamplingEfficiencyLimit>85.000000</SamplingEfficiencyLimit>
+        <ErrorChannelRegistration>1.00000</ErrorChannelRegistration>
+        <WarningChannelRegistration>0.700000</WarningChannelRegistration>
+        <MinCyclesPerMMErrorMTF50>1.900000</MinCyclesPerMMErrorMTF50>
+        <MinCyclesPerMMWarningMTF50>2.500000</MinCyclesPerMMWarningMTF50>
+        <MinCyclesPerMMErrorMTF10>4.100000</MinCyclesPerMMErrorMTF10>
+        <MinCyclesPerMMWarningMTF10>4.500000</MinCyclesPerMMWarningMTF10>
+        <ModulationLimit>120.000000</ModulationLimit>
+        <SamplingEfficiencyLimit>70.000000</SamplingEfficiencyLimit>
         <DoSamplingEfficiency>true</DoSamplingEfficiency>
         <Flags>1</Flags>
         <MinCyclesPerMMError>4.000000</MinCyclesPerMMError>
@@ -802,7 +802,7 @@
         <UseImageColorSpaceAsWorkingColorSpace>1</UseImageColorSpaceAsWorkingColorSpace>
         <WorkColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</WorkColorProfile>
         <DefaultColorProfile>C:\Program Files\Zeutschel\OS QM-Tool\ColorProfiles\sRGB Color Space Profile.icm</DefaultColorProfile>
-        <UsedTarget>8</UsedTarget>
+        <UsedTarget>7</UsedTarget>
         <MeasurementTitle></MeasurementTitle>
     </CommonSettings>
 </OS-QMTool>
