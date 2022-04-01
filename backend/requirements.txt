@@ -4,3 +4,4 @@ mkdocs
 mkdocs-material
 pyexiv2
 pytest
+coverage

@@ -36,7 +36,9 @@ pytest:
     script:
         - pip3 install -r requirements.txt
         - cp tests/test_config/test_config.ini config.ini
-        - pytest tests
+        - python3 -m coverage erase
+        - python3 -m coverage run -m pytest tests/
+        - python3 -m coverage xml -i
 
 reacttest:
     image: node:17.6.0
@@ -66,10 +68,6 @@ sonarqube-check:
         paths:
             - .sonar/cache
     script:
-        - pip3 install coverage
-        - python3 -m coverage erase
-        - python3 -m coverage run --branch --source=kad run.py
-        - python3 -m coverage xml -i
         - sonar-scanner
     allow_failure: true
     only:
