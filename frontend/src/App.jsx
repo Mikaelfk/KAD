@@ -47,10 +47,17 @@ const App = () => {
     const handleObjectSubmit = () => {
         const formData = new FormData();
 
+        // Checks if the user has uploaded any files
+        if (files.length === 0) {
+            alert("No files have been selected")
+            return
+        }
+
         for (const file of files) {
             formData.append('files', file)
         }
 
+        document.getElementById('loader-container').style.visibility = "visible";
         // Makes a POST request to the endpoint,
         fetch(Config.API_URL + '/api/analyze/oqt?target=GTObject', {
             method: 'POST',
@@ -58,26 +65,39 @@ const App = () => {
         })
             .then(resp => resp.json())
             .then(data => {
-                let path = `/results/${data.session_id}`
-                navigate(path)
+                document.getElementById('loader-container').style.visibility = "hidden";
+                let path = `/results/${data.session_id}`;
+                navigate(path);
             })
             .catch(error => {
                 console.error('Error:', error);
+                document.getElementById('loader-container').style.visibility = "hidden";
             });
 
     }
 
     const handleDeviceSubmit = () => {
-        const formData = new FormData();
+        // Checks if both targets have been uploaded
+        if (startTarget && Object.keys(startTarget).length === 0 && Object.getPrototypeOf(startTarget) === Object.prototype) {
+            alert("Start target has not been selected");
+            return;
+        }
+        if (endTarget && Object.keys(endTarget).length === 0 && Object.getPrototypeOf(endTarget) === Object.prototype) {
+            alert("End target has not been selected");
+            return;
+        }
 
         // Adds the targets as files in a form
+        const formData = new FormData();
         formData.append('before_target', startTarget);
         formData.append('after_target', endTarget);
+
         for (const file of files) {
-            formData.append('files', file)
+            formData.append('files', file);
         }
 
         document.getElementById('loader-container').style.visibility = "visible";
+
         // Makes the request to the api
         fetch(Config.API_URL + '/api/analyze/iqx?target=UTT', {
             method: 'POST',
@@ -86,11 +106,13 @@ const App = () => {
             .then(resp => resp.json())
             .then(data => {
                 document.getElementById('loader-container').style.visibility = "hidden";
-
                 let path = `/results/${data.session_id}`;
                 navigate(path);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                document.getElementById('loader-container').style.visibility = "hidden";
+            })
     }
 
 

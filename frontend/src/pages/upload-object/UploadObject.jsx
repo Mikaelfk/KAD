@@ -22,6 +22,9 @@ const UploadObject = (props) => {
                 <CancelButton component={Link} to='/' />
                 <SubmitButton onSubmit={props.onSubmit} />
             </div>
+            <div className="loader-container" id="loader-container">
+                <div className="loader"></div>
+            </div>
         </div>
     );
 }
