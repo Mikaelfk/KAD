@@ -139,10 +139,89 @@ def run_device_analysis(
 
 def run_object_analysis(
     session_id: str,
-    iges: str,
+    iqes: str,
     target: str,
 ):
-    print("not ready")
+    """Method for running analysis on all images with object level targets in them.
+
+    Args:
+        session_id (str): the session id of the current session
+        iqes (str): the iqes to use (for now only OQT)
+        target (str): the target to use
+    """
+    update_session_status(session_id, "running")
+
+    ## setup
+
+    # find name of all image files in session
+    session_image_folder = get_session_dir(session_id)
+    image_files = [
+        f
+        for f in os.listdir(session_image_folder)
+        if os.path.isfile(os.path.join(session_image_folder, f))
+    ]
+
+    # empty dict to put results in
+    result_data = {}
+
+    ## file validation
+    logging.getLogger().info(
+        "Starting file validation on files in session %s",
+        session_id,
+    )
+
+    # validate before analysis
+    validation_result, file_name = validate_files(session_id, image_files, "after")
+    if not validation_result:
+        update_session_status(session_id, f"failed on validating {file_name}")
+        return
+
+    ## analyze tiem
+    logging.getLogger().info("Starting analysis on all images in %s", session_id)
+
+    match iqes:
+        case "IQX":
+            update_session_status(
+                session_id, "failed: IQX can't do object level target analysis"
+            )
+            return
+        case "OQT":
+            for file_name in image_files:
+                oqt.run_iso_analysis(file_name, target, session_id)
+
+    logging.getLogger().info(
+        "Setting the overall score of targets in session %s",
+        session_id,
+    )
+
+    ## set the overall score
+    result_data = read_from_json_file(get_session_results_file(session_id))
+    for file_name in image_files:
+        result_data = json_set_overall_score(
+            result_data,
+            file_name,
+            str(json_get_best_passing_iso_score(result_data, file_name)),
+        )
+    write_to_json_file(get_session_results_file(session_id), result_data)
+
+    ## add metadata
+    logging.getLogger().info(
+        "Adding metadata to all files in session %s",
+        session_id,
+    )
+    add_metadata(session_id, image_files)
+
+    ## validate after added metadata
+    validation_result, file_name = validate_files(session_id, image_files, "after")
+    if not validation_result:
+        update_session_status(session_id, f"failed on validating {file_name}")
+        return
+
+    ## zip time
+    zip_all_images_in_session(session_id)
+
+    ## finito
+    update_session_status(session_id, "finished")
 
 
 def add_metadata(session_id: str, image_files: list[str]):
