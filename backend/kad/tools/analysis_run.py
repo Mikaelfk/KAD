@@ -20,6 +20,7 @@ from kad.utils.metadata_add import add_metadata_to_file
 from kad.utils.path_helpers import (
     get_session_dir,
     get_session_image_file,
+    get_session_images_dir,
     get_session_results_file,
 )
 from kad.utils.session_manager import update_session_status
@@ -46,7 +47,7 @@ def run_device_analysis(
     ## setup
 
     # find name of all image files in session
-    session_image_folder = get_session_dir(session_id)
+    session_image_folder = get_session_images_dir(session_id)
     image_files = [
         f
         for f in os.listdir(session_image_folder)
@@ -154,7 +155,7 @@ def run_object_analysis(
     ## setup
 
     # find name of all image files in session
-    session_image_folder = get_session_dir(session_id)
+    session_image_folder = get_session_images_dir(session_id)
     image_files = [
         f
         for f in os.listdir(session_image_folder)
