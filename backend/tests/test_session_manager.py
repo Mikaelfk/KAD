@@ -18,6 +18,7 @@ from kad.utils.session_manager import (
     create_analysis_folders,
     create_session,
     update_session_status,
+    get_session_status
 )
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -99,3 +100,16 @@ def test_update_session_status():
 
     data = read_from_json_file(get_session_state_file(SESSION_ID))
     assert data["status"] == "finished"
+
+def test_get_session_status():
+    """Get the session status in state.json"""
+    session_status, err = get_session_status(SESSION_ID)
+    assert err is None
+    assert session_status == "finished"
+
+def test_get_session_status_negative():
+    """Get the session status in state.json of a session that does not exist"""
+    session_status, err = get_session_status("no")
+    print(err)
+    assert err is not None
+    assert session_status is None
