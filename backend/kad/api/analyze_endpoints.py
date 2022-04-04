@@ -20,7 +20,7 @@ analyze_endpoint = Blueprint("analyze_endpoint", __name__)
 
 # Create pool of n threads for how many analyses can run at once
 pool = ThreadPool.ThreadPool(
-    int(Config.config().get(section="IQ ANALYZER X", option="ConcurrentSessions"))
+    int(Config.config().get(section="IQES", option="ConcurrentSessions"))
 )
 
 
