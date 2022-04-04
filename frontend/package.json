@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --testResultsProcessor ./node_modules/jest-sonar-reporter/index.js",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,12 +48,7 @@
   "devDependencies": {
     "eslint": "^8.11.0",
     "eslint-plugin-react": "^7.29.4",
-    "jest": "^21.1.0",
-    "jest-sonar-reporter": "^1.3.0"
-  },
-  "jestSonar": {
-    "reportPath": "testResults",
-    "reportFile": "test-report.xml",
-    "indent": 4
+    "jest": "^21.1.0"
   }
+
 }
