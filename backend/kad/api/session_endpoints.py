@@ -2,8 +2,6 @@
 
 This module is for use with Flask, and the methods should therefore never be called directly.
 It defines endpoints for managing sessions.
-
-NOTE: Deprecated, not in use
 """
 import json
 
@@ -13,14 +11,32 @@ from kad.utils.session_manager import (
     check_session_exists,
     create_analysis_folders,
     create_session,
+    get_session_status,
     update_session_status,
 )
 
 # const
 HTTP_INVALID_JSON = "invalid json"
-
+HTTP_SESSION_NOT_EXISTS = "session does not exist"
 
 session_endpoint = Blueprint("session_endpoint", __name__)
+
+
+@session_endpoint.route("/api/session/status/<session_id>", methods=["GET"])
+def get_status(session_id):
+    """Endpoint for getting the status of a session
+
+    Returns:
+        Response: A HTTP Response with the status of the session.
+    """
+    if not session_id:
+        return Response(json.dumps({"error": "invalid session id"}), status=400)
+
+    if not check_session_exists(session_id):
+        return Response(json.dumps({"error": HTTP_SESSION_NOT_EXISTS}), status=404)
+
+    status, _ = get_session_status(session_id)
+    return Response(json.dumps({"session_status": status}), status=200)
 
 
 @session_endpoint.route("/api/session/create", methods=["GET"])
@@ -51,7 +67,7 @@ def update():
             return Response(json.dumps({"error": HTTP_INVALID_JSON}), status=400)
 
         if not check_session_exists(session_id):
-            return Response(json.dumps({"error": "session does not exist"}), status=400)
+            return Response(json.dumps({"error": HTTP_SESSION_NOT_EXISTS}), status=400)
 
         update_session_status(session_id, new_status)
         return Response(status=200)
@@ -74,7 +90,7 @@ def create_folders():
             return Response(json.dumps({"error": HTTP_INVALID_JSON}), status=400)
 
         if not check_session_exists(session_id):
-            return Response(json.dumps({"error": "session does not exist"}), status=400)
+            return Response(json.dumps({"error": HTTP_SESSION_NOT_EXISTS}), status=400)
 
         create_analysis_folders(session_id)
 
