@@ -63,7 +63,6 @@ def run_device_analysis(
     )
 
     # validate before analysis
-    result_data = {}
     validation_result, file_name = validate_files(session_id, image_files, "after")
     if not validation_result:
         update_session_status(session_id, f"failed on validating {file_name}")
