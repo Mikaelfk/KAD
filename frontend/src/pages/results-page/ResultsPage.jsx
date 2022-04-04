@@ -9,10 +9,16 @@ import "./ResultsPage.css";
 
 const ResultsPage = () => {
 
-    const [results, setResults] = useState({})
+    const [results, setResults] = useState({});
+    const [status, setStatus] = useState("");
 
     let params = useParams();
     useEffect(() => {
+        // Fetches the status of the session
+        fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
+            .then(resp => resp.json())
+            .then(data => setStatus(data.session_status))
+            .catch(err => console.log(err));
         // Fetches the results from the api
         fetch(Config.API_URL + `/api/results/${params.session_id}`)
             .then(resp => resp.json())
@@ -56,6 +62,8 @@ const ResultsPage = () => {
                 </IconButton>
             </div>
             <Typography variant='h2'>Results</Typography>
+            <Typography variant="h5">Session ID: {params.session_id}</Typography>
+            <Typography variant="h5">Session Status: {status}</Typography>
             {Object.keys(results).map((key) =>
                 <Card
                     className="resultCard"
