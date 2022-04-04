@@ -43,8 +43,8 @@ def analyze():
 
             session_id = create_session()
             if (
-                not "before_target" in request.files
-                or not "after_target" in request.files
+                "before_target" not in request.files
+                or "after_target" not in request.files
             ):
                 return Response(
                     json.dumps(
