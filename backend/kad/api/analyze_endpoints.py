@@ -75,7 +75,7 @@ def analyze_device():
     files = request.files.getlist("files")
 
     # create list of all files
-    all_files = files
+    all_files = files.copy()
     all_files.append(before_target)
     all_files.append(after_target)
     file_names = []
