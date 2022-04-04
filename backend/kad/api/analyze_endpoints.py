@@ -97,11 +97,11 @@ def analyze_device():
     )
     after_target_filename = save_uploaded_files(session_id, [after_target], file_names)
 
-    # create analysis folders for targets
-    create_analysis_folders(session_id)
-
     # save rest of uploaded files if there are any
     save_uploaded_files(session_id, files, file_names)
+
+    # create analysis folders for targets
+    create_analysis_folders(session_id)
 
     ## Now it's runny time
 
