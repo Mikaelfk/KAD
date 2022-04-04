@@ -108,3 +108,22 @@ def check_session_exists(session_id):
     state_file = os.path.join(session_folder, STATE)
 
     return os.path.isdir(session_folder) or os.path.exists(state_file)
+
+
+def get_session_status(session_id):
+    """Method for checking the status of a session
+
+    Args:
+        session_id (str): unique id of the session
+    
+    Returns: 
+        status (str): session status
+        error (str): error message
+    """
+    if not check_session_exists(session_id):
+        return None, "session does not exist"
+    data = read_from_json_file(get_session_state_file(session_id))
+    status = data.get("status")
+    if status is None:
+        return None, "could not find status in session"
+    return status, None
