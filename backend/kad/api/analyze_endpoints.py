@@ -198,7 +198,7 @@ def check_iqes_and_targets(
         return Response(json.dumps({"error": "no target specified"}), status=400)
 
     # iqe is not supported
-    if iqes in supported_iqes:
+    if iqes not in supported_iqes:
         return Response(json.dumps({"error": f"{iqes} not supported"}), status=400)
 
     # iqe does not support target
