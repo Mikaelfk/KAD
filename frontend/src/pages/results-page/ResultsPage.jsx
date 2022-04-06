@@ -1,8 +1,8 @@
+import DownloadIcon from '@mui/icons-material/Download';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import { Card, CardContent, Divider, IconButton, Typography } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-import DownloadIcon from '@mui/icons-material/Download';
 import HomeButton from "../../components/HomeButton";
 import Config from "../../config.json";
 import "./ResultsPage.css";
@@ -45,6 +45,40 @@ const ResultsPage = () => {
             .catch(err => console.log(err))
     }
 
+    const generateList = () => {
+        if ((Object.keys(results).length == 0) || results["error"]) {
+            // return error
+            return (
+                <div>
+                    <Typography variant="h3">
+                        No results
+                    </Typography>
+                </div>
+            )
+        }
+
+        return Object.keys(results).map((key) =>
+            <Card
+                className="resultCard"
+                component={Link}
+                to={`/results/${params.session_id}/${key}`}
+                key={key}
+                style={{ textDecoration: 'none' }}
+                title="View analysis details"
+                aria-label="Field which shows image and analysis results, can be clicked on to view analysis details">
+                <CardContent className="result">
+                    <Typography variant="h5">
+                        Name: {key}
+                    </Typography>
+                    <Divider flexItem />
+                    <Typography variant="h5">
+                        ISO score: {results[key].overall_score}
+                    </Typography>
+                </CardContent>
+            </Card>
+        )
+    }
+
     return (
         <div className="container">
             <div className="top-bar">
@@ -64,26 +98,7 @@ const ResultsPage = () => {
             <Typography variant='h2'>Results</Typography>
             <Typography variant="h5">Session ID: {params.session_id}</Typography>
             <Typography variant="h5">Session Status: {status}</Typography>
-            {Object.keys(results).map((key) =>
-                <Card
-                    className="resultCard"
-                    component={Link}
-                    to={`/results/${params.session_id}/${key}`}
-                    key={key}
-                    style={{ textDecoration: 'none' }}
-                    title="View analysis details"
-                    aria-label="Field which shows image and analysis results, can be clicked on to view analysis details">
-                    <CardContent className="result">
-                        <Typography variant="h5">
-                            Name: {key}
-                        </Typography>
-                        <Divider flexItem />
-                        <Typography variant="h5">
-                            ISO score: {results[key].overall_score}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            )}
+            {generateList()}
         </div>
     )
 }
