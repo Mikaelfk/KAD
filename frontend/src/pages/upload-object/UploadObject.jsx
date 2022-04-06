@@ -1,16 +1,16 @@
 import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CancelButton, SubmitButton, UploadButton } from '../../components/Buttons';
 import '../Upload.css';
 
 const UploadObject = (props) => {
-    const onRender = props.onRender;
+    // Resets state variables on render
     useEffect(() => {
-        onRender()
-    }, [onRender])
-
+        props.setFiles([]);
+    }, [])
+    const [objectTarget, setObjectTarget] = useState("TE263");
 
     // MenuItems for targets
     const targets = ["TE263", "GTObject"].map((target) => (
@@ -21,7 +21,25 @@ const UploadObject = (props) => {
 
     // handles target change event
     const handleTargetChange = (event) => {
-        props.setTarget(event.target.value)
+        setObjectTarget(event.target.value)
+    }
+
+    const handleObjectSubmit = () => {
+        const formData = new FormData();
+
+        // Checks if the user has uploaded any files
+        if (props.files.length === 0) {
+            alert("No files have been selected")
+            return
+        }
+
+        for (const file of props.files) {
+            formData.append('files', file)
+        }
+
+        document.getElementById('loader-container').style.visibility = "visible";
+        // Makes a POST request to the endpoint
+        props.fetchAnalyzePostWrapper(formData, `/api/analyze/object?iqes=OQT&target=${objectTarget}`)
     }
 
     return (
@@ -34,14 +52,14 @@ const UploadObject = (props) => {
             <div className='target-options'>
                 <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose target to perform analysis with">
                     <InputLabel id="target-label">Choose target</InputLabel>
-                    <Select value={props.target} onChange={handleTargetChange} labelId="target-label" label="Choose target">
+                    <Select value={objectTarget} onChange={handleTargetChange} labelId="target-label" label="Choose target">
                         {targets}
                     </Select>
                 </FormControl>
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
-                <SubmitButton onSubmit={props.onSubmit} />
+                <SubmitButton onSubmit={handleObjectSubmit} />
             </div>
             <div className="loader-container" id="loader-container">
                 <div className="loader"></div>
@@ -51,12 +69,10 @@ const UploadObject = (props) => {
 }
 
 UploadObject.propTypes = {
-    onRender: PropTypes.func.isRequired,
     onUpload: PropTypes.func.isRequired,
-    files: PropTypes.array.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    setTarget: PropTypes.func.isRequired,
-    target: PropTypes.string.isRequired
+    fetchAnalyzePostWrapper: PropTypes.func.isRequired,
+    setFiles: PropTypes.func.isRequired,
+    files: PropTypes.array.isRequired
 }
 
 export default UploadObject;
