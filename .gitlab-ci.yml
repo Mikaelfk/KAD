@@ -52,6 +52,9 @@ reacttest:
                 - frontend/package-lock.json
         paths:
             - frontend/.npm/
+        key: one-key-to-rule-them-all
+        paths:
+            - frontend/reports/test-report.xml
     before_script:
         - cd frontend/
         - npm ci --cache .npm --prefer-offline
