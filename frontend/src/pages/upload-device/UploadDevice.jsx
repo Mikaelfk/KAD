@@ -8,29 +8,40 @@ import '../Upload.css';
 
 const UploadDevice = (props) => {
 
+    const onRender = props.onRender;
+    useEffect(() => {
+        onRender()
+    }, [onRender])
+
+    // variable for what softwares support what targets
     const softwareData = [
         {
             name: "IQ-Analyzer-X",
+            value: "IQX",
             targets: ["UTT"]
         },
         {
             name: "OS QM-Tool",
+            value: "OQT",
             targets: ["UTT", "GTDevice"]
         }
     ];
 
+    // MenuItems for software select
     const softwares = softwareData.map((software) => (
-        <MenuItem key={software.name} value={software.name}>
+        <MenuItem key={software.name} value={software.value}>
             {software.name}
         </MenuItem>
     ));
 
-    const targets = softwareData.find(item => item.name === props.software)?.targets.map((target) => (
+    // MenuItems for target select
+    const targets = softwareData.find(item => item.value === props.software)?.targets.map((target) => (
         <MenuItem key={target} value={target}>
             {target}
         </MenuItem>
     ));
 
+    // handles software change event
     const handleSoftwareChange = (event) => {
         props.setData({
             software: event.target.value,
@@ -38,17 +49,13 @@ const UploadDevice = (props) => {
         })
     }
 
+    // handles target change event
     const handleTargetChange = (event) => {
         props.setData(data => ({
             ...data,
             target: event.target.value
         }))
     }
-
-    let onRender = props.onRender;
-    useEffect(() => {
-        onRender()
-    }, [onRender])
 
     return (
         <div className='container'>
@@ -98,17 +105,17 @@ const UploadDevice = (props) => {
                 <div className='target-options'>
                     <FormGroup>
                         <div>
-                            <FormControl sx={{ m: 1, minWidth: 170 }}>
-                                <InputLabel>Choose analysis software:</InputLabel>
-                                <Select value={props.software} onChange={handleSoftwareChange}>
+                            <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose analysis software to perform analysis with">
+                                <InputLabel id="software-label">Choose analysis software</InputLabel>
+                                <Select value={props.software} onChange={handleSoftwareChange} labelId="software-label" label="Choose analysis software">
                                     {softwares}
                                 </Select>
                             </FormControl>
                         </div>
                         <div>
-                            <FormControl sx={{ m: 1, minWidth: 170 }}>
-                                <InputLabel>Choose target:</InputLabel>
-                                <Select value={props.target} onChange={handleTargetChange}>
+                            <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose target to perform analysis with">
+                                <InputLabel id="target-label">Choose target</InputLabel>
+                                <Select value={props.target} onChange={handleTargetChange} labelId="target-label" label="Choose target">
                                     {targets}
                                 </Select>
                             </FormControl>

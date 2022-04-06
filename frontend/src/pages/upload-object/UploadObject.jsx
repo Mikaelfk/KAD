@@ -12,12 +12,14 @@ const UploadObject = (props) => {
     }, [onRender])
 
 
+    // MenuItems for targets
     const targets = ["TE263", "GTObject"].map((target) => (
         <MenuItem key={target} value={target}>
             {target}
         </MenuItem>
     ));
 
+    // handles target change event
     const handleTargetChange = (event) => {
         props.setTarget(event.target.value)
     }
@@ -30,9 +32,9 @@ const UploadObject = (props) => {
                 <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
             </div>
             <div className='target-options'>
-                <FormControl sx={{ m: 1, minWidth: 170 }}>
-                    <InputLabel>Choose target</InputLabel>
-                    <Select value={props.target} onChange={handleTargetChange}>
+                <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose target to perform analysis with">
+                    <InputLabel id="target-label">Choose target</InputLabel>
+                    <Select value={props.target} onChange={handleTargetChange} labelId="target-label" label="Choose target">
                         {targets}
                     </Select>
                 </FormControl>

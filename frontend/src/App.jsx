@@ -16,12 +16,13 @@ const App = () => {
     const [endTarget, setEndTarget] = useState({});
     const [objectTarget, setObjectTarget] = useState("TE263");
     const [{ software, target: deviceTarget }, setData] = useState({
-        software: "IQ-Analyzer-X",
+        software: "IQX",
         target: "UTT"
     })
 
     let navigate = useNavigate()
 
+    // Resets state variables on render
     const handleRender = useCallback(() => {
         setFiles([])
         setStartTarget({})
@@ -81,12 +82,10 @@ const App = () => {
 
         document.getElementById('loader-container').style.visibility = "visible";
         // Makes a POST request to the endpoint
-        fetchAnalyzePostWrapper(formData, `/api/analyze/oqt?target=${objectTarget}`)
+        fetchAnalyzePostWrapper(formData, `/api/analyze/object?iqes=OQT&target=${objectTarget}`)
     }
 
     const handleDeviceSubmit = () => {
-        console.log(software)
-        console.log(deviceTarget)
         // Checks if both targets have been uploaded
         if (startTarget && Object.keys(startTarget).length === 0 && Object.getPrototypeOf(startTarget) === Object.prototype) {
             alert("Start target has not been selected");
@@ -109,7 +108,7 @@ const App = () => {
         document.getElementById('loader-container').style.visibility = "visible";
 
         // Makes the request to the api
-        fetchAnalyzePostWrapper(formData, '/api/analyze/iqx?target=UTT')
+        fetchAnalyzePostWrapper(formData, `/api/analyze/device?iqes=${software}&target=${deviceTarget}`)
     }
 
 
