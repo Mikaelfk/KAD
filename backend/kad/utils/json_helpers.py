@@ -170,6 +170,7 @@ def json_get_best_passing_iso_score(json_data: dict, file_name: str):
         if (
             score in data
             and "completed" in data[score]
+            and data[score]["completed"]
             and data[score]["results"]["passed"]
         ):
             return score
