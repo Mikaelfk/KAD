@@ -10,8 +10,6 @@ from flask_cors import CORS
 from kad.api import (
     analyze_endpoint,
     download_endpoint,
-    iqx_endpoint,
-    oqt_endpoint,
     results_endpoint,
     session_endpoint,
 )
@@ -35,8 +33,6 @@ def start():
     # Compliant
     CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 
-    app.register_blueprint(iqx_endpoint)
-    app.register_blueprint(oqt_endpoint)
     app.register_blueprint(results_endpoint)
     app.register_blueprint(download_endpoint)
     app.register_blueprint(session_endpoint)
