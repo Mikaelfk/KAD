@@ -14,6 +14,7 @@ const App = () => {
     const [files, setFiles] = useState([]);
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
+    const [target, setTarget] = useState("TE263");
 
     let navigate = useNavigate()
 
@@ -76,7 +77,7 @@ const App = () => {
 
         document.getElementById('loader-container').style.visibility = "visible";
         // Makes a POST request to the endpoint
-        fetchAnalyzePostWrapper(formData, '/api/analyze/oqt?target=GTObject')
+        fetchAnalyzePostWrapper(formData, `/api/analyze/oqt?target=${target}`)
     }
 
     const handleDeviceSubmit = () => {
@@ -124,6 +125,7 @@ const App = () => {
                     onRender={handleRender}
                     onUpload={handleUpload}
                     onSubmit={handleObjectSubmit}
+                    setTarget={setTarget}
                     files={files} />} />
             <Route path="/results/:session_id" element=
                 {<ResultsPage />} />

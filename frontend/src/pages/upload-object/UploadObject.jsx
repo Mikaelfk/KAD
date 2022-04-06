@@ -6,10 +6,21 @@ import { CancelButton, SubmitButton, UploadButton } from '../../components/Butto
 import '../Upload.css';
 
 const UploadObject = (props) => {
-    let onRender = props.onRender;
+    const onRender = props.onRender;
     useEffect(() => {
         onRender()
     }, [onRender])
+
+
+    const targets = ["TE263", "GTObject"].map((target) => (
+    <option key={target} value={target}>
+      {target}
+    </option>
+  ));
+
+    const handleTargetChange = (event) => {
+        props.setTarget(event.target.value)
+    }
 
     return (
         <div className='container'>
@@ -17,6 +28,16 @@ const UploadObject = (props) => {
             <div className='upload-options'>
                 <UploadButton buttonText="Select images" onUpload={props.onUpload} />
                 <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
+            </div>
+            <div className='container'>
+                <Typography>Choose target</Typography>
+                <form>
+                    <div>
+                        <select onChange={handleTargetChange}>
+                            {targets}
+                        </select>
+                    </div>
+                </form>
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
@@ -33,7 +54,8 @@ UploadObject.propTypes = {
     onRender: PropTypes.func.isRequired,
     onUpload: PropTypes.func.isRequired,
     files: PropTypes.array.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    setTarget: PropTypes.func.isRequired,
 }
 
 export default UploadObject;
