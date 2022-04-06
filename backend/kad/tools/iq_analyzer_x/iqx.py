@@ -9,27 +9,17 @@ import subprocess
 
 from kad.config import Config
 from kad.tools.iq_analyzer_x.parser import result_summary_parser
-from kad.utils.file_validation import jhove_validation
-from kad.utils.image_zipper import zip_all_images_in_session
 from kad.utils.json_helpers import (
-    json_get_best_passing_iso_score,
     json_iqx_add_result,
     json_iqx_set_analysis_failed,
-    json_iqx_set_image_tag,
-    json_set_validation,
-    json_set_overall_score,
     read_from_json_file,
     write_to_json_file,
 )
-from kad.utils.metadata_add import add_metadata_to_file
 from kad.utils.path_helpers import (
     get_analysis_dir_image_file,
     get_analysis_dir_image_iqx_result_file,
-    get_session_image_file,
-    get_session_images_dir,
     get_session_results_file,
 )
-from kad.utils.session_manager import update_session_status
 
 
 def run_analysis(image_file_path: str, specification_level: str):
@@ -166,107 +156,6 @@ def run_iso_analysis(file_name: str, session_id: str):
         )
 
         write_to_json_file(get_session_results_file(session_id), result_data)
-
-
-def run_before_after_target_analysis(
-    before_target_filename: str, after_target_filename: str, session_id
-):
-    """Method for running analysis for the before and after target usecase.
-
-    Args:
-        before_target_filename (str): filename of the first target
-        after_target_filename (str): filename of the second target
-        session_id (str): the session id of the current session
-    """
-    update_session_status(session_id, "running")
-
-    # find name of all image files in session
-    session_image_folder = get_session_images_dir(session_id)
-    image_files = [
-        f
-        for f in os.listdir(session_image_folder)
-        if os.path.isfile(os.path.join(session_image_folder, f))
-    ]
-
-    logging.getLogger().info(
-        "Starting file validation on files in session %s",
-        session_id,
-    )
-
-    # file validation
-    result_data = {}
-    for file_name in [before_target_filename, after_target_filename]:
-        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
-        result_data = read_from_json_file(get_session_results_file(session_id))
-        result_data = json_set_validation(result_data, file_name, "before", validation)
-        write_to_json_file(get_session_results_file(session_id), result_data)
-
-    # TODO: Only run analysis on target that is not currupt
-
-    logging.getLogger().info(
-        "Starting before/after target analysis on files %s and %s respectively in session %s.",
-        before_target_filename,
-        after_target_filename,
-        session_id,
-    )
-
-    # run analysis
-    run_iso_analysis(before_target_filename, session_id)
-    run_iso_analysis(after_target_filename, session_id)
-
-    logging.getLogger().info(
-        "Setting tags targets in session %s",
-        session_id,
-    )
-
-    # set image tags
-    result_data = read_from_json_file(get_session_results_file(session_id))
-    result_data = json_iqx_set_image_tag(
-        result_data, before_target_filename, "before_target"
-    )
-    result_data = json_iqx_set_image_tag(
-        result_data, after_target_filename, "after_target"
-    )
-
-    logging.getLogger().info(
-        "Setting the overall score of targets in session %s",
-        session_id,
-    )
-
-    # set the overall score of the targets
-    result_data = json_set_overall_score(
-        result_data,
-        before_target_filename,
-        str(json_get_best_passing_iso_score(result_data, before_target_filename)),
-    )
-    result_data = json_set_overall_score(
-        result_data,
-        after_target_filename,
-        str(json_get_best_passing_iso_score(result_data, after_target_filename)),
-    )
-
-    write_to_json_file(get_session_results_file(session_id), result_data)
-
-    logging.getLogger().info(
-        "Adding metadata to all files in session %s",
-        session_id,
-    )
-
-    for file_name in image_files:
-        add_metadata_to_file(
-            get_session_image_file(session_id, file_name),
-            read_from_json_file(get_session_results_file(session_id)),
-        )
-    for file_name in [before_target_filename, after_target_filename]:
-        _, validation = jhove_validation(get_session_image_file(session_id, file_name))
-        result_data = read_from_json_file(get_session_results_file(session_id))
-        result_data = json_set_validation(result_data, file_name, "after", validation)
-        write_to_json_file(get_session_results_file(session_id), result_data)
-
-    zip_all_images_in_session(session_id)
-
-    # set session status to finished
-    update_session_status(session_id, "finished")
 
 
 def parse_results(result_file_path: str):
