@@ -4,8 +4,8 @@
 import logging
 import os
 
-import kad.tools.iq_analyzer_x.iqx as iqx
-import kad.tools.os_qm_tool.oqt as oqt
+from kad.tools.iq_analyzer_x import iqx
+from kad.tools.os_qm_tool import oqt
 from kad.utils.file_validation import jhove_validation
 from kad.utils.image_zipper import zip_all_images_in_session
 from kad.utils.json_helpers import (
@@ -18,7 +18,6 @@ from kad.utils.json_helpers import (
 )
 from kad.utils.metadata_add import add_metadata_to_file
 from kad.utils.path_helpers import (
-    get_session_dir,
     get_session_image_file,
     get_session_images_dir,
     get_session_results_file,
