@@ -1,7 +1,7 @@
-# /api/analyze/iqx
+# /api/analyze/device
 
 Endpoint for performing an anlysis on two targets.
-Targets are referred to as _before_ and _after_ target,
+Targets are referred to as _before target_ and _after target_,
 as that is the usecase the endpoint is modeled after.
 
 
@@ -12,20 +12,25 @@ Method: POST
 
 ## Query Parameters
 
-?target={:target_name}
+`?iqes={:iqes_name}`
+
+`?target={:target_name}`
 
 
-## Request
-=== "POST"
-    Multipart form
-    
-    Fields:
-    ```
-    before_target: FILE
-    ```
-    ```
-    after_target : FILE
-    ```
+### Supported Parameter Values
+Supported iqes values:
+
+* OQT
+* IQX
+
+Supported target values for OQT:
+
+* GTDevice
+* UTT
+
+Supported target values for IQX:
+
+* UTT
 
 
 ## Response

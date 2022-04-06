@@ -1,17 +1,27 @@
-# /api/analyze/oqt
+# /api/analyze/object
 
 Endpoint for performing analysis on all images uploaded.
-
 
 ## Request
 
 Method: POST
 
-
 ## Query Parameters
 
-?target={:target_name}
+`?iqes={:iqes_name}`
 
+`?target={:target_name}`
+
+
+### Supported Parameter Values
+Supported iqes values:
+
+* OQT
+
+Supported target values for OQT:
+
+* GTObject
+* TE263
 
 ## Request
 === "POST"
@@ -56,6 +66,6 @@ Method: POST
     Bad request
     ``` json linenums="1" title="JSON"
     {
-        "error":  "before_target not specified"
+        "error": "missing file(s). Check request"
     }
     ```
