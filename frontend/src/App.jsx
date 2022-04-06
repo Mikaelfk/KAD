@@ -23,6 +23,23 @@ const App = () => {
         setEndTarget({})
     }, []);
 
+    const fetchAnalyzePostWrapper = (formData, uri) => {
+        fetch(Config.API_URL + uri, {
+            method: 'POST',
+            body: formData
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                document.getElementById('loader-container').style.visibility = "hidden";
+                let path = `/results/${data.session_id}`;
+                navigate(path);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loader-container').style.visibility = "hidden";
+            });
+    }
+    
     const handleUpload = (event) => {
         document.getElementById("images-text").style.visibility = "visible"
         const inputFiles = event.target.files
@@ -58,22 +75,8 @@ const App = () => {
         }
 
         document.getElementById('loader-container').style.visibility = "visible";
-        // Makes a POST request to the endpoint,
-        fetch(Config.API_URL + '/api/analyze/oqt?target=GTObject', {
-            method: 'POST',
-            body: formData
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                document.getElementById('loader-container').style.visibility = "hidden";
-                let path = `/results/${data.session_id}`;
-                navigate(path);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('loader-container').style.visibility = "hidden";
-            });
-
+        // Makes a POST request to the endpoint
+        fetchAnalyzePostWrapper(formData, '/api/analyze/oqt?target=GTObject')
     }
 
     const handleDeviceSubmit = () => {
@@ -99,20 +102,7 @@ const App = () => {
         document.getElementById('loader-container').style.visibility = "visible";
 
         // Makes the request to the api
-        fetch(Config.API_URL + '/api/analyze/iqx?target=UTT', {
-            method: 'POST',
-            body: formData
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                document.getElementById('loader-container').style.visibility = "hidden";
-                let path = `/results/${data.session_id}`;
-                navigate(path);
-            })
-            .catch(err => {
-                console.log(err);
-                document.getElementById('loader-container').style.visibility = "hidden";
-            })
+        fetchAnalyzePostWrapper(formData, '/api/analyze/iqx?target=UTT')
     }
 
 
