@@ -115,8 +115,7 @@ def run_iso_analysis(file_name: str, session_id: str):
         # if iqx fails, set result to failed and move on
         if result is False:
             logging.getLogger().warning(
-                """IQX failed while analyzing file %s in session %s.
-                Setting analysis result to failed""",
+                "IQX failed while analyzing file %s in session %s. Setting analysis result to failed",
                 file_name,
                 session_id,
             )
@@ -138,8 +137,7 @@ def run_iso_analysis(file_name: str, session_id: str):
         # so set result to failed and move on
         if analysis_results is None:
             logging.getLogger().warning(
-                """Parser failed to parse data from analysis on file %s in session %s.
-                Setting analysis result to failed!""",
+                "Parser failed to parse data from analysis on file %s in session %s. Setting analysis result to failed!",
                 file_name,
                 session_id,
             )
