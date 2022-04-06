@@ -26,9 +26,8 @@ pytest:
           paths:
             - backend/.cache/pip
             - backend/venv/
-        - key: one-key-to-rule-them-all
+        - key: backend-coverage-report
           paths:
-            - frontend/reports/test-report.xml
             - backend/coverage.xml
           policy: push
     variables:
@@ -54,10 +53,9 @@ reacttest:
                 - frontend/package-lock.json
           paths:
             - frontend/.npm/
-        - key: one-key-to-rule-them-all
+        - key: frontend-coverage-report
           paths:
-            - frontend/reports/test-report.xml
-            - backend/coverage.xml
+            - frontend/test-report.xml
           policy: push
     before_script:
         - cd frontend/
@@ -74,9 +72,12 @@ sonarqube-check:
         SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar" # Defines the location of the analysis task cache
         GIT_DEPTH: "0" # Tells git to fetch all the branches of the project, required by the analysis task
     cache:
-        - key: one-key-to-rule-them-all
+        - key: frontend-coverage-report
           paths:
-            - frontend/reports/test-report.xml
+            - frontend/test-report.xml
+          policy: pull
+        - key: backend-coverage-report
+          paths:
             - backend/coverage.xml
           policy: pull
         - key: "${CI_JOB_NAME}"
