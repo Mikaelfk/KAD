@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -13,10 +13,10 @@ const UploadObject = (props) => {
 
 
     const targets = ["TE263", "GTObject"].map((target) => (
-    <option key={target} value={target}>
-      {target}
-    </option>
-  ));
+        <MenuItem key={target} value={target}>
+            {target}
+        </MenuItem>
+    ));
 
     const handleTargetChange = (event) => {
         props.setTarget(event.target.value)
@@ -29,15 +29,13 @@ const UploadObject = (props) => {
                 <UploadButton buttonText="Select images" onUpload={props.onUpload} />
                 <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
             </div>
-            <div className='container'>
-                <Typography>Choose target</Typography>
-                <form>
-                    <div>
-                        <select onChange={handleTargetChange}>
-                            {targets}
-                        </select>
-                    </div>
-                </form>
+            <div className='target-options'>
+                <FormControl sx={{ m: 1, minWidth: 170 }}>
+                    <InputLabel>Choose target</InputLabel>
+                    <Select value={props.target} onChange={handleTargetChange}>
+                        {targets}
+                    </Select>
+                </FormControl>
             </div>
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
@@ -56,6 +54,7 @@ UploadObject.propTypes = {
     files: PropTypes.array.isRequired,
     onSubmit: PropTypes.func.isRequired,
     setTarget: PropTypes.func.isRequired,
+    target: PropTypes.string.isRequired
 }
 
 export default UploadObject;

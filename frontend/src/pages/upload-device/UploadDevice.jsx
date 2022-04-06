@@ -1,4 +1,4 @@
-import { IconButton, Typography } from '@mui/material';
+import { FormGroup, IconButton, FormControl, Select, InputLabel, MenuItem, Typography } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import PropTypes from 'prop-types';
 import { React, useEffect } from 'react';
@@ -7,6 +7,44 @@ import { CancelButton, SubmitButton, UploadButton } from '../../components/Butto
 import '../Upload.css';
 
 const UploadDevice = (props) => {
+
+    const softwareData = [
+        {
+            name: "IQ-Analyzer-X",
+            targets: ["UTT"]
+        },
+        {
+            name: "OS QM-Tool",
+            targets: ["UTT", "GTDevice"]
+        }
+    ];
+
+    const softwares = softwareData.map((software) => (
+        <MenuItem key={software.name} value={software.name}>
+            {software.name}
+        </MenuItem>
+    ));
+
+    const targets = softwareData.find(item => item.name === props.software)?.targets.map((target) => (
+        <MenuItem key={target} value={target}>
+            {target}
+        </MenuItem>
+    ));
+
+    const handleSoftwareChange = (event) => {
+        props.setData({
+            software: event.target.value,
+            target: "UTT"
+        })
+    }
+
+    const handleTargetChange = (event) => {
+        props.setData(data => ({
+            ...data,
+            target: event.target.value
+        }))
+    }
+
     let onRender = props.onRender;
     useEffect(() => {
         onRender()
@@ -57,6 +95,26 @@ const UploadDevice = (props) => {
                     </div>
                     <Typography sx={{ visibility: "hidden" }} id="images-text">Selected images count: {props.files.length}</Typography>
                 </div>
+                <div className='target-options'>
+                    <FormGroup>
+                        <div>
+                            <FormControl sx={{ m: 1, minWidth: 170 }}>
+                                <InputLabel>Choose analysis software:</InputLabel>
+                                <Select value={props.software} onChange={handleSoftwareChange}>
+                                    {softwares}
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div>
+                            <FormControl sx={{ m: 1, minWidth: 170 }}>
+                                <InputLabel>Choose target:</InputLabel>
+                                <Select value={props.target} onChange={handleTargetChange}>
+                                    {targets}
+                                </Select>
+                            </FormControl>
+                        </div>
+                    </FormGroup>
+                </div>
             </div >
             <div className='action-menu'>
                 <CancelButton component={Link} to='/' />
@@ -77,7 +135,10 @@ UploadDevice.propTypes = {
     endTarget: PropTypes.object.isRequired,
     onUpload: PropTypes.func.isRequired,
     files: PropTypes.array.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    software: PropTypes.string.isRequired,
+    target: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired
 }
 
 export default UploadDevice;

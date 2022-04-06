@@ -21,6 +21,10 @@
     width: 100%;
 }
 
+.target-options {
+    text-align: center;
+}
+
 .upload-images-button-menu {
     display: flex;
     flex-direction: column;

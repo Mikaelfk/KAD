@@ -14,7 +14,11 @@ const App = () => {
     const [files, setFiles] = useState([]);
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
-    const [target, setTarget] = useState("TE263");
+    const [objectTarget, setObjectTarget] = useState("TE263");
+    const [{ software, target: deviceTarget }, setData] = useState({
+        software: "IQ-Analyzer-X",
+        target: "UTT"
+    })
 
     let navigate = useNavigate()
 
@@ -40,7 +44,7 @@ const App = () => {
                 document.getElementById('loader-container').style.visibility = "hidden";
             });
     }
-    
+
     const handleUpload = (event) => {
         document.getElementById("images-text").style.visibility = "visible"
         const inputFiles = event.target.files
@@ -77,10 +81,12 @@ const App = () => {
 
         document.getElementById('loader-container').style.visibility = "visible";
         // Makes a POST request to the endpoint
-        fetchAnalyzePostWrapper(formData, `/api/analyze/oqt?target=${target}`)
+        fetchAnalyzePostWrapper(formData, `/api/analyze/oqt?target=${objectTarget}`)
     }
 
     const handleDeviceSubmit = () => {
+        console.log(software)
+        console.log(deviceTarget)
         // Checks if both targets have been uploaded
         if (startTarget && Object.keys(startTarget).length === 0 && Object.getPrototypeOf(startTarget) === Object.prototype) {
             alert("Start target has not been selected");
@@ -119,13 +125,17 @@ const App = () => {
                     onSubmit={handleDeviceSubmit}
                     startTarget={startTarget}
                     endTarget={endTarget}
+                    software={software}
+                    target={deviceTarget}
+                    setData={setData}
                     files={files} />} />
             <Route path="/upload/object" element=
                 {<UploadObject
                     onRender={handleRender}
                     onUpload={handleUpload}
                     onSubmit={handleObjectSubmit}
-                    setTarget={setTarget}
+                    setTarget={setObjectTarget}
+                    target={objectTarget}
                     files={files} />} />
             <Route path="/results/:session_id" element=
                 {<ResultsPage />} />
