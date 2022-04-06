@@ -82,7 +82,7 @@ def run_device_analysis(
             iqx.run_iso_analysis(after_target_filename, session_id)
         case "OQT":
             oqt.run_iso_analysis(before_target_filename, target, session_id)
-            oqt.run_iso_analysis(before_target_filename, target, session_id)
+            oqt.run_iso_analysis(after_target_filename, target, session_id)
 
     ## image tags
     logging.getLogger().info(
