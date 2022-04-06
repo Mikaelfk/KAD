@@ -6,10 +6,11 @@ import { CancelButton, SubmitButton, UploadButton } from '../../components/Butto
 import '../Upload.css';
 
 const UploadObject = (props) => {
-    // Resets state variables on render
+    // resets state variables on render
     useEffect(() => {
         props.setFiles([]);
     }, [])
+
     const [objectTarget, setObjectTarget] = useState("TE263");
 
     // MenuItems for targets
@@ -24,10 +25,11 @@ const UploadObject = (props) => {
         setObjectTarget(event.target.value)
     }
 
+    // handles submit for object level analysis
     const handleObjectSubmit = () => {
         const formData = new FormData();
 
-        // Checks if the user has uploaded any files
+        // checks if the user has uploaded any files
         if (props.files.length === 0) {
             alert("No files have been selected")
             return
@@ -36,7 +38,7 @@ const UploadObject = (props) => {
         for (const file of props.files) {
             formData.append('files', file)
         }
-
+        // shows a loading circle
         document.getElementById('loader-container').style.visibility = "visible";
         // Makes a POST request to the endpoint
         props.fetchAnalyzePostWrapper(formData, `/api/analyze/object?iqes=OQT&target=${objectTarget}`)

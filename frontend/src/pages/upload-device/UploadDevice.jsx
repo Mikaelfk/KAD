@@ -8,7 +8,7 @@ import '../Upload.css';
 
 const UploadDevice = (props) => {
 
-    // Resets state variables on render
+    // resets state variables on render
     useEffect(() => {
         props.setFiles([]);
         setStartTarget({})
@@ -29,6 +29,7 @@ const UploadDevice = (props) => {
         }
     ];
 
+    // state variable for the software and target chosen
     const [{ software, target: deviceTarget }, setData] = useState({
         software: "IQX",
         target: "UTT"
@@ -66,18 +67,21 @@ const UploadDevice = (props) => {
         }))
     }
 
+    // handles start target upload and saves it to state variable
     const handleStartTargetUpload = (event) => {
         document.getElementById("start-target-text").style.visibility = "visible"
         setStartTarget(event.target.files[0])
     }
 
+    // handles end target upload and saves it to state variable
     const handleEndTargetUpload = (event) => {
         document.getElementById("end-target-text").style.visibility = "visible"
         setEndTarget(event.target.files[0])
     }
 
+    // handles submit for device level analysis
     const handleDeviceSubmit = () => {
-        // Checks if both targets have been uploaded
+        // checks if both targets have been uploaded
         if (startTarget && Object.keys(startTarget).length === 0 && Object.getPrototypeOf(startTarget) === Object.prototype) {
             alert("Start target has not been selected");
             return;
@@ -87,18 +91,17 @@ const UploadDevice = (props) => {
             return;
         }
 
-        // Adds the targets as files in a form
+        // adds the targets as files in a form
         const formData = new FormData();
         formData.append('before_target', startTarget);
         formData.append('after_target', endTarget);
-
         for (const file of props.files) {
             formData.append('files', file);
         }
-
+        // shows a loading circle
         document.getElementById('loader-container').style.visibility = "visible";
 
-        // Makes the request to the api
+        // makes the request to the api
         props.fetchAnalyzePostWrapper(formData, `/api/analyze/device?iqes=${software}&target=${deviceTarget}`)
     }
 

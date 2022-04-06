@@ -15,6 +15,7 @@ const App = () => {
 
     let navigate = useNavigate()
 
+    // performs a POST request to given uri with given form data
     const fetchAnalyzePostWrapper = (formData, uri) => {
         fetch(Config.API_URL + uri, {
             method: 'POST',
@@ -36,17 +37,17 @@ const App = () => {
             });
     }
 
+    // handles files upload and saves the files to state variable
     const handleUpload = (event) => {
         document.getElementById("images-text").style.visibility = "visible"
         const inputFiles = event.target.files
-        // Empty array before adding files
+        // empty array before adding files
         setFiles([])
-        // Add each file to the array
+        // add each file to the array
         for (const inputFile of inputFiles) {
             setFiles(arr => [...arr, inputFile])
         }
     }
-
 
     return (
         <Routes>
