@@ -24,7 +24,13 @@ const ResultPage = () => {
     // Downloads the images.zip file from a session
     const handleDownload = () => {
         fetch(Config.API_URL + `/api/download/${params.session_id}?file_name=${params.image_id}`)
-            .then(resp => resp.blob())
+            .then(resp => {
+                if (resp.status != 200) {
+                    throw "download is not ready"
+                }
+
+                return resp.blob()
+            })
             .then(blob => {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
