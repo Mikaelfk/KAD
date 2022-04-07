@@ -12,6 +12,7 @@ const ResultPage = () => {
 
     const [results, setResults] = useState({})
     const [status, setStatus] = useState("");
+    const [downloadReady, setDownloadReady] = useState(false)
 
     let params = useParams();
     useEffect(() => {
@@ -22,7 +23,10 @@ const ResultPage = () => {
             .catch(err => console.log(err))
         fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
             .then(resp => resp.json())
-            .then(data => setStatus(data.session_status))
+            .then(data => {
+                setStatus(data.session_status)
+                setDownloadReady((data.session_status === "finished"))
+            })
             .catch(err => console.log(err));
     }, [params.session_id, params.image_id])
 
@@ -163,7 +167,8 @@ const ResultPage = () => {
                     size="large"
                     sx={{ color: "#1976d2" }}
                     onClick={handleDownload}
-                    title="Download image">
+                    title="Download image"
+                    disabled={!downloadReady}>
                     <DownloadIcon fontSize='large' />
                 </IconButton>
             </div>
