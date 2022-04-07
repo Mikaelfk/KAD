@@ -11,6 +11,8 @@ import "./ResultPage.css";
 const ResultPage = () => {
 
     const [results, setResults] = useState({})
+    const [status, setStatus] = useState("");
+    const [downloadReady, setDownloadReady] = useState(false)
 
     let params = useParams();
     useEffect(() => {
@@ -19,12 +21,25 @@ const ResultPage = () => {
             .then(resp => resp.json())
             .then(data => setResults(data))
             .catch(err => console.log(err))
+        fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
+            .then(resp => resp.json())
+            .then(data => {
+                setStatus(data.session_status)
+                setDownloadReady((data.session_status === "finished"))
+            })
+            .catch(err => console.log(err));
     }, [params.session_id, params.image_id])
 
     // Downloads the images.zip file from a session
     const handleDownload = () => {
         fetch(Config.API_URL + `/api/download/${params.session_id}?file_name=${params.image_id}`)
-            .then(resp => resp.blob())
+            .then(resp => {
+                if (resp.status != 200) {
+                    throw "download is not ready"
+                }
+
+                return resp.blob()
+            })
             .then(blob => {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -152,22 +167,21 @@ const ResultPage = () => {
                     size="large"
                     sx={{ color: "#1976d2" }}
                     onClick={handleDownload}
-                    title="Download image">
+                    title="Download image"
+                    disabled={!downloadReady}>
                     <DownloadIcon fontSize='large' />
                 </IconButton>
             </div>
 
             <Typography variant="h2">
-                Resultat: {params.image_id}
+                Result: {params.image_id}
             </Typography>
+            <Typography variant="h5">Session ID: {params.session_id}</Typography>
+            <Typography variant="h5">Session Status: {status}</Typography>
 
             {
                 generateResults()
             }
-
-            <div className="backButtonContainer">
-
-            </div>
         </div>
     )
 }

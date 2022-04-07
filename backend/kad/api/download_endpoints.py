@@ -4,16 +4,12 @@ Contains one endpoint which can be used to download all images or one image if a
 """
 import json
 import os
+
 from flask import Blueprint, request, send_from_directory
 from flask.wrappers import Response
+from kad.utils.path_helpers import get_session_dir, get_session_images_dir
+from kad.utils.session_manager import check_session_exists, get_session_status
 from werkzeug.utils import secure_filename
-
-from kad.utils.path_helpers import (
-    get_session_dir,
-    get_session_images_dir,
-)
-from kad.utils.session_manager import check_session_exists
-
 
 download_endpoint = Blueprint("download_endpoint", __name__)
 
@@ -31,6 +27,9 @@ def download_images(session_id):
 
     if not check_session_exists(session_id):
         return Response(json.dumps({"error": "session does not exist"}), status=404)
+
+    if get_session_status(session_id)[0] != "finished":
+        return Response(json.dumps({"error": "session is not finished"}), status=400)
 
     file_name = request.args.get("file_name")
     if file_name is None:

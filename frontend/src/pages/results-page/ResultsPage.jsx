@@ -11,13 +11,17 @@ const ResultsPage = () => {
 
     const [results, setResults] = useState({});
     const [status, setStatus] = useState("");
+    const [downloadReady, setDownloadReady] = useState(false)
 
     let params = useParams();
     useEffect(() => {
         // Fetches the status of the session
         fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
             .then(resp => resp.json())
-            .then(data => setStatus(data.session_status))
+            .then(data => {
+                setStatus(data.session_status)
+                setDownloadReady((data.session_status == "finished"))
+            })
             .catch(err => console.log(err));
         // Fetches the results from the api
         fetch(Config.API_URL + `/api/results/${params.session_id}`)
@@ -30,7 +34,13 @@ const ResultsPage = () => {
     // Downloads the images.zip file from a session
     const handleDownloadAll = () => {
         fetch(Config.API_URL + `/api/download/${params.session_id}`)
-            .then(resp => resp.blob())
+            .then(resp => {
+                if (resp.status != 200) {
+                    throw "download is not ready"
+                }
+
+                return resp.blob()
+            })
             .then(blob => {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -91,7 +101,8 @@ const ResultsPage = () => {
                     size="large"
                     sx={{ color: "#1976d2" }}
                     onClick={handleDownloadAll}
-                    title="Download all images">
+                    title="Download all images"
+                    disabled={!downloadReady}>
                     <DownloadIcon fontSize='large' />
                 </IconButton>
             </div>
