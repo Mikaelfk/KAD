@@ -169,7 +169,7 @@ const ResultPage = () => {
             </div>
 
             <Typography variant="h2">
-                Resultat: {params.image_id}
+                Result: {params.image_id}
             </Typography>
             <Typography variant="h5">Session ID: {params.session_id}</Typography>
             <Typography variant="h5">Session Status: {status}</Typography>
