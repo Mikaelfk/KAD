@@ -177,10 +177,6 @@ const ResultPage = () => {
             {
                 generateResults()
             }
-
-            <div className="backButtonContainer">
-
-            </div>
         </div>
     )
 }
