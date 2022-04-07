@@ -11,6 +11,7 @@ import "./ResultPage.css";
 const ResultPage = () => {
 
     const [results, setResults] = useState({})
+    const [status, setStatus] = useState("");
 
     let params = useParams();
     useEffect(() => {
@@ -19,6 +20,10 @@ const ResultPage = () => {
             .then(resp => resp.json())
             .then(data => setResults(data))
             .catch(err => console.log(err))
+        fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
+            .then(resp => resp.json())
+            .then(data => setStatus(data.session_status))
+            .catch(err => console.log(err));
     }, [params.session_id, params.image_id])
 
     // Downloads the images.zip file from a session
@@ -166,6 +171,8 @@ const ResultPage = () => {
             <Typography variant="h2">
                 Resultat: {params.image_id}
             </Typography>
+            <Typography variant="h5">Session ID: {params.session_id}</Typography>
+            <Typography variant="h5">Session Status: {status}</Typography>
 
             {
                 generateResults()
