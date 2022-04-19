@@ -11,73 +11,84 @@ const UploadDevice = (props) => {
     // resets state variables on render
     useEffect(() => {
         props.setFiles([]);
-        setStartTarget({})
-        setEndTarget({})
+        setStartTarget({});
+        setEndTarget({});
     }, [])
 
-    // variable for what softwares support what targets
-    const softwareData = [
+    // variable for what software support what targets
+    const targetData = [
         {
-            name: "IQ-Analyzer-X",
-            value: "IQX",
-            targets: ["UTT"]
+            target: "UTT",
+            software: ["OS QM-Tool", "IQ-Analyzer-X"]
         },
         {
-            name: "OS QM-Tool",
-            value: "OQT",
-            targets: ["UTT", "GTDevice"]
+            target: "GTDevice",
+            software: ["OS QM-Tool"]
+        }
+    ];
+
+    // stores acronyms for each software
+    const softwareAcronyms = [
+        {
+            software: "OS QM-Tool",
+            acronym: "OQT"
+        },
+        {
+            software: "IQ-Analyzer-X",
+            acronym: "IQX"
         }
     ];
 
     // state variable for the software and target chosen
     const [{ software, target: deviceTarget }, setData] = useState({
-        software: "IQX",
+        software: "OS QM-Tool",
         target: "UTT"
-    })
+    });
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
 
-    // MenuItems for software select
-    const softwares = softwareData.map((data) => (
-        <MenuItem key={data.name} value={data.value}>
-            {data.name}
+
+    // defines what targets are available for use
+    const targets = targetData.map((data) => (
+        <MenuItem key={data.target} value={data.target}>
+            {data.target}
         </MenuItem>
     ));
 
-    // MenuItems for target select
-    const targets = softwareData.find(item => item.value === software)?.targets.map((target) => (
-        <MenuItem key={target} value={target}>
-            {target}
+    // defines what softwares are available for each target
+    const softwares = targetData.find(item => item.target === deviceTarget)?.software.map((softwareTemp) => (
+        <MenuItem key={softwareTemp} value={softwareTemp}>
+            {softwareTemp}
         </MenuItem>
     ));
 
     // handles software change event
     const handleSoftwareChange = (event) => {
-        setData({
-            software: event.target.value,
-            target: "UTT"
-        })
-    }
+        setData(data => ({
+            ...data,
+            software: event.target.value
+        }))
+    };
 
     // handles target change event
     const handleTargetChange = (event) => {
-        setData(data => ({
-            ...data,
+        setData({
+            software: "OS QM-Tool",
             target: event.target.value
-        }))
-    }
+        })
+    };
 
     // handles start target upload and saves it to state variable
     const handleStartTargetUpload = (event) => {
         document.getElementById("start-target-text").style.visibility = "visible"
         setStartTarget(event.target.files[0])
-    }
+    };
 
     // handles end target upload and saves it to state variable
     const handleEndTargetUpload = (event) => {
         document.getElementById("end-target-text").style.visibility = "visible"
         setEndTarget(event.target.files[0])
-    }
+    };
 
     // handles submit for device level analysis
     const handleDeviceSubmit = () => {
@@ -101,8 +112,12 @@ const UploadDevice = (props) => {
         // shows a loading circle
         document.getElementById('loader-container').style.visibility = "visible";
 
+        // finds software acronym based on the software name
+        // the acronym is used in the api call
+        const softwareAcronym = softwareAcronyms.find(item => item.software === software).acronym;
+
         // makes the request to the api
-        props.fetchAnalyzePostWrapper(formData, `/api/analyze/device?iqes=${software}&target=${deviceTarget}`)
+        props.fetchAnalyzePostWrapper(formData, `/api/analyze/device?iqes=${softwareAcronym}&target=${deviceTarget}`)
     }
 
     return (
@@ -153,18 +168,18 @@ const UploadDevice = (props) => {
                 <div className='target-options'>
                     <FormGroup>
                         <div>
-                            <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose analysis software to perform analysis with">
-                                <InputLabel id="software-label">Choose analysis software</InputLabel>
-                                <Select value={software} onChange={handleSoftwareChange} labelId="software-label" label="Choose analysis software">
-                                    {softwares}
-                                </Select>
-                            </FormControl>
-                        </div>
-                        <div>
                             <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose target to perform analysis with">
                                 <InputLabel id="target-label">Choose target</InputLabel>
                                 <Select value={deviceTarget} onChange={handleTargetChange} labelId="target-label" label="Choose target">
                                     {targets}
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div>
+                            <FormControl sx={{ m: 1, minWidth: 170 }} aria-label="Choose analysis software to perform analysis with">
+                                <InputLabel id="software-label">Choose analysis software</InputLabel>
+                                <Select value={software} onChange={handleSoftwareChange} labelId="software-label" label="Choose analysis software">
+                                    {softwares}
                                 </Select>
                             </FormControl>
                         </div>
@@ -180,13 +195,13 @@ const UploadDevice = (props) => {
             </div>
         </div >
     );
-}
+};
 
 UploadDevice.propTypes = {
     onUpload: PropTypes.func.isRequired,
     fetchAnalyzePostWrapper: PropTypes.func.isRequired,
     setFiles: PropTypes.func.isRequired,
     files: PropTypes.array.isRequired
-}
+};
 
 export default UploadDevice;

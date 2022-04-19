@@ -12,9 +12,9 @@ const Input = styled('input')({
 export const UploadButton = (props) => {
     let input;
     if (props.uploadTypeSingle === true) {
-        input = <Input accept="image/jpeg,image/tiff" id={"contained-button-file" + props.buttonId} type="file" onChange={props.onUpload} />
+        input = <Input accept="image/jpeg,image/tiff" id={"contained-button-file" + props.buttonId} type="file" onChange={props.onUpload} />;
     } else {
-        input = <Input accept="image/jpeg,image/tiff" id={"contained-button-file" + props.buttonId} multiple type="file" onChange={props.onUpload} />
+        input = <Input accept="image/jpeg,image/tiff" id={"contained-button-file" + props.buttonId} multiple type="file" onChange={props.onUpload} />;
     }
     return (
         <StyledEngineProvider injectFirst>

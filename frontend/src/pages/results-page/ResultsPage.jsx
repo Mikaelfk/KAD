@@ -11,7 +11,7 @@ const ResultsPage = () => {
 
     const [results, setResults] = useState({});
     const [status, setStatus] = useState("");
-    const [downloadReady, setDownloadReady] = useState(false)
+    const [downloadReady, setDownloadReady] = useState(false);
 
     let params = useParams();
     useEffect(() => {
@@ -19,16 +19,16 @@ const ResultsPage = () => {
         fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
             .then(resp => resp.json())
             .then(data => {
-                setStatus(data.session_status)
-                setDownloadReady((data.session_status == "finished"))
+                setStatus(data.session_status);
+                setDownloadReady((data.session_status == "finished"));
             })
             .catch(err => console.log(err));
         // Fetches the results from the api
         fetch(Config.API_URL + `/api/results/${params.session_id}`)
             .then(resp => resp.json())
             .then(data => setResults(data))
-            .catch(err => console.log(err))
-    }, [params.session_id])
+            .catch(err => console.log(err));
+    }, [params.session_id]);
 
 
     // Downloads the images.zip file from a session
@@ -36,10 +36,10 @@ const ResultsPage = () => {
         fetch(Config.API_URL + `/api/download/${params.session_id}`)
             .then(resp => {
                 if (resp.status != 200) {
-                    throw "download is not ready"
+                    throw Error("download is not ready");
                 }
 
-                return resp.blob()
+                return resp.blob();
             })
             .then(blob => {
                 const url = window.URL.createObjectURL(blob);
