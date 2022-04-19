@@ -20,14 +20,14 @@ const UploadObject = (props) => {
             target: "TE263",
             software: ["OS QM-Tool"]
         }
-    ]
+    ];
     // stores acronyms for each software
     const softwareAcronyms = [
         {
             software: "OS QM-Tool",
             acronym: "OQT"
         }
-    ]
+    ];
     // state variable for the software and target chosen
     const [{ software, target: objectTarget }, setData] = useState({
         software: "OS QM-Tool",
@@ -53,14 +53,14 @@ const UploadObject = (props) => {
             software: "OS QM-Tool",
             target: event.target.value
         })
-    }
+    };
 
     const handleSoftwareChange = (event) => {
         setData(data => ({
             ...data,
             software: event.target.value
         }))
-    }
+    };
 
     // handles submit for object level analysis
     const handleObjectSubmit = () => {
@@ -85,7 +85,7 @@ const UploadObject = (props) => {
 
         // Makes a POST request to the endpoint
         props.fetchAnalyzePostWrapper(formData, `/api/analyze/object?iqes=${softwareAcronym}&target=${objectTarget}`);
-    }
+    };
 
     return (
         <div className='container'>
@@ -123,13 +123,13 @@ const UploadObject = (props) => {
             </div>
         </div>
     );
-}
+};
 
 UploadObject.propTypes = {
     onUpload: PropTypes.func.isRequired,
     fetchAnalyzePostWrapper: PropTypes.func.isRequired,
     setFiles: PropTypes.func.isRequired,
     files: PropTypes.array.isRequired
-}
+};
 
 export default UploadObject;

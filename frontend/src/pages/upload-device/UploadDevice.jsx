@@ -11,8 +11,8 @@ const UploadDevice = (props) => {
     // resets state variables on render
     useEffect(() => {
         props.setFiles([]);
-        setStartTarget({})
-        setEndTarget({})
+        setStartTarget({});
+        setEndTarget({});
     }, [])
 
     // variable for what software support what targets
@@ -37,13 +37,13 @@ const UploadDevice = (props) => {
             software: "IQ-Analyzer-X",
             acronym: "IQX"
         }
-    ]
+    ];
 
     // state variable for the software and target chosen
     const [{ software, target: deviceTarget }, setData] = useState({
         software: "OS QM-Tool",
         target: "UTT"
-    })
+    });
     const [startTarget, setStartTarget] = useState({});
     const [endTarget, setEndTarget] = useState({});
 
@@ -68,7 +68,7 @@ const UploadDevice = (props) => {
             ...data,
             software: event.target.value
         }))
-    }
+    };
 
     // handles target change event
     const handleTargetChange = (event) => {
@@ -76,19 +76,19 @@ const UploadDevice = (props) => {
             software: "OS QM-Tool",
             target: event.target.value
         })
-    }
+    };
 
     // handles start target upload and saves it to state variable
     const handleStartTargetUpload = (event) => {
         document.getElementById("start-target-text").style.visibility = "visible"
         setStartTarget(event.target.files[0])
-    }
+    };
 
     // handles end target upload and saves it to state variable
     const handleEndTargetUpload = (event) => {
         document.getElementById("end-target-text").style.visibility = "visible"
         setEndTarget(event.target.files[0])
-    }
+    };
 
     // handles submit for device level analysis
     const handleDeviceSubmit = () => {
@@ -195,13 +195,13 @@ const UploadDevice = (props) => {
             </div>
         </div >
     );
-}
+};
 
 UploadDevice.propTypes = {
     onUpload: PropTypes.func.isRequired,
     fetchAnalyzePostWrapper: PropTypes.func.isRequired,
     setFiles: PropTypes.func.isRequired,
     files: PropTypes.array.isRequired
-}
+};
 
 export default UploadDevice;
