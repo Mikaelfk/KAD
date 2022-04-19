@@ -37,7 +37,6 @@ const UploadDevice = (props) => {
             software: "IQ-Analyzer-X",
             acronym: "IQX"
         }
-
     ]
 
     // state variable for the software and target chosen
@@ -116,7 +115,6 @@ const UploadDevice = (props) => {
         // finds software acronym based on the software name
         // the acronym is used in the api call
         const softwareAcronym = softwareAcronyms.find(item => item.software === software).acronym;
-        console.log(softwareAcronym)
 
         // makes the request to the api
         props.fetchAnalyzePostWrapper(formData, `/api/analyze/device?iqes=${softwareAcronym}&target=${deviceTarget}`)
