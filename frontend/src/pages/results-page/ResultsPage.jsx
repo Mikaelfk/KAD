@@ -15,20 +15,37 @@ const ResultsPage = () => {
 
     let params = useParams();
     useEffect(() => {
-        // Fetches the status of the session
-        fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
-            .then(resp => resp.json())
-            .then(data => {
-                setStatus(data.session_status);
-                setDownloadReady((data.session_status == "finished"));
-            })
-            .catch(err => console.log(err));
-        // Fetches the results from the api
-        fetch(Config.API_URL + `/api/results/${params.session_id}`)
-            .then(resp => resp.json())
-            .then(data => setResults(data))
-            .catch(err => console.log(err));
-    }, [params.session_id]);
+        let interval;
+
+        const fetchData = async () => {
+            console.log("fetching results");
+            // Fetches the session id
+            fetch(Config.API_URL + `/api/session/status/${params.session_id}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    setStatus(data.session_status);
+                    setDownloadReady((data.session_status == "finished"));
+                })
+                .catch(err => console.log(err));
+
+            // Fetches the results from the api
+            fetch(Config.API_URL + `/api/results/${params.session_id}`)
+                .then(resp => resp.json())
+                .then(data => setResults(data))
+                .catch(err => console.log(err));
+        }
+
+        fetchData();
+        if (status != "finished") {
+            interval = setInterval(() => {
+                fetchData();
+            }, 5 * 1000)
+        }
+
+        return () => {
+            clearInterval(interval);
+        }
+    }, [status, params.session_id]);
 
 
     // Downloads the images.zip file from a session
@@ -53,7 +70,7 @@ const ResultsPage = () => {
                 window.URL.revokeObjectURL(url);
             })
             .catch(err => console.log(err))
-    }
+    };
 
     const generateList = () => {
         if ((Object.keys(results).length == 0) || results["error"]) {
