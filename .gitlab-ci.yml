@@ -111,7 +111,7 @@ pages:
         - cd backend/
     script:
         - pip3 install -r requirements.txt
-        - mkdoks build
+        - python3 -m mkdocs build
         - mkdir -p ../public/docs
         - mv site/* ../public/docs/
     artifacts:
