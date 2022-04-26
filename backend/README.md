@@ -9,6 +9,7 @@
     - [Running](#running)
     - [Connect](#connect)
 - [API Documentation](#api-documentation)
+    - [Local viewing](#local-viewing)
 - [Troubleshooting](#troubleshooting)
 
 ## Requirements
@@ -71,6 +72,10 @@ To use the module, refer to the [API Documentation](#api-documentation) to see w
 ## API Documentation
 
 The API documentation is made to be displayed with Mkdocs. All pages are contained within [`docs/`](docs/), and the configuration is found in [`mkdocs.yml`](mkdocs.yml)
+
+A live version of the documentation can be found on [GitLab Pages](https://bachelor_group9_2022.gitlab.io/kvalitetssikring-av-digitisering/docs/)
+
+### Local viewing 
 
 It can be dynamically served with:
 ```
