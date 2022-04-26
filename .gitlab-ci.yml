@@ -93,7 +93,7 @@ sonarqube-check:
 
 pages:
     stage: Deploy
-    image: ubuntu:20.04
+    image: registry.gitlab.com/bachelor_group9_2022/kvalitetssikring-av-digitisering/ci-image:latest
     cache:
         - key:
               files:
@@ -109,7 +109,6 @@ pages:
         PIP_CACHE_DIR: "$CI_PROJECT_DIR/backend/.cache/pip"
     before_script:
         - cd backend/
-        - apt update && apt install python3-pip -y
         - pip3 install virtualenv
         - python3 -m virtualenv venv --python=python3.10
         - source venv/bin/activate
