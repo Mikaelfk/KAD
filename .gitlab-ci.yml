@@ -107,7 +107,7 @@ pages:
     variables:
         PIP_CACHE_DIR: "$CI_PROJECT_DIR/backend/.cache/pip"
     before_script:
-        - apt install python3-pip
+        - apt update && apt install python3-pip -y
         - cd backend/
     script:
         - pip3 install -r requirements.txt
