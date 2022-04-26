@@ -93,6 +93,7 @@ sonarqube-check:
 
 pages:
     stage: Deploy
+    image: ubuntu:20.04
     cache:
         - key:
               files:
