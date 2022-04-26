@@ -4,6 +4,7 @@ stages:
     - Build
     - Test
     - Linting
+    - Deploy
 
 build docker img:
     image: docker:20.10.13
@@ -91,7 +92,7 @@ sonarqube-check:
     stage: Linting
 
 pages:
-    stage: deploy
+    stage: Deploy
     cache:
         - key:
               files:
