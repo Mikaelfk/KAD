@@ -7,7 +7,9 @@
     - [Config](#config)
     - [Running](#running)
     - [Building](#building)
+    - [Tests](#tests)
 - [Troubleshooting](#troubleshooting)
+    - [Infinite spinning after upload](#infinite-spinning-after-upload)
 
 ## Requirements
 
@@ -69,4 +71,5 @@ npm run test
 
 ## Troubleshooting
 
-TBD
+### Infinite spinning after upload
+Make sure the correct ip and port is set in config.json and that the backend is running.

@@ -8,9 +8,15 @@
     - [Config](#config)
     - [Running](#running)
     - [Connect](#connect)
+    - [Tests](#tests)
 - [API Documentation](#api-documentation)
     - [Local viewing](#local-viewing)
+- [Notes](#notes)
+    - [IQES are dependent on their GUI](#iqes-are-dependent-on-their-gui)
+    - [OS QM-Tool command line support](#os-qm-tool-command-line-support)
+    - [OS QM-Tool parameter files](#os-qm-tool-parameter-files)
 - [Troubleshooting](#troubleshooting)
+    - [OS QM-Tool sometimes does not work on all images](#os-qm-tool-sometimes-does-not-work-on-all-images)
 
 ## Requirements
 
@@ -94,6 +100,20 @@ Or statically built with:
 mkdocs build
 ```
 
-## Troubleshooting
+## Notes
 
-TBD
+### IQES are dependent on their GUI
+Both image quality evaluation softwares currently supported are dependent on their GUI. This means that when running the backend, the softwares will pop up and perform analysis in GUI when started by backend.
+
+### OS QM-Tool command line support 
+Running OS QM-Tool through command line is not documented or officially supported, therefore it could easily break in the future without any notice.
+
+### OS QM-Tool parameter files
+OS QM Tool parameter files are manually made from reference file and may have some human errors, although currently there aren't any known errors. 
+
+## Troubleshooting 
+
+### OS QM-Tool sometimes does not work on all images
+For unknown reasons, sometimes OS QM-Tool returns exit code 2 and/or a C++ runtime error when attempting to analyze image. In our testing, this is a result of bad conversion from PNG to JPEG/TIFF. 
+
+Try converting the image again with a different tool, or if it is in the desired format, open it in an image editing tool and try exporting a new copy from there.
