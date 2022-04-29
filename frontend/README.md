@@ -7,7 +7,9 @@
     - [Config](#config)
     - [Running](#running)
     - [Building](#building)
+    - [Tests](#tests)
 - [Troubleshooting](#troubleshooting)
+    - [Infinite spinning after upload](#infinite-spinning-after-upload)
 
 ## Requirements
 
@@ -55,6 +57,19 @@ npm run build
 
 Point the webserver to `index.html` in the built files.
 
+### Tests
+For tests, you must first retrieve dependecies with:
+```
+npm install
+```
+
+Then, tests can be run with
+```
+npm run test
+```
+
+
 ## Troubleshooting
 
-TBD
+### Infinite spinning after upload
+Make sure the correct ip and port is set in config.json and that the backend is running.
