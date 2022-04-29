@@ -55,6 +55,18 @@ npm run build
 
 Point the webserver to `index.html` in the built files.
 
+### Tests
+For tests, you must first retrieve dependecies with:
+```
+npm install
+```
+
+Then, tests can be run with
+```
+npm run test
+```
+
+
 ## Troubleshooting
 
 TBD

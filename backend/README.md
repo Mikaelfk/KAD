@@ -69,6 +69,13 @@ To run this module, a simple [`run.py`](run.py) script has been included. This s
 
 To use the module, refer to the [API Documentation](#api-documentation) to see what requests to make.
 
+### Tests
+Tests can be be run by first installing the required dependecies, and then running pytest:
+```
+pip -r requirements.txt
+pip -m pytest tests/
+```
+
 ## API Documentation
 
 The API documentation is made to be displayed with Mkdocs. All pages are contained within [`docs/`](docs/), and the configuration is found in [`mkdocs.yml`](mkdocs.yml)
