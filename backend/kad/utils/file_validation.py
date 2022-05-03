@@ -22,13 +22,11 @@ def jhove_validation(url):
         bool: True if successful, False otherwise
     """
 
-    os.chdir(jhove_path)
-
     # Check if operating system is posix or windows
     if os.name == "posix":
-        jhove_command = "./jhove"
+        jhove_command = os.path.join(jhove_path, "jhove")
     else:
-        jhove_command = "jhove.bat"
+        jhove_command = os.path.join(jhove_path, "jhove.bat")
         url = url.replace("/", "\\")
 
     # Runs the file validation and saves the output to a variable

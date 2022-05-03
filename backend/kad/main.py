@@ -3,6 +3,7 @@
 """
 import logging
 import os
+from datetime import datetime
 
 from flask import Flask
 from flask_cors import CORS
@@ -22,7 +23,17 @@ def start():
     This method initializes the flask app, registers endpoints and starts the listening.
     """
 
+    # Create storage folder
+    os.makedirs(
+        Config.config().get(section="API", option="StorageFolder"), exist_ok=True
+    )
+
+    # Create a dir for logs in cwd
+    os.makedirs("kad_logs", exist_ok=True)
+
     logging.basicConfig(
+        filename=f"kad_logs/kad_log-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log",
+        filemode="a",
         level=logging.INFO,
         format="[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
@@ -37,10 +48,5 @@ def start():
     app.register_blueprint(download_endpoint)
     app.register_blueprint(session_endpoint)
     app.register_blueprint(analyze_endpoint)
-
-    # Create storage folder
-    os.makedirs(
-        Config.config().get(section="API", option="StorageFolder"), exist_ok=True
-    )
 
     app.run(host="0.0.0.0", port=int(Config.config().get(section="API", option="Port")))
