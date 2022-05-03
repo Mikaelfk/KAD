@@ -63,7 +63,7 @@ def run_device_analysis(
     )
 
     # validate before analysis
-    validation_result, file_name = validate_files(session_id, image_files, "after")
+    validation_result, file_name = validate_files(session_id, image_files, "before")
     if not validation_result:
         update_session_status(session_id, f"failed on validating {file_name}")
         return
@@ -171,7 +171,7 @@ def run_object_analysis(
     )
 
     # validate before analysis
-    validation_result, file_name = validate_files(session_id, image_files, "after")
+    validation_result, file_name = validate_files(session_id, image_files, "before")
     if not validation_result:
         update_session_status(session_id, f"failed on validating {file_name}")
         return
